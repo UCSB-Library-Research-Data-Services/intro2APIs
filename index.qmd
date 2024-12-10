@@ -1,6 +1,10 @@
 ---
 title: "Unlocking Data"
 description: "A Gentle Introduction to APIs"
----
+format:
+  html:
+    toc: false
 
-Nothing to see here yet.
+listing:
+  contents: "chapters/*.qmd"
+---
