@@ -1,0 +1,43 @@
+---
+title: "A Catalog of APIs"
+---
+
+This is a non-exhaustive list of APIs that can be used to retrieve data from cultural institutions, and other sources, that can be used for research, teaching, or event to build or integrate with applications.
+
+
+::: {.callout-caution collapse="true"}
+## About Authentication
+Although some APIs do not require authentication, it is important to check the API documentation to be aware of usage limits and other restrictions. Otherwise, you can get blocked from the API provider.
+:::
+
+## US Based APIs
+
+| **API** | **Version** | **Description** | **Link to Documentation** | **Requires Authentication** | **Status of Documentation** |
+|---------|-------------|------------------|----------------------------|-----------------------------|-----------------------------|
+| **Internet Archive** | N/A | API for searching and retrieving data from public collections from the Internet Archive | [IA Tools and APIs](https://archive.org/developers/index-apis.html) | Yes | Well documented with examples and code snippets |
+| **Library of Congress** | N/A | Provides structured data about Library of Congress collections | [APIs for LoC.gov](https://www.loc.gov/apis/) | No | Well documented. Some collections have their own documentation. See [Additional APIs](https://www.loc.gov/apis/additional-apis/) |
+| **Getty Museum** | N/A | API designed for tasks like getting records, tracking changes, and querying the collection | [Getty API Documentation](https://data.getty.edu/museum/collection/docs/) | No | "Work in progress" |
+| **Metropolitan Museum of Art** | v1 | Provides access to Open Access data and public domain high-resolution images | [The Met Collection API](https://metmuseum.github.io/) | No | Well documented with examples and code snippets |
+| **Art Institute of Chicago** | v1 | REST-style service to explore and integrate the museum's public data | [Art Institute of Chicago API](https://api.artic.edu/docs/) | No | Well documented with examples and code snippets |
+| **Harvard Art Museums** | N/A | REST-style service for integrating museum collections in projects | [Harvard Art Museums API](https://harvardartmuseums.org/collections/api) | Yes | Detailed and well-documented. See [GitHub Docs](https://github.com/harvardartmuseums/api-docs) |
+| **The Cleveland Museum of Art** | 4.0.0 | Provides access to the museum's collection data in JSON format | [Cleveland Museum of Art API](https://openaccess-api.clevelandart.org/) | No | Well documented but not very user-friendly |
+| **Smithsonian Institution** | N/A | Open access to Smithsonian collections and research datasets | [Smithsonian API](https://edan.si.edu/openaccess/apidocs/) | No | Comprehensive documentation with examples |
+| **HathiTrust** | N/A | API for accessing and managing HathiTrust collections and data | [HathiTrust Data API](https://old.www.hathitrust.org/data_api.html) | Yes | Limited and somewhat outdated documentation |
+| **Walters Art Museum Collections** | N/A | Access to Walters Art Museum's public data and metadata | [Walters API](https://github.com/WaltersArtMuseum/api-thewalters-org) | No | Limited documentation available on GitHub |
+| **National Archives Catalog** | v2.0 | Access to the National Archives collection metadata | [National Archives API](https://catalog.archives.gov/api/v2/api-docs/) | No | Well documented with examples |
+| **The New York Times Archive** | v3 | Provides access to NYT articles, archives, and multimedia | [NYT APIs](https://developer.nytimes.com/apis) | Yes | Comprehensive documentation with examples |
+| **Digital Public Library of America** | N/A | Provides access to metadata and content from partner libraries | [DPLA API Codex](https://pro.dp.la/developers/api-codex) | Yes | Detailed documentation available |
+
+## Non-US APIs
+
+::: {.callout-note}
+Policies for using APIs from non-US institutions may be different from those in the US. It is important to check the API documentation for each institution to be aware of usage limits and other restrictions.
+:::
+
+| **API** | **Version** | **Description** | **Link to Documentation** | **Requires Authentication** | **Status of Documentation** |
+|---------|-------------|------------------|----------------------------|-----------------------------|-----------------------------|
+| **Europeana** | v2.0 | API to search and retrieve European cultural heritage metadata | [Europeana API](https://apis.europeana.eu/en) | Yes | Comprehensive documentation with code examples |
+| **Rijksmuseum** | N/A | Provides access to Rijksmuseum collection data and images | [Rijksmuseum API](https://www.rijksmuseum.nl/en/research/conduct-research/data/overview) | Yes | Moderately documented with examples |
+| **V&A Collections** | N/A | API for accessing the Victoria and Albert Museum's collection data and images | [V&A API](https://www.vam.ac.uk/api) | Yes | Well-documented with examples |
+| **Science Museum Collections** | N/A | API for accessing the Science Museum's collection data and images | [Science Museum API](https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api) | Yes | Well documented but not very user-friendly |
+

@@ -1,0 +1,31 @@
+project:
+  type: website
+
+website:
+  title: "Unlocking Data<br /><span style='font-size: 0.8em;'>A Gentle Introduction to APIs</span>"    
+  sidebar:
+    style: "docked"
+    search: true
+    header: |
+      ![<a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a>](/static/imgs/integration.png)
+    contents:
+      - text: "Introduction"
+        href: index.qmd
+      - section: What are APIs and why do they exists
+        contents:
+          - text: "What is an API?"
+            href: what-is-an-api.qmd
+          - text: "Why an API?"
+            href: why-an-api.qmd
+      - section: Interacting with APIs
+        contents:
+          - text: "Endpoints"
+            href: endpoints.qmd
+      - text: "A Catalog of APIs"
+        href: catalog.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true

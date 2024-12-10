@@ -1,0 +1,26 @@
+---
+title: "Why an API?"
+format:
+    html:
+        code-fold: true
+---
+
+## Why Do We Need an API?
+
+A common question might be: why use an API instead of simply sharing the data directly?
+
+### Simplifying Access to Data
+Imagine we have a publicly available database. Typically, the data in such a database is divided into multiple tables—for example, one table for cat breeds, another for cat images, and so on. To search for all cat breeds, you would need to join several tables and perform a complex query, which can be challenging, especially for non-technical users.
+
+An API simplifies this process by predefining these complex queries and providing endpoints to access the data you need with minimal effort. Instead of interacting directly with the database, users make requests to the API and receive only the required data in a user-friendly format, like JSON.
+
+### Enhancing Security and Performance
+Direct access to a database can compromise its security and integrity. Opening a database to the public exposes it to risks, such as unauthorized modifications or data breaches. APIs mitigate these risks by controlling what data is accessible and to whom. For instance APIs can restrict access to specific users or IP addresses. APIs can also limit the amount of data retrieved, improving performance.
+
+### Why Not Share Data as a Downloadable File?
+Sharing data in formats like Excel or CSV files can sometimes be a practical solution. However, this approach has significant limitations, for instance, downloadable files do not automatically update when the source data changes. Users must re-download the file every time updates are made, which can lead to outdated information. Another limitation is associated with the size of the file. For large datasets, downloading and processing the entire file can be inefficient and cumbersome.
+
+The decision to use an API or provide downloadable data depends on the project’s goals. When you need to retrieve specific data subsets or interact with the data dynamically, an API is ideal. It provides granularity and ensures users access the most up-to-date information. When users need the entire dataset for analysis or offline use, offering a downloadable file might be more appropriate.
+
+An API is not designed for bulk data retrieval but for accessing data in a more focused and controlled way. It bridges the gap between complex databases and the users who need specific, timely information.
+

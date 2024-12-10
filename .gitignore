@@ -1,0 +1,8 @@
+.env
+.DS_Store
+
+/.quarto/
+_environment.local
+_environment.required
+/_*.local
+_site/

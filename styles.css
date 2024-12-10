@@ -1,0 +1,13 @@
+/* css styles */
+.sidebar-footer-item {
+  position: absolute;
+  bottom: 0;
+}
+
+.header-icon-attribution {
+    color: #0000003d;
+    font-size: 10px;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-end;
+}
