@@ -14,15 +14,15 @@ website:
       - section: What are APIs and why do they exists
         contents:
           - text: "What is an API?"
-            href: what-is-an-api.qmd
+            href: chapters/what-is-an-api.qmd
           - text: "Why an API?"
-            href: why-an-api.qmd
+            href: chapters/why-an-api.qmd
       - section: Interacting with APIs
         contents:
           - text: "Endpoints"
-            href: endpoints.qmd
+            href: chapters/endpoints.qmd
       - text: "A Catalog of APIs"
-        href: catalog.qmd
+        href: resources/catalog.qmd
 
 format:
   html:
