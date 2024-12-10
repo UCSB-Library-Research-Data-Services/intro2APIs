@@ -1,0 +1,141 @@
+[
+  {
+    "objectID": "what-is-an-api.html",
+    "href": "what-is-an-api.html",
+    "title": "What is an API?",
+    "section": "",
+    "text": "An API (Application Programming Interface) is a set of rules and protocols enabling software programs to communicate and share information. While the term is often associated with “web APIs,” it encompasses a broader concept. For instance, an API might allow a library to share its collection data with a museum or enable a weather service to provide updates to a news organization. APIs operate based on predefined rules set by developers, specifying how data can be accessed and used. While some APIs are public, most are internal, facilitating communication between systems within an organization.\nFor those unfamiliar with computer science, APIs can be a bit abstract, so let’s try to explain it better with this example using the The Cat API. This API allows you to get information about different cat and dog breeds, with images and descriptions. The information is not available through a public interface, so if you want to see a cat image, you must use the API.\nIn this example, let’s get the information about the Ragdoll cat breed. To do this, we require to use this API endpoint: https://api.thecatapi.com/v1/images/XFhRpYS_D.\nYou can click on that link to view the information about the cat in a format similar to this:\n\n\n{\n    \"id\": \"XFhRpYS_D\",\n    \"url\": \"https://cdn2.thecatapi.com/images/XFhRpYS_D.jpg\",\n    \"breeds\": [\n        {\n            \"weight\": {\n                \"imperial\": \"12 - 20\",\n                \"metric\": \"5 - 9\"\n            },\n            \"id\": \"ragd\",\n            \"name\": \"Ragdoll\",\n            \"cfa_url\": \"http://cfa.org/Breeds/BreedsKthruR/Ragdoll.aspx\",\n            \"vetstreet_url\": \"http://www.vetstreet.com/cats/ragdoll\",\n            \"vcahospitals_url\": \"https://vcahospitals.com/know-your-pet/cat-breeds/ragdoll\",\n            \"temperament\": \"Affectionate, Friendly, Gentle, Quiet, Easygoing\",\n            \"origin\": \"United States\",\n            \"country_codes\": \"US\",\n            \"country_code\": \"US\",\n            \"description\": \"Ragdolls love their people, greeting them at the door, following them around the house, and leaping into a lap or snuggling in bed whenever given the chance. They are the epitome of a lap cat, enjoy being carried and collapsing into the arms of anyone who holds them.\",\n            \"life_span\": \"12 - 17\",\n            \"indoor\": 0,\n            \"lap\": 1,\n            \"alt_names\": \"Rag doll\",\n            \"adaptability\": 5,\n            \"affection_level\": 5,\n            \"child_friendly\": 4,\n            \"dog_friendly\": 5,\n            \"energy_level\": 3,\n            \"grooming\": 2,\n            \"health_issues\": 3,\n            \"intelligence\": 3,\n            \"shedding_level\": 3,\n            \"social_needs\": 5,\n            \"stranger_friendly\": 3,\n            \"vocalisation\": 1,\n            \"experimental\": 0,\n            \"hairless\": 0,\n            \"natural\": 0,\n            \"rare\": 0,\n            \"rex\": 0,\n            \"suppressed_tail\": 0,\n            \"short_legs\": 0,\n            \"wikipedia_url\": \"https://en.wikipedia.org/wiki/Ragdoll\",\n            \"hypoallergenic\": 0,\n            \"reference_image_id\": \"oGefY4YoG\"\n        }\n    ],\n    \"width\": 800,\n    \"height\": 1229\n}\n\n\nThis format is called JSON, and its widely used in APIs to return data. We will see more about this format later, but for now, we can say that this output is called a response, and it contains keys and values. Keys are the names of the information we requested and values are the information we received. For instance, in this response, the url to the image of a Ragdoll cat can be found under the url key, and its value is https://cdn2.thecatapi.com/images/XFhRpYS_D.jpg.\n\n\n\nJSON syntax\n\n\nNow, what we want to do is to get the image of the Ragdoll, not just the abstract information. To do this, we have to access the values associated with each key. The url to the image is under the url key, the name of the cat is under the breeds key and the description is under the description key. With a bit of coding, we can display the image of the cat:\n\n\n\n\n\n\n\n\n\nCute, isn’t it?\nWhat the API is doing, is to get the information from the server database, return it to the client in a format that can be easily parsed by a computer, and then the browser can use this information to display the cat image, or to get additional information about the cat.\n\n\n\nA simple representation of an API (click to zoom)\n\n\nWith that information, we can display the information in a more readable format, and reutilize the method to get the image of other cats, for instance, a Bengal cat:\n\n\n\n\n\n\n\n\n\nYou can even get a random cat image!\n\n\n\nClick here to get a random cat :)\n\n\n\n\n\n\n\n\n\n\n\n\nIn summary\n\n\n\n\n\nAPIs provide access to structured data from a database without requiring knowledge of its underlying structure, and allow us to reformat the information, must be as a user friendly representation, or even translate that information to a tabular format.",
+    "crumbs": [
+      "What are APIs and why do they exists",
+      "What is an API?"
+    ]
+  },
+  {
+    "objectID": "why-an-api.html",
+    "href": "why-an-api.html",
+    "title": "Why an API?",
+    "section": "",
+    "text": "A common question might be: why use an API instead of simply sharing the data directly?\n\n\nImagine we have a publicly available database. Typically, the data in such a database is divided into multiple tables—for example, one table for cat breeds, another for cat images, and so on. To search for all cat breeds, you would need to join several tables and perform a complex query, which can be challenging, especially for non-technical users.\nAn API simplifies this process by predefining these complex queries and providing endpoints to access the data you need with minimal effort. Instead of interacting directly with the database, users make requests to the API and receive only the required data in a user-friendly format, like JSON.\n\n\n\nDirect access to a database can compromise its security and integrity. Opening a database to the public exposes it to risks, such as unauthorized modifications or data breaches. APIs mitigate these risks by controlling what data is accessible and to whom. For instance APIs can restrict access to specific users or IP addresses. APIs can also limit the amount of data retrieved, improving performance.\n\n\n\nSharing data in formats like Excel or CSV files can sometimes be a practical solution. However, this approach has significant limitations, for instance, downloadable files do not automatically update when the source data changes. Users must re-download the file every time updates are made, which can lead to outdated information. Another limitation is associated with the size of the file. For large datasets, downloading and processing the entire file can be inefficient and cumbersome.\nThe decision to use an API or provide downloadable data depends on the project’s goals. When you need to retrieve specific data subsets or interact with the data dynamically, an API is ideal. It provides granularity and ensures users access the most up-to-date information. When users need the entire dataset for analysis or offline use, offering a downloadable file might be more appropriate.\nAn API is not designed for bulk data retrieval but for accessing data in a more focused and controlled way. It bridges the gap between complex databases and the users who need specific, timely information.",
+    "crumbs": [
+      "What are APIs and why do they exists",
+      "Why an API?"
+    ]
+  },
+  {
+    "objectID": "why-an-api.html#why-do-we-need-an-api",
+    "href": "why-an-api.html#why-do-we-need-an-api",
+    "title": "Why an API?",
+    "section": "",
+    "text": "A common question might be: why use an API instead of simply sharing the data directly?\n\n\nImagine we have a publicly available database. Typically, the data in such a database is divided into multiple tables—for example, one table for cat breeds, another for cat images, and so on. To search for all cat breeds, you would need to join several tables and perform a complex query, which can be challenging, especially for non-technical users.\nAn API simplifies this process by predefining these complex queries and providing endpoints to access the data you need with minimal effort. Instead of interacting directly with the database, users make requests to the API and receive only the required data in a user-friendly format, like JSON.\n\n\n\nDirect access to a database can compromise its security and integrity. Opening a database to the public exposes it to risks, such as unauthorized modifications or data breaches. APIs mitigate these risks by controlling what data is accessible and to whom. For instance APIs can restrict access to specific users or IP addresses. APIs can also limit the amount of data retrieved, improving performance.\n\n\n\nSharing data in formats like Excel or CSV files can sometimes be a practical solution. However, this approach has significant limitations, for instance, downloadable files do not automatically update when the source data changes. Users must re-download the file every time updates are made, which can lead to outdated information. Another limitation is associated with the size of the file. For large datasets, downloading and processing the entire file can be inefficient and cumbersome.\nThe decision to use an API or provide downloadable data depends on the project’s goals. When you need to retrieve specific data subsets or interact with the data dynamically, an API is ideal. It provides granularity and ensures users access the most up-to-date information. When users need the entire dataset for analysis or offline use, offering a downloadable file might be more appropriate.\nAn API is not designed for bulk data retrieval but for accessing data in a more focused and controlled way. It bridges the gap between complex databases and the users who need specific, timely information.",
+    "crumbs": [
+      "What are APIs and why do they exists",
+      "Why an API?"
+    ]
+  },
+  {
+    "objectID": "endpoints.html",
+    "href": "endpoints.html",
+    "title": "Endpoints",
+    "section": "",
+    "text": "In the terminology of APIs, an endpoint is a URL that specifies the location of a resource on a server. As we saw with the cat API, most of the time you can access the data from an endpoint without requiring any particular software besides a web browser.\nHowever, an API doesn’t just retrieve data, it could also create, update, or delete data. For that reason, we could say that an endpoint is a specific type of URL that allows you to perform a specific action on a resource.\nThen, let’s break the pieces of an endpoint into three parts:",
+    "crumbs": [
+      "Interacting with APIs",
+      "Endpoints"
+    ]
+  },
+  {
+    "objectID": "endpoints.html#the-protocol",
+    "href": "endpoints.html#the-protocol",
+    "title": "Endpoints",
+    "section": "The protocol",
+    "text": "The protocol\nThe protocol is the first part of an endpoint, specifying whether access to the resource is done through HTTP or HTTPS. In simple terms, HTTP is the same protocol used by the web browser to retrieve web pages. The “S” in HTTPS stands for “secure” and it means that the communication between the client and the server is encrypted.\n\n\n\n\n\n\nNote\n\n\n\nCurrently, HTTPS is the de facto standard for APIs, due to enhanced security.",
+    "crumbs": [
+      "Interacting with APIs",
+      "Endpoints"
+    ]
+  },
+  {
+    "objectID": "endpoints.html#the-domain",
+    "href": "endpoints.html#the-domain",
+    "title": "Endpoints",
+    "section": "The domain",
+    "text": "The domain\nThe second part of an endpoint is the domain name. This means the unique name of the host that provides the resource. In our example, the domain of the cat API is api.thecatapi.com.\n\n\n\n\n\n\nNote\n\n\n\nThe domain name of the API is not necessarily the same as the name of the main website of the API provider. For instance, the domain name of the cat API is api.thecatapi.com, but the main website of the cat API is thecatapi.com.",
+    "crumbs": [
+      "Interacting with APIs",
+      "Endpoints"
+    ]
+  },
+  {
+    "objectID": "endpoints.html#the-path",
+    "href": "endpoints.html#the-path",
+    "title": "Endpoints",
+    "section": "The path",
+    "text": "The path\nThe third part of an endpoint is the path. This piece of the endpoint specifies the resource we want to access. This could be a specific set of data, for instance, a list of cat breeds, but it could also be an action to be performed, for instance, searching. The path can also specify the version of the API that is being used, for instance, “v1” or “v2”.\nIn the cat API, the path can be something like /v1/breeds.\nSome endpoints can include a resource identifier to retrieve a specific resource, for instance, the path /v1/breeds/ gives as response a list of all cat breeds, and it’s possible to retrieve a specific breed, let’s say “Korat”, by adding the identifier /kora to the path, so the full path would be /v1/breeds/kora.",
+    "crumbs": [
+      "Interacting with APIs",
+      "Endpoints"
+    ]
+  },
+  {
+    "objectID": "endpoints.html#the-query-parameters",
+    "href": "endpoints.html#the-query-parameters",
+    "title": "Endpoints",
+    "section": "The query parameters",
+    "text": "The query parameters\nAn endpoint can retrieve lists of data and individual items. It can also perform actions, for instance, searching. The query parameters are the part of endpoints that allows us to explore the data available in the API. This can include multiple parts used to specify the search. Let’s explore this with more detail.\nThe Cat API has an endpoint to search for cat images. The path of this endpoint is /v1/images/search. If we do a GET request to this endpoint we will get a random cat image. However, the developers have included a set of parameters that can delimit the search like the size of the image, the type of the image, the format of the response, if the image has a breed, etc. In that case, instead of just having a random cat image, we can retrieve a list of cat images with a size, media type, and with a specific limit. Then, the part of the endpoint will be like this:\nsearch?size=small&mime_types=gif&limit=10\nNote that the query parameters are separated from the path by a question mark (?) and they are separated by ampersands (&). Order of the parameters is not important, but using the correct name of the parameter is crucial.",
+    "crumbs": [
+      "Interacting with APIs",
+      "Endpoints"
+    ]
+  },
+  {
+    "objectID": "endpoints.html#the-full-endpoint",
+    "href": "endpoints.html#the-full-endpoint",
+    "title": "Endpoints",
+    "section": "The full endpoint",
+    "text": "The full endpoint\nNow, having all the parts of an endpoint, we can write the full endpoint as follows:\n\nThis can be read as follows: “I want to retrieve 10 cat gif images with a small size”.\nWith this result:\n\n\n\n\n&lt;!-- Images will be inserted here by JavaScript --&gt;\n\n← →",
+    "crumbs": [
+      "Interacting with APIs",
+      "Endpoints"
+    ]
+  },
+  {
+    "objectID": "catalog.html",
+    "href": "catalog.html",
+    "title": "A Catalog of APIs",
+    "section": "",
+    "text": "This is a non-exhaustive list of APIs that can be used to retrieve data from cultural institutions, and other sources, that can be used for research, teaching, or event to build or integrate with applications.",
+    "crumbs": [
+      "A Catalog of APIs"
+    ]
+  },
+  {
+    "objectID": "catalog.html#us-based-apis",
+    "href": "catalog.html#us-based-apis",
+    "title": "A Catalog of APIs",
+    "section": "US Based APIs",
+    "text": "US Based APIs\n\n\n\nAPI\nVersion\nDescription\nLink to Documentation\nRequires Authentication\nStatus of Documentation\n\n\n\n\nInternet Archive\nN/A\nAPI for searching and retrieving data from public collections from the Internet Archive\nIA Tools and APIs\nYes\nWell documented with examples and code snippets\n\n\nLibrary of Congress\nN/A\nProvides structured data about Library of Congress collections\nAPIs for LoC.gov\nNo\nWell documented. Some collections have their own documentation. See Additional APIs\n\n\nGetty Museum\nN/A\nAPI designed for tasks like getting records, tracking changes, and querying the collection\nGetty API Documentation\nNo\n“Work in progress”\n\n\nMetropolitan Museum of Art\nv1\nProvides access to Open Access data and public domain high-resolution images\nThe Met Collection API\nNo\nWell documented with examples and code snippets\n\n\nArt Institute of Chicago\nv1\nREST-style service to explore and integrate the museum’s public data\nArt Institute of Chicago API\nNo\nWell documented with examples and code snippets\n\n\nHarvard Art Museums\nN/A\nREST-style service for integrating museum collections in projects\nHarvard Art Museums API\nYes\nDetailed and well-documented. See GitHub Docs\n\n\nThe Cleveland Museum of Art\n4.0.0\nProvides access to the museum’s collection data in JSON format\nCleveland Museum of Art API\nNo\nWell documented but not very user-friendly\n\n\nSmithsonian Institution\nN/A\nOpen access to Smithsonian collections and research datasets\nSmithsonian API\nNo\nComprehensive documentation with examples\n\n\nHathiTrust\nN/A\nAPI for accessing and managing HathiTrust collections and data\nHathiTrust Data API\nYes\nLimited and somewhat outdated documentation\n\n\nWalters Art Museum Collections\nN/A\nAccess to Walters Art Museum’s public data and metadata\nWalters API\nNo\nLimited documentation available on GitHub\n\n\nNational Archives Catalog\nv2.0\nAccess to the National Archives collection metadata\nNational Archives API\nNo\nWell documented with examples\n\n\nThe New York Times Archive\nv3\nProvides access to NYT articles, archives, and multimedia\nNYT APIs\nYes\nComprehensive documentation with examples\n\n\nDigital Public Library of America\nN/A\nProvides access to metadata and content from partner libraries\nDPLA API Codex\nYes\nDetailed documentation available",
+    "crumbs": [
+      "A Catalog of APIs"
+    ]
+  },
+  {
+    "objectID": "catalog.html#non-us-apis",
+    "href": "catalog.html#non-us-apis",
+    "title": "A Catalog of APIs",
+    "section": "Non-US APIs",
+    "text": "Non-US APIs\n\n\n\n\n\n\nNote\n\n\n\nPolicies for using APIs from non-US institutions may be different from those in the US. It is important to check the API documentation for each institution to be aware of usage limits and other restrictions.\n\n\n\n\n\nAPI\nVersion\nDescription\nLink to Documentation\nRequires Authentication\nStatus of Documentation\n\n\n\n\nEuropeana\nv2.0\nAPI to search and retrieve European cultural heritage metadata\nEuropeana API\nYes\nComprehensive documentation with code examples\n\n\nRijksmuseum\nN/A\nProvides access to Rijksmuseum collection data and images\nRijksmuseum API\nYes\nModerately documented with examples\n\n\nV&A Collections\nN/A\nAPI for accessing the Victoria and Albert Museum’s collection data and images\nV&A API\nYes\nWell-documented with examples\n\n\nScience Museum Collections\nN/A\nAPI for accessing the Science Museum’s collection data and images\nScience Museum API\nYes\nWell documented but not very user-friendly",
+    "crumbs": [
+      "A Catalog of APIs"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Unlocking Data",
+    "section": "",
+    "text": "Nothing to see here yet.",
+    "crumbs": [
+      "Introduction"
+    ]
+  }
+]
