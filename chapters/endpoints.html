@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="A Gentle Introduction to APIs">
 
-<title>Unlocking Data – Unlocking DataA Gentle Introduction to APIs</title>
+<title>Endpoints – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2be10d9e998f81ff6e49e26833438aa5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-2be10d9e998f81ff6e49e26833438aa5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,70 +69,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -141,7 +83,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/endpoints.html">Interacting with APIs</a></li><li class="breadcrumb-item"><a href="../chapters/endpoints.html">Endpoints</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -156,14 +98,14 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./static/imgs/integration.png" class="img-fluid figure-img"></p>
+<p><a href="../static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Api icons created by HAJICON - Flaticon"><img src="../static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
 </div></div>
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span></a> 
+      <a href="../">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span></a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -175,7 +117,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -190,13 +132,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is an API?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/why-an-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/why-an-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Why an API?</span></a>
   </div>
 </li>
@@ -213,7 +155,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/endpoints.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/endpoints.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Endpoints</span></a>
   </div>
 </li>
@@ -221,7 +163,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources/catalog.html" class="sidebar-item-text sidebar-link">
+  <a href="../resources/catalog.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A Catalog of APIs</span></a>
   </div>
 </li>
@@ -230,20 +172,27 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-protocol" id="toc-the-protocol" class="nav-link active" data-scroll-target="#the-protocol">The protocol</a></li>
+  <li><a href="#the-domain" id="toc-the-domain" class="nav-link" data-scroll-target="#the-domain">The domain</a></li>
+  <li><a href="#the-path" id="toc-the-path" class="nav-link" data-scroll-target="#the-path">The path</a></li>
+  <li><a href="#the-query-parameters" id="toc-the-query-parameters" class="nav-link" data-scroll-target="#the-query-parameters">The query parameters</a></li>
+  <li><a href="#the-full-endpoint" id="toc-the-full-endpoint" class="nav-link" data-scroll-target="#the-full-endpoint">The full endpoint</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/endpoints.html">Interacting with APIs</a></li><li class="breadcrumb-item"><a href="../chapters/endpoints.html">Endpoints</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Unlocking Data</h1>
+<h1 class="title">Endpoints</h1>
 </div>
 
-<div>
-  <div class="description">
-    A Gentle Introduction to APIs
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -258,83 +207,142 @@ window.Quarto = {
 </header>
 
 
+<p>In the terminology of APIs, an <strong>endpoint</strong> is a URL that specifies the location of a resource on a server. As we saw with the cat API, most of the time you can access the data from an endpoint without requiring any particular software besides a web browser.</p>
+<p>However, an API doesn’t just retrieve data, it could also create, update, or delete data. For that reason, we could say that an endpoint is a specific type of URL that allows you to perform a specific action on a resource.</p>
+<p>Then, let’s break the pieces of an endpoint into three parts:</p>
+<section id="the-protocol" class="level2">
+<h2 class="anchored" data-anchor-id="the-protocol">The protocol</h2>
+<p>The protocol is the first part of an endpoint, specifying whether access to the resource is done through HTTP or HTTPS. In simple terms, HTTP is the same protocol used by the web browser to retrieve web pages. The “S” in HTTPS stands for “secure” and it means that the communication between the client and the server is encrypted.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Currently, HTTPS is the de facto standard for APIs, due to enhanced security.</p>
+</div>
+</div>
+</section>
+<section id="the-domain" class="level2">
+<h2 class="anchored" data-anchor-id="the-domain">The domain</h2>
+<p>The second part of an endpoint is the domain name. This means the unique name of the host that provides the resource. In our example, the domain of the cat API is <code>api.thecatapi.com</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The domain name of the API is not necessarily the same as the name of the main website of the API provider. For instance, the domain name of the cat API is <code>api.thecatapi.com</code>, but the main website of the cat API is <code>thecatapi.com</code>.</p>
+</div>
+</div>
+</section>
+<section id="the-path" class="level2">
+<h2 class="anchored" data-anchor-id="the-path">The path</h2>
+<p>The third part of an endpoint is the path. This piece of the endpoint specifies the resource we want to access. This could be a specific set of data, for instance, a list of cat breeds, but it could also be an action to be performed, for instance, searching. The path can also specify the version of the API that is being used, for instance, “v1” or “v2”.</p>
+<p>In the cat API, the path can be something like <code>/v1/breeds</code>.</p>
+<p>Some endpoints can include a resource identifier to retrieve a specific resource, for instance, the path <code>/v1/breeds/</code> gives as response a list of all cat breeds, and it’s possible to retrieve a specific breed, let’s say “Korat”, by adding the identifier <code>/kora</code> to the path, so the full path would be <code>/v1/breeds/kora</code>.</p>
+</section>
+<section id="the-query-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="the-query-parameters">The query parameters</h2>
+<p>An endpoint can retrieve lists of data and individual items. It can also perform actions, for instance, searching. The query parameters are the part of endpoints that allows us to explore the data available in the API. This can include multiple parts used to specify the search. Let’s explore this with more detail.</p>
+<p>The Cat API has an endpoint to search for cat images. The path of this endpoint is <code>/v1/images/search</code>. If we do a GET request to this endpoint we will get a random cat image. However, the developers have included a set of parameters that can delimit the search like the size of the image, the type of the image, the format of the response, if the image has a breed, etc. In that case, instead of just having a random cat image, we can retrieve a list of cat images with a size, media type, and with a specific limit. Then, the part of the endpoint will be like this:</p>
+<p><code>search?size=small&amp;mime_types=gif&amp;limit=10</code></p>
+<p>Note that the query parameters are separated from the path by a question mark (<code>?</code>) and they are separated by ampersands (<code>&amp;</code>). Order of the parameters is not important, but using the correct name of the parameter is crucial.</p>
+</section>
+<section id="the-full-endpoint" class="level2">
+<h2 class="anchored" data-anchor-id="the-full-endpoint">The full endpoint</h2>
+<p>Now, having all the parts of an endpoint, we can write the full endpoint as follows:</p>
+<p><a href="../static/imgs/endpoint_diagram.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="../static/imgs/endpoint_diagram.png" class="img-fluid"></a></p>
+<p>This can be read as follows: “I want to retrieve 10 cat gif images with a small size”.</p>
+<p>With this result:</p>
+<div id="cat-container" class="cell-html">
+<!-- carousel with 10 cat images -->
+<div class="carousel-container">
+<div class="carousel-wrapper">
+<pre><code>&lt;!-- Images will be inserted here by JavaScript --&gt;</code></pre>
+</div>
+<p><button class="carousel-button prev">←</button> <button class="carousel-button next">→</button></p>
+</div>
+<style>
+.carousel-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-wrapper {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-wrapper img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.carousel-button.prev { left: 10px; }
+.carousel-button.next { right: 10px; }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const response = await fetch('https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif&limit=10');
+  const cats = await response.json();
+  
+  const wrapper = document.querySelector('.carousel-wrapper');
+  cats.forEach(cat => {
+    const img = document.createElement('img');
+    img.src = cat.url;
+    img.alt = 'Cat image';
+    wrapper.appendChild(img);
+  });
+
+  let currentIndex = 0;
+  const totalImages = cats.length;
+  
+  function updateCarousel() {
+    wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  document.querySelector('.next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalImages;
+    updateCarousel();
+  });
+
+  document.querySelector('.prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    updateCarousel();
+  });
+});
+</script>
+</div>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1733864191310" data-listing-reading-time-sort="5" data-listing-word-count-sort="851">
-<div class="thumbnail">
-<p><a href="./chapters/endpoints.html" class="no-external"></a></p><a href="./chapters/endpoints.html" class="no-external">
-<p class="card-img-top"><img src="static/imgs/endpoint_diagram.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./chapters/endpoints.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./chapters/endpoints.html" class="no-external">Endpoints</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./chapters/endpoints.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./chapters/endpoints.html" class="no-external">In the terminology of APIs, an <strong>endpoint</strong> is a URL that specifies the location of a resource on a server. As we saw with the cat API, most of the time you can access the data…</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./chapters/endpoints.html" class="no-external"></a></p><a href="./chapters/endpoints.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1733864191320" data-listing-reading-time-sort="5" data-listing-word-count-sort="946">
-<div class="thumbnail">
-<p><a href="./chapters/what-is-an-api.html" class="no-external"></a></p><a href="./chapters/what-is-an-api.html" class="no-external">
-<p class="card-img-top"><img src="static/imgs/JSON-syntax.png" alt="JSON syntax"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./chapters/what-is-an-api.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./chapters/what-is-an-api.html" class="no-external">What is an API?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./chapters/what-is-an-api.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./chapters/what-is-an-api.html" class="no-external">An API (Application Programming Interface) is a set of rules and protocols enabling software programs to communicate and share information. While the term is often…</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./chapters/what-is-an-api.html" class="no-external"></a></p><a href="./chapters/what-is-an-api.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1733864191320" data-listing-reading-time-sort="2" data-listing-word-count-sort="367">
-<div class="thumbnail">
-<p><a href="./chapters/why-an-api.html" class="no-external"></a></p><a href="./chapters/why-an-api.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./chapters/why-an-api.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./chapters/why-an-api.html" class="no-external">Why an API?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./chapters/why-an-api.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./chapters/why-an-api.html" class="no-external">A common question might be: why use an API instead of simply sharing the data directly?</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./chapters/why-an-api.html" class="no-external"></a></p><a href="./chapters/why-an-api.html" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -753,6 +761,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="A Gentle Introduction to APIs">
 
-<title>Unlocking Data – Unlocking DataA Gentle Introduction to APIs</title>
+<title>A Catalog of APIs – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2be10d9e998f81ff6e49e26833438aa5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-2be10d9e998f81ff6e49e26833438aa5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,70 +66,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -141,7 +80,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../resources/catalog.html">A Catalog of APIs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -156,14 +95,14 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./static/imgs/integration.png" class="img-fluid figure-img"></p>
+<p><img src="../static/imgs/integration.png" class="img-fluid figure-img"></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
 </div></div>
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span></a> 
+      <a href="../">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span></a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -175,7 +114,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -190,13 +129,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is an API?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/why-an-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/why-an-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Why an API?</span></a>
   </div>
 </li>
@@ -213,7 +152,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/endpoints.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/endpoints.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Endpoints</span></a>
   </div>
 </li>
@@ -221,7 +160,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources/catalog.html" class="sidebar-item-text sidebar-link">
+  <a href="../resources/catalog.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">A Catalog of APIs</span></a>
   </div>
 </li>
@@ -230,20 +169,24 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#us-based-apis" id="toc-us-based-apis" class="nav-link active" data-scroll-target="#us-based-apis">US Based APIs</a></li>
+  <li><a href="#non-us-apis" id="toc-non-us-apis" class="nav-link" data-scroll-target="#non-us-apis">Non-US APIs</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Unlocking Data</h1>
+<h1 class="title">A Catalog of APIs</h1>
 </div>
 
-<div>
-  <div class="description">
-    A Gentle Introduction to APIs
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -258,83 +201,210 @@ window.Quarto = {
 </header>
 
 
+<p>This is a non-exhaustive list of APIs that can be used to retrieve data from cultural institutions, and other sources, that can be used for research, teaching, or event to build or integrate with applications.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+About Authentication
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Although some APIs do not require authentication, it is important to check the API documentation to be aware of usage limits and other restrictions. Otherwise, you can get blocked from the API provider.</p>
+</div>
+</div>
+</div>
+<section id="us-based-apis" class="level2">
+<h2 class="anchored" data-anchor-id="us-based-apis">US Based APIs</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>API</strong></th>
+<th><strong>Version</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Link to Documentation</strong></th>
+<th><strong>Requires Authentication</strong></th>
+<th><strong>Status of Documentation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Internet Archive</strong></td>
+<td>N/A</td>
+<td>API for searching and retrieving data from public collections from the Internet Archive</td>
+<td><a href="https://archive.org/developers/index-apis.html">IA Tools and APIs</a></td>
+<td>Yes</td>
+<td>Well documented with examples and code snippets</td>
+</tr>
+<tr class="even">
+<td><strong>Library of Congress</strong></td>
+<td>N/A</td>
+<td>Provides structured data about Library of Congress collections</td>
+<td><a href="https://www.loc.gov/apis/">APIs for LoC.gov</a></td>
+<td>No</td>
+<td>Well documented. Some collections have their own documentation. See <a href="https://www.loc.gov/apis/additional-apis/">Additional APIs</a></td>
+</tr>
+<tr class="odd">
+<td><strong>Getty Museum</strong></td>
+<td>N/A</td>
+<td>API designed for tasks like getting records, tracking changes, and querying the collection</td>
+<td><a href="https://data.getty.edu/museum/collection/docs/">Getty API Documentation</a></td>
+<td>No</td>
+<td>“Work in progress”</td>
+</tr>
+<tr class="even">
+<td><strong>Metropolitan Museum of Art</strong></td>
+<td>v1</td>
+<td>Provides access to Open Access data and public domain high-resolution images</td>
+<td><a href="https://metmuseum.github.io/">The Met Collection API</a></td>
+<td>No</td>
+<td>Well documented with examples and code snippets</td>
+</tr>
+<tr class="odd">
+<td><strong>Art Institute of Chicago</strong></td>
+<td>v1</td>
+<td>REST-style service to explore and integrate the museum’s public data</td>
+<td><a href="https://api.artic.edu/docs/">Art Institute of Chicago API</a></td>
+<td>No</td>
+<td>Well documented with examples and code snippets</td>
+</tr>
+<tr class="even">
+<td><strong>Harvard Art Museums</strong></td>
+<td>N/A</td>
+<td>REST-style service for integrating museum collections in projects</td>
+<td><a href="https://harvardartmuseums.org/collections/api">Harvard Art Museums API</a></td>
+<td>Yes</td>
+<td>Detailed and well-documented. See <a href="https://github.com/harvardartmuseums/api-docs">GitHub Docs</a></td>
+</tr>
+<tr class="odd">
+<td><strong>The Cleveland Museum of Art</strong></td>
+<td>4.0.0</td>
+<td>Provides access to the museum’s collection data in JSON format</td>
+<td><a href="https://openaccess-api.clevelandart.org/">Cleveland Museum of Art API</a></td>
+<td>No</td>
+<td>Well documented but not very user-friendly</td>
+</tr>
+<tr class="even">
+<td><strong>Smithsonian Institution</strong></td>
+<td>N/A</td>
+<td>Open access to Smithsonian collections and research datasets</td>
+<td><a href="https://edan.si.edu/openaccess/apidocs/">Smithsonian API</a></td>
+<td>No</td>
+<td>Comprehensive documentation with examples</td>
+</tr>
+<tr class="odd">
+<td><strong>HathiTrust</strong></td>
+<td>N/A</td>
+<td>API for accessing and managing HathiTrust collections and data</td>
+<td><a href="https://old.www.hathitrust.org/data_api.html">HathiTrust Data API</a></td>
+<td>Yes</td>
+<td>Limited and somewhat outdated documentation</td>
+</tr>
+<tr class="even">
+<td><strong>Walters Art Museum Collections</strong></td>
+<td>N/A</td>
+<td>Access to Walters Art Museum’s public data and metadata</td>
+<td><a href="https://github.com/WaltersArtMuseum/api-thewalters-org">Walters API</a></td>
+<td>No</td>
+<td>Limited documentation available on GitHub</td>
+</tr>
+<tr class="odd">
+<td><strong>National Archives Catalog</strong></td>
+<td>v2.0</td>
+<td>Access to the National Archives collection metadata</td>
+<td><a href="https://catalog.archives.gov/api/v2/api-docs/">National Archives API</a></td>
+<td>No</td>
+<td>Well documented with examples</td>
+</tr>
+<tr class="even">
+<td><strong>The New York Times Archive</strong></td>
+<td>v3</td>
+<td>Provides access to NYT articles, archives, and multimedia</td>
+<td><a href="https://developer.nytimes.com/apis">NYT APIs</a></td>
+<td>Yes</td>
+<td>Comprehensive documentation with examples</td>
+</tr>
+<tr class="odd">
+<td><strong>Digital Public Library of America</strong></td>
+<td>N/A</td>
+<td>Provides access to metadata and content from partner libraries</td>
+<td><a href="https://pro.dp.la/developers/api-codex">DPLA API Codex</a></td>
+<td>Yes</td>
+<td>Detailed documentation available</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="non-us-apis" class="level2">
+<h2 class="anchored" data-anchor-id="non-us-apis">Non-US APIs</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Policies for using APIs from non-US institutions may be different from those in the US. It is important to check the API documentation for each institution to be aware of usage limits and other restrictions.</p>
+</div>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>API</strong></th>
+<th><strong>Version</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Link to Documentation</strong></th>
+<th><strong>Requires Authentication</strong></th>
+<th><strong>Status of Documentation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Europeana</strong></td>
+<td>v2.0</td>
+<td>API to search and retrieve European cultural heritage metadata</td>
+<td><a href="https://apis.europeana.eu/en">Europeana API</a></td>
+<td>Yes</td>
+<td>Comprehensive documentation with code examples</td>
+</tr>
+<tr class="even">
+<td><strong>Rijksmuseum</strong></td>
+<td>N/A</td>
+<td>Provides access to Rijksmuseum collection data and images</td>
+<td><a href="https://www.rijksmuseum.nl/en/research/conduct-research/data/overview">Rijksmuseum API</a></td>
+<td>Yes</td>
+<td>Moderately documented with examples</td>
+</tr>
+<tr class="odd">
+<td><strong>V&amp;A Collections</strong></td>
+<td>N/A</td>
+<td>API for accessing the Victoria and Albert Museum’s collection data and images</td>
+<td><a href="https://www.vam.ac.uk/api">V&amp;A API</a></td>
+<td>Yes</td>
+<td>Well-documented with examples</td>
+</tr>
+<tr class="even">
+<td><strong>Science Museum Collections</strong></td>
+<td>N/A</td>
+<td>API for accessing the Science Museum’s collection data and images</td>
+<td><a href="https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api">Science Museum API</a></td>
+<td>Yes</td>
+<td>Well documented but not very user-friendly</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1733864191310" data-listing-reading-time-sort="5" data-listing-word-count-sort="851">
-<div class="thumbnail">
-<p><a href="./chapters/endpoints.html" class="no-external"></a></p><a href="./chapters/endpoints.html" class="no-external">
-<p class="card-img-top"><img src="static/imgs/endpoint_diagram.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./chapters/endpoints.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./chapters/endpoints.html" class="no-external">Endpoints</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./chapters/endpoints.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./chapters/endpoints.html" class="no-external">In the terminology of APIs, an <strong>endpoint</strong> is a URL that specifies the location of a resource on a server. As we saw with the cat API, most of the time you can access the data…</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./chapters/endpoints.html" class="no-external"></a></p><a href="./chapters/endpoints.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1733864191320" data-listing-reading-time-sort="5" data-listing-word-count-sort="946">
-<div class="thumbnail">
-<p><a href="./chapters/what-is-an-api.html" class="no-external"></a></p><a href="./chapters/what-is-an-api.html" class="no-external">
-<p class="card-img-top"><img src="static/imgs/JSON-syntax.png" alt="JSON syntax"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./chapters/what-is-an-api.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./chapters/what-is-an-api.html" class="no-external">What is an API?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./chapters/what-is-an-api.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./chapters/what-is-an-api.html" class="no-external">An API (Application Programming Interface) is a set of rules and protocols enabling software programs to communicate and share information. While the term is often…</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./chapters/what-is-an-api.html" class="no-external"></a></p><a href="./chapters/what-is-an-api.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1733864191320" data-listing-reading-time-sort="2" data-listing-word-count-sort="367">
-<div class="thumbnail">
-<p><a href="./chapters/why-an-api.html" class="no-external"></a></p><a href="./chapters/why-an-api.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./chapters/why-an-api.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./chapters/why-an-api.html" class="no-external">Why an API?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./chapters/why-an-api.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./chapters/why-an-api.html" class="no-external">A common question might be: why use an API instead of simply sharing the data directly?</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./chapters/why-an-api.html" class="no-external"></a></p><a href="./chapters/why-an-api.html" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

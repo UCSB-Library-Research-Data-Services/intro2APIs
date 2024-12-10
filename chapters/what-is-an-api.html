@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="A Gentle Introduction to APIs">
 
-<title>Unlocking Data – Unlocking DataA Gentle Introduction to APIs</title>
+<title>What is an API? – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2be10d9e998f81ff6e49e26833438aa5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-2be10d9e998f81ff6e49e26833438aa5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,70 +69,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -141,7 +83,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/what-is-an-api.html">What are APIs and why do they exists</a></li><li class="breadcrumb-item"><a href="../chapters/what-is-an-api.html">What is an API?</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -156,14 +98,14 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./static/imgs/integration.png" class="img-fluid figure-img"></p>
+<p><a href="../static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Api icons created by HAJICON - Flaticon"><img src="../static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
 </div></div>
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span></a> 
+      <a href="../">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span></a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -175,7 +117,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -190,13 +132,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">What is an API?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/why-an-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/why-an-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Why an API?</span></a>
   </div>
 </li>
@@ -213,7 +155,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/endpoints.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/endpoints.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Endpoints</span></a>
   </div>
 </li>
@@ -221,7 +163,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources/catalog.html" class="sidebar-item-text sidebar-link">
+  <a href="../resources/catalog.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A Catalog of APIs</span></a>
   </div>
 </li>
@@ -230,20 +172,17 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/what-is-an-api.html">What are APIs and why do they exists</a></li><li class="breadcrumb-item"><a href="../chapters/what-is-an-api.html">What is an API?</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Unlocking Data</h1>
+<h1 class="title">What is an API?</h1>
 </div>
 
-<div>
-  <div class="description">
-    A Gentle Introduction to APIs
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -258,83 +197,160 @@ window.Quarto = {
 </header>
 
 
+<p>An API (Application Programming Interface) is a set of rules and protocols enabling software programs to communicate and share information. While the term is often associated with “web APIs,” it encompasses a broader concept. For instance, an API might allow a library to share its collection data with a museum or enable a weather service to provide updates to a news organization. APIs operate based on predefined rules set by developers, specifying how data can be accessed and used. While some APIs are public, most are internal, facilitating communication between systems within an organization.</p>
+<p>For those unfamiliar with computer science, APIs can be a bit abstract, so let’s try to explain it better with this example using the <a href="https://thecatapi.com/">The Cat API</a>. This API allows you to get information about different cat and dog breeds, with images and descriptions. The information is not available through a public interface, so if you want to see a cat image, you must use the API.</p>
+<p>In this example, let’s get the information about the Ragdoll cat breed. To do this, we require to use this API endpoint: <a href="https://api.thecatapi.com/v1/images/XFhRpYS_D">https://api.thecatapi.com/v1/images/XFhRpYS_D</a>.</p>
+<p>You can click on that link to view the information about the cat in a format similar to this:</p>
+<div id="20479156" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>{
+    "id": "XFhRpYS_D",
+    "url": "https://cdn2.thecatapi.com/images/XFhRpYS_D.jpg",
+    "breeds": [
+        {
+            "weight": {
+                "imperial": "12 - 20",
+                "metric": "5 - 9"
+            },
+            "id": "ragd",
+            "name": "Ragdoll",
+            "cfa_url": "http://cfa.org/Breeds/BreedsKthruR/Ragdoll.aspx",
+            "vetstreet_url": "http://www.vetstreet.com/cats/ragdoll",
+            "vcahospitals_url": "https://vcahospitals.com/know-your-pet/cat-breeds/ragdoll",
+            "temperament": "Affectionate, Friendly, Gentle, Quiet, Easygoing",
+            "origin": "United States",
+            "country_codes": "US",
+            "country_code": "US",
+            "description": "Ragdolls love their people, greeting them at the door, following them around the house, and leaping into a lap or snuggling in bed whenever given the chance. They are the epitome of a lap cat, enjoy being carried and collapsing into the arms of anyone who holds them.",
+            "life_span": "12 - 17",
+            "indoor": 0,
+            "lap": 1,
+            "alt_names": "Rag doll",
+            "adaptability": 5,
+            "affection_level": 5,
+            "child_friendly": 4,
+            "dog_friendly": 5,
+            "energy_level": 3,
+            "grooming": 2,
+            "health_issues": 3,
+            "intelligence": 3,
+            "shedding_level": 3,
+            "social_needs": 5,
+            "stranger_friendly": 3,
+            "vocalisation": 1,
+            "experimental": 0,
+            "hairless": 0,
+            "natural": 0,
+            "rare": 0,
+            "rex": 0,
+            "suppressed_tail": 0,
+            "short_legs": 0,
+            "wikipedia_url": "https://en.wikipedia.org/wiki/Ragdoll",
+            "hypoallergenic": 0,
+            "reference_image_id": "oGefY4YoG"
+        }
+    ],
+    "width": 800,
+    "height": 1229
+}</code></pre>
+</div>
+</div>
+<p>This format is called JSON, and its widely used in APIs to return data. We will see more about this format later, but for now, we can say that this output is called a <strong>response</strong>, and it contains <strong>keys</strong> and <strong>values</strong>. Keys are the names of the information we requested and values are the information we received. For instance, in this response, the url to the image of a Ragdoll cat can be found under the <code>url</code> key, and its value is <code>https://cdn2.thecatapi.com/images/XFhRpYS_D.jpg</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/JSON-syntax.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="JSON syntax"><img src="../static/imgs/JSON-syntax.png" class="img-fluid figure-img" alt="JSON syntax"></a></p>
+<figcaption>JSON syntax</figcaption>
+</figure>
+</div>
+<p>Now, what we want to do is to get the image of the Ragdoll, not just the abstract information. To do this, we have to access the values associated with each key. The url to the image is under the <code>url</code> key, the name of the cat is under the <code>breeds</code> key and the description is under the <code>description</code> key. With a bit of coding, we can display the image of the cat:</p>
+<div id="bf8d63a3" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="what-is-an-api_files/figure-html/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="what-is-an-api_files/figure-html/cell-3-output-1.png" width="554" height="384" class="figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Cute, isn’t it?</p>
+<p>What the API is doing, is to get the information from the server database, return it to the client in a format that can be easily parsed by a computer, and then the browser can use this information to display the cat image, or to get additional information about the cat.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/APIS.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="A simple representation of an API (click to zoom)"><img src="../static/imgs/APIS.png" class="img-fluid figure-img" alt="A simple representation of an API (click to zoom)"></a></p>
+<figcaption>A simple representation of an API (click to zoom)</figcaption>
+</figure>
+</div>
+<p>With that information, we can display the information in a more readable format, and reutilize the method to get the image of other cats, for instance, a Bengal cat:</p>
+<div id="5fbe48ca" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="what-is-an-api_files/figure-html/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="what-is-an-api_files/figure-html/cell-4-output-1.png" width="566" height="384" class="figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can even get a random cat image!</p>
+<div id="cat-container" class="cell-html">
+<script>
+window.getRandomCat = async function () {
+    
+    const response = await fetch("https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1");
+    if (!response.ok) throw new Error("Failed to fetch random cat.");
+    const data = await response.json();
+    
+
+    const cat = data[0];
+
+    const cat_id = cat.id;
+
+    const cat_detailed_info = await fetch(`https://api.thecatapi.com/v1/images/${cat_id}`);
+    const cat_detailed_info_json = await cat_detailed_info.json();
+
+    // Safely access items that might be undefined or empty
+    const breed = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].name : "Unknown";
+    const description = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].description : "Unknown";
+
+    document.getElementById("cat-image").innerHTML = `
+        <div class="card" style="max-width: 300px; margin: 15px auto;">
+            <img src="${cat.url}" class="card-img-top" alt="Random Cat">
+            <div class="card-body">
+                <h5 class="card-title">Breed: ${breed}</h5>
+                <p class="card-text">${description}</p>
+            </div>
+        </div>
+    `;
+};
+
+</script>
+<button onclick="getRandomCat()" class="btn btn-primary" style="padding: 10px 20px; font-size: 16px; display: block; margin: 0 auto;">
+Click here to get a random cat :)
+</button>
+<div id="cat-image" style="margin-top: 15px;">
+
+</div>
+</div>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In summary
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>APIs provide access to structured data from a database without requiring knowledge of its underlying structure, and allow us to reformat the information, must be as a user friendly representation, or even translate that information to a tabular format.</p>
+</div>
+</div>
+</div>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1733864191310" data-listing-reading-time-sort="5" data-listing-word-count-sort="851">
-<div class="thumbnail">
-<p><a href="./chapters/endpoints.html" class="no-external"></a></p><a href="./chapters/endpoints.html" class="no-external">
-<p class="card-img-top"><img src="static/imgs/endpoint_diagram.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./chapters/endpoints.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./chapters/endpoints.html" class="no-external">Endpoints</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./chapters/endpoints.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./chapters/endpoints.html" class="no-external">In the terminology of APIs, an <strong>endpoint</strong> is a URL that specifies the location of a resource on a server. As we saw with the cat API, most of the time you can access the data…</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./chapters/endpoints.html" class="no-external"></a></p><a href="./chapters/endpoints.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1733864191320" data-listing-reading-time-sort="5" data-listing-word-count-sort="946">
-<div class="thumbnail">
-<p><a href="./chapters/what-is-an-api.html" class="no-external"></a></p><a href="./chapters/what-is-an-api.html" class="no-external">
-<p class="card-img-top"><img src="static/imgs/JSON-syntax.png" alt="JSON syntax"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./chapters/what-is-an-api.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./chapters/what-is-an-api.html" class="no-external">What is an API?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./chapters/what-is-an-api.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./chapters/what-is-an-api.html" class="no-external">An API (Application Programming Interface) is a set of rules and protocols enabling software programs to communicate and share information. While the term is often…</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./chapters/what-is-an-api.html" class="no-external"></a></p><a href="./chapters/what-is-an-api.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1733864191320" data-listing-reading-time-sort="2" data-listing-word-count-sort="367">
-<div class="thumbnail">
-<p><a href="./chapters/why-an-api.html" class="no-external"></a></p><a href="./chapters/why-an-api.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./chapters/why-an-api.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./chapters/why-an-api.html" class="no-external">Why an API?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./chapters/why-an-api.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./chapters/why-an-api.html" class="no-external">A common question might be: why use an API instead of simply sharing the data directly?</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./chapters/why-an-api.html" class="no-external"></a></p><a href="./chapters/why-an-api.html" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -753,6 +769,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
