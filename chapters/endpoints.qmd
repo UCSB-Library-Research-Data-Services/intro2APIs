@@ -14,6 +14,7 @@ lightbox: true
 
 // Load the pre-fetched cat data
 cats = FileAttachment("../_data/cats.json").json()
+console.log(cats)
 ```
 
 In the terminology of APIs, an **endpoint** is a URL that specifies the location of a resource on a server. As we saw with the cat API, most of the time you can access the data from an endpoint without requiring any particular software besides a web browser.
@@ -79,8 +80,10 @@ With this result:
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // Wait for OJS runtime to be ready and access the cats variable
-    const cats = await window.ojs.runtime.interpret('cats');
+    // Wait for Observable runtime to be ready
+    await document.querySelector('ojs-provider').whenDefined();
+    const runtime = document.querySelector('ojs-provider').value;
+    const cats = await runtime.value('cats');
     
     const wrapper = document.querySelector('.carousel-wrapper');
     cats.forEach(cat => {
