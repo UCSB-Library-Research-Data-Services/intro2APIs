@@ -246,12 +246,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell hidden">
 <details class="code-fold hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="13" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 12;"><span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">// Load the pre-fetched cat data</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>cats <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"../_data/cats.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="16" data-source-offset="-34"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 15;"><span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>cats <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"../_data/cats.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display hidden">
-<div id="ojs-cell-1" data-nodetype="declaration">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
 
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="expression">
+
+</div>
 </div>
 </div>
 </div>
@@ -322,8 +331,10 @@ Note
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // Wait for OJS runtime to be ready and access the cats variable
-    const cats = await window.ojs.runtime.interpret('cats');
+    // Wait for Observable runtime to be ready
+    await document.querySelector('ojs-provider').whenDefined();
+    const runtime = document.querySelector('ojs-provider').value;
+    const cats = await runtime.value('cats');
     
     const wrapper = document.querySelector('.carousel-wrapper');
     cats.forEach(cat => {
@@ -361,7 +372,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gTG9hZCB0aGUgcHJlLWZldGNoZWQgY2F0IGRhdGFcbmNhdHMgPSBGaWxlQXR0YWNobWVudChcIi4uL19kYXRhL2NhdHMuanNvblwiKS5qc29uKClcbiJ9XX0=
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gTG9hZCB0aGUgcHJlLWZldGNoZWQgY2F0IGRhdGFcbmNhdHMgPSBGaWxlQXR0YWNobWVudChcIi4uL19kYXRhL2NhdHMuanNvblwiKS5qc29uKClcbmNvbnNvbGUubG9nKGNhdHMpXG4ifV19
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
