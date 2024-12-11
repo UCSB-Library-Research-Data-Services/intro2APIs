@@ -1,9 +1,8 @@
 # Unlocking Data. A Gentle Introduction to APIs
 
-This repository contains the source code for the book "Unlocking Data. A Gentle Introduction to APIs".
+This repository contains the source code for the workbook *Unlocking Data: A Gentle Introduction to APIs*. The workbook introduces readers to the fundamentals of working with APIs through explanations, interactive examples, and practical use cases.
 
-The book is built with [Quarto](https://quarto.org/) and relies heavily on [Observable JS](https://quarto.org/docs/interactive/ojs/).
-
+The book is built with [Quarto](https://quarto.org/) and relies heavily on [Observable JS](https://quarto.org/docs/interactive/ojs/) to provide live, interactive content.
 
 ## How to publish the book
 
@@ -13,4 +12,6 @@ Publications are done using the `.github/workflows/publish.yml` file, which is t
 
 We opt for execute the code as part of a Github Action, because it allows us to fetch the data from external sources. Updated computations are still stored in `_freeze` folder, and it's recommended using a Python virtual environment to run Quarto and install the required packages using `requirements.txt` file.
 
+## Known issues
 
+- Some Observable JS (OJS) code may not execute correctly during local builds. This issue arises because accessing environment variables in Quarto with OJS is not straightforward. As a result, there is a risk that API keys could inadvertently be exposed in the build output.
