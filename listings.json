@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/chapters/endpoints.html",
+      "/chapters/interact-apis.html",
       "/chapters/what-is-an-api.html",
       "/chapters/why-an-api.html"
     ]

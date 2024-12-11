@@ -1,1 +1,0 @@
-Sitemap: https://jairomelo.github.io/intro2APIs/sitemap.xml
