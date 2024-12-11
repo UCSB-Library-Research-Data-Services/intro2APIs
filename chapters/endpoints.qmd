@@ -60,16 +60,6 @@ This can be read as follows: "I want to retrieve 10 cat gif images with a small 
 
 With this result:
 
-::: {#cat-container .cell-html}
-<!-- carousel with 10 cat images -->
-<div class="carousel-container">
-  <div class="carousel-wrapper">
-    <!-- Images will be inserted here by JavaScript -->
-  </div>
-  <button class="carousel-button prev">←</button>
-  <button class="carousel-button next">→</button>
-</div>
-
 ```{ojs}
 cats = FileAttachment("../_data/cats.json").json()
 
@@ -111,45 +101,3 @@ viewof carousel = {
   return container;
 }
 ```
-
-
-<script>
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    // Wait for Observable runtime to be ready
-    await document.querySelector('ojs-provider').whenDefined();
-    const runtime = document.querySelector('ojs-provider').value;
-    const cats = await runtime.value('cats');
-    
-    const wrapper = document.querySelector('.carousel-wrapper');
-    cats.forEach(cat => {
-      const img = document.createElement('img');
-      img.src = cat.url;
-      img.alt = 'Cat image';
-      wrapper.appendChild(img);
-    });
-
-    let currentIndex = 0;
-    const totalImages = cats.length;
-    
-    function updateCarousel() {
-      wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    document.querySelector('.next').addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % totalImages;
-      updateCarousel();
-    });
-
-    document.querySelector('.prev').addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-      updateCarousel();
-    });
-  } catch (error) {
-    console.error('Error loading cat data:', error);
-  }
-});
-</script>
-
-:::
-
