@@ -8,5 +8,204 @@ format:
 lightbox: true
 ---
 
-Now that we know the rudiments of APIs, let's do some exercises to interact with them.
+Now that we understand what an API endpoint is, let's try interacting with the Cat API directly. Enter an endpoint path below (like `/v1/images/search?limit=1`) to see the API response.
 
+Try these examples:
+
+- `/v1/images/search?limit=1` - Get one random cat image
+- `/v1/images/search?mime_types=gif` - Get a random cat GIF
+- `/v1/breeds` - Get a list of cat breeds
+- `/v1/breeds/siam` - Get information about Siamese cats
+
+::: {.callout-note}
+The response will be shown in JSON format, which is a common data format used by APIs. JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate.
+:::
+
+
+```{ojs}
+viewof method = Inputs.select(["GET"], {
+  label: "HTTP Method",
+  attributes: {
+    class: "form-select mb-3"
+  }
+})
+
+viewof endpoint = Inputs.text({
+  label: "Endpoint path", 
+  placeholder: "/v1/images/search?limit=1",
+  value: "/v1/images/search?limit=1",
+  attributes: {
+    class: "form-control mb-3"
+  }
+})
+
+// Function to make the API request
+async function fetchFromApi(method, path) {
+  const baseUrl = "https://api.thecatapi.com";
+  try {
+    const response = await fetch(`${baseUrl}${path}`);
+    return await response.json();
+  } catch (error) {
+    return { error: error.message };
+  }
+}
+
+response = {
+  const result = await fetchFromApi(method, endpoint);
+  return JSON.stringify(result, null, 2);
+}
+
+viewof prettyResponse = {
+  const container = html`<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>Response</span>
+      <span class="badge bg-success">200 OK</span>
+    </div>
+    <pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${response}</pre>
+  </div>`;
+  return container;
+}
+```
+
+In fact, with the same structure, we can interact with multiple APIs. Let's try interacting with [The Metropolitan Museum of Art Collection API](https://metmuseum.github.io/#search) to get the a list of objects ids from the collection.
+
+```{ojs}
+
+viewof methodParts = Inputs.select(["GET"], {
+    label: "HTTP Method",
+    attributes: {
+        class: "form-select mb-3"
+    }
+})
+
+viewof domain = Inputs.text({
+  label: "Domain",
+  placeholder: "collectionapi.metmuseum.org",
+  value: "collectionapi.metmuseum.org",
+  attributes: {
+    class: "form-control mb-3"
+  }
+})
+
+viewof path = Inputs.text({
+    label: "Path",
+    placeholder: "/public/collection/v1/search",
+    value: "/public/collection/v1/search",
+    attributes: {
+        class: "form-control mb-3"
+    }
+})
+
+viewof query = Inputs.text({
+    label: "Query parameters",
+    placeholder: "?q=cat",
+    value: "q=cat",
+    attributes: {
+        class: "form-control mb-3"
+    }
+})
+
+async function fetchFromApiParts(method, domain, path, query) {
+    const baseUrl = `https://${domain}`;
+    const url = `${baseUrl}${path}?${query}`;
+    const response = await fetch(url);
+    return await response.json();
+}
+
+responseParts = {
+    const result = await fetchFromApiParts(method, domain, path, query);
+    return JSON.stringify(result, null, 2);
+}
+
+viewof prettyResponseParts = {
+    const container = html`<div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Response</span>
+            <span class="badge bg-success">200 OK</span>
+        </div>
+        <pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${responseParts}</pre>
+    </div>`;
+    return container;
+}
+```
+
+Now, take any ID from the result and use it to get the object details from the API.
+
+```{ojs}
+viewof methodDetails = Inputs.select(["GET"], {
+    label: "HTTP Method",
+    attributes: {
+        class: "form-select mb-3"
+    }
+})
+
+viewof domainDetails = Inputs.text({
+    label: "Domain",
+    placeholder: "collectionapi.metmuseum.org",
+    value: "collectionapi.metmuseum.org",
+    attributes: {
+        class: "form-control mb-3"
+    }
+})
+
+viewof pathDetails = Inputs.text({
+    label: "Path",
+    placeholder: "/public/collection/v1/objects/",
+    value: "/public/collection/v1/objects/",
+    attributes: {
+        class: "form-control mb-3"
+    }
+})
+
+viewof parameterDetails = Inputs.text({
+    label: "Parameter",
+    placeholder: "Write the object id here",
+    value: "",
+    attributes: {
+        class: "form-control mb-3"
+    }
+})
+
+async function fetchFromApiDetails(method, domain, path, parameter) {
+    const baseUrl = `https://${domain}`;
+    const url = `${baseUrl}${path}${parameter}`;
+    const response = await fetch(url);
+    return await response.json();
+}
+
+responseDetails = {
+    const result = await fetchFromApiDetails(methodDetails, domainDetails, pathDetails, parameterDetails);
+    return result;
+}
+
+prettyResponseDetails = {
+    const pretty = JSON.stringify(responseDetails, null, 2);
+    return pretty;
+}
+
+viewof prettyResponseDetailsContainer = {
+    const container = html`<div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Response</span>
+            <span class="badge bg-success">200 OK</span>
+        </div>
+        <pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${prettyResponseDetails}</pre>
+    </div>`;
+    return container;
+}
+```
+
+And that allows us to retrieve, for instance, the image of the object, that is stored in the `primaryImage` field.
+
+```{ojs}
+viewof primaryImage = {
+    const primaryImage = responseDetails.primaryImageSmall;
+    if (primaryImage) {
+        const img = html`<img src="${primaryImage}" alt="Primary Image">`;
+        return img;
+    } else {
+        return html`<img src="https://placehold.co/600x400" alt="Placeholder">`;
+    }
+
+}
+```
