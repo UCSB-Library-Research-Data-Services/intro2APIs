@@ -16,17 +16,15 @@ lightbox: true
 cats = FileAttachment("../_data/cats.json").json()
 console.log(cats)
 
-// Create a container div for our carousel
 viewof carousel = {
   const wrapper = html`<div class="carousel-wrapper"></div>`;
   
-  cats.then(data => {
-    data.forEach(cat => {
-      const img = document.createElement('img');
-      img.src = cat.url;
-      img.alt = 'Cat image';
-      wrapper.appendChild(img);
-    });
+  // No need for .then() as cats is already resolved
+  cats.forEach(cat => {
+    const img = document.createElement('img');
+    img.src = cat.url;
+    img.alt = 'Cat image';
+    wrapper.appendChild(img);
   });
   
   return wrapper;
