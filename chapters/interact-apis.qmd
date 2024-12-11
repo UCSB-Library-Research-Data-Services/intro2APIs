@@ -1,0 +1,12 @@
+---
+title: "Interacting with APIs"
+execute:
+    echo: false
+format:
+    html:
+        code-fold: true
+lightbox: true
+---
+
+Now that we know the rudiments of APIs, let's do some exercises to interact with them.
+

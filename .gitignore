@@ -6,3 +6,6 @@ _environment.local
 _environment.required
 /_*.local
 _site/
+.jenv
+_data/
+.github/scripts/node_modules/

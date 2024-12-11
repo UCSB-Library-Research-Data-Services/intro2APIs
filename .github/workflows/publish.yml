@@ -1,0 +1,45 @@
+name: Quarto Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches: main
+  
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      CAT_API_KEY: ${{ secrets.CAT_API_KEY }}
+    
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: pre-release
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Cat Images
+        run: |
+          mkdir -p _data
+          node .github/scripts/fetch-cats.js
+        env:
+          CAT_API_KEY: ${{ secrets.CAT_API_KEY }}
+
+      - name: Render Quarto Project
+        run: quarto render
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site

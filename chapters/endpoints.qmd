@@ -8,6 +8,14 @@ format:
 lightbox: true
 ---
 
+```{ojs}
+//| echo: false
+//| output: false
+
+// Load the pre-fetched cat data
+cats = FileAttachment("../_data/cats.json").json()
+```
+
 In the terminology of APIs, an **endpoint** is a URL that specifies the location of a resource on a server. As we saw with the cat API, most of the time you can access the data from an endpoint without requiring any particular software besides a web browser.
 
 However, an API doesn't just retrieve data, it could also create, update, or delete data. For that reason, we could say that an endpoint is a specific type of URL that allows you to perform a specific action on a resource.
@@ -70,8 +78,8 @@ With this result:
 
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
-  const response = await fetch('https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif&limit=10');
-  const cats = await response.json();
+  // prefetch the cat data
+  const cats = await cats;
   
   const wrapper = document.querySelector('.carousel-wrapper');
   cats.forEach(cat => {
