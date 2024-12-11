@@ -8,28 +8,7 @@ format:
 lightbox: true
 ---
 
-```{ojs}
-//| echo: false
-//| output: false
 
-// Load the pre-fetched cat data
-cats = FileAttachment("../_data/cats.json").json()
-console.log(cats)
-
-viewof carousel = {
-  const wrapper = html`<div class="carousel-wrapper"></div>`;
-  
-  // No need for .then() as cats is already resolved
-  cats.forEach(cat => {
-    const img = document.createElement('img');
-    img.src = cat.url;
-    img.alt = 'Cat image';
-    wrapper.appendChild(img);
-  });
-  
-  return wrapper;
-}
-```
 
 In the terminology of APIs, an **endpoint** is a URL that specifies the location of a resource on a server. As we saw with the cat API, most of the time you can access the data from an endpoint without requiring any particular software besides a web browser.
 
@@ -90,6 +69,49 @@ With this result:
   <button class="carousel-button prev">←</button>
   <button class="carousel-button next">→</button>
 </div>
+
+```{ojs}
+cats = FileAttachment("../_data/cats.json").json()
+
+viewof carousel = {
+  const container = html`
+    <div class="carousel-container">
+      <div class="carousel-wrapper"></div>
+      <button class="carousel-button prev">←</button>
+      <button class="carousel-button next">→</button>
+    </div>
+  `;
+  
+  const wrapper = container.querySelector('.carousel-wrapper');
+  
+  cats.forEach(cat => {
+    const img = document.createElement('img');
+    img.src = cat.url;
+    img.alt = 'Cat image';
+    wrapper.appendChild(img);
+  });
+
+  let currentIndex = 0;
+  const totalImages = cats.length;
+  
+  function updateCarousel() {
+    wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  container.querySelector('.next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalImages;
+    updateCarousel();
+  });
+
+  container.querySelector('.prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    updateCarousel();
+  });
+  
+  return container;
+}
+```
+
 
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
