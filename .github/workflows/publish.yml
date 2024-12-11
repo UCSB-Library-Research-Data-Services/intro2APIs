@@ -32,11 +32,20 @@ jobs:
         run: |
           mkdir -p _data
           node .github/scripts/fetch-cats.js
+          echo "Checking if cats.json exists:"
+          ls -l _data/
+          echo "Contents of cats.json:"
+          cat _data/cats.json
         env:
           CAT_API_KEY: ${{ secrets.CAT_API_KEY }}
 
       - name: Render Quarto Project
-        run: quarto render
+        run: |
+          echo "Contents of _data before render:"
+          ls -l _data/
+          quarto render
+          echo "Contents of _site after render:"
+          ls -l _site/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

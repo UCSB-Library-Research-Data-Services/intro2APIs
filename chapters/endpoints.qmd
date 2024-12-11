@@ -78,33 +78,37 @@ With this result:
 
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
-  // prefetch the cat data
-  const cats = await cats;
-  
-  const wrapper = document.querySelector('.carousel-wrapper');
-  cats.forEach(cat => {
-    const img = document.createElement('img');
-    img.src = cat.url;
-    img.alt = 'Cat image';
-    wrapper.appendChild(img);
-  });
+  try {
+    // Wait for OJS runtime to be ready and access the cats variable
+    const cats = await window.ojs.runtime.interpret('cats');
+    
+    const wrapper = document.querySelector('.carousel-wrapper');
+    cats.forEach(cat => {
+      const img = document.createElement('img');
+      img.src = cat.url;
+      img.alt = 'Cat image';
+      wrapper.appendChild(img);
+    });
 
-  let currentIndex = 0;
-  const totalImages = cats.length;
-  
-  function updateCarousel() {
-    wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    let currentIndex = 0;
+    const totalImages = cats.length;
+    
+    function updateCarousel() {
+      wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    document.querySelector('.next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalImages;
+      updateCarousel();
+    });
+
+    document.querySelector('.prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+      updateCarousel();
+    });
+  } catch (error) {
+    console.error('Error loading cat data:', error);
   }
-
-  document.querySelector('.next').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalImages;
-    updateCarousel();
-  });
-
-  document.querySelector('.prev').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-    updateCarousel();
-  });
 });
 </script>
 
