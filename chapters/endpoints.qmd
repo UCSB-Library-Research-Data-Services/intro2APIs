@@ -15,6 +15,22 @@ lightbox: true
 // Load the pre-fetched cat data
 cats = FileAttachment("../_data/cats.json").json()
 console.log(cats)
+
+// Create a container div for our carousel
+viewof carousel = {
+  const wrapper = html`<div class="carousel-wrapper"></div>`;
+  
+  cats.then(data => {
+    data.forEach(cat => {
+      const img = document.createElement('img');
+      img.src = cat.url;
+      img.alt = 'Cat image';
+      wrapper.appendChild(img);
+    });
+  });
+  
+  return wrapper;
+}
 ```
 
 In the terminology of APIs, an **endpoint** is a URL that specifies the location of a resource on a server. As we saw with the cat API, most of the time you can access the data from an endpoint without requiring any particular software besides a web browser.
