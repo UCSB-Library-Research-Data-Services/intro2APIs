@@ -263,6 +263,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="20" data-source-offset="-147"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 19;"><span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>viewof carousel <span class="op">=</span> {</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> wrapper <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="carousel-wrapper"&gt;&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  cats<span class="op">.</span><span class="fu">then</span>(data <span class="kw">=&gt;</span> {</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    data<span class="op">.</span><span class="fu">forEach</span>(cat <span class="kw">=&gt;</span> {</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> img <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">'img'</span>)<span class="op">;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      img<span class="op">.</span><span class="at">src</span> <span class="op">=</span> cat<span class="op">.</span><span class="at">url</span><span class="op">;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      img<span class="op">.</span><span class="at">alt</span> <span class="op">=</span> <span class="st">'Cat image'</span><span class="op">;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      wrapper<span class="op">.</span><span class="fu">appendChild</span>(img)<span class="op">;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> wrapper<span class="op">;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
 </div>
 <p>In the terminology of APIs, an <strong>endpoint</strong> is a URL that specifies the location of a resource on a server. As we saw with the cat API, most of the time you can access the data from an endpoint without requiring any particular software besides a web browser.</p>
 <p>However, an API doesn’t just retrieve data, it could also create, update, or delete data. For that reason, we could say that an endpoint is a specific type of URL that allows you to perform a specific action on a resource.</p>
@@ -372,7 +396,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gTG9hZCB0aGUgcHJlLWZldGNoZWQgY2F0IGRhdGFcbmNhdHMgPSBGaWxlQXR0YWNobWVudChcIi4uL19kYXRhL2NhdHMuanNvblwiKS5qc29uKClcbmNvbnNvbGUubG9nKGNhdHMpXG4ifV19
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gTG9hZCB0aGUgcHJlLWZldGNoZWQgY2F0IGRhdGFcbmNhdHMgPSBGaWxlQXR0YWNobWVudChcIi4uL19kYXRhL2NhdHMuanNvblwiKS5qc29uKClcbmNvbnNvbGUubG9nKGNhdHMpXG5cbi8vIENyZWF0ZSBhIGNvbnRhaW5lciBkaXYgZm9yIG91ciBjYXJvdXNlbFxudmlld29mIGNhcm91c2VsID0ge1xuICBjb25zdCB3cmFwcGVyID0gaHRtbGA8ZGl2IGNsYXNzPVwiY2Fyb3VzZWwtd3JhcHBlclwiPjwvZGl2PmA7XG4gIFxuICBjYXRzLnRoZW4oZGF0YSA9PiB7XG4gICAgZGF0YS5mb3JFYWNoKGNhdCA9PiB7XG4gICAgICBjb25zdCBpbWcgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdpbWcnKTtcbiAgICAgIGltZy5zcmMgPSBjYXQudXJsO1xuICAgICAgaW1nLmFsdCA9ICdDYXQgaW1hZ2UnO1xuICAgICAgd3JhcHBlci5hcHBlbmRDaGlsZChpbWcpO1xuICAgIH0pO1xuICB9KTtcbiAgXG4gIHJldHVybiB3cmFwcGVyO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdjYXJvdXNlbCcpIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
