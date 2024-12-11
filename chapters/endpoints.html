@@ -265,20 +265,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="20" data-source-offset="-147"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 19;"><span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>viewof carousel <span class="op">=</span> {</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> wrapper <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="carousel-wrapper"&gt;&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  cats<span class="op">.</span><span class="fu">then</span>(data <span class="kw">=&gt;</span> {</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    data<span class="op">.</span><span class="fu">forEach</span>(cat <span class="kw">=&gt;</span> {</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> img <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">'img'</span>)<span class="op">;</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      img<span class="op">.</span><span class="at">src</span> <span class="op">=</span> cat<span class="op">.</span><span class="at">url</span><span class="op">;</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      img<span class="op">.</span><span class="at">alt</span> <span class="op">=</span> <span class="st">'Cat image'</span><span class="op">;</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      wrapper<span class="op">.</span><span class="fu">appendChild</span>(img)<span class="op">;</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> wrapper<span class="op">;</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="19" data-source-offset="-104"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 18;"><span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>viewof carousel <span class="op">=</span> {</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> wrapper <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="carousel-wrapper"&gt;&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">// No need for .then() as cats is already resolved</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  cats<span class="op">.</span><span class="fu">forEach</span>(cat <span class="kw">=&gt;</span> {</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> img <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">'img'</span>)<span class="op">;</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    img<span class="op">.</span><span class="at">src</span> <span class="op">=</span> cat<span class="op">.</span><span class="at">url</span><span class="op">;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    img<span class="op">.</span><span class="at">alt</span> <span class="op">=</span> <span class="st">'Cat image'</span><span class="op">;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    wrapper<span class="op">.</span><span class="fu">appendChild</span>(img)<span class="op">;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> wrapper<span class="op">;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display hidden">
 <div>
@@ -396,7 +395,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gTG9hZCB0aGUgcHJlLWZldGNoZWQgY2F0IGRhdGFcbmNhdHMgPSBGaWxlQXR0YWNobWVudChcIi4uL19kYXRhL2NhdHMuanNvblwiKS5qc29uKClcbmNvbnNvbGUubG9nKGNhdHMpXG5cbi8vIENyZWF0ZSBhIGNvbnRhaW5lciBkaXYgZm9yIG91ciBjYXJvdXNlbFxudmlld29mIGNhcm91c2VsID0ge1xuICBjb25zdCB3cmFwcGVyID0gaHRtbGA8ZGl2IGNsYXNzPVwiY2Fyb3VzZWwtd3JhcHBlclwiPjwvZGl2PmA7XG4gIFxuICBjYXRzLnRoZW4oZGF0YSA9PiB7XG4gICAgZGF0YS5mb3JFYWNoKGNhdCA9PiB7XG4gICAgICBjb25zdCBpbWcgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdpbWcnKTtcbiAgICAgIGltZy5zcmMgPSBjYXQudXJsO1xuICAgICAgaW1nLmFsdCA9ICdDYXQgaW1hZ2UnO1xuICAgICAgd3JhcHBlci5hcHBlbmRDaGlsZChpbWcpO1xuICAgIH0pO1xuICB9KTtcbiAgXG4gIHJldHVybiB3cmFwcGVyO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdjYXJvdXNlbCcpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gTG9hZCB0aGUgcHJlLWZldGNoZWQgY2F0IGRhdGFcbmNhdHMgPSBGaWxlQXR0YWNobWVudChcIi4uL19kYXRhL2NhdHMuanNvblwiKS5qc29uKClcbmNvbnNvbGUubG9nKGNhdHMpXG5cbnZpZXdvZiBjYXJvdXNlbCA9IHtcbiAgY29uc3Qgd3JhcHBlciA9IGh0bWxgPGRpdiBjbGFzcz1cImNhcm91c2VsLXdyYXBwZXJcIj48L2Rpdj5gO1xuICBcbiAgLy8gTm8gbmVlZCBmb3IgLnRoZW4oKSBhcyBjYXRzIGlzIGFscmVhZHkgcmVzb2x2ZWRcbiAgY2F0cy5mb3JFYWNoKGNhdCA9PiB7XG4gICAgY29uc3QgaW1nID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnaW1nJyk7XG4gICAgaW1nLnNyYyA9IGNhdC51cmw7XG4gICAgaW1nLmFsdCA9ICdDYXQgaW1hZ2UnO1xuICAgIHdyYXBwZXIuYXBwZW5kQ2hpbGQoaW1nKTtcbiAgfSk7XG4gIFxuICByZXR1cm4gd3JhcHBlcjtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnY2Fyb3VzZWwnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
