@@ -160,7 +160,7 @@ viewof pathDetails = Inputs.text({
 viewof parameterDetails = Inputs.text({
     label: "Parameter",
     placeholder: "Write the object id here",
-    value: "",
+    value: "570744",
     attributes: {
         class: "form-control mb-3"
     }
