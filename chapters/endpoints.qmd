@@ -61,7 +61,16 @@ This can be read as follows: "I want to retrieve 10 cat gif images with a small 
 With this result:
 
 ```{ojs}
-cats = FileAttachment("../_data/cats.json").json()
+
+// TODO:catch error if the file is not found
+cats = {
+  try {
+    return await FileAttachment("../_data/cats.json").json();
+  } catch (e) {
+    console.error("Error loading cats data. This is normal if you're running the book locally.", e);
+    return await FileAttachment("../_dev/cats-fallback.json").json()
+  }
+}
 
 viewof carousel = {
   const container = html`
