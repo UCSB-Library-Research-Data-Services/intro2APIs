@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.3">
+<meta name="generator" content="quarto-1.7.4">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,10 +69,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-81b5c3e63835cfde897ecd3d35a35a41.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c9f28ac3654e8145e3f329489cfce6b3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-a68d576f93b57464e23d983d685fe254.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e4c8fad3e406d8bb7577731c69eecfb3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -306,47 +306,54 @@ Note
 <p>This can be read as follows: “I want to retrieve 10 cat gif images with a small size”.</p>
 <p>With this result:</p>
 <div class="cell">
-<details class="code-fold hidden">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="64" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 63;"><span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>cats <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"../_data/cats.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>viewof carousel <span class="op">=</span> {</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="carousel-container"&gt;</span></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="carousel-wrapper"&gt;&lt;/div&gt;</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button class="carousel-button prev"&gt;←&lt;/button&gt;</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button class="carousel-button next"&gt;→&lt;/button&gt;</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> wrapper <span class="op">=</span> container<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'.carousel-wrapper'</span>)<span class="op">;</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>  cats<span class="op">.</span><span class="fu">forEach</span>(cat <span class="kw">=&gt;</span> {</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> img <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">'img'</span>)<span class="op">;</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>    img<span class="op">.</span><span class="at">src</span> <span class="op">=</span> cat<span class="op">.</span><span class="at">url</span><span class="op">;</span></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>    img<span class="op">.</span><span class="at">alt</span> <span class="op">=</span> <span class="st">'Cat image'</span><span class="op">;</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>    wrapper<span class="op">.</span><span class="fu">appendChild</span>(img)<span class="op">;</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> currentIndex <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> totalImages <span class="op">=</span> cats<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">updateCarousel</span>() {</span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    wrapper<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">transform</span> <span class="op">=</span> <span class="vs">`translateX(-</span><span class="sc">${</span>currentIndex <span class="op">*</span> <span class="dv">100</span><span class="sc">}</span><span class="vs">%)`</span><span class="op">;</span></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'.next'</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    currentIndex <span class="op">=</span> (currentIndex <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> totalImages<span class="op">;</span></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    <span class="fu">updateCarousel</span>()<span class="op">;</span></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'.prev'</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>    currentIndex <span class="op">=</span> (currentIndex <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> totalImages) <span class="op">%</span> totalImages<span class="op">;</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>    <span class="fu">updateCarousel</span>()<span class="op">;</span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1" data-startfrom="66" data-source-offset="-46"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 65;"><span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>cats <span class="op">=</span> {</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"../_data/cats.json"</span>)<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">"Error loading cats data. This is normal if you're running the book locally."</span><span class="op">,</span> e)<span class="op">;</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"../_dev/cats-fallback.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>viewof carousel <span class="op">=</span> {</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="carousel-container"&gt;</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="carousel-wrapper"&gt;&lt;/div&gt;</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button class="carousel-button prev"&gt;←&lt;/button&gt;</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button class="carousel-button next"&gt;→&lt;/button&gt;</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> wrapper <span class="op">=</span> container<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'.carousel-wrapper'</span>)<span class="op">;</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>  cats<span class="op">.</span><span class="fu">forEach</span>(cat <span class="kw">=&gt;</span> {</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> img <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">'img'</span>)<span class="op">;</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    img<span class="op">.</span><span class="at">src</span> <span class="op">=</span> cat<span class="op">.</span><span class="at">url</span><span class="op">;</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    img<span class="op">.</span><span class="at">alt</span> <span class="op">=</span> <span class="st">'Cat image'</span><span class="op">;</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    wrapper<span class="op">.</span><span class="fu">appendChild</span>(img)<span class="op">;</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> currentIndex <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> totalImages <span class="op">=</span> cats<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">updateCarousel</span>() {</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>    wrapper<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">transform</span> <span class="op">=</span> <span class="vs">`translateX(-</span><span class="sc">${</span>currentIndex <span class="op">*</span> <span class="dv">100</span><span class="sc">}</span><span class="vs">%)`</span><span class="op">;</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'.next'</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>    currentIndex <span class="op">=</span> (currentIndex <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> totalImages<span class="op">;</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>    <span class="fu">updateCarousel</span>()<span class="op">;</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'.prev'</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>    currentIndex <span class="op">=</span> (currentIndex <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> totalImages) <span class="op">%</span> totalImages<span class="op">;</span></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>    <span class="fu">updateCarousel</span>()<span class="op">;</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -369,7 +376,7 @@ Note
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImNhdHMgPSBGaWxlQXR0YWNobWVudChcIi4uL19kYXRhL2NhdHMuanNvblwiKS5qc29uKClcblxudmlld29mIGNhcm91c2VsID0ge1xuICBjb25zdCBjb250YWluZXIgPSBodG1sYFxuICAgIDxkaXYgY2xhc3M9XCJjYXJvdXNlbC1jb250YWluZXJcIj5cbiAgICAgIDxkaXYgY2xhc3M9XCJjYXJvdXNlbC13cmFwcGVyXCI+PC9kaXY+XG4gICAgICA8YnV0dG9uIGNsYXNzPVwiY2Fyb3VzZWwtYnV0dG9uIHByZXZcIj7ihpA8L2J1dHRvbj5cbiAgICAgIDxidXR0b24gY2xhc3M9XCJjYXJvdXNlbC1idXR0b24gbmV4dFwiPuKGkjwvYnV0dG9uPlxuICAgIDwvZGl2PlxuICBgO1xuICBcbiAgY29uc3Qgd3JhcHBlciA9IGNvbnRhaW5lci5xdWVyeVNlbGVjdG9yKCcuY2Fyb3VzZWwtd3JhcHBlcicpO1xuICBcbiAgY2F0cy5mb3JFYWNoKGNhdCA9PiB7XG4gICAgY29uc3QgaW1nID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnaW1nJyk7XG4gICAgaW1nLnNyYyA9IGNhdC51cmw7XG4gICAgaW1nLmFsdCA9ICdDYXQgaW1hZ2UnO1xuICAgIHdyYXBwZXIuYXBwZW5kQ2hpbGQoaW1nKTtcbiAgfSk7XG5cbiAgbGV0IGN1cnJlbnRJbmRleCA9IDA7XG4gIGNvbnN0IHRvdGFsSW1hZ2VzID0gY2F0cy5sZW5ndGg7XG4gIFxuICBmdW5jdGlvbiB1cGRhdGVDYXJvdXNlbCgpIHtcbiAgICB3cmFwcGVyLnN0eWxlLnRyYW5zZm9ybSA9IGB0cmFuc2xhdGVYKC0ke2N1cnJlbnRJbmRleCAqIDEwMH0lKWA7XG4gIH1cblxuICBjb250YWluZXIucXVlcnlTZWxlY3RvcignLm5leHQnKS5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsICgpID0+IHtcbiAgICBjdXJyZW50SW5kZXggPSAoY3VycmVudEluZGV4ICsgMSkgJSB0b3RhbEltYWdlcztcbiAgICB1cGRhdGVDYXJvdXNlbCgpO1xuICB9KTtcblxuICBjb250YWluZXIucXVlcnlTZWxlY3RvcignLnByZXYnKS5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsICgpID0+IHtcbiAgICBjdXJyZW50SW5kZXggPSAoY3VycmVudEluZGV4IC0gMSArIHRvdGFsSW1hZ2VzKSAlIHRvdGFsSW1hZ2VzO1xuICAgIHVwZGF0ZUNhcm91c2VsKCk7XG4gIH0pO1xuICBcbiAgcmV0dXJuIGNvbnRhaW5lcjtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnY2Fyb3VzZWwnKSJ9XX0=
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gVE9ETzpjYXRjaCBlcnJvciBpZiB0aGUgZmlsZSBpcyBub3QgZm91bmRcbmNhdHMgPSB7XG4gIHRyeSB7XG4gICAgcmV0dXJuIGF3YWl0IEZpbGVBdHRhY2htZW50KFwiLi4vX2RhdGEvY2F0cy5qc29uXCIpLmpzb24oKTtcbiAgfSBjYXRjaCAoZSkge1xuICAgIGNvbnNvbGUuZXJyb3IoXCJFcnJvciBsb2FkaW5nIGNhdHMgZGF0YS4gVGhpcyBpcyBub3JtYWwgaWYgeW91J3JlIHJ1bm5pbmcgdGhlIGJvb2sgbG9jYWxseS5cIiwgZSk7XG4gICAgcmV0dXJuIGF3YWl0IEZpbGVBdHRhY2htZW50KFwiLi4vX2Rldi9jYXRzLWZhbGxiYWNrLmpzb25cIikuanNvbigpXG4gIH1cbn1cblxudmlld29mIGNhcm91c2VsID0ge1xuICBjb25zdCBjb250YWluZXIgPSBodG1sYFxuICAgIDxkaXYgY2xhc3M9XCJjYXJvdXNlbC1jb250YWluZXJcIj5cbiAgICAgIDxkaXYgY2xhc3M9XCJjYXJvdXNlbC13cmFwcGVyXCI+PC9kaXY+XG4gICAgICA8YnV0dG9uIGNsYXNzPVwiY2Fyb3VzZWwtYnV0dG9uIHByZXZcIj7ihpA8L2J1dHRvbj5cbiAgICAgIDxidXR0b24gY2xhc3M9XCJjYXJvdXNlbC1idXR0b24gbmV4dFwiPuKGkjwvYnV0dG9uPlxuICAgIDwvZGl2PlxuICBgO1xuICBcbiAgY29uc3Qgd3JhcHBlciA9IGNvbnRhaW5lci5xdWVyeVNlbGVjdG9yKCcuY2Fyb3VzZWwtd3JhcHBlcicpO1xuICBcbiAgY2F0cy5mb3JFYWNoKGNhdCA9PiB7XG4gICAgY29uc3QgaW1nID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnaW1nJyk7XG4gICAgaW1nLnNyYyA9IGNhdC51cmw7XG4gICAgaW1nLmFsdCA9ICdDYXQgaW1hZ2UnO1xuICAgIHdyYXBwZXIuYXBwZW5kQ2hpbGQoaW1nKTtcbiAgfSk7XG5cbiAgbGV0IGN1cnJlbnRJbmRleCA9IDA7XG4gIGNvbnN0IHRvdGFsSW1hZ2VzID0gY2F0cy5sZW5ndGg7XG4gIFxuICBmdW5jdGlvbiB1cGRhdGVDYXJvdXNlbCgpIHtcbiAgICB3cmFwcGVyLnN0eWxlLnRyYW5zZm9ybSA9IGB0cmFuc2xhdGVYKC0ke2N1cnJlbnRJbmRleCAqIDEwMH0lKWA7XG4gIH1cblxuICBjb250YWluZXIucXVlcnlTZWxlY3RvcignLm5leHQnKS5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsICgpID0+IHtcbiAgICBjdXJyZW50SW5kZXggPSAoY3VycmVudEluZGV4ICsgMSkgJSB0b3RhbEltYWdlcztcbiAgICB1cGRhdGVDYXJvdXNlbCgpO1xuICB9KTtcblxuICBjb250YWluZXIucXVlcnlTZWxlY3RvcignLnByZXYnKS5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsICgpID0+IHtcbiAgICBjdXJyZW50SW5kZXggPSAoY3VycmVudEluZGV4IC0gMSArIHRvdGFsSW1hZ2VzKSAlIHRvdGFsSW1hZ2VzO1xuICAgIHVwZGF0ZUNhcm91c2VsKCk7XG4gIH0pO1xuICBcbiAgcmV0dXJuIGNvbnRhaW5lcjtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnY2Fyb3VzZWwnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
