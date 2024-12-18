@@ -11,12 +11,8 @@ website:
     contents:
       - text: "Introduction"
         href: index.qmd
-      - section: What are APIs and why do they exists
-        contents:
-          - text: "What is an API?"
-            href: chapters/what-is-an-api.qmd
-          - text: "Why an API?"
-            href: chapters/why-an-api.qmd
+      - text: What are APIs and why do they exists
+        href: chapters/what-is-an-api.qmd
       - section: Interacting with APIs
         contents:
           - text: "Endpoints"
