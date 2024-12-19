@@ -62,7 +62,7 @@ With this result:
 
 ```{ojs}
 
-// TODO:catch error if the file is not found
+// catch error if the file is not found
 cats = {
   try {
     return await FileAttachment("../_data/cats.json").json();
