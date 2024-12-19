@@ -14,7 +14,7 @@ In the terminology of APIs, an **endpoint** is a URL that specifies the location
 
 However, an API doesn't just retrieve data, it could also create, update, or delete data. For that reason, we could say that an endpoint is a specific type of URL that allows you to perform a specific action on a resource.
 
-Then, let's break the pieces of an endpoint into three parts:
+Then, let's break the pieces of an endpoint into four parts:
 
 ## The protocol
 
