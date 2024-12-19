@@ -44,7 +44,7 @@ Some endpoints can include a resource identifier to retrieve a specific resource
 
 An endpoint can retrieve lists of data and individual items. It can also perform actions, for instance, searching. The query parameters are the part of endpoints that allows us to explore the data available in the API. This can include multiple parts used to specify the search. Let's explore this with more detail.
 
-The Cat API has an endpoint to search for cat images. The path of this endpoint is `/v1/images/search`. If we do a GET request to this endpoint we will get a random cat image. However, the developers have included a set of parameters that can delimit the search like the size of the image, the type of the image, the format of the response, if the image has a breed, etc. In that case, instead of just having a random cat image, we can retrieve a list of cat images with a size, media type, and with a specific limit. Then, the part of the endpoint will be like this:
+The Cat API has an endpoint to search for cat images. The path of this endpoint is `/v1/images/search`. If we do a request to this endpoint we will get a random cat image. However, the developers have included a set of parameters that can delimit the search like the size of the image, the type of the image, the format of the response, if the image has a breed, etc. In that case, instead of just having a random cat image, we can retrieve a list of cat images with a size, media type, and with a specific limit. Then, the part of the endpoint will be like this:
 
 `search?size=small&mime_types=gif&limit=10`
 
