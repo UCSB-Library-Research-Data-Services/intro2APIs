@@ -19,24 +19,19 @@ In this example, let's get the information about the Ragdoll cat breed. To do th
 You can click on that link to view the information about the cat in a format similar to this:
 
 
-```{python}
-import requests
-import os
-import json
+```{ojs}
 
-def get_cat_data(cat_id):
-    url = f"https://api.thecatapi.com/v1/images/{cat_id}"
+async function getCatData(catId) {
+    const url = `https://api.thecatapi.com/v1/images/${catId}`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const data = await response.json();
+    return data;
+}
 
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        raw_response = response.json()
-        return raw_response, json.dumps(raw_response, indent=4)
-    except json.JSONDecodeError as e:
-        print(f"A JSONDecodeError occurred: {e}\n\n{raw_response}")
+catData = await getCatData("XFhRpYS_D");
 
-cat_data, pretty_cat_data = get_cat_data("XFhRpYS_D")
-print(pretty_cat_data)
+JSON.stringify(catData, null, 2);
 ```
 
 This format is called JSON, and its widely used in APIs to return data. We will see more about this format later, but for now, we can say that this output is called a **response**, and it contains **keys** and **values**. Keys are the names of the information we requested and values are the information we received. For instance, in this response, the url to the image of a Ragdoll cat can be found under the `url` key, and its value is `https://cdn2.thecatapi.com/images/XFhRpYS_D.jpg`.
@@ -45,30 +40,20 @@ This format is called JSON, and its widely used in APIs to return data. We will 
 
 Now, what we want to do is to get the image of the Ragdoll, not just the abstract information. To do this, we have to access the values associated with each key. The url to the image is under the `url` key, the name of the cat is under the `breeds` key and the description is under the `description` key. With a bit of coding, we can display the image of the cat:
 
-```{python}
-from matplotlib import pyplot as plt
-from matplotlib.image import imread
-import PIL
-import numpy as np
+```{ojs}
 
-def display_cat_image(raw_response):
-    try:
-        image_url = raw_response["url"]
-        cat_name = raw_response["breeds"][0]["name"]
-        cat_description = raw_response["breeds"][0]["description"]
+function displayCat(data) {
+    const container = html`<div class="card" style="max-width: 300px; margin: 15px auto;">
+        <img src="${data.url}" class="card-img-top" alt="Ragdoll cat">
+        <div class="card-body">
+            <h5 class="card-title">Breed: ${data.breeds[0].name}</h5>
+            <p class="card-text">${data.breeds[0].description}</p>
+        </div>
+    </div>`;
+    return container;
+}
 
-        image_parsed = np.array(PIL.Image.open(requests.get(image_url, stream=True).raw))
-
-        plt.figure(dpi=80)
-        plt.imshow(image_parsed)
-        plt.title(cat_name)
-        plt.figtext(0.5, 0.01, cat_description, wrap=True, horizontalalignment="center")
-        plt.axis("off")
-        plt.show()
-    except TypeError as e:
-        print(f"A TypeError occurred: {e}\n\n{raw_response}")
-
-display_cat_image(cat_data)
+displayCat(catData);
 ```
 
 
@@ -80,9 +65,9 @@ What the API is doing, is to get the information from the server database, retur
 
 With that information, we can display the information in a more readable format, and reutilize the method to get the image of other cats, for instance, a Bengal cat:
 
-```{python}
-cat_data, pretty_cat_data = get_cat_data("LSaDk6OjY")
-display_cat_image(cat_data)
+```{ojs}
+bengalCatData = await getCatData("LSaDk6OjY");
+displayCat(bengalCatData);
 ```
 
 You can even get a random cat image!
