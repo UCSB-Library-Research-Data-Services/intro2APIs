@@ -44,24 +44,50 @@ async function fetchFromApi(method, path) {
   const baseUrl = "https://api.thecatapi.com";
   try {
     const response = await fetch(`${baseUrl}${path}`);
-    return await response.json();
+    const status = {
+        code: response.status,
+        ok: response.ok,
+        text: response.statusText
+    };
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return { data, status };
   } catch (error) {
-    return { error: error.message };
+    return {
+        data: { "Message": `Error: ${error.message}` },
+        status: {
+            code: 400,
+            ok: false,
+            text: "Bad Request"
+        }
+    };
   }
 }
 
 response = {
   const result = await fetchFromApi(method, endpoint);
-  return JSON.stringify(result, null, 2);
+  return result;
 }
 
 viewof prettyResponse = {
+    let content;
+
+    if (response.data.Message) {
+        content = html`<div class="alert alert-warning m-0">${response.data.Message}</div>`;
+    } else {
+        content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(response.data, null, 2)}</pre>`;
+    }
+
+    const badgeClass = response.status.ok ? "bg-success" : "bg-danger";
+
   const container = html`<div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <span>Response</span>
-      <span class="badge bg-success">200 OK</span>
+      <span class="badge ${badgeClass}">${response.status.code} ${response.status.text}</span>
     </div>
-    <pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${response}</pre>
+    ${content}
   </div>`;
   return container;
 }
@@ -106,24 +132,53 @@ viewof query = Inputs.text({
 })
 
 async function fetchFromApiParts(method, domain, path, query) {
-    const baseUrl = `https://${domain}`;
-    const url = `${baseUrl}${path}?${query}`;
-    const response = await fetch(url);
-    return await response.json();
+    try {
+        const baseUrl = `https://${domain}`;
+        const url = `${baseUrl}${path}?${query}`;
+        const response = await fetch(url);
+        const status = {
+            code: response.status,
+            ok: response.ok,
+            text: response.statusText
+        };
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return { data, status };
+    } catch (error) {
+        return {
+            data: { "Message": `Error: ${error.message}` },
+            status: {
+                code: 400,
+                ok: false,
+                text: "Bad Request"
+            }
+        };
+    }
 }
 
 responseParts = {
-    const result = await fetchFromApiParts(method, domain, path, query);
-    return JSON.stringify(result, null, 2);
+    const result = await fetchFromApiParts(methodParts, domain, path, query);
+    return result;
 }
 
 viewof prettyResponseParts = {
+    let content;
+    if (responseParts.data.Message) {
+        content = html`<div class="alert alert-warning m-0">${responseParts.data.Message}</div>`;
+    } else {
+        content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(responseParts.data, null, 2)}</pre>`;
+    }
+    
+    const badgeClass = responseParts.status.ok ? "bg-success" : "bg-danger";
+    
     const container = html`<div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span>Response</span>
-            <span class="badge bg-success">200 OK</span>
+            <span class="badge ${badgeClass}">${responseParts.status.code} ${responseParts.status.text}</span>
         </div>
-        <pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${responseParts}</pre>
+        ${content}
     </div>`;
     return container;
 }
@@ -167,10 +222,23 @@ viewof parameterDetails = Inputs.text({
 })
 
 async function fetchFromApiDetails(method, domain, path, parameter) {
-    const baseUrl = `https://${domain}`;
-    const url = `${baseUrl}${path}${parameter}`;
-    const response = await fetch(url);
-    return await response.json();
+    try {
+        const baseUrl = `https://${domain}`;
+        const url = `${baseUrl}${path}${parameter}`;
+        const response = await fetch(url);
+        const status = {
+            code: response.status,
+            ok: response.ok,
+            text: response.statusText
+        };
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return { data, status };
+    } catch (error) {
+        return { error: error.message };
+    }
 }
 
 responseDetails = {
@@ -178,18 +246,22 @@ responseDetails = {
     return result;
 }
 
-prettyResponseDetails = {
-    const pretty = JSON.stringify(responseDetails, null, 2);
-    return pretty;
-}
-
 viewof prettyResponseDetailsContainer = {
+    let content;
+    if (responseDetails.data.Message) {
+        content = html`<div class="alert alert-warning m-0">${responseDetails.data.Message}</div>`;
+    } else {
+        content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(responseDetails.data, null, 2)}</pre>`;
+    }
+
+    const badgeClass = responseDetails.status.ok ? "bg-success" : "bg-danger";
+
     const container = html`<div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span>Response</span>
-            <span class="badge bg-success">200 OK</span>
+            <span class="badge ${badgeClass}">${responseDetails.status.code} ${responseDetails.status.text}</span>
         </div>
-        <pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${prettyResponseDetails}</pre>
+        ${content}
     </div>`;
     return container;
 }
@@ -199,7 +271,7 @@ And that allows us to retrieve, for instance, the image of the object, that is s
 
 ```{ojs}
 viewof primaryImage = {
-    const primaryImage = responseDetails.primaryImageSmall;
+    const primaryImage = responseDetails.status.ok ? responseDetails.data.primaryImageSmall : "https://placehold.co/600x400";
     if (primaryImage) {
         const img = html`<img src="${primaryImage}" alt="Primary Image">`;
         return img;
@@ -247,14 +319,29 @@ viewof departmentListEndpoint = Inputs.text({
 })
 
 async function fetchDepartmentList(endpoint) {
-    const response = await fetch(endpoint);
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
     try {
-        return await response.json();
+        const response = await fetch(endpoint);
+        const status = {
+            code: response.status,
+            ok: response.ok,
+            text: response.statusText
+        };
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return { data, status};
     } catch (error) {
-        throw new Error(`Error parsing JSON: ${error.message}`);
+        return {
+            data: { "Message": `Error: ${error.message}` },
+            status: {
+                code: 400,
+                ok: false,
+                text: "Bad Request"
+            }
+        };
     }
 }
 
@@ -263,7 +350,14 @@ departmentList = {
         const result = await fetchDepartmentList(departmentListEndpoint);
         return result;
     } else {
-        return { "Message": "You need to enter a valid endpoint." };
+        return {
+            data: { "Message": "You need to enter a valid endpoint." },
+            status: {
+                code: 400,
+                ok: false,
+                text: "Bad Request"
+            }
+        };
     }
 }
 
@@ -277,15 +371,18 @@ prettyDepartmentList = {
 
 viewof prettyDepartmentListContainer = {
     let content;
-    if (departmentList.Message) {
-        content = html`<div class="alert alert-info m-0">${departmentList.Message}</div>`; } 
-        else {
-            content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${prettyDepartmentList}</pre>`;
-        }
+    if (departmentList.data.Message) {
+        content = html`<div class="alert alert-warning m-0">${departmentList.data.Message}</div>`;
+    } else {
+        content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${prettyDepartmentList}</pre>`;
+    }
+    
+    const badgeClass = departmentList.status.ok ? "bg-success" : "bg-danger";
+    
     const container = html`<div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span>Department list</span>
-            <span class="badge bg-success">200 OK</span>
+            <span class="badge ${badgeClass}">${departmentList.status.code} ${departmentList.status.text}</span>
         </div>
         ${content}
     </div>`;
