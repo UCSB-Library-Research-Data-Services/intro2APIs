@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.5">
+<meta name="generator" content="quarto-1.7.7">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ff4371ef257df69894857e99c6ad0d06.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fe43d0015be6fd5bd60fe62033074fe8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-e4c8fad3e406d8bb7577731c69eecfb3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -267,27 +267,53 @@ Note
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> baseUrl <span class="op">=</span> <span class="st">"https://api.thecatapi.com"</span><span class="op">;</span></span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="vs">`</span><span class="sc">${</span>baseUrl<span class="sc">}${</span>path<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (error) {</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> { <span class="dt">error</span><span class="op">:</span> error<span class="op">.</span><span class="at">message</span> }<span class="op">;</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> {</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchFromApi</span>(method<span class="op">,</span> endpoint)<span class="op">;</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(result<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>viewof prettyResponse <span class="op">=</span> {</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;span&gt;Response&lt;/span&gt;</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;span class="badge bg-success"&gt;200 OK&lt;/span&gt;</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span>response<span class="sc">}</span><span class="vs">&lt;/pre&gt;</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> status <span class="op">=</span> {</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        <span class="dt">code</span><span class="op">:</span> response<span class="op">.</span><span class="at">status</span><span class="op">,</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        <span class="dt">ok</span><span class="op">:</span> response<span class="op">.</span><span class="at">ok</span><span class="op">,</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>        <span class="dt">text</span><span class="op">:</span> response<span class="op">.</span><span class="at">statusText</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> { data<span class="op">,</span> status }<span class="op">;</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (error) {</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>        <span class="dt">data</span><span class="op">:</span> { <span class="st">"Message"</span><span class="op">:</span> <span class="vs">`Error: </span><span class="sc">${</span>error<span class="op">.</span><span class="at">message</span><span class="sc">}</span><span class="vs">`</span> }<span class="op">,</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> {</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>            <span class="dt">code</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>            <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>            <span class="dt">text</span><span class="op">:</span> <span class="st">"Bad Request"</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> {</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchFromApi</span>(method<span class="op">,</span> endpoint)<span class="op">;</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>viewof prettyResponse <span class="op">=</span> {</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> content<span class="op">;</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span>) {</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-warning m-0"&gt;</span><span class="sc">${</span>response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span><span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span><span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(response<span class="op">.</span><span class="at">data</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/pre&gt;`</span><span class="op">;</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> badgeClass <span class="op">=</span> response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> <span class="st">"bg-success"</span> <span class="op">:</span> <span class="st">"bg-danger"</span><span class="op">;</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;span&gt;Response&lt;/span&gt;</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;span class="badge </span><span class="sc">${</span>badgeClass<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">text</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>content<span class="sc">}</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -329,62 +355,91 @@ Note
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2" data-startfrom="74" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 73;"><span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>viewof methodParts <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"HTTP Method"</span><span class="op">,</span></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-select mb-3"</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>viewof domain <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"Domain"</span><span class="op">,</span></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>  <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>    <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>viewof path <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Path"</span><span class="op">,</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"/public/collection/v1/search"</span><span class="op">,</span></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"/public/collection/v1/search"</span><span class="op">,</span></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>viewof query <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Query parameters"</span><span class="op">,</span></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"?q=cat"</span><span class="op">,</span></span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"q=cat"</span><span class="op">,</span></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">fetchFromApiParts</span>(method<span class="op">,</span> domain<span class="op">,</span> path<span class="op">,</span> query) {</span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> baseUrl <span class="op">=</span> <span class="vs">`https://</span><span class="sc">${</span>domain<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>baseUrl<span class="sc">}${</span>path<span class="sc">}</span><span class="vs">?</span><span class="sc">${</span>query<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>responseParts <span class="op">=</span> {</span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchFromApiParts</span>(method<span class="op">,</span> domain<span class="op">,</span> path<span class="op">,</span> query)<span class="op">;</span></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(result<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>viewof prettyResponseParts <span class="op">=</span> {</span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span&gt;Response&lt;/span&gt;</span></span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span class="badge bg-success"&gt;200 OK&lt;/span&gt;</span></span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span>responseParts<span class="sc">}</span><span class="vs">&lt;/pre&gt;</span></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-startfrom="100" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 99;"><span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>viewof methodParts <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"HTTP Method"</span><span class="op">,</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-select mb-3"</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>viewof domain <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"Domain"</span><span class="op">,</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>  <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>  <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>    <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>viewof path <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Path"</span><span class="op">,</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"/public/collection/v1/search"</span><span class="op">,</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"/public/collection/v1/search"</span><span class="op">,</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>viewof query <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Query parameters"</span><span class="op">,</span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"?q=cat"</span><span class="op">,</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"q=cat"</span><span class="op">,</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">fetchFromApiParts</span>(method<span class="op">,</span> domain<span class="op">,</span> path<span class="op">,</span> query) {</span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> baseUrl <span class="op">=</span> <span class="vs">`https://</span><span class="sc">${</span>domain<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>baseUrl<span class="sc">}${</span>path<span class="sc">}</span><span class="vs">?</span><span class="sc">${</span>query<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> status <span class="op">=</span> {</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>            <span class="dt">code</span><span class="op">:</span> response<span class="op">.</span><span class="at">status</span><span class="op">,</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>            <span class="dt">ok</span><span class="op">:</span> response<span class="op">.</span><span class="at">ok</span><span class="op">,</span></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>            <span class="dt">text</span><span class="op">:</span> response<span class="op">.</span><span class="at">statusText</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>        }<span class="op">;</span></span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> { data<span class="op">,</span> status }<span class="op">;</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>            <span class="dt">data</span><span class="op">:</span> { <span class="st">"Message"</span><span class="op">:</span> <span class="vs">`Error: </span><span class="sc">${</span>error<span class="op">.</span><span class="at">message</span><span class="sc">}</span><span class="vs">`</span> }<span class="op">,</span></span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>            <span class="dt">status</span><span class="op">:</span> {</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>                <span class="dt">code</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>                <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>                <span class="dt">text</span><span class="op">:</span> <span class="st">"Bad Request"</span></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>        }<span class="op">;</span></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>responseParts <span class="op">=</span> {</span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchFromApiParts</span>(methodParts<span class="op">,</span> domain<span class="op">,</span> path<span class="op">,</span> query)<span class="op">;</span></span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>viewof prettyResponseParts <span class="op">=</span> {</span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> content<span class="op">;</span></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (responseParts<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span>) {</span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-warning m-0"&gt;</span><span class="sc">${</span>responseParts<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span><span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span><span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(responseParts<span class="op">.</span><span class="at">data</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/pre&gt;`</span><span class="op">;</span></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> badgeClass <span class="op">=</span> responseParts<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> <span class="st">"bg-success"</span> <span class="op">:</span> <span class="st">"bg-danger"</span><span class="op">;</span></span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span&gt;Response&lt;/span&gt;</span></span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span class="badge </span><span class="sc">${</span>badgeClass<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>responseParts<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>responseParts<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">text</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>content<span class="sc">}</span></span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -440,67 +495,84 @@ Note
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3" data-startfrom="135" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>viewof methodDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"HTTP Method"</span><span class="op">,</span></span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-select mb-3"</span></span>
-<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>viewof domainDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Domain"</span><span class="op">,</span></span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
-<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>viewof pathDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Path"</span><span class="op">,</span></span>
-<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"/public/collection/v1/objects/"</span><span class="op">,</span></span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"/public/collection/v1/objects/"</span><span class="op">,</span></span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>viewof parameterDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Parameter"</span><span class="op">,</span></span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"Write the object id here"</span><span class="op">,</span></span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"570744"</span><span class="op">,</span></span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">fetchFromApiDetails</span>(method<span class="op">,</span> domain<span class="op">,</span> path<span class="op">,</span> parameter) {</span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> baseUrl <span class="op">=</span> <span class="vs">`https://</span><span class="sc">${</span>domain<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>baseUrl<span class="sc">}${</span>path<span class="sc">}${</span>parameter<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>responseDetails <span class="op">=</span> {</span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchFromApiDetails</span>(methodDetails<span class="op">,</span> domainDetails<span class="op">,</span> pathDetails<span class="op">,</span> parameterDetails)<span class="op">;</span></span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result<span class="op">;</span></span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>prettyResponseDetails <span class="op">=</span> {</span>
-<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> pretty <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(responseDetails<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pretty<span class="op">;</span></span>
-<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a>viewof prettyResponseDetailsContainer <span class="op">=</span> {</span>
-<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
-<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span&gt;Response&lt;/span&gt;</span></span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span class="badge bg-success"&gt;200 OK&lt;/span&gt;</span></span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span>prettyResponseDetails<span class="sc">}</span><span class="vs">&lt;/pre&gt;</span></span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3" data-startfrom="190" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 189;"><span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>viewof methodDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"HTTP Method"</span><span class="op">,</span></span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-select mb-3"</span></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>viewof domainDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Domain"</span><span class="op">,</span></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"collectionapi.metmuseum.org"</span><span class="op">,</span></span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>viewof pathDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Path"</span><span class="op">,</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"/public/collection/v1/objects/"</span><span class="op">,</span></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"/public/collection/v1/objects/"</span><span class="op">,</span></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>viewof parameterDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Parameter"</span><span class="op">,</span></span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"Write the object id here"</span><span class="op">,</span></span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"570744"</span><span class="op">,</span></span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">fetchFromApiDetails</span>(method<span class="op">,</span> domain<span class="op">,</span> path<span class="op">,</span> parameter) {</span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> baseUrl <span class="op">=</span> <span class="vs">`https://</span><span class="sc">${</span>domain<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>baseUrl<span class="sc">}${</span>path<span class="sc">}${</span>parameter<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> status <span class="op">=</span> {</span>
+<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a>            <span class="dt">code</span><span class="op">:</span> response<span class="op">.</span><span class="at">status</span><span class="op">,</span></span>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>            <span class="dt">ok</span><span class="op">:</span> response<span class="op">.</span><span class="at">ok</span><span class="op">,</span></span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>            <span class="dt">text</span><span class="op">:</span> response<span class="op">.</span><span class="at">statusText</span></span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a>        }<span class="op">;</span></span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> { data<span class="op">,</span> status }<span class="op">;</span></span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> { <span class="dt">error</span><span class="op">:</span> error<span class="op">.</span><span class="at">message</span> }<span class="op">;</span></span>
+<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a>responseDetails <span class="op">=</span> {</span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchFromApiDetails</span>(methodDetails<span class="op">,</span> domainDetails<span class="op">,</span> pathDetails<span class="op">,</span> parameterDetails)<span class="op">;</span></span>
+<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a>viewof prettyResponseDetailsContainer <span class="op">=</span> {</span>
+<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> content<span class="op">;</span></span>
+<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (responseDetails<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span>) {</span>
+<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-warning m-0"&gt;</span><span class="sc">${</span>responseDetails<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span><span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span><span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(responseDetails<span class="op">.</span><span class="at">data</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/pre&gt;`</span><span class="op">;</span></span>
+<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> badgeClass <span class="op">=</span> responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> <span class="st">"bg-success"</span> <span class="op">:</span> <span class="st">"bg-danger"</span><span class="op">;</span></span>
+<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
+<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
+<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span&gt;Response&lt;/span&gt;</span></span>
+<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span class="badge </span><span class="sc">${</span>badgeClass<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">text</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
+<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
+<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>content<span class="sc">}</span></span>
+<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -551,32 +623,184 @@ Note
 </div>
 </div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-3-8" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
 </div>
 <p>And that allows us to retrieve, for instance, the image of the object, that is stored in the <code>primaryImage</code> field.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4" data-startfrom="200" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 199;"><span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a>viewof primaryImage <span class="op">=</span> {</span>
-<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> primaryImage <span class="op">=</span> responseDetails<span class="op">.</span><span class="at">primaryImageSmall</span><span class="op">;</span></span>
-<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (primaryImage) {</span>
-<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> img <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;img src="</span><span class="sc">${</span>primaryImage<span class="sc">}</span><span class="vs">" alt="Primary Image"&gt;`</span><span class="op">;</span></span>
-<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> img<span class="op">;</span></span>
-<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;img src="https://placehold.co/600x400" alt="Placeholder"&gt;`</span><span class="op">;</span></span>
-<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-startfrom="272" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 271;"><span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a>viewof primaryImage <span class="op">=</span> {</span>
+<span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> primaryImage <span class="op">=</span> responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> responseDetails<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">primaryImageSmall</span> <span class="op">:</span> <span class="st">"https://placehold.co/600x400"</span><span class="op">;</span></span>
+<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (primaryImage) {</span>
+<span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> img <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;img src="</span><span class="sc">${</span>primaryImage<span class="sc">}</span><span class="vs">" alt="Primary Image"&gt;`</span><span class="op">;</span></span>
+<span id="cb4-276"><a href="#cb4-276" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> img<span class="op">;</span></span>
+<span id="cb4-277"><a href="#cb4-277" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;img src="https://placehold.co/600x400" alt="Placeholder"&gt;`</span><span class="op">;</span></span>
+<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
+</div>
+</div>
+</div>
+<p>Nice! Now, let’s do an exercise to practice what we have learned.</p>
+<p>A query is basically a question, so, let’s try to answer this question: “How many ‘knights’ are in the department of Medieval Art of the Metropolitan Museum of Art?” To answer that question, we have to segment it into multiple parts:</p>
+<ol type="1">
+<li>What is required to search within a specific department in the API?</li>
+<li>What endpoint do we need to use?</li>
+<li>What parameters do we need to use?</li>
+<li>What’s the previous information we need to retrieve before doing the query?</li>
+<li>What is the query we need to use?</li>
+<li>How do we get the specific information we need?</li>
+</ol>
+<p>Seems like a lot of steps, but it’s not too complex as it might seem. Let’s start with the first step: looking at the API documentation: <a href="https://metmuseum.github.io/">Metropolitan Museum of Art Collection API</a></p>
+<p>Because the first question is about searching within a specific scope, let’s start with the <a href="https://metmuseum.github.io/#search">search endpoint</a>. As we can see, there is a list of paremeters, the first one is <code>q</code>, which is the one that helps us to search by term (like ‘knight’); and scrolling down a little, we can see the <code>departmentId</code> parameter, which requires a numeric (<em>integer</em>) identifier corresponding to the department we want to search within:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 30%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Format</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>q</code></td>
+<td>Search term e.g.&nbsp;sunflowers</td>
+<td>Returns a listing of all Object IDs for objects that contain the search query within the object’s data</td>
+</tr>
+<tr class="even">
+<td><code>departmentId</code></td>
+<td>Integer</td>
+<td>Returns objects that are a part of a specific department. For a list of departments and department IDs, refer to our /department endpoint: https://collectionapi.metmuseum.org/public/collection/v1/departments</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, documentation is the best starting point to interact with an API. With that information, we have answered not only the first question, but also what endpoint, parameters, and previous information we need to retrieve before doing the query.</p>
+<p>Before proceeding with the next question, let’s get the list of departments and their IDs to select the one corresponding to the ‘Medieval Art’ department. To do that, just paste the ‘/department’ endpoint as is pointed out in the documentation.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5" data-startfrom="312" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 311;"><span id="cb5-312"><a href="#cb5-312" aria-hidden="true" tabindex="-1"></a>viewof departmentListEndpoint <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb5-313"><a href="#cb5-313" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Department list"</span><span class="op">,</span></span>
+<span id="cb5-314"><a href="#cb5-314" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb5-315"><a href="#cb5-315" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb5-316"><a href="#cb5-316" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb5-317"><a href="#cb5-317" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb5-318"><a href="#cb5-318" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-319"><a href="#cb5-319" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-320"><a href="#cb5-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-321"><a href="#cb5-321" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">fetchDepartmentList</span>(endpoint) {</span>
+<span id="cb5-322"><a href="#cb5-322" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb5-323"><a href="#cb5-323" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(endpoint)<span class="op">;</span></span>
+<span id="cb5-324"><a href="#cb5-324" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> status <span class="op">=</span> {</span>
+<span id="cb5-325"><a href="#cb5-325" aria-hidden="true" tabindex="-1"></a>            <span class="dt">code</span><span class="op">:</span> response<span class="op">.</span><span class="at">status</span><span class="op">,</span></span>
+<span id="cb5-326"><a href="#cb5-326" aria-hidden="true" tabindex="-1"></a>            <span class="dt">ok</span><span class="op">:</span> response<span class="op">.</span><span class="at">ok</span><span class="op">,</span></span>
+<span id="cb5-327"><a href="#cb5-327" aria-hidden="true" tabindex="-1"></a>            <span class="dt">text</span><span class="op">:</span> response<span class="op">.</span><span class="at">statusText</span></span>
+<span id="cb5-328"><a href="#cb5-328" aria-hidden="true" tabindex="-1"></a>        }<span class="op">;</span></span>
+<span id="cb5-329"><a href="#cb5-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-330"><a href="#cb5-330" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb5-331"><a href="#cb5-331" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb5-332"><a href="#cb5-332" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb5-333"><a href="#cb5-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-334"><a href="#cb5-334" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb5-335"><a href="#cb5-335" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> { data<span class="op">,</span> status}<span class="op">;</span></span>
+<span id="cb5-336"><a href="#cb5-336" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (error) {</span>
+<span id="cb5-337"><a href="#cb5-337" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb5-338"><a href="#cb5-338" aria-hidden="true" tabindex="-1"></a>            <span class="dt">data</span><span class="op">:</span> { <span class="st">"Message"</span><span class="op">:</span> <span class="vs">`Error: </span><span class="sc">${</span>error<span class="op">.</span><span class="at">message</span><span class="sc">}</span><span class="vs">`</span> }<span class="op">,</span></span>
+<span id="cb5-339"><a href="#cb5-339" aria-hidden="true" tabindex="-1"></a>            <span class="dt">status</span><span class="op">:</span> {</span>
+<span id="cb5-340"><a href="#cb5-340" aria-hidden="true" tabindex="-1"></a>                <span class="dt">code</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></span>
+<span id="cb5-341"><a href="#cb5-341" aria-hidden="true" tabindex="-1"></a>                <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb5-342"><a href="#cb5-342" aria-hidden="true" tabindex="-1"></a>                <span class="dt">text</span><span class="op">:</span> <span class="st">"Bad Request"</span></span>
+<span id="cb5-343"><a href="#cb5-343" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb5-344"><a href="#cb5-344" aria-hidden="true" tabindex="-1"></a>        }<span class="op">;</span></span>
+<span id="cb5-345"><a href="#cb5-345" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-346"><a href="#cb5-346" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-347"><a href="#cb5-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-348"><a href="#cb5-348" aria-hidden="true" tabindex="-1"></a>departmentList <span class="op">=</span> {</span>
+<span id="cb5-349"><a href="#cb5-349" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (departmentListEndpoint) {</span>
+<span id="cb5-350"><a href="#cb5-350" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchDepartmentList</span>(departmentListEndpoint)<span class="op">;</span></span>
+<span id="cb5-351"><a href="#cb5-351" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb5-352"><a href="#cb5-352" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb5-353"><a href="#cb5-353" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb5-354"><a href="#cb5-354" aria-hidden="true" tabindex="-1"></a>            <span class="dt">data</span><span class="op">:</span> { <span class="st">"Message"</span><span class="op">:</span> <span class="st">"You need to enter a valid endpoint."</span> }<span class="op">,</span></span>
+<span id="cb5-355"><a href="#cb5-355" aria-hidden="true" tabindex="-1"></a>            <span class="dt">status</span><span class="op">:</span> {</span>
+<span id="cb5-356"><a href="#cb5-356" aria-hidden="true" tabindex="-1"></a>                <span class="dt">code</span><span class="op">:</span> <span class="dv">400</span><span class="op">,</span></span>
+<span id="cb5-357"><a href="#cb5-357" aria-hidden="true" tabindex="-1"></a>                <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb5-358"><a href="#cb5-358" aria-hidden="true" tabindex="-1"></a>                <span class="dt">text</span><span class="op">:</span> <span class="st">"Bad Request"</span></span>
+<span id="cb5-359"><a href="#cb5-359" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb5-360"><a href="#cb5-360" aria-hidden="true" tabindex="-1"></a>        }<span class="op">;</span></span>
+<span id="cb5-361"><a href="#cb5-361" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-362"><a href="#cb5-362" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-363"><a href="#cb5-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-364"><a href="#cb5-364" aria-hidden="true" tabindex="-1"></a>prettyDepartmentList <span class="op">=</span> {</span>
+<span id="cb5-365"><a href="#cb5-365" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="kw">typeof</span> departmentList <span class="op">===</span> <span class="st">'string'</span>) {</span>
+<span id="cb5-366"><a href="#cb5-366" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(<span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(departmentList)<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb5-367"><a href="#cb5-367" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb5-368"><a href="#cb5-368" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(departmentList<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb5-369"><a href="#cb5-369" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-370"><a href="#cb5-370" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-371"><a href="#cb5-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-372"><a href="#cb5-372" aria-hidden="true" tabindex="-1"></a>viewof prettyDepartmentListContainer <span class="op">=</span> {</span>
+<span id="cb5-373"><a href="#cb5-373" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> content<span class="op">;</span></span>
+<span id="cb5-374"><a href="#cb5-374" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (departmentList<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span>) {</span>
+<span id="cb5-375"><a href="#cb5-375" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-warning m-0"&gt;</span><span class="sc">${</span>departmentList<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span><span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb5-376"><a href="#cb5-376" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb5-377"><a href="#cb5-377" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span>prettyDepartmentList<span class="sc">}</span><span class="vs">&lt;/pre&gt;`</span><span class="op">;</span></span>
+<span id="cb5-378"><a href="#cb5-378" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-379"><a href="#cb5-379" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-380"><a href="#cb5-380" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> badgeClass <span class="op">=</span> departmentList<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> <span class="st">"bg-success"</span> <span class="op">:</span> <span class="st">"bg-danger"</span><span class="op">;</span></span>
+<span id="cb5-381"><a href="#cb5-381" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-382"><a href="#cb5-382" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
+<span id="cb5-383"><a href="#cb5-383" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
+<span id="cb5-384"><a href="#cb5-384" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span&gt;Department list&lt;/span&gt;</span></span>
+<span id="cb5-385"><a href="#cb5-385" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;span class="badge </span><span class="sc">${</span>badgeClass<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>departmentList<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>departmentList<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">text</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
+<span id="cb5-386"><a href="#cb5-386" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
+<span id="cb5-387"><a href="#cb5-387" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>content<span class="sc">}</span></span>
+<span id="cb5-388"><a href="#cb5-388" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb5-389"><a href="#cb5-389" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb5-390"><a href="#cb5-390" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-5" data-nodetype="declaration">
+
+</div>
 </div>
 </div>
 </div>
@@ -585,7 +809,7 @@ Note
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBtZXRob2QgPSBJbnB1dHMuc2VsZWN0KFtcIkdFVFwiXSwge1xuICBsYWJlbDogXCJIVFRQIE1ldGhvZFwiLFxuICBhdHRyaWJ1dGVzOiB7XG4gICAgY2xhc3M6IFwiZm9ybS1zZWxlY3QgbWItM1wiXG4gIH1cbn0pXG5cbnZpZXdvZiBlbmRwb2ludCA9IElucHV0cy50ZXh0KHtcbiAgbGFiZWw6IFwiRW5kcG9pbnQgcGF0aFwiLCBcbiAgcGxhY2Vob2xkZXI6IFwiL3YxL2ltYWdlcy9zZWFyY2g/bGltaXQ9MVwiLFxuICB2YWx1ZTogXCIvdjEvaW1hZ2VzL3NlYXJjaD9saW1pdD0xXCIsXG4gIGF0dHJpYnV0ZXM6IHtcbiAgICBjbGFzczogXCJmb3JtLWNvbnRyb2wgbWItM1wiXG4gIH1cbn0pXG5cbi8vIEZ1bmN0aW9uIHRvIG1ha2UgdGhlIEFQSSByZXF1ZXN0XG5hc3luYyBmdW5jdGlvbiBmZXRjaEZyb21BcGkobWV0aG9kLCBwYXRoKSB7XG4gIGNvbnN0IGJhc2VVcmwgPSBcImh0dHBzOi8vYXBpLnRoZWNhdGFwaS5jb21cIjtcbiAgdHJ5IHtcbiAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKGAke2Jhc2VVcmx9JHtwYXRofWApO1xuICAgIHJldHVybiBhd2FpdCByZXNwb25zZS5qc29uKCk7XG4gIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgcmV0dXJuIHsgZXJyb3I6IGVycm9yLm1lc3NhZ2UgfTtcbiAgfVxufVxuXG5yZXNwb25zZSA9IHtcbiAgY29uc3QgcmVzdWx0ID0gYXdhaXQgZmV0Y2hGcm9tQXBpKG1ldGhvZCwgZW5kcG9pbnQpO1xuICByZXR1cm4gSlNPTi5zdHJpbmdpZnkocmVzdWx0LCBudWxsLCAyKTtcbn1cblxudmlld29mIHByZXR0eVJlc3BvbnNlID0ge1xuICBjb25zdCBjb250YWluZXIgPSBodG1sYDxkaXYgY2xhc3M9XCJjYXJkXCI+XG4gICAgPGRpdiBjbGFzcz1cImNhcmQtaGVhZGVyIGQtZmxleCBqdXN0aWZ5LWNvbnRlbnQtYmV0d2VlbiBhbGlnbi1pdGVtcy1jZW50ZXJcIj5cbiAgICAgIDxzcGFuPlJlc3BvbnNlPC9zcGFuPlxuICAgICAgPHNwYW4gY2xhc3M9XCJiYWRnZSBiZy1zdWNjZXNzXCI+MjAwIE9LPC9zcGFuPlxuICAgIDwvZGl2PlxuICAgIDxwcmUgY2xhc3M9XCJjYXJkLWJvZHkgbS0wXCIgc3R5bGU9XCJiYWNrZ3JvdW5kLWNvbG9yOiAjZjhmOWZhOyBtYXgtaGVpZ2h0OiA0MDBweDsgb3ZlcmZsb3cteTogYXV0bztcIj4ke3Jlc3BvbnNlfTwvcHJlPlxuICA8L2Rpdj5gO1xuICByZXR1cm4gY29udGFpbmVyO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG52aWV3b2YgbWV0aG9kUGFydHMgPSBJbnB1dHMuc2VsZWN0KFtcIkdFVFwiXSwge1xuICAgIGxhYmVsOiBcIkhUVFAgTWV0aG9kXCIsXG4gICAgYXR0cmlidXRlczoge1xuICAgICAgICBjbGFzczogXCJmb3JtLXNlbGVjdCBtYi0zXCJcbiAgICB9XG59KVxuXG52aWV3b2YgZG9tYWluID0gSW5wdXRzLnRleHQoe1xuICBsYWJlbDogXCJEb21haW5cIixcbiAgcGxhY2Vob2xkZXI6IFwiY29sbGVjdGlvbmFwaS5tZXRtdXNldW0ub3JnXCIsXG4gIHZhbHVlOiBcImNvbGxlY3Rpb25hcGkubWV0bXVzZXVtLm9yZ1wiLFxuICBhdHRyaWJ1dGVzOiB7XG4gICAgY2xhc3M6IFwiZm9ybS1jb250cm9sIG1iLTNcIlxuICB9XG59KVxuXG52aWV3b2YgcGF0aCA9IElucHV0cy50ZXh0KHtcbiAgICBsYWJlbDogXCJQYXRoXCIsXG4gICAgcGxhY2Vob2xkZXI6IFwiL3B1YmxpYy9jb2xsZWN0aW9uL3YxL3NlYXJjaFwiLFxuICAgIHZhbHVlOiBcIi9wdWJsaWMvY29sbGVjdGlvbi92MS9zZWFyY2hcIixcbiAgICBhdHRyaWJ1dGVzOiB7XG4gICAgICAgIGNsYXNzOiBcImZvcm0tY29udHJvbCBtYi0zXCJcbiAgICB9XG59KVxuXG52aWV3b2YgcXVlcnkgPSBJbnB1dHMudGV4dCh7XG4gICAgbGFiZWw6IFwiUXVlcnkgcGFyYW1ldGVyc1wiLFxuICAgIHBsYWNlaG9sZGVyOiBcIj9xPWNhdFwiLFxuICAgIHZhbHVlOiBcInE9Y2F0XCIsXG4gICAgYXR0cmlidXRlczoge1xuICAgICAgICBjbGFzczogXCJmb3JtLWNvbnRyb2wgbWItM1wiXG4gICAgfVxufSlcblxuYXN5bmMgZnVuY3Rpb24gZmV0Y2hGcm9tQXBpUGFydHMobWV0aG9kLCBkb21haW4sIHBhdGgsIHF1ZXJ5KSB7XG4gICAgY29uc3QgYmFzZVVybCA9IGBodHRwczovLyR7ZG9tYWlufWA7XG4gICAgY29uc3QgdXJsID0gYCR7YmFzZVVybH0ke3BhdGh9PyR7cXVlcnl9YDtcbiAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKHVybCk7XG4gICAgcmV0dXJuIGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcbn1cblxucmVzcG9uc2VQYXJ0cyA9IHtcbiAgICBjb25zdCByZXN1bHQgPSBhd2FpdCBmZXRjaEZyb21BcGlQYXJ0cyhtZXRob2QsIGRvbWFpbiwgcGF0aCwgcXVlcnkpO1xuICAgIHJldHVybiBKU09OLnN0cmluZ2lmeShyZXN1bHQsIG51bGwsIDIpO1xufVxuXG52aWV3b2YgcHJldHR5UmVzcG9uc2VQYXJ0cyA9IHtcbiAgICBjb25zdCBjb250YWluZXIgPSBodG1sYDxkaXYgY2xhc3M9XCJjYXJkXCI+XG4gICAgICAgIDxkaXYgY2xhc3M9XCJjYXJkLWhlYWRlciBkLWZsZXgganVzdGlmeS1jb250ZW50LWJldHdlZW4gYWxpZ24taXRlbXMtY2VudGVyXCI+XG4gICAgICAgICAgICA8c3Bhbj5SZXNwb25zZTwvc3Bhbj5cbiAgICAgICAgICAgIDxzcGFuIGNsYXNzPVwiYmFkZ2UgYmctc3VjY2Vzc1wiPjIwMCBPSzwvc3Bhbj5cbiAgICAgICAgPC9kaXY+XG4gICAgICAgIDxwcmUgY2xhc3M9XCJjYXJkLWJvZHkgbS0wXCIgc3R5bGU9XCJiYWNrZ3JvdW5kLWNvbG9yOiAjZjhmOWZhOyBtYXgtaGVpZ2h0OiA0MDBweDsgb3ZlcmZsb3cteTogYXV0bztcIj4ke3Jlc3BvbnNlUGFydHN9PC9wcmU+XG4gICAgPC9kaXY+YDtcbiAgICByZXR1cm4gY29udGFpbmVyO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIG1ldGhvZERldGFpbHMgPSBJbnB1dHMuc2VsZWN0KFtcIkdFVFwiXSwge1xuICAgIGxhYmVsOiBcIkhUVFAgTWV0aG9kXCIsXG4gICAgYXR0cmlidXRlczoge1xuICAgICAgICBjbGFzczogXCJmb3JtLXNlbGVjdCBtYi0zXCJcbiAgICB9XG59KVxuXG52aWV3b2YgZG9tYWluRGV0YWlscyA9IElucHV0cy50ZXh0KHtcbiAgICBsYWJlbDogXCJEb21haW5cIixcbiAgICBwbGFjZWhvbGRlcjogXCJjb2xsZWN0aW9uYXBpLm1ldG11c2V1bS5vcmdcIixcbiAgICB2YWx1ZTogXCJjb2xsZWN0aW9uYXBpLm1ldG11c2V1bS5vcmdcIixcbiAgICBhdHRyaWJ1dGVzOiB7XG4gICAgICAgIGNsYXNzOiBcImZvcm0tY29udHJvbCBtYi0zXCJcbiAgICB9XG59KVxuXG52aWV3b2YgcGF0aERldGFpbHMgPSBJbnB1dHMudGV4dCh7XG4gICAgbGFiZWw6IFwiUGF0aFwiLFxuICAgIHBsYWNlaG9sZGVyOiBcIi9wdWJsaWMvY29sbGVjdGlvbi92MS9vYmplY3RzL1wiLFxuICAgIHZhbHVlOiBcIi9wdWJsaWMvY29sbGVjdGlvbi92MS9vYmplY3RzL1wiLFxuICAgIGF0dHJpYnV0ZXM6IHtcbiAgICAgICAgY2xhc3M6IFwiZm9ybS1jb250cm9sIG1iLTNcIlxuICAgIH1cbn0pXG5cbnZpZXdvZiBwYXJhbWV0ZXJEZXRhaWxzID0gSW5wdXRzLnRleHQoe1xuICAgIGxhYmVsOiBcIlBhcmFtZXRlclwiLFxuICAgIHBsYWNlaG9sZGVyOiBcIldyaXRlIHRoZSBvYmplY3QgaWQgaGVyZVwiLFxuICAgIHZhbHVlOiBcIjU3MDc0NFwiLFxuICAgIGF0dHJpYnV0ZXM6IHtcbiAgICAgICAgY2xhc3M6IFwiZm9ybS1jb250cm9sIG1iLTNcIlxuICAgIH1cbn0pXG5cbmFzeW5jIGZ1bmN0aW9uIGZldGNoRnJvbUFwaURldGFpbHMobWV0aG9kLCBkb21haW4sIHBhdGgsIHBhcmFtZXRlcikge1xuICAgIGNvbnN0IGJhc2VVcmwgPSBgaHR0cHM6Ly8ke2RvbWFpbn1gO1xuICAgIGNvbnN0IHVybCA9IGAke2Jhc2VVcmx9JHtwYXRofSR7cGFyYW1ldGVyfWA7XG4gICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaCh1cmwpO1xuICAgIHJldHVybiBhd2FpdCByZXNwb25zZS5qc29uKCk7XG59XG5cbnJlc3BvbnNlRGV0YWlscyA9IHtcbiAgICBjb25zdCByZXN1bHQgPSBhd2FpdCBmZXRjaEZyb21BcGlEZXRhaWxzKG1ldGhvZERldGFpbHMsIGRvbWFpbkRldGFpbHMsIHBhdGhEZXRhaWxzLCBwYXJhbWV0ZXJEZXRhaWxzKTtcbiAgICByZXR1cm4gcmVzdWx0O1xufVxuXG5wcmV0dHlSZXNwb25zZURldGFpbHMgPSB7XG4gICAgY29uc3QgcHJldHR5ID0gSlNPTi5zdHJpbmdpZnkocmVzcG9uc2VEZXRhaWxzLCBudWxsLCAyKTtcbiAgICByZXR1cm4gcHJldHR5O1xufVxuXG52aWV3b2YgcHJldHR5UmVzcG9uc2VEZXRhaWxzQ29udGFpbmVyID0ge1xuICAgIGNvbnN0IGNvbnRhaW5lciA9IGh0bWxgPGRpdiBjbGFzcz1cImNhcmRcIj5cbiAgICAgICAgPGRpdiBjbGFzcz1cImNhcmQtaGVhZGVyIGQtZmxleCBqdXN0aWZ5LWNvbnRlbnQtYmV0d2VlbiBhbGlnbi1pdGVtcy1jZW50ZXJcIj5cbiAgICAgICAgICAgIDxzcGFuPlJlc3BvbnNlPC9zcGFuPlxuICAgICAgICAgICAgPHNwYW4gY2xhc3M9XCJiYWRnZSBiZy1zdWNjZXNzXCI+MjAwIE9LPC9zcGFuPlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPHByZSBjbGFzcz1cImNhcmQtYm9keSBtLTBcIiBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICNmOGY5ZmE7IG1heC1oZWlnaHQ6IDQwMHB4OyBvdmVyZmxvdy15OiBhdXRvO1wiPiR7cHJldHR5UmVzcG9uc2VEZXRhaWxzfTwvcHJlPlxuICAgIDwvZGl2PmA7XG4gICAgcmV0dXJuIGNvbnRhaW5lcjtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBwcmltYXJ5SW1hZ2UgPSB7XG4gICAgY29uc3QgcHJpbWFyeUltYWdlID0gcmVzcG9uc2VEZXRhaWxzLnByaW1hcnlJbWFnZVNtYWxsO1xuICAgIGlmIChwcmltYXJ5SW1hZ2UpIHtcbiAgICAgICAgY29uc3QgaW1nID0gaHRtbGA8aW1nIHNyYz1cIiR7cHJpbWFyeUltYWdlfVwiIGFsdD1cIlByaW1hcnkgSW1hZ2VcIj5gO1xuICAgICAgICByZXR1cm4gaW1nO1xuICAgIH0gZWxzZSB7XG4gICAgICAgIHJldHVybiBodG1sYDxpbWcgc3JjPVwiaHR0cHM6Ly9wbGFjZWhvbGQuY28vNjAweDQwMFwiIGFsdD1cIlBsYWNlaG9sZGVyXCI+YDtcbiAgICB9XG5cbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbWV0aG9kJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2VuZHBvaW50JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3ByZXR0eVJlc3BvbnNlJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ21ldGhvZFBhcnRzJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2RvbWFpbicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwYXRoJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3F1ZXJ5JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3ByZXR0eVJlc3BvbnNlUGFydHMnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbWV0aG9kRGV0YWlscycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdkb21haW5EZXRhaWxzJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3BhdGhEZXRhaWxzJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3BhcmFtZXRlckRldGFpbHMnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncHJldHR5UmVzcG9uc2VEZXRhaWxzQ29udGFpbmVyJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3ByaW1hcnlJbWFnZScpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBtZXRob2QgPSBJbnB1dHMuc2VsZWN0KFtcIkdFVFwiXSwge1xuICBsYWJlbDogXCJIVFRQIE1ldGhvZFwiLFxuICBhdHRyaWJ1dGVzOiB7XG4gICAgY2xhc3M6IFwiZm9ybS1zZWxlY3QgbWItM1wiXG4gIH1cbn0pXG5cbnZpZXdvZiBlbmRwb2ludCA9IElucHV0cy50ZXh0KHtcbiAgbGFiZWw6IFwiRW5kcG9pbnQgcGF0aFwiLCBcbiAgcGxhY2Vob2xkZXI6IFwiL3YxL2ltYWdlcy9zZWFyY2g/bGltaXQ9MVwiLFxuICB2YWx1ZTogXCIvdjEvaW1hZ2VzL3NlYXJjaD9saW1pdD0xXCIsXG4gIGF0dHJpYnV0ZXM6IHtcbiAgICBjbGFzczogXCJmb3JtLWNvbnRyb2wgbWItM1wiXG4gIH1cbn0pXG5cbi8vIEZ1bmN0aW9uIHRvIG1ha2UgdGhlIEFQSSByZXF1ZXN0XG5hc3luYyBmdW5jdGlvbiBmZXRjaEZyb21BcGkobWV0aG9kLCBwYXRoKSB7XG4gIGNvbnN0IGJhc2VVcmwgPSBcImh0dHBzOi8vYXBpLnRoZWNhdGFwaS5jb21cIjtcbiAgdHJ5IHtcbiAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKGAke2Jhc2VVcmx9JHtwYXRofWApO1xuICAgIGNvbnN0IHN0YXR1cyA9IHtcbiAgICAgICAgY29kZTogcmVzcG9uc2Uuc3RhdHVzLFxuICAgICAgICBvazogcmVzcG9uc2Uub2ssXG4gICAgICAgIHRleHQ6IHJlc3BvbnNlLnN0YXR1c1RleHRcbiAgICB9O1xuICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBIVFRQIGVycm9yISBzdGF0dXM6ICR7cmVzcG9uc2Uuc3RhdHVzfWApO1xuICAgIH1cbiAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpO1xuICAgIHJldHVybiB7IGRhdGEsIHN0YXR1cyB9O1xuICB9IGNhdGNoIChlcnJvcikge1xuICAgIHJldHVybiB7XG4gICAgICAgIGRhdGE6IHsgXCJNZXNzYWdlXCI6IGBFcnJvcjogJHtlcnJvci5tZXNzYWdlfWAgfSxcbiAgICAgICAgc3RhdHVzOiB7XG4gICAgICAgICAgICBjb2RlOiA0MDAsXG4gICAgICAgICAgICBvazogZmFsc2UsXG4gICAgICAgICAgICB0ZXh0OiBcIkJhZCBSZXF1ZXN0XCJcbiAgICAgICAgfVxuICAgIH07XG4gIH1cbn1cblxucmVzcG9uc2UgPSB7XG4gIGNvbnN0IHJlc3VsdCA9IGF3YWl0IGZldGNoRnJvbUFwaShtZXRob2QsIGVuZHBvaW50KTtcbiAgcmV0dXJuIHJlc3VsdDtcbn1cblxudmlld29mIHByZXR0eVJlc3BvbnNlID0ge1xuICAgIGxldCBjb250ZW50O1xuXG4gICAgaWYgKHJlc3BvbnNlLmRhdGEuTWVzc2FnZSkge1xuICAgICAgICBjb250ZW50ID0gaHRtbGA8ZGl2IGNsYXNzPVwiYWxlcnQgYWxlcnQtd2FybmluZyBtLTBcIj4ke3Jlc3BvbnNlLmRhdGEuTWVzc2FnZX08L2Rpdj5gO1xuICAgIH0gZWxzZSB7XG4gICAgICAgIGNvbnRlbnQgPSBodG1sYDxwcmUgY2xhc3M9XCJjYXJkLWJvZHkgbS0wXCIgc3R5bGU9XCJiYWNrZ3JvdW5kLWNvbG9yOiAjZjhmOWZhOyBtYXgtaGVpZ2h0OiA0MDBweDsgb3ZlcmZsb3cteTogYXV0bztcIj4ke0pTT04uc3RyaW5naWZ5KHJlc3BvbnNlLmRhdGEsIG51bGwsIDIpfTwvcHJlPmA7XG4gICAgfVxuXG4gICAgY29uc3QgYmFkZ2VDbGFzcyA9IHJlc3BvbnNlLnN0YXR1cy5vayA/IFwiYmctc3VjY2Vzc1wiIDogXCJiZy1kYW5nZXJcIjtcblxuICBjb25zdCBjb250YWluZXIgPSBodG1sYDxkaXYgY2xhc3M9XCJjYXJkXCI+XG4gICAgPGRpdiBjbGFzcz1cImNhcmQtaGVhZGVyIGQtZmxleCBqdXN0aWZ5LWNvbnRlbnQtYmV0d2VlbiBhbGlnbi1pdGVtcy1jZW50ZXJcIj5cbiAgICAgIDxzcGFuPlJlc3BvbnNlPC9zcGFuPlxuICAgICAgPHNwYW4gY2xhc3M9XCJiYWRnZSAke2JhZGdlQ2xhc3N9XCI+JHtyZXNwb25zZS5zdGF0dXMuY29kZX0gJHtyZXNwb25zZS5zdGF0dXMudGV4dH08L3NwYW4+XG4gICAgPC9kaXY+XG4gICAgJHtjb250ZW50fVxuICA8L2Rpdj5gO1xuICByZXR1cm4gY29udGFpbmVyO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG52aWV3b2YgbWV0aG9kUGFydHMgPSBJbnB1dHMuc2VsZWN0KFtcIkdFVFwiXSwge1xuICAgIGxhYmVsOiBcIkhUVFAgTWV0aG9kXCIsXG4gICAgYXR0cmlidXRlczoge1xuICAgICAgICBjbGFzczogXCJmb3JtLXNlbGVjdCBtYi0zXCJcbiAgICB9XG59KVxuXG52aWV3b2YgZG9tYWluID0gSW5wdXRzLnRleHQoe1xuICBsYWJlbDogXCJEb21haW5cIixcbiAgcGxhY2Vob2xkZXI6IFwiY29sbGVjdGlvbmFwaS5tZXRtdXNldW0ub3JnXCIsXG4gIHZhbHVlOiBcImNvbGxlY3Rpb25hcGkubWV0bXVzZXVtLm9yZ1wiLFxuICBhdHRyaWJ1dGVzOiB7XG4gICAgY2xhc3M6IFwiZm9ybS1jb250cm9sIG1iLTNcIlxuICB9XG59KVxuXG52aWV3b2YgcGF0aCA9IElucHV0cy50ZXh0KHtcbiAgICBsYWJlbDogXCJQYXRoXCIsXG4gICAgcGxhY2Vob2xkZXI6IFwiL3B1YmxpYy9jb2xsZWN0aW9uL3YxL3NlYXJjaFwiLFxuICAgIHZhbHVlOiBcIi9wdWJsaWMvY29sbGVjdGlvbi92MS9zZWFyY2hcIixcbiAgICBhdHRyaWJ1dGVzOiB7XG4gICAgICAgIGNsYXNzOiBcImZvcm0tY29udHJvbCBtYi0zXCJcbiAgICB9XG59KVxuXG52aWV3b2YgcXVlcnkgPSBJbnB1dHMudGV4dCh7XG4gICAgbGFiZWw6IFwiUXVlcnkgcGFyYW1ldGVyc1wiLFxuICAgIHBsYWNlaG9sZGVyOiBcIj9xPWNhdFwiLFxuICAgIHZhbHVlOiBcInE9Y2F0XCIsXG4gICAgYXR0cmlidXRlczoge1xuICAgICAgICBjbGFzczogXCJmb3JtLWNvbnRyb2wgbWItM1wiXG4gICAgfVxufSlcblxuYXN5bmMgZnVuY3Rpb24gZmV0Y2hGcm9tQXBpUGFydHMobWV0aG9kLCBkb21haW4sIHBhdGgsIHF1ZXJ5KSB7XG4gICAgdHJ5IHtcbiAgICAgICAgY29uc3QgYmFzZVVybCA9IGBodHRwczovLyR7ZG9tYWlufWA7XG4gICAgICAgIGNvbnN0IHVybCA9IGAke2Jhc2VVcmx9JHtwYXRofT8ke3F1ZXJ5fWA7XG4gICAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2godXJsKTtcbiAgICAgICAgY29uc3Qgc3RhdHVzID0ge1xuICAgICAgICAgICAgY29kZTogcmVzcG9uc2Uuc3RhdHVzLFxuICAgICAgICAgICAgb2s6IHJlc3BvbnNlLm9rLFxuICAgICAgICAgICAgdGV4dDogcmVzcG9uc2Uuc3RhdHVzVGV4dFxuICAgICAgICB9O1xuICAgICAgICBpZiAoIXJlc3BvbnNlLm9rKSB7XG4gICAgICAgICAgICB0aHJvdyBuZXcgRXJyb3IoYEhUVFAgZXJyb3IhIHN0YXR1czogJHtyZXNwb25zZS5zdGF0dXN9YCk7XG4gICAgICAgIH1cbiAgICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcbiAgICAgICAgcmV0dXJuIHsgZGF0YSwgc3RhdHVzIH07XG4gICAgfSBjYXRjaCAoZXJyb3IpIHtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIGRhdGE6IHsgXCJNZXNzYWdlXCI6IGBFcnJvcjogJHtlcnJvci5tZXNzYWdlfWAgfSxcbiAgICAgICAgICAgIHN0YXR1czoge1xuICAgICAgICAgICAgICAgIGNvZGU6IDQwMCxcbiAgICAgICAgICAgICAgICBvazogZmFsc2UsXG4gICAgICAgICAgICAgICAgdGV4dDogXCJCYWQgUmVxdWVzdFwiXG4gICAgICAgICAgICB9XG4gICAgICAgIH07XG4gICAgfVxufVxuXG5yZXNwb25zZVBhcnRzID0ge1xuICAgIGNvbnN0IHJlc3VsdCA9IGF3YWl0IGZldGNoRnJvbUFwaVBhcnRzKG1ldGhvZFBhcnRzLCBkb21haW4sIHBhdGgsIHF1ZXJ5KTtcbiAgICByZXR1cm4gcmVzdWx0O1xufVxuXG52aWV3b2YgcHJldHR5UmVzcG9uc2VQYXJ0cyA9IHtcbiAgICBsZXQgY29udGVudDtcbiAgICBpZiAocmVzcG9uc2VQYXJ0cy5kYXRhLk1lc3NhZ2UpIHtcbiAgICAgICAgY29udGVudCA9IGh0bWxgPGRpdiBjbGFzcz1cImFsZXJ0IGFsZXJ0LXdhcm5pbmcgbS0wXCI+JHtyZXNwb25zZVBhcnRzLmRhdGEuTWVzc2FnZX08L2Rpdj5gO1xuICAgIH0gZWxzZSB7XG4gICAgICAgIGNvbnRlbnQgPSBodG1sYDxwcmUgY2xhc3M9XCJjYXJkLWJvZHkgbS0wXCIgc3R5bGU9XCJiYWNrZ3JvdW5kLWNvbG9yOiAjZjhmOWZhOyBtYXgtaGVpZ2h0OiA0MDBweDsgb3ZlcmZsb3cteTogYXV0bztcIj4ke0pTT04uc3RyaW5naWZ5KHJlc3BvbnNlUGFydHMuZGF0YSwgbnVsbCwgMil9PC9wcmU+YDtcbiAgICB9XG4gICAgXG4gICAgY29uc3QgYmFkZ2VDbGFzcyA9IHJlc3BvbnNlUGFydHMuc3RhdHVzLm9rID8gXCJiZy1zdWNjZXNzXCIgOiBcImJnLWRhbmdlclwiO1xuICAgIFxuICAgIGNvbnN0IGNvbnRhaW5lciA9IGh0bWxgPGRpdiBjbGFzcz1cImNhcmRcIj5cbiAgICAgICAgPGRpdiBjbGFzcz1cImNhcmQtaGVhZGVyIGQtZmxleCBqdXN0aWZ5LWNvbnRlbnQtYmV0d2VlbiBhbGlnbi1pdGVtcy1jZW50ZXJcIj5cbiAgICAgICAgICAgIDxzcGFuPlJlc3BvbnNlPC9zcGFuPlxuICAgICAgICAgICAgPHNwYW4gY2xhc3M9XCJiYWRnZSAke2JhZGdlQ2xhc3N9XCI+JHtyZXNwb25zZVBhcnRzLnN0YXR1cy5jb2RlfSAke3Jlc3BvbnNlUGFydHMuc3RhdHVzLnRleHR9PC9zcGFuPlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgJHtjb250ZW50fVxuICAgIDwvZGl2PmA7XG4gICAgcmV0dXJuIGNvbnRhaW5lcjtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBtZXRob2REZXRhaWxzID0gSW5wdXRzLnNlbGVjdChbXCJHRVRcIl0sIHtcbiAgICBsYWJlbDogXCJIVFRQIE1ldGhvZFwiLFxuICAgIGF0dHJpYnV0ZXM6IHtcbiAgICAgICAgY2xhc3M6IFwiZm9ybS1zZWxlY3QgbWItM1wiXG4gICAgfVxufSlcblxudmlld29mIGRvbWFpbkRldGFpbHMgPSBJbnB1dHMudGV4dCh7XG4gICAgbGFiZWw6IFwiRG9tYWluXCIsXG4gICAgcGxhY2Vob2xkZXI6IFwiY29sbGVjdGlvbmFwaS5tZXRtdXNldW0ub3JnXCIsXG4gICAgdmFsdWU6IFwiY29sbGVjdGlvbmFwaS5tZXRtdXNldW0ub3JnXCIsXG4gICAgYXR0cmlidXRlczoge1xuICAgICAgICBjbGFzczogXCJmb3JtLWNvbnRyb2wgbWItM1wiXG4gICAgfVxufSlcblxudmlld29mIHBhdGhEZXRhaWxzID0gSW5wdXRzLnRleHQoe1xuICAgIGxhYmVsOiBcIlBhdGhcIixcbiAgICBwbGFjZWhvbGRlcjogXCIvcHVibGljL2NvbGxlY3Rpb24vdjEvb2JqZWN0cy9cIixcbiAgICB2YWx1ZTogXCIvcHVibGljL2NvbGxlY3Rpb24vdjEvb2JqZWN0cy9cIixcbiAgICBhdHRyaWJ1dGVzOiB7XG4gICAgICAgIGNsYXNzOiBcImZvcm0tY29udHJvbCBtYi0zXCJcbiAgICB9XG59KVxuXG52aWV3b2YgcGFyYW1ldGVyRGV0YWlscyA9IElucHV0cy50ZXh0KHtcbiAgICBsYWJlbDogXCJQYXJhbWV0ZXJcIixcbiAgICBwbGFjZWhvbGRlcjogXCJXcml0ZSB0aGUgb2JqZWN0IGlkIGhlcmVcIixcbiAgICB2YWx1ZTogXCI1NzA3NDRcIixcbiAgICBhdHRyaWJ1dGVzOiB7XG4gICAgICAgIGNsYXNzOiBcImZvcm0tY29udHJvbCBtYi0zXCJcbiAgICB9XG59KVxuXG5hc3luYyBmdW5jdGlvbiBmZXRjaEZyb21BcGlEZXRhaWxzKG1ldGhvZCwgZG9tYWluLCBwYXRoLCBwYXJhbWV0ZXIpIHtcbiAgICB0cnkge1xuICAgICAgICBjb25zdCBiYXNlVXJsID0gYGh0dHBzOi8vJHtkb21haW59YDtcbiAgICAgICAgY29uc3QgdXJsID0gYCR7YmFzZVVybH0ke3BhdGh9JHtwYXJhbWV0ZXJ9YDtcbiAgICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaCh1cmwpO1xuICAgICAgICBjb25zdCBzdGF0dXMgPSB7XG4gICAgICAgICAgICBjb2RlOiByZXNwb25zZS5zdGF0dXMsXG4gICAgICAgICAgICBvazogcmVzcG9uc2Uub2ssXG4gICAgICAgICAgICB0ZXh0OiByZXNwb25zZS5zdGF0dXNUZXh0XG4gICAgICAgIH07XG4gICAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihgSFRUUCBlcnJvciEgc3RhdHVzOiAke3Jlc3BvbnNlLnN0YXR1c31gKTtcbiAgICAgICAgfVxuICAgICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpO1xuICAgICAgICByZXR1cm4geyBkYXRhLCBzdGF0dXMgfTtcbiAgICB9IGNhdGNoIChlcnJvcikge1xuICAgICAgICByZXR1cm4geyBlcnJvcjogZXJyb3IubWVzc2FnZSB9O1xuICAgIH1cbn1cblxucmVzcG9uc2VEZXRhaWxzID0ge1xuICAgIGNvbnN0IHJlc3VsdCA9IGF3YWl0IGZldGNoRnJvbUFwaURldGFpbHMobWV0aG9kRGV0YWlscywgZG9tYWluRGV0YWlscywgcGF0aERldGFpbHMsIHBhcmFtZXRlckRldGFpbHMpO1xuICAgIHJldHVybiByZXN1bHQ7XG59XG5cbnZpZXdvZiBwcmV0dHlSZXNwb25zZURldGFpbHNDb250YWluZXIgPSB7XG4gICAgbGV0IGNvbnRlbnQ7XG4gICAgaWYgKHJlc3BvbnNlRGV0YWlscy5kYXRhLk1lc3NhZ2UpIHtcbiAgICAgICAgY29udGVudCA9IGh0bWxgPGRpdiBjbGFzcz1cImFsZXJ0IGFsZXJ0LXdhcm5pbmcgbS0wXCI+JHtyZXNwb25zZURldGFpbHMuZGF0YS5NZXNzYWdlfTwvZGl2PmA7XG4gICAgfSBlbHNlIHtcbiAgICAgICAgY29udGVudCA9IGh0bWxgPHByZSBjbGFzcz1cImNhcmQtYm9keSBtLTBcIiBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICNmOGY5ZmE7IG1heC1oZWlnaHQ6IDQwMHB4OyBvdmVyZmxvdy15OiBhdXRvO1wiPiR7SlNPTi5zdHJpbmdpZnkocmVzcG9uc2VEZXRhaWxzLmRhdGEsIG51bGwsIDIpfTwvcHJlPmA7XG4gICAgfVxuXG4gICAgY29uc3QgYmFkZ2VDbGFzcyA9IHJlc3BvbnNlRGV0YWlscy5zdGF0dXMub2sgPyBcImJnLXN1Y2Nlc3NcIiA6IFwiYmctZGFuZ2VyXCI7XG5cbiAgICBjb25zdCBjb250YWluZXIgPSBodG1sYDxkaXYgY2xhc3M9XCJjYXJkXCI+XG4gICAgICAgIDxkaXYgY2xhc3M9XCJjYXJkLWhlYWRlciBkLWZsZXgganVzdGlmeS1jb250ZW50LWJldHdlZW4gYWxpZ24taXRlbXMtY2VudGVyXCI+XG4gICAgICAgICAgICA8c3Bhbj5SZXNwb25zZTwvc3Bhbj5cbiAgICAgICAgICAgIDxzcGFuIGNsYXNzPVwiYmFkZ2UgJHtiYWRnZUNsYXNzfVwiPiR7cmVzcG9uc2VEZXRhaWxzLnN0YXR1cy5jb2RlfSAke3Jlc3BvbnNlRGV0YWlscy5zdGF0dXMudGV4dH08L3NwYW4+XG4gICAgICAgIDwvZGl2PlxuICAgICAgICAke2NvbnRlbnR9XG4gICAgPC9kaXY+YDtcbiAgICByZXR1cm4gY29udGFpbmVyO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIHByaW1hcnlJbWFnZSA9IHtcbiAgICBjb25zdCBwcmltYXJ5SW1hZ2UgPSByZXNwb25zZURldGFpbHMuc3RhdHVzLm9rID8gcmVzcG9uc2VEZXRhaWxzLmRhdGEucHJpbWFyeUltYWdlU21hbGwgOiBcImh0dHBzOi8vcGxhY2Vob2xkLmNvLzYwMHg0MDBcIjtcbiAgICBpZiAocHJpbWFyeUltYWdlKSB7XG4gICAgICAgIGNvbnN0IGltZyA9IGh0bWxgPGltZyBzcmM9XCIke3ByaW1hcnlJbWFnZX1cIiBhbHQ9XCJQcmltYXJ5IEltYWdlXCI+YDtcbiAgICAgICAgcmV0dXJuIGltZztcbiAgICB9IGVsc2Uge1xuICAgICAgICByZXR1cm4gaHRtbGA8aW1nIHNyYz1cImh0dHBzOi8vcGxhY2Vob2xkLmNvLzYwMHg0MDBcIiBhbHQ9XCJQbGFjZWhvbGRlclwiPmA7XG4gICAgfVxuXG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbnZpZXdvZiBkZXBhcnRtZW50TGlzdEVuZHBvaW50ID0gSW5wdXRzLnRleHQoe1xuICAgIGxhYmVsOiBcIkRlcGFydG1lbnQgbGlzdFwiLFxuICAgIHBsYWNlaG9sZGVyOiBcIlwiLFxuICAgIHZhbHVlOiBcIlwiLFxuICAgIGF0dHJpYnV0ZXM6IHtcbiAgICAgICAgY2xhc3M6IFwiZm9ybS1jb250cm9sIG1iLTNcIlxuICAgIH1cbn0pXG5cbmFzeW5jIGZ1bmN0aW9uIGZldGNoRGVwYXJ0bWVudExpc3QoZW5kcG9pbnQpIHtcbiAgICB0cnkge1xuICAgICAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKGVuZHBvaW50KTtcbiAgICAgICAgY29uc3Qgc3RhdHVzID0ge1xuICAgICAgICAgICAgY29kZTogcmVzcG9uc2Uuc3RhdHVzLFxuICAgICAgICAgICAgb2s6IHJlc3BvbnNlLm9rLFxuICAgICAgICAgICAgdGV4dDogcmVzcG9uc2Uuc3RhdHVzVGV4dFxuICAgICAgICB9O1xuXG4gICAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihgSFRUUCBlcnJvciEgc3RhdHVzOiAke3Jlc3BvbnNlLnN0YXR1c31gKTtcbiAgICAgICAgfVxuXG4gICAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCByZXNwb25zZS5qc29uKCk7XG4gICAgICAgIHJldHVybiB7IGRhdGEsIHN0YXR1c307XG4gICAgfSBjYXRjaCAoZXJyb3IpIHtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIGRhdGE6IHsgXCJNZXNzYWdlXCI6IGBFcnJvcjogJHtlcnJvci5tZXNzYWdlfWAgfSxcbiAgICAgICAgICAgIHN0YXR1czoge1xuICAgICAgICAgICAgICAgIGNvZGU6IDQwMCxcbiAgICAgICAgICAgICAgICBvazogZmFsc2UsXG4gICAgICAgICAgICAgICAgdGV4dDogXCJCYWQgUmVxdWVzdFwiXG4gICAgICAgICAgICB9XG4gICAgICAgIH07XG4gICAgfVxufVxuXG5kZXBhcnRtZW50TGlzdCA9IHtcbiAgICBpZiAoZGVwYXJ0bWVudExpc3RFbmRwb2ludCkge1xuICAgICAgICBjb25zdCByZXN1bHQgPSBhd2FpdCBmZXRjaERlcGFydG1lbnRMaXN0KGRlcGFydG1lbnRMaXN0RW5kcG9pbnQpO1xuICAgICAgICByZXR1cm4gcmVzdWx0O1xuICAgIH0gZWxzZSB7XG4gICAgICAgIHJldHVybiB7XG4gICAgICAgICAgICBkYXRhOiB7IFwiTWVzc2FnZVwiOiBcIllvdSBuZWVkIHRvIGVudGVyIGEgdmFsaWQgZW5kcG9pbnQuXCIgfSxcbiAgICAgICAgICAgIHN0YXR1czoge1xuICAgICAgICAgICAgICAgIGNvZGU6IDQwMCxcbiAgICAgICAgICAgICAgICBvazogZmFsc2UsXG4gICAgICAgICAgICAgICAgdGV4dDogXCJCYWQgUmVxdWVzdFwiXG4gICAgICAgICAgICB9XG4gICAgICAgIH07XG4gICAgfVxufVxuXG5wcmV0dHlEZXBhcnRtZW50TGlzdCA9IHtcbiAgICBpZiAodHlwZW9mIGRlcGFydG1lbnRMaXN0ID09PSAnc3RyaW5nJykge1xuICAgICAgICByZXR1cm4gSlNPTi5zdHJpbmdpZnkoSlNPTi5wYXJzZShkZXBhcnRtZW50TGlzdCksIG51bGwsIDIpO1xuICAgIH0gZWxzZSB7XG4gICAgICAgIHJldHVybiBKU09OLnN0cmluZ2lmeShkZXBhcnRtZW50TGlzdCwgbnVsbCwgMik7XG4gICAgfVxufVxuXG52aWV3b2YgcHJldHR5RGVwYXJ0bWVudExpc3RDb250YWluZXIgPSB7XG4gICAgbGV0IGNvbnRlbnQ7XG4gICAgaWYgKGRlcGFydG1lbnRMaXN0LmRhdGEuTWVzc2FnZSkge1xuICAgICAgICBjb250ZW50ID0gaHRtbGA8ZGl2IGNsYXNzPVwiYWxlcnQgYWxlcnQtd2FybmluZyBtLTBcIj4ke2RlcGFydG1lbnRMaXN0LmRhdGEuTWVzc2FnZX08L2Rpdj5gO1xuICAgIH0gZWxzZSB7XG4gICAgICAgIGNvbnRlbnQgPSBodG1sYDxwcmUgY2xhc3M9XCJjYXJkLWJvZHkgbS0wXCIgc3R5bGU9XCJiYWNrZ3JvdW5kLWNvbG9yOiAjZjhmOWZhOyBtYXgtaGVpZ2h0OiA0MDBweDsgb3ZlcmZsb3cteTogYXV0bztcIj4ke3ByZXR0eURlcGFydG1lbnRMaXN0fTwvcHJlPmA7XG4gICAgfVxuICAgIFxuICAgIGNvbnN0IGJhZGdlQ2xhc3MgPSBkZXBhcnRtZW50TGlzdC5zdGF0dXMub2sgPyBcImJnLXN1Y2Nlc3NcIiA6IFwiYmctZGFuZ2VyXCI7XG4gICAgXG4gICAgY29uc3QgY29udGFpbmVyID0gaHRtbGA8ZGl2IGNsYXNzPVwiY2FyZFwiPlxuICAgICAgICA8ZGl2IGNsYXNzPVwiY2FyZC1oZWFkZXIgZC1mbGV4IGp1c3RpZnktY29udGVudC1iZXR3ZWVuIGFsaWduLWl0ZW1zLWNlbnRlclwiPlxuICAgICAgICAgICAgPHNwYW4+RGVwYXJ0bWVudCBsaXN0PC9zcGFuPlxuICAgICAgICAgICAgPHNwYW4gY2xhc3M9XCJiYWRnZSAke2JhZGdlQ2xhc3N9XCI+JHtkZXBhcnRtZW50TGlzdC5zdGF0dXMuY29kZX0gJHtkZXBhcnRtZW50TGlzdC5zdGF0dXMudGV4dH08L3NwYW4+XG4gICAgICAgIDwvZGl2PlxuICAgICAgICAke2NvbnRlbnR9XG4gICAgPC9kaXY+YDtcbiAgICByZXR1cm4gY29udGFpbmVyO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtZXRob2QnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZW5kcG9pbnQnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncHJldHR5UmVzcG9uc2UnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbWV0aG9kUGFydHMnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZG9tYWluJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3BhdGgnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncXVlcnknKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncHJldHR5UmVzcG9uc2VQYXJ0cycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtZXRob2REZXRhaWxzJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2RvbWFpbkRldGFpbHMnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncGF0aERldGFpbHMnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncGFyYW1ldGVyRGV0YWlscycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdwcmV0dHlSZXNwb25zZURldGFpbHNDb250YWluZXInKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncHJpbWFyeUltYWdlJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2RlcGFydG1lbnRMaXN0RW5kcG9pbnQnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncHJldHR5RGVwYXJ0bWVudExpc3RDb250YWluZXInKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
