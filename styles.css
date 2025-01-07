@@ -145,3 +145,46 @@
   margin-bottom: 1em;
   display: inline-block;
 }
+
+#modal-1-content pre {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+#modal-1-content code {
+  color: #333;
+}
+
+#modal-1-content .html-tag {
+  color: #800000;
+}
+
+#modal-1-content .html-attr {
+  color: #FF0000;
+}
+
+#modal-1-content .string {
+  color: #008000;
+}
+
+#modal-1-content .comment {
+  color: #6c757d;
+}
+
+#modal-1-content .keyword {
+  color: #0000FF;
+}
+
+#modal-1-content .variable {
+  color: #0070C1;
+}
+
+#modal-1-content .function {
+  color: #795E26;
+}
+
+#modal-1-content .number {
+  color: #098658;
+}

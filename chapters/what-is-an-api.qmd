@@ -193,36 +193,36 @@ APIs are not just tools for developers—they hold immense potential for researc
 ::: {#modal-1-content}
 
 <pre><code>
-&lt;script&gt;
-window.getRandomCat = async function () {
+<span class="html-tag">&lt;script&gt;</span>
+<span class="variable">window</span>.<span class="function">getRandomCat</span> = <span class="keyword">async</span> <span class="keyword">function</span> () {
     
-    const response = await fetch("https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1");
-    if (!response.ok) throw new Error("Failed to fetch random cat.");
-    const data = await response.json();
+    <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">"https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1"</span>);
+    <span class="keyword">if</span> (!response.ok) <span class="keyword">throw new</span> <span class="variable">Error</span>(<span class="string">"Failed to fetch random cat."</span>);
+    <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
 
-    const cat = data[0];
-    const cat_id = cat.id;
+    <span class="keyword">const</span> cat = data[<span class="number">0</span>];
+    <span class="keyword">const</span> cat_id = cat.id;
 
-    const cat_detailed_info = await fetch(`https://api.thecatapi.com/v1/images/${cat_id}`);
-    const cat_detailed_info_json = await cat_detailed_info.json();
+    <span class="keyword">const</span> cat_detailed_info = <span class="keyword">await</span> <span class="function">fetch</span>(`<span class="string">https://api.thecatapi.com/v1/images/${cat_id}</span>`);
+    <span class="keyword">const</span> cat_detailed_info_json = <span class="keyword">await</span> cat_detailed_info.<span class="function">json</span>();
 
-    // Safely access items that might be undefined or empty
-    const breed = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].name : "Unknown";
-    const description = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > 0 ? cat_detailed_info_json.breeds[0].description : "Unknown";
+    <span class="comment">// Safely access items that might be undefined or empty</span>
+    <span class="keyword">const</span> breed = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > <span class="number">0</span> ? cat_detailed_info_json.breeds[<span class="number">0</span>].name : <span class="string">"Unknown"</span>;
+    <span class="keyword">const</span> description = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > <span class="number">0</span> ? cat_detailed_info_json.breeds[<span class="number">0</span>].description : <span class="string">"Unknown"</span>;
 
-    document.getElementById("cat-image").innerHTML = `
-        &lt;div class="card" style="max-width: 300px; margin: 15px auto;"&gt;
-            &lt;img src="${cat.url}" class="card-img-top" alt="Random Cat"&gt;
-            &lt;div class="card-body"&gt;
-                &lt;h5 class="card-title"&gt;Breed: ${breed}&lt;/h5&gt;
-                &lt;p class="card-text"&gt;${description}&lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+    <span class="variable">document</span>.<span class="function">getElementById</span>(<span class="string">"cat-image"</span>).innerHTML = `
+        <span class="html-tag">&lt;div <span class="html-attr">class</span>=<span class="string">"card"</span> <span class="html-attr">style</span>=<span class="string">"max-width: 300px; margin: 15px auto;"</span>&gt;</span>
+            <span class="html-tag">&lt;img <span class="html-attr">src</span>=<span class="string">"${cat.url}"</span> <span class="html-attr">class</span>=<span class="string">"card-img-top"</span> <span class="html-attr">alt</span>=<span class="string">"Random Cat"</span>&gt;</span>
+            <span class="html-tag">&lt;div <span class="html-attr">class</span>=<span class="string">"card-body"</span>&gt;</span>
+                <span class="html-tag">&lt;h5 <span class="html-attr">class</span>=<span class="string">"card-title"</span>&gt;</span>Breed: ${breed}<span class="html-tag">&lt;/h5&gt;</span>
+                <span class="html-tag">&lt;p <span class="html-attr">class</span>=<span class="string">"card-text"</span>&gt;</span>${description}<span class="html-tag">&lt;/p&gt;</span>
+            <span class="html-tag">&lt;/div&gt;</span>
+        <span class="html-tag">&lt;/div&gt;</span>
     `;
 };
-&lt;/script&gt;
-&lt;button onclick="getRandomCat()" class="btn btn-primary" style="padding: 10px 20px; font-size: 16px; display: block; margin: 0 auto;"&gt;Click here to get a random cat :)&lt;/button&gt;
-&lt;div id="cat-image" style="margin-top: 15px;"&gt;&lt;/div&gt;
+<span class="html-tag">&lt;/script&gt;</span>
+<span class="html-tag">&lt;button <span class="html-attr">onclick</span>=<span class="string">"getRandomCat()"</span> <span class="html-attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="html-attr">style</span>=<span class="string">"padding: 10px 20px; font-size: 16px; display: block; margin: 0 auto;"</span>&gt;</span>Click here to get a random cat :)<span class="html-tag">&lt;/button&gt;</span>
+<span class="html-tag">&lt;div <span class="html-attr">id</span>=<span class="string">"cat-image"</span> <span class="html-attr">style</span>=<span class="string">"margin-top: 15px;"</span>&gt;</span><span class="html-tag">&lt;/div&gt;</span>
 </code></pre>
 
 :::
