@@ -79,10 +79,8 @@ window.getRandomCat = async function () {
     const response = await fetch("https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1");
     if (!response.ok) throw new Error("Failed to fetch random cat.");
     const data = await response.json();
-    
 
     const cat = data[0];
-
     const cat_id = cat.id;
 
     const cat_detailed_info = await fetch(`https://api.thecatapi.com/v1/images/${cat_id}`);
