@@ -25,7 +25,7 @@ website:
 format:
   html:
     theme: cosmo
-    css: styles.css
+    css: static/css/styles.css
     toc: true
 
 execute:
