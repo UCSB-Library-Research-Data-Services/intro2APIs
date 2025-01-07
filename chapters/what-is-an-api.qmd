@@ -45,7 +45,24 @@ async function getCatData(catId) {
 
 catData = await getCatData("XFhRpYS_D");
 
-JSON.stringify(catData, null, 2);
+viewof catDataString = {
+  const pre = html`<pre style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">`;
+  const code = html`<code style="color: #333;">`;
+  
+  // Formatted JSON with syntax highlighting
+  const formatted = JSON.stringify(catData, null, 2)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"([^"]+)":/g, '<span style="color: #a31515;">"$1"</span>:') 
+    .replace(/: "([^"]+)"/g, ': <span style="color: #008000;">"$1"</span>')  
+    .replace(/: ([0-9]+)/g, ': <span style="color: #0000FF;">$1</span>')  
+    .replace(/\b(true|false|null)\b/g, '<span style="color: #FF0000;">$1</span>');
+    
+  code.innerHTML = formatted;
+  pre.appendChild(code);
+  return pre;
+}
 ```
 
 This format is called JSON, and its widely used in APIs to return data. We will see more about this format later, but for now, we can say that this output is called a **response**, and it contains **keys** and **values**. Keys are the names of the information we requested and values are the information we received. For instance, in this response, the url to the image of a Ragdoll cat can be found under the `url` key, and its value is `https://cdn2.thecatapi.com/images/XFhRpYS_D.jpg`.
