@@ -2,7 +2,8 @@ project:
   type: website
 
 website:
-  title: "Unlocking Data<br /><span style='font-size: 0.8em;'>A Gentle Introduction to APIs</span>"    
+  title: "Unlocking Data<br /><span style='font-size: 0.8em;'>A Gentle Introduction to APIs</span>"
+  page-navigation: true
   sidebar:
     style: "docked"
     search: true
