@@ -188,3 +188,14 @@
 #modal-1-content .number {
   color: #098658;
 }
+
+/* Footer styles */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.pagination a {
+  text-decoration: none;
+  font-weight: bold;
+}
