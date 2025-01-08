@@ -11,6 +11,8 @@ format:
 lightbox: true
 ---
 
+[Following code is just for the modal to work]: #
+
 ```{=html}
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -21,6 +23,59 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 ```
+
+::: {#mymodal .modal .micromodal-slide aria-hidden="true"}
+::: {.modal__overlay tabindex="-1" data-micromodal-close="true"}
+::: {.modal__container role="dialog" aria-modal="true" aria-labelledby="mymodal-title"}
+
+<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+
+<header>
+## Code {#mymodal-title}
+</header>
+
+::: {#modal-1-content}
+
+<pre><code>
+<span class="html-tag">&lt;script&gt;</span>
+<span class="variable">window</span>.<span class="function">getRandomCat</span> = <span class="keyword">async</span> <span class="keyword">function</span> () {
+    
+    <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">"https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1"</span>);
+    <span class="keyword">if</span> (!response.ok) <span class="keyword">throw new</span> <span class="variable">Error</span>(<span class="string">"Failed to fetch random cat."</span>);
+    <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
+
+    <span class="keyword">const</span> cat = data[<span class="number">0</span>];
+    <span class="keyword">const</span> cat_id = cat.id;
+
+    <span class="keyword">const</span> cat_detailed_info = <span class="keyword">await</span> <span class="function">fetch</span>(`<span class="string">https://api.thecatapi.com/v1/images/${cat_id}</span>`);
+    <span class="keyword">const</span> cat_detailed_info_json = <span class="keyword">await</span> cat_detailed_info.<span class="function">json</span>();
+
+    <span class="comment">// Safely access items that might be undefined or empty</span>
+    <span class="keyword">const</span> breed = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > <span class="number">0</span> ? cat_detailed_info_json.breeds[<span class="number">0</span>].name : <span class="string">"Unknown"</span>;
+    <span class="keyword">const</span> description = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > <span class="number">0</span> ? cat_detailed_info_json.breeds[<span class="number">0</span>].description : <span class="string">"Unknown"</span>;
+
+    <span class="variable">document</span>.<span class="function">getElementById</span>(<span class="string">"cat-image"</span>).innerHTML = `
+        <span class="html-tag">&lt;div <span class="html-attr">class</span>=<span class="string">"card"</span> <span class="html-attr">style</span>=<span class="string">"max-width: 300px; margin: 15px auto;"</span>&gt;</span>
+            <span class="html-tag">&lt;img <span class="html-attr">src</span>=<span class="string">"${cat.url}"</span> <span class="html-attr">class</span>=<span class="string">"card-img-top"</span> <span class="html-attr">alt</span>=<span class="string">"Random Cat"</span>&gt;</span>
+            <span class="html-tag">&lt;div <span class="html-attr">class</span>=<span class="string">"card-body"</span>&gt;</span>
+                <span class="html-tag">&lt;h5 <span class="html-attr">class</span>=<span class="string">"card-title"</span>&gt;</span>Breed: ${breed}<span class="html-tag">&lt;/h5&gt;</span>
+                <span class="html-tag">&lt;p <span class="html-attr">class</span>=<span class="string">"card-text"</span>&gt;</span>${description}<span class="html-tag">&lt;/p&gt;</span>
+            <span class="html-tag">&lt;/div&gt;</span>
+        <span class="html-tag">&lt;/div&gt;</span>
+    `;
+};
+<span class="html-tag">&lt;/script&gt;</span>
+<span class="html-tag">&lt;button <span class="html-attr">onclick</span>=<span class="string">"getRandomCat()"</span> <span class="html-attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="html-attr">style</span>=<span class="string">"padding: 10px 20px; font-size: 16px; display: block; margin: 0 auto;"</span>&gt;</span>Click here to get a random cat :)<span class="html-tag">&lt;/button&gt;</span>
+<span class="html-tag">&lt;div <span class="html-attr">id</span>=<span class="string">"cat-image"</span> <span class="html-attr">style</span>=<span class="string">"margin-top: 15px;"</span>&gt;</span><span class="html-tag">&lt;/div&gt;</span>
+</code></pre>
+
+:::
+
+::: 
+::: 
+::: 
+
+[End of modal code]: #
 
 An API (Application Programming Interface) is a set of rules and protocols enabling software programs to communicate and share information. While the term is often associated with "web APIs," it encompasses a broader concept. For instance, an API might allow a library to share its collection data with a museum or enable a weather service to provide updates to a news organization. APIs operate based on predefined rules set by developers, specifying how data can be accessed and used. While some APIs are public, most are internal, facilitating communication between systems within an organization. 
 
@@ -180,53 +235,3 @@ APIs are not just tools for developers—they hold immense potential for researc
 :::
 
 
-:::::: {#mymodal .modal .micromodal-slide aria-hidden="true"}
-::::: {.modal__overlay tabindex="-1" data-micromodal-close="true"}
-:::: {.modal__container role="dialog" aria-modal="true" aria-labelledby="mymodal-title"}
-
-<button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-
-<header>
-## Code {#mymodal-title}
-</header>
-
-::: {#modal-1-content}
-
-<pre><code>
-<span class="html-tag">&lt;script&gt;</span>
-<span class="variable">window</span>.<span class="function">getRandomCat</span> = <span class="keyword">async</span> <span class="keyword">function</span> () {
-    
-    <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">"https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1"</span>);
-    <span class="keyword">if</span> (!response.ok) <span class="keyword">throw new</span> <span class="variable">Error</span>(<span class="string">"Failed to fetch random cat."</span>);
-    <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
-
-    <span class="keyword">const</span> cat = data[<span class="number">0</span>];
-    <span class="keyword">const</span> cat_id = cat.id;
-
-    <span class="keyword">const</span> cat_detailed_info = <span class="keyword">await</span> <span class="function">fetch</span>(`<span class="string">https://api.thecatapi.com/v1/images/${cat_id}</span>`);
-    <span class="keyword">const</span> cat_detailed_info_json = <span class="keyword">await</span> cat_detailed_info.<span class="function">json</span>();
-
-    <span class="comment">// Safely access items that might be undefined or empty</span>
-    <span class="keyword">const</span> breed = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > <span class="number">0</span> ? cat_detailed_info_json.breeds[<span class="number">0</span>].name : <span class="string">"Unknown"</span>;
-    <span class="keyword">const</span> description = cat_detailed_info_json.breeds && cat_detailed_info_json.breeds.length > <span class="number">0</span> ? cat_detailed_info_json.breeds[<span class="number">0</span>].description : <span class="string">"Unknown"</span>;
-
-    <span class="variable">document</span>.<span class="function">getElementById</span>(<span class="string">"cat-image"</span>).innerHTML = `
-        <span class="html-tag">&lt;div <span class="html-attr">class</span>=<span class="string">"card"</span> <span class="html-attr">style</span>=<span class="string">"max-width: 300px; margin: 15px auto;"</span>&gt;</span>
-            <span class="html-tag">&lt;img <span class="html-attr">src</span>=<span class="string">"${cat.url}"</span> <span class="html-attr">class</span>=<span class="string">"card-img-top"</span> <span class="html-attr">alt</span>=<span class="string">"Random Cat"</span>&gt;</span>
-            <span class="html-tag">&lt;div <span class="html-attr">class</span>=<span class="string">"card-body"</span>&gt;</span>
-                <span class="html-tag">&lt;h5 <span class="html-attr">class</span>=<span class="string">"card-title"</span>&gt;</span>Breed: ${breed}<span class="html-tag">&lt;/h5&gt;</span>
-                <span class="html-tag">&lt;p <span class="html-attr">class</span>=<span class="string">"card-text"</span>&gt;</span>${description}<span class="html-tag">&lt;/p&gt;</span>
-            <span class="html-tag">&lt;/div&gt;</span>
-        <span class="html-tag">&lt;/div&gt;</span>
-    `;
-};
-<span class="html-tag">&lt;/script&gt;</span>
-<span class="html-tag">&lt;button <span class="html-attr">onclick</span>=<span class="string">"getRandomCat()"</span> <span class="html-attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="html-attr">style</span>=<span class="string">"padding: 10px 20px; font-size: 16px; display: block; margin: 0 auto;"</span>&gt;</span>Click here to get a random cat :)<span class="html-tag">&lt;/button&gt;</span>
-<span class="html-tag">&lt;div <span class="html-attr">id</span>=<span class="string">"cat-image"</span> <span class="html-attr">style</span>=<span class="string">"margin-top: 15px;"</span>&gt;</span><span class="html-tag">&lt;/div&gt;</span>
-</code></pre>
-
-:::
-
-::::
-:::::
-::::::
