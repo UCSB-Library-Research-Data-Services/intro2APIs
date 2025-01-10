@@ -4,7 +4,10 @@ description: "A Gentle Introduction to APIs"
 format:
   html:
     toc: false
-
-listing:
-  contents: "chapters/*.qmd"
 ---
+
+
+# Unlocking data
+## A Gentle Introduction to APIs
+
+A presentation will be given here...
