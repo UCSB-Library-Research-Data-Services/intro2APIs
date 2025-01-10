@@ -24,11 +24,11 @@ Because the first question is about searching within a specific scope, let's sta
 | Parameter | Format | Notes |
 |-----------|--------|-------|
 | `q` | Search term e.g. sunflowers | Returns a listing of all Object IDs for objects that contain the search query within the object’s data |
-| `departmentId` | Integer | Returns objects that are a part of a specific department. For a list of departments and department IDs, refer to our /department endpoint: https://collectionapi.metmuseum.org/public/collection/v1/departments | 
+| `departmentId` | Integer | Returns objects that are a part of a specific department. For a list of departments and department IDs, refer to our <span style="background-color: #fff3cd;">**/department endpoint**: https://collectionapi.metmuseum.org/public/collection/v1/departments </span> | 
 
 As you can see, documentation is the best starting point to interact with an API. With that information, we have answered not only the first question, but also what endpoint, parameters, and previous information we need to retrieve before doing the query.
 
-Before proceeding with the next question, let's get the list of departments and their IDs to select the one corresponding to the 'Medieval Art' department. To do that, just paste the '/department' endpoint as is pointed out in the documentation.
+Before proceeding with the next question, let's get the list of departments and their IDs to select the one corresponding to the 'Medieval Art' department. To do that, just paste the '/department' endpoint as is pointed out in the documentation (if you get lost, follow the hints ;) ).
 
 ```{ojs}
 
@@ -40,6 +40,60 @@ viewof departmentListEndpoint = Inputs.text({
         class: "form-control mb-3"
     }
 })
+
+async function validateEndpoint(endpoint) {
+    const checks = [
+        {
+            pattern: /^https:\/\//,
+            message: "URL must start with 'https://'"
+        },
+        {
+            pattern: /collectionapi\.metmuseum\.org/,
+            message: "URL must contain 'collectionapi.metmuseum.org'"
+        },
+        {
+            pattern: /\/public\//,
+            message: "Missing '/public/' in the path"
+        },
+        {
+            pattern: /\/collection\//,
+            message: "Missing '/collection/' in the path"
+        },
+        {
+            pattern: /\/v1\//,
+            message: "Missing '/v1/' in the path"
+        },
+        {
+            pattern: /departments$/,
+            message: "URL must end with 'departments'"
+        }
+    ];
+
+    if (/[^:]\/\//.test(endpoint)) {
+        return "Invalid URL: Contains double slashes (//)";
+    }
+
+    const segments = ['collectionapi.metmuseum.org', 'public', 'collection', 'v1', 'departments'];
+    for (let i = 0; i < segments.length - 1; i++) {
+        const pattern = new RegExp(`${segments[i]}[^/]+${segments[i + 1]}`);
+        if (pattern.test(endpoint)) {
+            return `Missing slash between '${segments[i]}' and '${segments[i + 1]}'`;
+        }
+    }
+
+    for (const check of checks) {
+        if (!check.pattern.test(endpoint)) {
+            return check.message;
+        }
+    }
+
+    const expectedPattern = /^https:\/\/collectionapi\.metmuseum\.org\/public\/collection\/v1\/departments$/;
+    if (!expectedPattern.test(endpoint)) {
+        return "URL format is incorrect. Should be: https://collectionapi.metmuseum.org/public/collection/v1/departments";
+    }
+
+    return null;
+}
 
 async function fetchDepartmentList(endpoint) {
     try {
@@ -70,6 +124,17 @@ async function fetchDepartmentList(endpoint) {
 
 departmentList = {
     if (departmentListEndpoint) {
+        const validation = await validateEndpoint(departmentListEndpoint);
+        if (validation) {
+            return {
+                data: { "Message": validation },
+                status: {
+                    code: 400,
+                    ok: false,
+                    text: "Bad Request"
+                }
+            };
+        }
         const result = await fetchDepartmentList(departmentListEndpoint);
         return result;
     } else {
