@@ -85,12 +85,19 @@ departmentList = {
 }
 
 prettyDepartmentList = {
+    let jsonString;
     if (typeof departmentList === 'string') {
-        return JSON.stringify(JSON.parse(departmentList), null, 2);
+        jsonString = JSON.stringify(JSON.parse(departmentList), null, 2);
     } else {
-        return JSON.stringify(departmentList, null, 2);
+        jsonString = JSON.stringify(departmentList, null, 2);
     }
-}
+    
+    // Highlight the entire Medieval Art object
+    return jsonString.replace(
+        /(\{[^\}]*"displayName":\s*"Medieval Art"[^\}]*\})/g, 
+        '<span style="background-color: #fff3cd; display: inline-block; width: 100%;">$1</span>'
+    );
+}    
 
 viewof prettyDepartmentListContainer = {
     let content;
