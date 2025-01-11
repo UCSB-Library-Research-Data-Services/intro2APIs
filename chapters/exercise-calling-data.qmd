@@ -315,3 +315,46 @@ viewof prettyQueryResultContainer = {
     return container;
 }
 ```
+
+Having the query result, the only thing left to do is to get the specific information we need. In this case, you can see that the answer is in the same response under the key `total`. Just to validate that we have the same answer, write in the next cell the total number of objects that contain the term 'knight' in the department of Medieval Art.
+
+```{ojs}
+
+viewof knightsTotal = Inputs.number({
+    label: "Total number of knights",
+    placeholder: "",
+    value: 0,
+    attributes: {
+        class: "form-control mb-3"
+    }
+});
+
+viewof validationResult = {
+    const container = html`<div></div>`;
+    
+    if (!queryResult.status.ok || queryResult.data.Message) {
+        if (knightsTotal !== 0) {  // Only show warning if user has entered a number
+            container.innerHTML = `
+                <div class="alert alert-warning">
+                    Please enter a valid query first before submitting your answer!
+                </div>`;
+        }
+    } else if (queryResult.data.total !== undefined) {
+        if (knightsTotal === queryResult.data.total) {
+            container.innerHTML = `
+                <div class="alert alert-success">
+                    Correct! There are ${queryResult.data.total} objects that contain the term 'knight' in the Medieval Art department.
+                </div>`;
+        } else {
+            container.innerHTML = `
+                <div class="alert alert-danger">
+                    That's not correct. Try again!
+                </div>`;
+        }
+    }
+    
+    return container;
+}
+```
+
+Great! Now you know the basics stepts to get data from an API. In the next chapter, we will show you how to get data that can be tabulated and analyzed.
