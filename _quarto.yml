@@ -20,6 +20,8 @@ website:
             href: chapters/endpoints.qmd
           - text: "Interacting with APIs"
             href: chapters/interact-apis.qmd
+          - text: "Exercise: Calling Data"
+            href: chapters/exercise-calling-data.qmd
       - text: "A Catalog of APIs"
         href: resources/catalog.qmd
 
