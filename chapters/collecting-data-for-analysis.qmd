@@ -1,0 +1,391 @@
+---
+title: "Collecting Data for Analysis"
+execute:
+    echo: true
+    message: false
+format:
+    html:
+        code-fold: false
+lightbox: true
+---
+
+During the previous chapters, we learned how to interact with APIs to retrieve data. We also practiced retrieving the total number of objects that contain a specific term in a particular department of the Metropolitan Museum of Art.
+
+In this chapter, we will take the next step: collecting and analyzing data using the Metropolitan Museum of Art API. Specifically, we will explore the question: **What thematic areas can we identify from the terms associated with objects in the Medieval Art collection?**
+
+By analyzing how pairs of terms co-occur, we aim to uncover thematic areas and explore whether these topics reveal insights about Medieval Art — at least from the perspective of the Metropolitan Museum of Art's metadata.
+
+This chapter will show how data-driven analysis can provide a fresh lens to interpret cultural artifacts and examine the stories embedded within museum collections.
+
+## What data to collect?
+
+Before starting to collect data, we need to explore what data is available and how it can help answer our research question. The first step is to examine a random object from the Medieval Art collection to identify useful fields for our analysis.
+
+As a reminder, we can use the endpoint `https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=17` to retrieve a list of object IDs from the Medieval Art collection. Simply paste the full endpoint into your browser to see a response like this:
+
+```json
+
+{
+     "total": 7136,
+     "objectIDs": [
+        32830, 32831, 32832, 32833, 32834,
+        32835, 32836, 32837, 32838, 32839,
+        // ... many more IDs ...
+        818469, 818574, 831188
+        ]
+}
+
+```
+
+Once we have an object ID, we can use it to get detailed information about that object by appending the ID to the endpoint `https://collectionapi.metmuseum.org/public/collection/v1/objects/{objectID}`. For example, the object with ID 32830 gives the following detailed response:
+
+```json
+{
+  "objectID": 32830,
+  "isHighlight": false,
+  "accessionNumber": "23.21.2",
+  "accessionYear": "1923",
+  "isPublicDomain": true,
+  "primaryImage": "https://images.metmuseum.org/CRDImages/md/original/DP164978.jpg",
+  "primaryImageSmall": "https://images.metmuseum.org/CRDImages/md/web-large/DP164978.jpg",
+  "additionalImages": [
+    "https://images.metmuseum.org/CRDImages/md/original/DP164979.jpg"
+  ],
+  "constituents": null,
+  "department": "Medieval Art",
+  "objectName": "Manuscript cutting from a Dominican antiphonary",
+  "title": "Initial P with the Martyrdom of Saint Peter Martyr",
+  "culture": "Italian",
+  "period": "",
+  "dynasty": "",
+  "reign": "",
+  "portfolio": "",
+  "artistRole": "",
+  "artistPrefix": "",
+  "artistDisplayName": "",
+  "artistDisplayBio": "",
+  "artistSuffix": "",
+  "artistAlphaSort": "",
+  "artistNationality": "",
+  "artistBeginDate": "",
+  "artistEndDate": "",
+  "artistGender": "",
+  "artistWikidata_URL": "",
+  "artistULAN_URL": "",
+  "objectDate": "second half 13th century",
+  "objectBeginDate": 1350,
+  "objectEndDate": 1400,
+  "medium": "Tempera and ink on parchment",
+  "dimensions": "3 1/8 x 2 13/16 in. (7.9 x 7.1 cm)",
+  "measurements": null,
+  "creditLine": "Gift of Bashford Dean, 1923",
+  "geographyType": "Made in",
+  "city": "Bologna",
+  "state": "",
+  "county": "",
+  "country": "Italy",
+  "region": "",
+  "subregion": "",
+  "locale": "",
+  "locus": "",
+  "excavation": "",
+  "river": "",
+  "classification": "Manuscripts and Illuminations",
+  "rightsAndReproduction": "",
+  "linkResource": "",
+  "metadataDate": "2024-10-03T04:53:53.567Z",
+  "repository": "Metropolitan Museum of Art, New York, NY",
+  "objectURL": "https://www.metmuseum.org/art/collection/search/32830",
+  "tags": [
+    {
+      "term": "Saint Peter",
+      "AAT_URL": "http://vocab.getty.edu/page/ia/901000056",
+      "Wikidata_URL": "https://www.wikidata.org/wiki/Q33923"
+    },
+    {
+      "term": "Men",
+      "AAT_URL": "http://vocab.getty.edu/page/aat/300025928",
+      "Wikidata_URL": "https://www.wikidata.org/wiki/Q8441"
+    }
+  ],
+  "objectWikidata_URL": "",
+  "isTimelineWork": true,
+  "GalleryNumber": ""
+}
+
+```
+
+By exploring the object data, we can identify several fields of interest, such as title, objectName, medium, culture, objectDate, and tags. For our analysis, we will focus on the tags field, which provides a list of terms associated with the object.
+
+The tags field is particularly valuable because it uses controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata, ensuring consistency across the dataset. These terms capture key themes and concepts, making them ideal for analyzing thematic areas in Medieval Art.
+
+## Collecting data
+
+Now that we have identified the tags field as the focus of our analysis, we can start collecting data. To do this, we need to extract the specific information we need and store it in a format suitable for analysis.
+
+Typically, this involves isolating the necessary information and storing it in a structured format like CSV (Comma-Separated Values). For our purpose, the CSV file will have two columns: `objectID` and `tags`. An example of the data is shown below:
+
+```csv
+objectID,terms
+462990,"['Entombment', 'Christ', 'Virgin Mary']"
+462991,['Women']
+462992,"['Men', 'Cross', 'Christ']"
+462994,['Men']
+462995,['Men']
+462997,"['Cross', 'Christ']"
+462998,"['Animals', 'Birds']"
+463015,"['Men', 'Portraits']"
+463023,['Deer']
+463024,['Eagles']
+463032,"['Entombment', 'Christ']"
+463036,"['Illness', 'Men', 'Women']"
+463037,"['Kings', 'Women', 'David', 'Eve']"
+463039,"['Kings', 'Baptismal Fonts', 'Saints']"
+463040,"['Infants', 'Women', 'Baptismal Fonts']"
+463052,['Deer']
+463081,"['Animals', 'Cross']"
+463083,['Human Figures']
+463084,"['Human Figures', 'Angels']"
+```
+
+This data was collected from the first 100 objects in the Medieval Art collection. It's important to note that not all objects have tags, and some only have one term. Exploring the data is crucial to understanding its completeness and whether it can answer our research question.
+
+Even with incomplete data, we can still identify thematic areas. For example, we can extract term pairs that co-occur within the same object. For object ID 462990, the terms `Entombment`, `Christ`, and `Virgin Mary` co-occur, which can be represented like this:
+
+```csv
+Source,Target
+Entombment,Christ
+Entombment,Virgin Mary
+Christ,Virgin Mary
+```
+
+When we notice that some pairs repeat across different objects, we can add weights to these pairs. For example, the pair Men and Cross appears in both 462992 and 462997, giving it a weight of 2. The table becomes:
+
+```csv
+Source,Target,Weight
+Entombment,Christ,1
+Entombment,Virgin Mary,1
+Christ,Virgin Mary,1
+Men,Cross,2
+Men,Christ,1
+Cross,Christ,1
+```
+
+Using this small sample, we can already start drafting a simple network graph to visualize these relationships.
+
+```{r}
+#| code-fold: true
+#| message: false
+#| fig-width: 10
+#| fig-height: 8
+
+library(igraph)
+
+edges <- data.frame(
+  Source = c(
+  "Entombment", "Entombment", "Christ", "Men", "Men", "Cross", 
+  "Animals", "Men", "Illness", "Illness", "Men", "Kings", 
+  "Kings", "Kings", "Women", "Women", "David"
+),
+  Target = c(
+  "Christ", "Virgin Mary", "Virgin Mary", "Cross", "Christ", "Christ", 
+  "Birds", "Portraits", "Men", "Women", "Women", "Women", 
+  "David", "Eve", "David", "Eve", "Eve"
+),
+  Weight = c(
+  2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+)
+
+)
+
+network <- graph_from_data_frame(edges, directed = FALSE)
+
+plot(
+  network,
+  vertex.size = 30,
+  vertex.label.cex = 0.8,
+  edge.width = E(network)$Weight * 2,
+  edge.color = "gray50",
+  vertex.color = "lightblue",
+  main = "Network Graph"
+)
+```
+
+This simple network graph provides a glimpse of the relationships between terms. For instance, we can see how the network is highly centered around the term "Men," which connects with other groups associated with "Christ." In contrast, "Women" is part of a smaller group tied to terms like "Eve," "David," and "Kings." While this is just a small sample, it demonstrates how network analysis can reveal thematic patterns.
+
+With this proof of concept, we’re ready to scale up to the entire Medieval Art collection. The complete data includes term pairs from 3695 objects, resulting in 1725 unique pairs. The dataset is stored in a CSV file, which can be accessed here: [Medieval Art Data - Terms Network](../data/terms_collection17.csv). Below is a preview of the first 20 rows:
+
+```{r}
+#| echo: true
+#| code-fold: true
+
+terms_collection <- read.csv("../data/terms_collection17.csv")
+head(terms_collection, 20)
+```
+
+
+In the next chapter, we’ll use this full dataset to build a comprehensive network graph, analyze its structure, and uncover thematic clusters that provide deeper insights into the Medieval Art collection.
+
+::: {.callout-tip collapse="true"}
+## A Note About Automation
+To collect the data for this project, we used a Python script to automate the process. This ensured accuracy and efficiency when processing thousands of objects in the Medieval Art collection. The script performs the following steps:
+
+1. Retrieves object IDs from the API.
+2. Fetches tags for each object.
+3. Generates term pairs and calculates weights.
+4. Saves the results in a CSV file for analysis.
+
+Here’s the code used for this process. If you’re familiar with Python, you can experiment with it to collect data from other departments or customize it to fit your needs:
+
+```python
+
+import httpx
+import time
+import json
+from itertools import combinations
+import pandas as pd
+
+
+def get_api_data(endpoint: str, params: dict | None = None) -> dict:
+    """
+    Get data from the API.
+
+    Parameters:
+        endpoint (str): The endpoint to get data from.
+        params (dict, optional): The parameters to pass to the endpoint.
+
+    Returns:
+        dict: The data from the API in JSON format.
+
+    Raises:
+        Exception: If the HTTP request fails or JSON decoding fails.
+    """
+    params = params or {}
+    
+    try:
+        response = httpx.get(endpoint, params=params)
+        response.raise_for_status()
+        return response.json()
+    except httpx.HTTPStatusError as e:
+        raise Exception(f"HTTP request failed: {e}")
+    except json.JSONDecodeError as e:
+        raise Exception(f"Failed to decode JSON response: {e}")
+
+    
+def get_terms_from_endpoint(endpoint: str, objectID: str, return_full_list: bool = False) -> list[str]:
+    """
+    Get terms from an endpoint.
+
+    Parameters:
+        endpoint (str): Base endpoint URL
+        objectID (str): Object ID to append to endpoint
+        return_full_list (bool): If True, returns full list of terms; if False, returns pairs
+
+    Returns:
+        list[str] | list[dict[str, str]]: List of terms or list of term pairs
+    """
+    try:
+        endpoint = f"{endpoint}/{objectID}"
+        data = get_api_data(endpoint)
+        data = data["tags"]
+        terms = [tag["term"] for tag in data]
+
+        if return_full_list:
+            return terms
+        elif len(terms) > 1:
+            pairs = list(combinations(terms, 2))
+            return [{"Source": pair[0], "Target": pair[1]} for pair in pairs]
+        
+    except KeyError as ke:
+        print(f"KeyError for objectID {objectID}: {ke}") 
+        raise
+    except TypeError as te:
+        print(f"TypeError for objectID {objectID}: {te}")
+        raise
+
+def get_terms_from_API(
+        collection_endpoint: str, 
+        collection_params: dict | None = None, 
+        object_endpoint: str | None = None,
+        report: bool = False, 
+        report_file: str = "report.txt", 
+        save_file: str = "terms.json",
+        save_csv: str = "terms.csv",
+        verbose: bool = False,
+        return_full_list: bool = False,
+        limit: int = None) -> tuple[list[str | dict[str, str]], int]:
+    """
+    Get terms from the API.
+
+    Parameters:
+        collection_endpoint (str): The endpoint for the collection of objects.
+        collection_params (dict, optional): Parameters for the collection endpoint.
+        object_endpoint (str): The endpoint for individual objects.
+        report (bool): Whether to generate a report.
+        report_file (str): Path to save the report.
+        save_file (str): Path to save terms as JSON.
+        save_csv (str): Path to save terms as CSV.
+        verbose (bool): Whether to print progress.
+        return_full_list (bool): Whether to return full list of terms.
+        limit (int, optional): Maximum number of objects to process.
+
+    Returns:
+        tuple[list, int]: List of terms or term pairs, and count of failed requests.
+    """
+
+    collection_params = collection_params or {}
+
+    if not object_endpoint:
+        raise ValueError("object_endpoint must be provided")
+    
+    objectIDs = get_api_data(collection_endpoint, collection_params).get("objectIDs")
+    if not objectIDs:
+        return [], 0
+
+    if limit:
+        objectIDs = objectIDs[:limit]
+    
+    terms = []
+    none_count = 0
+
+    for objectID in objectIDs:
+        time.sleep(0.5) # Consider to implement a rate limiter
+        try:
+            object_terms = get_terms_from_endpoint(
+                object_endpoint, 
+                str(objectID), 
+                return_full_list
+            )
+            
+            if object_terms:
+                terms.extend(object_terms)
+                if verbose:
+                    print(f"{objectID} terms: {object_terms}")
+        except Exception as e:
+            if verbose:
+                print(f"Failed to process objectID {objectID}: {e}")
+            none_count += 1
+
+    if save_csv and not return_full_list:
+        df = pd.DataFrame(terms)
+        if not df.empty:
+            df = df.groupby(["Source", "Target"]).size().reset_index(name="Weight")
+            df.to_csv(save_csv, index=False)
+
+    if save_file:
+        with open(save_file, "w") as f:
+            json.dump(terms, f)
+
+    if report:
+        report_text = (
+            f"Total objects: {len(objectIDs)}\n"
+            f"Total terms: {len(terms)}\n"
+            f"Failed requests: {none_count}"
+        )
+        with open(report_file, "w") as f:
+            f.write(report_text)
+
+    return terms, none_count
+```
+
+:::
