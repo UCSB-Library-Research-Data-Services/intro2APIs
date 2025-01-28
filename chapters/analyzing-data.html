@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="A Gentle Introduction to APIs">
 
-<title>Unlocking Data – Unlocking DataA Gentle Introduction to APIs</title>
+<title>analyzing-data – Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./chapters/what-is-an-api.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-66ab7fd5e73b7f0a764e0d49b3e29ab1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c876a691e515c62f1ddaad8d15b85ab7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../resources/catalog.html" rel="next">
+<link href="../chapters/visualizing-data.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-66ab7fd5e73b7f0a764e0d49b3e29ab1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c876a691e515c62f1ddaad8d15b85ab7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -71,10 +71,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="static/css/styles.css">
+<link rel="stylesheet" href="../static/css/styles.css">
 </head>
 
-<body class="nav-sidebar docked fullcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/collecting-data-for-analysis.html">APIs for Data Analysis</a></li><li class="breadcrumb-item"><a href="../chapters/analyzing-data.html">Analyzing Data</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -98,14 +98,14 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./static/imgs/integration.png" class="img-fluid figure-img"></p>
+<p><img src="../static/imgs/integration.png" class="img-fluid figure-img"></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
 </div></div>
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span></a> 
+      <a href="../">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span></a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -117,13 +117,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What are APIs and why do they exists</span></a>
   </div>
 </li>
@@ -138,19 +138,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/endpoints.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/endpoints.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Endpoints</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/interact-apis.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/interact-apis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interacting with APIs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/exercise-calling-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/exercise-calling-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise: Calling Data</span></a>
   </div>
 </li>
@@ -167,19 +167,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/collecting-data-for-analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/collecting-data-for-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Collecting Data for Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/visualizing-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/visualizing-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visualizing Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/analyzing-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/analyzing-data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Analyzing Data</span></a>
   </div>
 </li>
@@ -187,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources/catalog.html" class="sidebar-item-text sidebar-link">
+  <a href="../resources/catalog.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A Catalog of APIs</span></a>
   </div>
 </li>
@@ -196,43 +196,17 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Unlocking Data</h1>
-</div>
-
-<div>
-  <div class="description">
-    A Gentle Introduction to APIs
-  </div>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/collecting-data-for-analysis.html">APIs for Data Analysis</a></li><li class="breadcrumb-item"><a href="../chapters/analyzing-data.html">Analyzing Data</a></li></ol></nav></header>
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
 
 
-<section id="unlocking-data" class="level1">
-<h1>Unlocking data</h1>
-<section id="a-gentle-introduction-to-apis" class="level2">
-<h2 class="anchored" data-anchor-id="a-gentle-introduction-to-apis">A Gentle Introduction to APIs</h2>
-<p>A presentation will be given here…</p>
-
-
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -654,10 +628,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../chapters/visualizing-data.html" class="pagination-link" aria-label="Visualizing Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Visualizing Data</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapters/what-is-an-api.html" class="pagination-link" aria-label="What are APIs and why do they exists">
-        <span class="nav-page-text">What are APIs and why do they exists</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../resources/catalog.html" class="pagination-link" aria-label="A Catalog of APIs">
+        <span class="nav-page-text">A Catalog of APIs</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
