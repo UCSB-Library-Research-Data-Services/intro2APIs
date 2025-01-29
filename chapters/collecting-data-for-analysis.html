@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/visualizing-data.html" rel="next">
+<link href="../chapters/analyzing-data.html" rel="next">
 <link href="../chapters/exercise-calling-data.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-66ab7fd5e73b7f0a764e0d49b3e29ab1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c876a691e515c62f1ddaad8d15b85ab7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c8eeccb6e59102ff117700c1c100f564.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -210,12 +210,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/visualizing-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualizing Data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../chapters/analyzing-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Analyzing Data</span></a>
   </div>
@@ -238,7 +232,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-data-to-collect" id="toc-what-data-to-collect" class="nav-link active" data-scroll-target="#what-data-to-collect">What data to collect?</a></li>
+  <li><a href="#preparing-the-data-collection-and-preservation" id="toc-preparing-the-data-collection-and-preservation" class="nav-link active" data-scroll-target="#preparing-the-data-collection-and-preservation">Preparing the data collection and preservation</a></li>
+  <li><a href="#what-data-to-collect" id="toc-what-data-to-collect" class="nav-link" data-scroll-target="#what-data-to-collect">What data to collect?</a></li>
   <li><a href="#collecting-data" id="toc-collecting-data" class="nav-link" data-scroll-target="#collecting-data">Collecting data</a></li>
   </ul>
 </nav>
@@ -269,95 +264,155 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this chapter, we will take the next step: collecting and analyzing data using the Metropolitan Museum of Art API. Specifically, we will explore the question: <strong>What thematic areas can we identify from the terms associated with objects in the Medieval Art collection?</strong></p>
 <p>By analyzing how pairs of terms co-occur, we aim to uncover thematic areas and explore whether these topics reveal insights about Medieval Art — at least from the perspective of the Metropolitan Museum of Art’s metadata.</p>
 <p>This chapter will show how data-driven analysis can provide a fresh lens to interpret cultural artifacts and examine the stories embedded within museum collections.</p>
+<section id="preparing-the-data-collection-and-preservation" class="level2">
+<h2 class="anchored" data-anchor-id="preparing-the-data-collection-and-preservation">Preparing the data collection and preservation</h2>
+<p>Before starting to collect data, it’s important to think ahead and plan how the data will be collected, stored, and preserved for future use. Although this is a small project, we can follow some best practices to ensure data integrity and reproducibility.</p>
+<p>Our first step is to create a directory structure to store the data and file naming conventions. We will create a directory called <code>data</code> to store both the raw and processed data. We will also create a directory to store the code used to collect data, and a directory to store the results of the analysis. Additionally, we will create a <code>README.md</code> file to document the project and a <code>LICENSE</code> file to specify the license under which the data is made available.</p>
+<p>The project directory structure would look like this:</p>
+<pre><code>project/
+├── data/
+│   ├── raw/ # Original, unprocessed data
+│   ├── processed/ # Cleaned and transformed data for analysis
+├── code/ # Scripts used for data collection and processing
+├── README.md # Project documentation
+├── LICENSE # Licensing information</code></pre>
+<p>To ensure consistency, we will use <strong>clear</strong> and <strong>descriptive</strong> names for our files. For example:</p>
+<ul>
+<li><code>raw_medieval_art_tags.csv</code>: The original data collected from the API.</li>
+<li><code>processed_term_pairs.csv</code>: The processed dataset containing term pairs with weights.</li>
+</ul>
+<p>Visit the project repository on GitHub to explore the full directory structure, example files, and scripts.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+About Data Use
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>It’s important to check the data source documentation to identify the terms of use and any possible restrictions. In this case, the Metropolitan Museum of Art has published the data under a <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero (CC0)</a> license. This means the data is free to use and distribute without restrictions. For more details, visit the <a href="https://metmuseum.github.io/">API documentation</a>.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="what-data-to-collect" class="level2">
 <h2 class="anchored" data-anchor-id="what-data-to-collect">What data to collect?</h2>
-<p>Before starting to collect data, we need to explore what data is available and how it can help answer our research question. The first step is to examine a random object from the Medieval Art collection to identify useful fields for our analysis.</p>
-<p>As a reminder, we can use the endpoint <code>https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=17</code> to retrieve a list of object IDs from the Medieval Art collection. Simply paste the full endpoint into your browser to see a response like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     <span class="dt">"total"</span><span class="fu">:</span> <span class="dv">7136</span><span class="fu">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>     <span class="dt">"objectIDs"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="dv">32830</span><span class="ot">,</span> <span class="dv">32831</span><span class="ot">,</span> <span class="dv">32832</span><span class="ot">,</span> <span class="dv">32833</span><span class="ot">,</span> <span class="dv">32834</span><span class="ot">,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="dv">32835</span><span class="ot">,</span> <span class="dv">32836</span><span class="ot">,</span> <span class="dv">32837</span><span class="ot">,</span> <span class="dv">32838</span><span class="ot">,</span> <span class="dv">32839</span><span class="ot">,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">...</span> <span class="er">many</span> <span class="er">more</span> <span class="er">IDs</span> <span class="er">...</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="dv">818469</span><span class="ot">,</span> <span class="dv">818574</span><span class="ot">,</span> <span class="dv">831188</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Before starting to collect data, we need to explore what data is available and how it can help answer our research question.</p>
+<p>The first step is to examine a random object from the Medieval Art collection to identify useful fields for our analysis. We can use the endpoint <code>https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=17</code> to retrieve a list of object IDs from the Medieval Art collection. Simply paste the full endpoint into your browser to see a response like this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="dt">"total"</span><span class="fu">:</span> <span class="dv">7136</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     <span class="dt">"objectIDs"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="dv">32830</span><span class="ot">,</span> <span class="dv">32831</span><span class="ot">,</span> <span class="dv">32832</span><span class="ot">,</span> <span class="dv">32833</span><span class="ot">,</span> <span class="dv">32834</span><span class="ot">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="dv">32835</span><span class="ot">,</span> <span class="dv">32836</span><span class="ot">,</span> <span class="dv">32837</span><span class="ot">,</span> <span class="dv">32838</span><span class="ot">,</span> <span class="dv">32839</span><span class="ot">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">...</span> <span class="er">many</span> <span class="er">more</span> <span class="er">IDs</span> <span class="er">...</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="dv">818469</span><span class="ot">,</span> <span class="dv">818574</span><span class="ot">,</span> <span class="dv">831188</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Once we have an object ID, we can use it to get detailed information about that object by appending the ID to the endpoint <code>https://collectionapi.metmuseum.org/public/collection/v1/objects/{objectID}</code>. For example, the object with ID 32830 gives the following detailed response:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectID"</span><span class="fu">:</span> <span class="dv">32830</span><span class="fu">,</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"isHighlight"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"accessionNumber"</span><span class="fu">:</span> <span class="st">"23.21.2"</span><span class="fu">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"accessionYear"</span><span class="fu">:</span> <span class="st">"1923"</span><span class="fu">,</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"isPublicDomain"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"primaryImage"</span><span class="fu">:</span> <span class="st">"https://images.metmuseum.org/CRDImages/md/original/DP164978.jpg"</span><span class="fu">,</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"primaryImageSmall"</span><span class="fu">:</span> <span class="st">"https://images.metmuseum.org/CRDImages/md/web-large/DP164978.jpg"</span><span class="fu">,</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"additionalImages"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://images.metmuseum.org/CRDImages/md/original/DP164979.jpg"</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"constituents"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"department"</span><span class="fu">:</span> <span class="st">"Medieval Art"</span><span class="fu">,</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectName"</span><span class="fu">:</span> <span class="st">"Manuscript cutting from a Dominican antiphonary"</span><span class="fu">,</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"Initial P with the Martyrdom of Saint Peter Martyr"</span><span class="fu">,</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"culture"</span><span class="fu">:</span> <span class="st">"Italian"</span><span class="fu">,</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"period"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"dynasty"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reign"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"portfolio"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistRole"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistPrefix"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistDisplayName"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistDisplayBio"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistSuffix"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistAlphaSort"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistNationality"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistBeginDate"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistEndDate"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistGender"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistWikidata_URL"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistULAN_URL"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectDate"</span><span class="fu">:</span> <span class="st">"second half 13th century"</span><span class="fu">,</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectBeginDate"</span><span class="fu">:</span> <span class="dv">1350</span><span class="fu">,</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectEndDate"</span><span class="fu">:</span> <span class="dv">1400</span><span class="fu">,</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"medium"</span><span class="fu">:</span> <span class="st">"Tempera and ink on parchment"</span><span class="fu">,</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"dimensions"</span><span class="fu">:</span> <span class="st">"3 1/8 x 2 13/16 in. (7.9 x 7.1 cm)"</span><span class="fu">,</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"measurements"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"creditLine"</span><span class="fu">:</span> <span class="st">"Gift of Bashford Dean, 1923"</span><span class="fu">,</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"geographyType"</span><span class="fu">:</span> <span class="st">"Made in"</span><span class="fu">,</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"city"</span><span class="fu">:</span> <span class="st">"Bologna"</span><span class="fu">,</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"state"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"county"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"country"</span><span class="fu">:</span> <span class="st">"Italy"</span><span class="fu">,</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"region"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"subregion"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"locale"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"locus"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"excavation"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"river"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"classification"</span><span class="fu">:</span> <span class="st">"Manuscripts and Illuminations"</span><span class="fu">,</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"rightsAndReproduction"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"linkResource"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"metadataDate"</span><span class="fu">:</span> <span class="st">"2024-10-03T04:53:53.567Z"</span><span class="fu">,</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"repository"</span><span class="fu">:</span> <span class="st">"Metropolitan Museum of Art, New York, NY"</span><span class="fu">,</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectURL"</span><span class="fu">:</span> <span class="st">"https://www.metmuseum.org/art/collection/search/32830"</span><span class="fu">,</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"term"</span><span class="fu">:</span> <span class="st">"Saint Peter"</span><span class="fu">,</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"AAT_URL"</span><span class="fu">:</span> <span class="st">"http://vocab.getty.edu/page/ia/901000056"</span><span class="fu">,</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"Wikidata_URL"</span><span class="fu">:</span> <span class="st">"https://www.wikidata.org/wiki/Q33923"</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"term"</span><span class="fu">:</span> <span class="st">"Men"</span><span class="fu">,</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"AAT_URL"</span><span class="fu">:</span> <span class="st">"http://vocab.getty.edu/page/aat/300025928"</span><span class="fu">,</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"Wikidata_URL"</span><span class="fu">:</span> <span class="st">"https://www.wikidata.org/wiki/Q8441"</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectWikidata_URL"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"isTimelineWork"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"GalleryNumber"</span><span class="fu">:</span> <span class="st">""</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>By exploring the object data, we can identify several fields of interest, such as title, objectName, medium, culture, objectDate, and tags. For our analysis, we will focus on the tags field, which provides a list of terms associated with the object.</p>
-<p>The tags field is particularly valuable because it uses controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata, ensuring consistency across the dataset. These terms capture key themes and concepts, making them ideal for analyzing thematic areas in Medieval Art.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectID"</span><span class="fu">:</span> <span class="dv">32830</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"isHighlight"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"accessionNumber"</span><span class="fu">:</span> <span class="st">"23.21.2"</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"accessionYear"</span><span class="fu">:</span> <span class="st">"1923"</span><span class="fu">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"isPublicDomain"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"primaryImage"</span><span class="fu">:</span> <span class="st">"https://images.metmuseum.org/CRDImages/md/original/DP164978.jpg"</span><span class="fu">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"primaryImageSmall"</span><span class="fu">:</span> <span class="st">"https://images.metmuseum.org/CRDImages/md/web-large/DP164978.jpg"</span><span class="fu">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"additionalImages"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://images.metmuseum.org/CRDImages/md/original/DP164979.jpg"</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"constituents"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"department"</span><span class="fu">:</span> <span class="st">"Medieval Art"</span><span class="fu">,</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectName"</span><span class="fu">:</span> <span class="st">"Manuscript cutting from a Dominican antiphonary"</span><span class="fu">,</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"title"</span><span class="fu">:</span> <span class="st">"Initial P with the Martyrdom of Saint Peter Martyr"</span><span class="fu">,</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"culture"</span><span class="fu">:</span> <span class="st">"Italian"</span><span class="fu">,</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"period"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"dynasty"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reign"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"portfolio"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistRole"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistPrefix"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistDisplayName"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistDisplayBio"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistSuffix"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistAlphaSort"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistNationality"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistBeginDate"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistEndDate"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistGender"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistWikidata_URL"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"artistULAN_URL"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectDate"</span><span class="fu">:</span> <span class="st">"second half 13th century"</span><span class="fu">,</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectBeginDate"</span><span class="fu">:</span> <span class="dv">1350</span><span class="fu">,</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectEndDate"</span><span class="fu">:</span> <span class="dv">1400</span><span class="fu">,</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"medium"</span><span class="fu">:</span> <span class="st">"Tempera and ink on parchment"</span><span class="fu">,</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"dimensions"</span><span class="fu">:</span> <span class="st">"3 1/8 x 2 13/16 in. (7.9 x 7.1 cm)"</span><span class="fu">,</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"measurements"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"creditLine"</span><span class="fu">:</span> <span class="st">"Gift of Bashford Dean, 1923"</span><span class="fu">,</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"geographyType"</span><span class="fu">:</span> <span class="st">"Made in"</span><span class="fu">,</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"city"</span><span class="fu">:</span> <span class="st">"Bologna"</span><span class="fu">,</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"state"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"county"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"country"</span><span class="fu">:</span> <span class="st">"Italy"</span><span class="fu">,</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"region"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"subregion"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"locale"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"locus"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"excavation"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"river"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"classification"</span><span class="fu">:</span> <span class="st">"Manuscripts and Illuminations"</span><span class="fu">,</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"rightsAndReproduction"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"linkResource"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"metadataDate"</span><span class="fu">:</span> <span class="st">"2024-10-03T04:53:53.567Z"</span><span class="fu">,</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"repository"</span><span class="fu">:</span> <span class="st">"Metropolitan Museum of Art, New York, NY"</span><span class="fu">,</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectURL"</span><span class="fu">:</span> <span class="st">"https://www.metmuseum.org/art/collection/search/32830"</span><span class="fu">,</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"tags"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"term"</span><span class="fu">:</span> <span class="st">"Saint Peter"</span><span class="fu">,</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"AAT_URL"</span><span class="fu">:</span> <span class="st">"http://vocab.getty.edu/page/ia/901000056"</span><span class="fu">,</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"Wikidata_URL"</span><span class="fu">:</span> <span class="st">"https://www.wikidata.org/wiki/Q33923"</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"term"</span><span class="fu">:</span> <span class="st">"Men"</span><span class="fu">,</span></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"AAT_URL"</span><span class="fu">:</span> <span class="st">"http://vocab.getty.edu/page/aat/300025928"</span><span class="fu">,</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"Wikidata_URL"</span><span class="fu">:</span> <span class="st">"https://www.wikidata.org/wiki/Q8441"</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectWikidata_URL"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"isTimelineWork"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"GalleryNumber"</span><span class="fu">:</span> <span class="st">""</span></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By exploring the object data, we can identify several fields of interest:</p>
+<ul>
+<li><code>title</code>: Provides the name of the object.</li>
+<li><code>objectName</code>: Describes the type of object (e.g., Manuscript cutting).</li>
+<li><code>medium</code>: Indicates the materials used to create the object.</li>
+<li><code>culture</code>: Describes the cultural origin of the object.</li>
+<li><code>objectDate</code>: Includes date information.</li>
+<li><code>tags</code>: Provides controlled vocabulary terms that capture themes and concepts.</li>
+</ul>
+<p>For our analysis, we will focus on the <strong>tags</strong> field, which provides a list of terms associated with the object. The tags field is particularly valuable because it uses controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata, ensuring consistency across the dataset. These terms capture key themes and concepts, making them ideal for analyzing thematic areas in Medieval Art.</p>
+<p>Documenting the focus of our analysis in a <code>README.md</code> file is a critical step in ensuring transparency and reproducibility. The <code>README.md</code> file provides future researchers (or your future self!) with a clear understanding of the dataset, its purpose, and how it was used. Here’s an example of how you can document this information:</p>
+<p>Having identified the tags field as the focus of our analysis, we can include that information in our <code>README.md</code> file to document the project. This is an example of how we can include that information in the <code>README.md</code> file:</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Medieval Art Collection Analysis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This project aims to analyze the Medieval Art collection of the Metropolitan Museum of Art. The focus of this analysis is on the tags field, which provides a list of terms associated with each object, using controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata. With that information, we aim to identify thematic areas and explore whether these topics reveal insights about Medieval Art — at least from the perspective of the Metropolitan Museum of Art’s metadata, and propose a method to analyze arbitrary terms associated with museum collections.</p>
+<p><strong>License and right of use</strong></p>
+<p>The data provided by the Metropolitan Museum of Art is published under a <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero (CC0) license</a>. This means that the data is in the public domain and can be used for any purpose without restriction. The derived data and code written for this project is published under the same license.</p>
+</div>
+</div>
 </section>
 <section id="collecting-data" class="level2">
 <h2 class="anchored" data-anchor-id="collecting-data">Collecting data</h2>
@@ -401,36 +456,36 @@ Cross,Christ,1</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Source =</span> <span class="fu">c</span>(</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Entombment"</span>, <span class="st">"Entombment"</span>, <span class="st">"Christ"</span>, <span class="st">"Men"</span>, <span class="st">"Men"</span>, <span class="st">"Cross"</span>, </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Animals"</span>, <span class="st">"Men"</span>, <span class="st">"Illness"</span>, <span class="st">"Illness"</span>, <span class="st">"Men"</span>, <span class="st">"Kings"</span>, </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Kings"</span>, <span class="st">"Kings"</span>, <span class="st">"Women"</span>, <span class="st">"Women"</span>, <span class="st">"David"</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>),</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Target =</span> <span class="fu">c</span>(</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Christ"</span>, <span class="st">"Virgin Mary"</span>, <span class="st">"Virgin Mary"</span>, <span class="st">"Cross"</span>, <span class="st">"Christ"</span>, <span class="st">"Christ"</span>, </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Birds"</span>, <span class="st">"Portraits"</span>, <span class="st">"Men"</span>, <span class="st">"Women"</span>, <span class="st">"Women"</span>, <span class="st">"Women"</span>, </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"David"</span>, <span class="st">"Eve"</span>, <span class="st">"David"</span>, <span class="st">"Eve"</span>, <span class="st">"Eve"</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>),</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Weight =</span> <span class="fu">c</span>(</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>network <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(edges, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  network,</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.size =</span> <span class="dv">30</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.cex =</span> <span class="fl">0.8</span>,</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.width =</span> <span class="fu">E</span>(network)<span class="sc">$</span>Weight <span class="sc">*</span> <span class="dv">2</span>,</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.color =</span> <span class="st">"gray50"</span>,</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.color =</span> <span class="st">"lightblue"</span>,</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Network Graph"</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>edges <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Source =</span> <span class="fu">c</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Entombment"</span>, <span class="st">"Entombment"</span>, <span class="st">"Christ"</span>, <span class="st">"Men"</span>, <span class="st">"Men"</span>, <span class="st">"Cross"</span>, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Animals"</span>, <span class="st">"Men"</span>, <span class="st">"Illness"</span>, <span class="st">"Illness"</span>, <span class="st">"Men"</span>, <span class="st">"Kings"</span>, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Kings"</span>, <span class="st">"Kings"</span>, <span class="st">"Women"</span>, <span class="st">"Women"</span>, <span class="st">"David"</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Target =</span> <span class="fu">c</span>(</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Christ"</span>, <span class="st">"Virgin Mary"</span>, <span class="st">"Virgin Mary"</span>, <span class="st">"Cross"</span>, <span class="st">"Christ"</span>, <span class="st">"Christ"</span>, </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Birds"</span>, <span class="st">"Portraits"</span>, <span class="st">"Men"</span>, <span class="st">"Women"</span>, <span class="st">"Women"</span>, <span class="st">"Women"</span>, </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"David"</span>, <span class="st">"Eve"</span>, <span class="st">"David"</span>, <span class="st">"Eve"</span>, <span class="st">"Eve"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Weight =</span> <span class="fu">c</span>(</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>network <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(edges, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  network,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.size =</span> <span class="dv">30</span>,</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.cex =</span> <span class="fl">0.8</span>,</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.width =</span> <span class="fu">E</span>(network)<span class="sc">$</span>Weight <span class="sc">*</span> <span class="dv">2</span>,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.color =</span> <span class="st">"gray50"</span>,</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.color =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Network Graph"</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -445,8 +500,8 @@ Cross,Christ,1</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>terms_collection <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/terms_collection17.csv"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(terms_collection, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>terms_collection <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/terms_collection17.csv"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(terms_collection, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  Source                     Target Weight
@@ -474,7 +529,7 @@ Cross,Christ,1</code></pre>
 </div>
 <p>In the next chapter, we’ll use this full dataset to build a comprehensive network graph, analyze its structure, and uncover thematic clusters that provide deeper insights into the Medieval Art collection.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -483,7 +538,7 @@ A Note About Automation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>To collect the data for this project, we used a Python script to automate the process. This ensured accuracy and efficiency when processing thousands of objects in the Medieval Art collection. The script performs the following steps:</p>
 <ol type="1">
@@ -492,155 +547,7 @@ A Note About Automation
 <li>Generates term pairs and calculates weights.</li>
 <li>Saves the results in a CSV file for analysis.</li>
 </ol>
-<p>Here’s the code used for this process. If you’re familiar with Python, you can experiment with it to collect data from other departments or customize it to fit your needs:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> httpx</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> combinations</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_api_data(endpoint: <span class="bu">str</span>, params: <span class="bu">dict</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span>) <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">    Get data from the API.</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">        endpoint (str): The endpoint to get data from.</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">        params (dict, optional): The parameters to pass to the endpoint.</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">        dict: The data from the API in JSON format.</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">    Raises:</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co">        Exception: If the HTTP request fails or JSON decoding fails.</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> params <span class="kw">or</span> {}</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> httpx.get(endpoint, params<span class="op">=</span>params)</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        response.raise_for_status()</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response.json()</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> httpx.HTTPStatusError <span class="im">as</span> e:</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f"HTTP request failed: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> json.JSONDecodeError <span class="im">as</span> e:</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="ss">f"Failed to decode JSON response: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_terms_from_endpoint(endpoint: <span class="bu">str</span>, objectID: <span class="bu">str</span>, return_full_list: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]:</span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="co">    Get terms from an endpoint.</span></span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="co">        endpoint (str): Base endpoint URL</span></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="co">        objectID (str): Object ID to append to endpoint</span></span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="co">        return_full_list (bool): If True, returns full list of terms; if False, returns pairs</span></span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="co">        list[str] | list[dict[str, str]]: List of terms or list of term pairs</span></span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>        endpoint <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>endpoint<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>objectID<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> get_api_data(endpoint)</span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> data[<span class="st">"tags"</span>]</span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>        terms <span class="op">=</span> [tag[<span class="st">"term"</span>] <span class="cf">for</span> tag <span class="kw">in</span> data]</span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> return_full_list:</span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> terms</span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">len</span>(terms) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>            pairs <span class="op">=</span> <span class="bu">list</span>(combinations(terms, <span class="dv">2</span>))</span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> [{<span class="st">"Source"</span>: pair[<span class="dv">0</span>], <span class="st">"Target"</span>: pair[<span class="dv">1</span>]} <span class="cf">for</span> pair <span class="kw">in</span> pairs]</span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">KeyError</span> <span class="im">as</span> ke:</span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"KeyError for objectID </span><span class="sc">{</span>objectID<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>ke<span class="sc">}</span><span class="ss">"</span>) </span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span></span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> te:</span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"TypeError for objectID </span><span class="sc">{</span>objectID<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>te<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span></span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_terms_from_API(</span>
-<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>        collection_endpoint: <span class="bu">str</span>, </span>
-<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>        collection_params: <span class="bu">dict</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span>, </span>
-<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>        object_endpoint: <span class="bu">str</span> <span class="op">|</span> <span class="va">None</span> <span class="op">=</span> <span class="va">None</span>,</span>
-<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>        report: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>, </span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>        report_file: <span class="bu">str</span> <span class="op">=</span> <span class="st">"report.txt"</span>, </span>
-<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>        save_file: <span class="bu">str</span> <span class="op">=</span> <span class="st">"terms.json"</span>,</span>
-<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>        save_csv: <span class="bu">str</span> <span class="op">=</span> <span class="st">"terms.csv"</span>,</span>
-<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>        verbose: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>        return_full_list: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>        limit: <span class="bu">int</span> <span class="op">=</span> <span class="va">None</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[<span class="bu">list</span>[<span class="bu">str</span> <span class="op">|</span> <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">str</span>]], <span class="bu">int</span>]:</span>
-<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a><span class="co">    Get terms from the API.</span></span>
-<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
-<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a><span class="co">        collection_endpoint (str): The endpoint for the collection of objects.</span></span>
-<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a><span class="co">        collection_params (dict, optional): Parameters for the collection endpoint.</span></span>
-<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a><span class="co">        object_endpoint (str): The endpoint for individual objects.</span></span>
-<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a><span class="co">        report (bool): Whether to generate a report.</span></span>
-<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a><span class="co">        report_file (str): Path to save the report.</span></span>
-<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a><span class="co">        save_file (str): Path to save terms as JSON.</span></span>
-<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a><span class="co">        save_csv (str): Path to save terms as CSV.</span></span>
-<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a><span class="co">        verbose (bool): Whether to print progress.</span></span>
-<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a><span class="co">        return_full_list (bool): Whether to return full list of terms.</span></span>
-<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a><span class="co">        limit (int, optional): Maximum number of objects to process.</span></span>
-<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a><span class="co">        tuple[list, int]: List of terms or term pairs, and count of failed requests.</span></span>
-<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>    collection_params <span class="op">=</span> collection_params <span class="kw">or</span> {}</span>
-<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> object_endpoint:</span>
-<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"object_endpoint must be provided"</span>)</span>
-<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>    objectIDs <span class="op">=</span> get_api_data(collection_endpoint, collection_params).get(<span class="st">"objectIDs"</span>)</span>
-<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> objectIDs:</span>
-<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [], <span class="dv">0</span></span>
-<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> limit:</span>
-<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a>        objectIDs <span class="op">=</span> objectIDs[:limit]</span>
-<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a>    terms <span class="op">=</span> []</span>
-<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a>    none_count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> objectID <span class="kw">in</span> objectIDs:</span>
-<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="fl">0.5</span>) <span class="co"># Consider to implement a rate limiter</span></span>
-<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a>            object_terms <span class="op">=</span> get_terms_from_endpoint(</span>
-<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>                object_endpoint, </span>
-<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a>                <span class="bu">str</span>(objectID), </span>
-<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a>                return_full_list</span>
-<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> object_terms:</span>
-<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>                terms.extend(object_terms)</span>
-<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> verbose:</span>
-<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>objectID<span class="sc">}</span><span class="ss"> terms: </span><span class="sc">{</span>object_terms<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> verbose:</span>
-<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"Failed to process objectID </span><span class="sc">{</span>objectID<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>            none_count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> save_csv <span class="kw">and</span> <span class="kw">not</span> return_full_list:</span>
-<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pd.DataFrame(terms)</span>
-<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> df.empty:</span>
-<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a>            df <span class="op">=</span> df.groupby([<span class="st">"Source"</span>, <span class="st">"Target"</span>]).size().reset_index(name<span class="op">=</span><span class="st">"Weight"</span>)</span>
-<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>            df.to_csv(save_csv, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> save_file:</span>
-<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(save_file, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
-<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a>            json.dump(terms, f)</span>
-<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> report:</span>
-<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a>        report_text <span class="op">=</span> (</span>
-<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"Total objects: </span><span class="sc">{</span><span class="bu">len</span>(objectIDs)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
-<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"Total terms: </span><span class="sc">{</span><span class="bu">len</span>(terms)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span></span>
-<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"Failed requests: </span><span class="sc">{</span>none_count<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(report_file, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
-<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a>            f.write(report_text)</span>
-<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> terms, none_count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Code is available in the <a href="https://github.com/jairomelo/intro2APIs-examples">project repository</a>. If you’re familiar with Python, you can experiment with it to collect data from other departments or customize it to fit your needs</p>
 </div>
 </div>
 </div>
@@ -1073,8 +980,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/visualizing-data.html" class="pagination-link" aria-label="Visualizing Data">
-        <span class="nav-page-text">Visualizing Data</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/analyzing-data.html" class="pagination-link" aria-label="Analyzing Data">
+        <span class="nav-page-text">Analyzing Data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
