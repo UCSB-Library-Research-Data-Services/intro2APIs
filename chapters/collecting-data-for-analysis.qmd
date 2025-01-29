@@ -17,11 +17,42 @@ By analyzing how pairs of terms co-occur, we aim to uncover thematic areas and e
 
 This chapter will show how data-driven analysis can provide a fresh lens to interpret cultural artifacts and examine the stories embedded within museum collections.
 
+## Preparing the data collection and preservation
+
+Before starting to collect data, it's important to think ahead and plan how the data will be collected, stored, and preserved for future use. Although this is a small project, we can follow some best practices to ensure data integrity and reproducibility.
+
+Our first step is to create a directory structure to store the data and file naming conventions. We will create a directory called `data` to store both the raw and processed data. We will also create a directory to store the code used to collect data, and a directory to store the results of the analysis. Additionally, we will create a `README.md` file to document the project and a `LICENSE` file to specify the license under which the data is made available.
+
+The project directory structure would look like this:
+
+```
+project/
+├── data/
+│   ├── raw/ # Original, unprocessed data
+│   ├── processed/ # Cleaned and transformed data for analysis
+├── code/ # Scripts used for data collection and processing
+├── README.md # Project documentation
+├── LICENSE # Licensing information
+```
+
+To ensure consistency, we will use **clear** and **descriptive** names for our files. For example:
+
+- `raw_medieval_art_tags.csv`: The original data collected from the API.
+- `processed_term_pairs.csv`: The processed dataset containing term pairs with weights.
+
+Visit the project repository on GitHub to explore the full directory structure, example files, and scripts.
+
+::: {.callout-tip collapse="false"}
+## About Data Use
+It’s important to check the data source documentation to identify the terms of use and any possible restrictions. In this case, the Metropolitan Museum of Art has published the data under a [Creative Commons Zero (CC0)](https://creativecommons.org/publicdomain/zero/1.0/) license. This means the data is free to use and distribute without restrictions.
+For more details, visit the [API documentation](https://metmuseum.github.io/).
+:::
+
 ## What data to collect?
 
-Before starting to collect data, we need to explore what data is available and how it can help answer our research question. The first step is to examine a random object from the Medieval Art collection to identify useful fields for our analysis.
+Before starting to collect data, we need to explore what data is available and how it can help answer our research question. 
 
-As a reminder, we can use the endpoint `https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=17` to retrieve a list of object IDs from the Medieval Art collection. Simply paste the full endpoint into your browser to see a response like this:
+The first step is to examine a random object from the Medieval Art collection to identify useful fields for our analysis. We can use the endpoint `https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=17` to retrieve a list of object IDs from the Medieval Art collection. Simply paste the full endpoint into your browser to see a response like this:
 
 ```json
 
@@ -115,9 +146,30 @@ Once we have an object ID, we can use it to get detailed information about that 
 
 ```
 
-By exploring the object data, we can identify several fields of interest, such as title, objectName, medium, culture, objectDate, and tags. For our analysis, we will focus on the tags field, which provides a list of terms associated with the object.
+By exploring the object data, we can identify several fields of interest:
 
-The tags field is particularly valuable because it uses controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata, ensuring consistency across the dataset. These terms capture key themes and concepts, making them ideal for analyzing thematic areas in Medieval Art.
+- `title`: Provides the name of the object.
+- `objectName`: Describes the type of object (e.g., Manuscript cutting).
+- `medium`: Indicates the materials used to create the object.
+- `culture`: Describes the cultural origin of the object.
+- `objectDate`: Includes date information.
+- `tags`: Provides controlled vocabulary terms that capture themes and concepts.
+
+For our analysis, we will focus on the **tags** field, which provides a list of terms associated with the object. The tags field is particularly valuable because it uses controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata, ensuring consistency across the dataset. These terms capture key themes and concepts, making them ideal for analyzing thematic areas in Medieval Art.
+
+Documenting the focus of our analysis in a `README.md` file is a critical step in ensuring transparency and reproducibility. The `README.md` file provides future researchers (or your future self!) with a clear understanding of the dataset, its purpose, and how it was used. Here's an example of how you can document this information:
+
+Having identified the tags field as the focus of our analysis, we can include that information in our `README.md` file to document the project. This is an example of how we can include that information in the `README.md` file:
+
+::: {.callout-note appearance="minimal"}
+# Medieval Art Collection Analysis
+
+This project aims to analyze the Medieval Art collection of the Metropolitan Museum of Art. The focus of this analysis is on the tags field, which provides a list of terms associated with each object, using controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata. With that information, we aim to identify thematic areas and explore whether these topics reveal insights about Medieval Art — at least from the perspective of the Metropolitan Museum of Art's metadata, and propose a method to analyze arbitrary terms associated with museum collections.
+
+**License and right of use**
+
+The data provided by the Metropolitan Museum of Art is published under a [Creative Commons Zero (CC0) license](https://creativecommons.org/publicdomain/zero/1.0/). This means that the data is in the public domain and can be used for any purpose without restriction. The derived data and code written for this project is published under the same license.
+::: 
 
 ## Collecting data
 
@@ -235,157 +287,5 @@ To collect the data for this project, we used a Python script to automate the pr
 3. Generates term pairs and calculates weights.
 4. Saves the results in a CSV file for analysis.
 
-Here’s the code used for this process. If you’re familiar with Python, you can experiment with it to collect data from other departments or customize it to fit your needs:
-
-```python
-
-import httpx
-import time
-import json
-from itertools import combinations
-import pandas as pd
-
-
-def get_api_data(endpoint: str, params: dict | None = None) -> dict:
-    """
-    Get data from the API.
-
-    Parameters:
-        endpoint (str): The endpoint to get data from.
-        params (dict, optional): The parameters to pass to the endpoint.
-
-    Returns:
-        dict: The data from the API in JSON format.
-
-    Raises:
-        Exception: If the HTTP request fails or JSON decoding fails.
-    """
-    params = params or {}
-    
-    try:
-        response = httpx.get(endpoint, params=params)
-        response.raise_for_status()
-        return response.json()
-    except httpx.HTTPStatusError as e:
-        raise Exception(f"HTTP request failed: {e}")
-    except json.JSONDecodeError as e:
-        raise Exception(f"Failed to decode JSON response: {e}")
-
-    
-def get_terms_from_endpoint(endpoint: str, objectID: str, return_full_list: bool = False) -> list[str]:
-    """
-    Get terms from an endpoint.
-
-    Parameters:
-        endpoint (str): Base endpoint URL
-        objectID (str): Object ID to append to endpoint
-        return_full_list (bool): If True, returns full list of terms; if False, returns pairs
-
-    Returns:
-        list[str] | list[dict[str, str]]: List of terms or list of term pairs
-    """
-    try:
-        endpoint = f"{endpoint}/{objectID}"
-        data = get_api_data(endpoint)
-        data = data["tags"]
-        terms = [tag["term"] for tag in data]
-
-        if return_full_list:
-            return terms
-        elif len(terms) > 1:
-            pairs = list(combinations(terms, 2))
-            return [{"Source": pair[0], "Target": pair[1]} for pair in pairs]
-        
-    except KeyError as ke:
-        print(f"KeyError for objectID {objectID}: {ke}") 
-        raise
-    except TypeError as te:
-        print(f"TypeError for objectID {objectID}: {te}")
-        raise
-
-def get_terms_from_API(
-        collection_endpoint: str, 
-        collection_params: dict | None = None, 
-        object_endpoint: str | None = None,
-        report: bool = False, 
-        report_file: str = "report.txt", 
-        save_file: str = "terms.json",
-        save_csv: str = "terms.csv",
-        verbose: bool = False,
-        return_full_list: bool = False,
-        limit: int = None) -> tuple[list[str | dict[str, str]], int]:
-    """
-    Get terms from the API.
-
-    Parameters:
-        collection_endpoint (str): The endpoint for the collection of objects.
-        collection_params (dict, optional): Parameters for the collection endpoint.
-        object_endpoint (str): The endpoint for individual objects.
-        report (bool): Whether to generate a report.
-        report_file (str): Path to save the report.
-        save_file (str): Path to save terms as JSON.
-        save_csv (str): Path to save terms as CSV.
-        verbose (bool): Whether to print progress.
-        return_full_list (bool): Whether to return full list of terms.
-        limit (int, optional): Maximum number of objects to process.
-
-    Returns:
-        tuple[list, int]: List of terms or term pairs, and count of failed requests.
-    """
-
-    collection_params = collection_params or {}
-
-    if not object_endpoint:
-        raise ValueError("object_endpoint must be provided")
-    
-    objectIDs = get_api_data(collection_endpoint, collection_params).get("objectIDs")
-    if not objectIDs:
-        return [], 0
-
-    if limit:
-        objectIDs = objectIDs[:limit]
-    
-    terms = []
-    none_count = 0
-
-    for objectID in objectIDs:
-        time.sleep(0.5) # Consider to implement a rate limiter
-        try:
-            object_terms = get_terms_from_endpoint(
-                object_endpoint, 
-                str(objectID), 
-                return_full_list
-            )
-            
-            if object_terms:
-                terms.extend(object_terms)
-                if verbose:
-                    print(f"{objectID} terms: {object_terms}")
-        except Exception as e:
-            if verbose:
-                print(f"Failed to process objectID {objectID}: {e}")
-            none_count += 1
-
-    if save_csv and not return_full_list:
-        df = pd.DataFrame(terms)
-        if not df.empty:
-            df = df.groupby(["Source", "Target"]).size().reset_index(name="Weight")
-            df.to_csv(save_csv, index=False)
-
-    if save_file:
-        with open(save_file, "w") as f:
-            json.dump(terms, f)
-
-    if report:
-        report_text = (
-            f"Total objects: {len(objectIDs)}\n"
-            f"Total terms: {len(terms)}\n"
-            f"Failed requests: {none_count}"
-        )
-        with open(report_file, "w") as f:
-            f.write(report_text)
-
-    return terms, none_count
-```
-
+Code is available in the [project repository](https://github.com/jairomelo/intro2APIs-examples).  If you’re familiar with Python, you can experiment with it to collect data from other departments or customize it to fit your needs 
 :::
