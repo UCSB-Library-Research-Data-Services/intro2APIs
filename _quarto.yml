@@ -33,7 +33,7 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: united
     css: static/css/styles.css
     toc: true
 
