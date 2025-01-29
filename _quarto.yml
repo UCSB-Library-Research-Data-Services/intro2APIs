@@ -26,8 +26,6 @@ website:
         contents:
           - text: "Collecting Data for Analysis"
             href: chapters/collecting-data-for-analysis.qmd
-          - text: "Visualizing Data"
-            href: chapters/visualizing-data.qmd
           - text: "Analyzing Data"
             href: chapters/analyzing-data.qmd
       - text: "A Catalog of APIs"
