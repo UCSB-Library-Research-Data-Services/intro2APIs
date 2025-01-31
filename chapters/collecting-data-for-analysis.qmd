@@ -15,7 +15,7 @@ In this chapter, we will take the next step: collecting and analyzing data using
 
 By analyzing how pairs of terms co-occur, we aim to uncover thematic areas and explore whether these topics reveal insights about Medieval Art — at least from the perspective of the Metropolitan Museum of Art's metadata.
 
-This chapter will show how data-driven analysis can provide a fresh lens to interpret cultural artifacts and examine the stories embedded within museum collections.
+This chapter showcases how computational approaches can reveal hidden patterns in cultural data. By analyzing co-occurring terms in museum metadata, we aim to uncover thematic areas that define Medieval Art, helping us explore the implicit narratives within museum collections.
 
 ## Preparing the data collection and preservation
 
@@ -148,12 +148,14 @@ Once we have an object ID, we can use it to get detailed information about that 
 
 By exploring the object data, we can identify several fields of interest:
 
-- `title`: Provides the name of the object.
-- `objectName`: Describes the type of object (e.g., Manuscript cutting).
-- `medium`: Indicates the materials used to create the object.
-- `culture`: Describes the cultural origin of the object.
-- `objectDate`: Includes date information.
-- `tags`: Provides controlled vocabulary terms that capture themes and concepts.
+| Field       | Description |
+|------------|------------|
+| `title` | Name of the object |
+| `objectName` | Type of object (e.g., Manuscript cutting) |
+| `medium` | Materials used (e.g., Tempera on parchment) |
+| `culture` | Cultural origin (e.g., Italian) |
+| `objectDate` | Date or estimated time period |
+| `tags` | Controlled vocabulary terms (AAT & Wikidata) |
 
 For our analysis, we will focus on the **tags** field, which provides a list of terms associated with the object. The tags field is particularly valuable because it uses controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata, ensuring consistency across the dataset. These terms capture key themes and concepts, making them ideal for analyzing thematic areas in Medieval Art.
 
@@ -202,7 +204,7 @@ objectID,terms
 
 This data was collected from the first 100 objects in the Medieval Art collection. It's important to note that not all objects have tags, and some only have one term. Exploring the data is crucial to understanding its completeness and whether it can answer our research question.
 
-Even with incomplete data, we can still identify thematic areas. For example, we can extract term pairs that co-occur within the same object. For object ID 462990, the terms `Entombment`, `Christ`, and `Virgin Mary` co-occur, which can be represented like this:
+Instead of treating tags as separate labels, we analyze co-occurrence—when two terms appear together in the same object. By counting these relationships, we can visualize which themes are closely related across different artworks. Even with incomplete data, we can identify thematic areas. For example, we can extract term pairs that co-occur within the same object. For object ID 462990, the terms `Entombment`, `Christ`, and `Virgin Mary` co-occur, which can be represented like this:
 
 ```csv
 Source,Target
@@ -283,7 +285,9 @@ In the next chapter, we’ll use this full dataset to build a comprehensive netw
 
 ::: {.callout-tip collapse="true"}
 ## A Note About Automation
-To collect the data for this project, we used a Python script to automate the process. This ensured accuracy and efficiency when processing thousands of objects in the Medieval Art collection. The script performs the following steps:
+Manually collecting data from over 7,000+ objects would be time-consuming and error-prone. By automating the retrieval and processing of metadata, we ensure accuracy, reproducibility, and scalability—allowing us to apply this method to other museum collections in the future.
+
+To collect the data for this project, we used a Python script to automate the process. The script performs the following steps:
 
 1. Retrieves object IDs from the API.
 2. Fetches tags for each object.
