@@ -265,16 +265,19 @@ plot(
 
 This simple network graph provides a glimpse of the relationships between terms. For instance, we can see how the network is highly centered around the term "Men," which connects with other groups associated with "Christ." In contrast, "Women" is part of a smaller group tied to terms like "Eve," "David," and "Kings." While this is just a small sample, it demonstrates how network analysis can reveal thematic patterns.
 
-With this proof of concept, we’re ready to scale up to the entire Medieval Art collection. The complete data includes term pairs from 3695 objects, resulting in 1725 unique pairs. The dataset is stored in a CSV file, which can be accessed here: [Medieval Art Data - Terms Network](../data/terms_collection17.csv). Below is a preview of the first 20 rows:
+With this proof of concept, we’re ready to scale up to the entire Medieval Art collection. The complete data includes term pairs from 3695 objects, resulting in 1725 unique pairs. The dataset is stored in a CSV file, which can be accessed here: [Medieval Art Data - Tags Pairs](https://github.com/jairomelo/intro2APIs-examples/blob/main/data/processed/processed_medieval_art_tags_pairs.csv). Below is a preview of the first 20 rows:
 
 ```{r}
 #| echo: true
 #| code-fold: true
 
-terms_collection <- read.csv("../data/terms_collection17.csv")
+terms_collection <- read.csv("https://raw.githubusercontent.com/jairomelo/intro2APIs-examples/refs/heads/main/data/processed/processed_medieval_art_tags_pairs.csv")
 head(terms_collection, 20)
 ```
 
+::: {.callout-note appearance="minimal"}
+Both raw and processed data are stored in the [project repository](https://github.com/jairomelo/intro2APIs-examples/tree/main/data). You can download the data directly from the repository to use it in your own analysis.
+:::
 
 In the next chapter, we’ll use this full dataset to build a comprehensive network graph, analyze its structure, and uncover thematic clusters that provide deeper insights into the Medieval Art collection.
 
