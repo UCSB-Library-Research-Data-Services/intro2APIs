@@ -263,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>During the previous chapters, we learned how to interact with APIs to retrieve data. We also practiced retrieving the total number of objects that contain a specific term in a particular department of the Metropolitan Museum of Art.</p>
 <p>In this chapter, we will take the next step: collecting and analyzing data using the Metropolitan Museum of Art API. Specifically, we will explore the question: <strong>What thematic areas can we identify from the terms associated with objects in the Medieval Art collection?</strong></p>
 <p>By analyzing how pairs of terms co-occur, we aim to uncover thematic areas and explore whether these topics reveal insights about Medieval Art — at least from the perspective of the Metropolitan Museum of Art’s metadata.</p>
-<p>This chapter will show how data-driven analysis can provide a fresh lens to interpret cultural artifacts and examine the stories embedded within museum collections.</p>
+<p>This chapter showcases how computational approaches can reveal hidden patterns in cultural data. By analyzing co-occurring terms in museum metadata, we aim to uncover thematic areas that define Medieval Art, helping us explore the implicit narratives within museum collections.</p>
 <section id="preparing-the-data-collection-and-preservation" class="level2">
 <h2 class="anchored" data-anchor-id="preparing-the-data-collection-and-preservation">Preparing the data collection and preservation</h2>
 <p>Before starting to collect data, it’s important to think ahead and plan how the data will be collected, stored, and preserved for future use. Although this is a small project, we can follow some best practices to ensure data integrity and reproducibility.</p>
@@ -387,14 +387,40 @@ About Data Use
 <span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"GalleryNumber"</span><span class="fu">:</span> <span class="st">""</span></span>
 <span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>By exploring the object data, we can identify several fields of interest:</p>
-<ul>
-<li><code>title</code>: Provides the name of the object.</li>
-<li><code>objectName</code>: Describes the type of object (e.g., Manuscript cutting).</li>
-<li><code>medium</code>: Indicates the materials used to create the object.</li>
-<li><code>culture</code>: Describes the cultural origin of the object.</li>
-<li><code>objectDate</code>: Includes date information.</li>
-<li><code>tags</code>: Provides controlled vocabulary terms that capture themes and concepts.</li>
-</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>title</code></td>
+<td>Name of the object</td>
+</tr>
+<tr class="even">
+<td><code>objectName</code></td>
+<td>Type of object (e.g., Manuscript cutting)</td>
+</tr>
+<tr class="odd">
+<td><code>medium</code></td>
+<td>Materials used (e.g., Tempera on parchment)</td>
+</tr>
+<tr class="even">
+<td><code>culture</code></td>
+<td>Cultural origin (e.g., Italian)</td>
+</tr>
+<tr class="odd">
+<td><code>objectDate</code></td>
+<td>Date or estimated time period</td>
+</tr>
+<tr class="even">
+<td><code>tags</code></td>
+<td>Controlled vocabulary terms (AAT &amp; Wikidata)</td>
+</tr>
+</tbody>
+</table>
 <p>For our analysis, we will focus on the <strong>tags</strong> field, which provides a list of terms associated with the object. The tags field is particularly valuable because it uses controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata, ensuring consistency across the dataset. These terms capture key themes and concepts, making them ideal for analyzing thematic areas in Medieval Art.</p>
 <p>Documenting the focus of our analysis in a <code>README.md</code> file is a critical step in ensuring transparency and reproducibility. The <code>README.md</code> file provides future researchers (or your future self!) with a clear understanding of the dataset, its purpose, and how it was used. Here’s an example of how you can document this information:</p>
 <p>Having identified the tags field as the focus of our analysis, we can include that information in our <code>README.md</code> file to document the project. This is an example of how we can include that information in the <code>README.md</code> file:</p>
@@ -439,7 +465,7 @@ Medieval Art Collection Analysis
 463083,['Human Figures']
 463084,"['Human Figures', 'Angels']"</code></pre>
 <p>This data was collected from the first 100 objects in the Medieval Art collection. It’s important to note that not all objects have tags, and some only have one term. Exploring the data is crucial to understanding its completeness and whether it can answer our research question.</p>
-<p>Even with incomplete data, we can still identify thematic areas. For example, we can extract term pairs that co-occur within the same object. For object ID 462990, the terms <code>Entombment</code>, <code>Christ</code>, and <code>Virgin Mary</code> co-occur, which can be represented like this:</p>
+<p>Instead of treating tags as separate labels, we analyze co-occurrence—when two terms appear together in the same object. By counting these relationships, we can visualize which themes are closely related across different artworks. Even with incomplete data, we can identify thematic areas. For example, we can extract term pairs that co-occur within the same object. For object ID 462990, the terms <code>Entombment</code>, <code>Christ</code>, and <code>Virgin Mary</code> co-occur, which can be represented like this:</p>
 <pre class="csv"><code>Source,Target
 Entombment,Christ
 Entombment,Virgin Mary
@@ -496,11 +522,11 @@ Cross,Christ,1</code></pre>
 </div>
 </div>
 <p>This simple network graph provides a glimpse of the relationships between terms. For instance, we can see how the network is highly centered around the term “Men,” which connects with other groups associated with “Christ.” In contrast, “Women” is part of a smaller group tied to terms like “Eve,” “David,” and “Kings.” While this is just a small sample, it demonstrates how network analysis can reveal thematic patterns.</p>
-<p>With this proof of concept, we’re ready to scale up to the entire Medieval Art collection. The complete data includes term pairs from 3695 objects, resulting in 1725 unique pairs. The dataset is stored in a CSV file, which can be accessed here: <a href="../data/terms_collection17.csv">Medieval Art Data - Terms Network</a>. Below is a preview of the first 20 rows:</p>
+<p>With this proof of concept, we’re ready to scale up to the entire Medieval Art collection. The complete data includes term pairs from 3695 objects, resulting in 1725 unique pairs. The dataset is stored in a CSV file, which can be accessed here: <a href="https://github.com/jairomelo/intro2APIs-examples/blob/main/data/processed/processed_medieval_art_tags_pairs.csv">Medieval Art Data - Tags Pairs</a>. Below is a preview of the first 20 rows:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>terms_collection <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/terms_collection17.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>terms_collection <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/jairomelo/intro2APIs-examples/refs/heads/main/data/processed/processed_medieval_art_tags_pairs.csv"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(terms_collection, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -527,6 +553,16 @@ Cross,Christ,1</code></pre>
 20 Adoration of the Magi                      Jesus      6</code></pre>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Both raw and processed data are stored in the <a href="https://github.com/jairomelo/intro2APIs-examples/tree/main/data">project repository</a>. You can download the data directly from the repository to use it in your own analysis.</p>
+</div>
+</div>
+</div>
 <p>In the next chapter, we’ll use this full dataset to build a comprehensive network graph, analyze its structure, and uncover thematic clusters that provide deeper insights into the Medieval Art collection.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -540,7 +576,8 @@ A Note About Automation
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>To collect the data for this project, we used a Python script to automate the process. This ensured accuracy and efficiency when processing thousands of objects in the Medieval Art collection. The script performs the following steps:</p>
+<p>Manually collecting data from over 7,000+ objects would be time-consuming and error-prone. By automating the retrieval and processing of metadata, we ensure accuracy, reproducibility, and scalability—allowing us to apply this method to other museum collections in the future.</p>
+<p>To collect the data for this project, we used a Python script to automate the process. The script performs the following steps:</p>
 <ol type="1">
 <li>Retrieves object IDs from the API.</li>
 <li>Fetches tags for each object.</li>
