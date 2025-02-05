@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>analyzing-data – Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;</title>
+<title>Analyzing Data – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,6 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-c8eeccb6e59102ff117700c1c100f564.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -98,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/imgs/integration.png" class="img-fluid figure-img"></p>
+<p><a href="../static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Api icons created by HAJICON - Flaticon"><img src="../static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
@@ -190,17 +193,221 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#visualizing-the-network" id="toc-visualizing-the-network" class="nav-link active" data-scroll-target="#visualizing-the-network">Visualizing the network</a></li>
+  <li><a href="#exploring-the-network" id="toc-exploring-the-network" class="nav-link" data-scroll-target="#exploring-the-network">Exploring the network</a>
+  <ul class="collapse">
+  <li><a href="#isolate-communities" id="toc-isolate-communities" class="nav-link" data-scroll-target="#isolate-communities">Isolate communities</a></li>
+  <li><a href="#spotlight-on-horses" id="toc-spotlight-on-horses" class="nav-link" data-scroll-target="#spotlight-on-horses">Spotlight on “Horses”</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/collecting-data-for-analysis.html">APIs for Data Analysis</a></li><li class="breadcrumb-item"><a href="../chapters/analyzing-data.html">Analyzing Data</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/collecting-data-for-analysis.html">APIs for Data Analysis</a></li><li class="breadcrumb-item"><a href="../chapters/analyzing-data.html">Analyzing Data</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Analyzing Data</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<p>Our final step is to analyze the data using network analysis to uncover thematic areas within the Medieval Art collection.</p>
+<p>We have a dataset containing 1725 unique pairs of tags. By transforming this dataset into a network graph, we can visualize how terms relate to one another:</p>
+<ul>
+<li>Nodes represent individual tags.</li>
+<li>Edges represent co-occurrences of tags within the same object, indicating a thematic connection.</li>
+<li>Weights reflect how often each tag pair appears together.</li>
+</ul>
+<p>While the full details of network construction are beyond the scope of this workshop, you can create and explore network graphs using tools like Gephi. The processed network data is available in the <a href="https://github.com/jairomelo/intro2APIs-examples/tree/main/data">project repository</a> as <a href="https://github.com/jairomelo/intro2APIs-examples/blob/main/data/processed/network_medieval_art_tags.gexf"><code>network_medieval_art_tags.gexf</code></a>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is GEXF?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The GEXF (Graph Exchange XML Format) is a widely used format for storing and sharing network graphs. It is structured using XML, making it both human-readable and compatible with various network analysis tools like Gephi and Cytoscape.</p>
+</div>
+</div>
+</div>
+<section id="visualizing-the-network" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-network">Visualizing the network</h2>
+<p>To better understand our network, we need to visualize how terms are connected. A graph layout allows us to represent nodes (tags) and edges (relationships) in a structured way, making it easier to explore clusters, central terms, and thematic areas.</p>
+<p>There are multiple tools available for network visualization, ranging from desktop applications to web-based platforms:</p>
+<ul>
+<li>Gephi (<a href="https://gephi.org/">desktop</a> | <a href="https://gephi.org/gephi-lite/">Gephi Lite</a>) – A powerful open-source tool for network analysis.</li>
+<li>Cytoscape (<a href="https://cytoscape.org/">desktop</a>) – Commonly used in bioinformatics and large-scale networks.</li>
+<li>Retina (<a href="https://ouestware.gitlab.io/retina/beta/">web-based</a>) – A browser-friendly tool that allows interactive exploration.</li>
+</ul>
+<p>For this workshop, we will explore the network using Retina, which enables interactive exploration directly in your browser.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Retina as a Web API for Network Visualization
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Unlike traditional network visualization tools, Retina works dynamically through URL parameters, making it function similarly to a Web API. Instead of manually adjusting settings in a graphical interface, Retina allows users to modify the view using URL parameters. These parameters control layout, node size, color attributes, filtering, and focus points—all without needing a separate backend. Because the graph is rendered directly in the user’s browser, all changes happen client-side, just like API calls retrieving data.</p>
+<p>This means we can construct Retina URLs dynamically to generate custom views of our network, making it a powerful tool for API-driven scientific research.</p>
+<p>By tweaking the URL, you can reconfigure the network visualization dynamically, much like calling an API with different query parameters!</p>
+</div>
+</div>
+</div>
+<p>The layout for this visualization was prepared in Gephi and then exported to Retina, but you can also import the raw GEXF file into Retina and generate a similar graph from scratch.</p>
+<iframe width="800" height="600" src="https://ouestware.gitlab.io/retina/beta/#/embed/?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&amp;c=m-s&amp;s=ei&amp;sa[]=h&amp;sa[]=b&amp;sa[]=cu&amp;sa[]=t&amp;sa[]=ei&amp;sa[]=r&amp;sa[]=co&amp;ca[]=ec-s&amp;ca[]=w-s&amp;ca[]=m-s&amp;ca[]=s-s&amp;er=0.1&amp;ec=s&amp;ds=1" frameborder="0" title="Retina" allowfullscreen="">
+</iframe>
+<p>You can also explore the network in a new tab by clicking <a href="https://ouestware.gitlab.io/retina/beta/#/graph?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&amp;c=m-s&amp;s=ei&amp;sa%5B%5D=h&amp;sa%5B%5D=b&amp;sa%5B%5D=cu&amp;sa%5B%5D=t&amp;sa%5B%5D=ei&amp;sa%5B%5D=r&amp;sa%5B%5D=co&amp;ca%5B%5D=ec-s&amp;ca%5B%5D=w-s&amp;ca%5B%5D=m-s&amp;ca%5B%5D=s-s&amp;er=0.1&amp;ec=s&amp;ds=1">here</a></p>
+<p>The network is fully interactive, allowing you to zoom in and out to examine specific areas or use the search bar to locate a particular term. Each node represents a tag from the dataset, and its color and size reflect important network properties.</p>
+<ul>
+<li>Color is determined by the <em>modularity class</em>, which groups related terms into thematic communities. Terms that frequently appear together in the dataset will tend to cluster, forming distinct regions in the network.</li>
+<li>Size is based on <em>Eigenvector Centrality</em>, a measure of influence within the network. Larger nodes indicate terms that serve as key connectors, linking multiple themes together. For instance, if a term like “Christ” or “Virgin Mary” appears prominently, it suggests that it plays a central role in shaping the overall structure of the dataset.</li>
+</ul>
+<p>To further customize your view, open the menu on the left and experiment with color and size settings to highlight different attributes. By adjusting these parameters, you can gain new insights into how terms interact and uncover unexpected thematic relationships within the Medieval Art collection.</p>
+</section>
+<section id="exploring-the-network" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-network">Exploring the network</h2>
+<p>One of the challenges of using networks as a data visualization tool is the risk of creating a “hairball” — a dense, cluttered graph with too many connections, making it difficult to interpret patterns or insights. To address this issue, Retina offers built-in features that allow us to explore the network in more detail and isolate key themes.</p>
+<section id="isolate-communities" class="level3">
+<h3 class="anchored" data-anchor-id="isolate-communities">Isolate communities</h3>
+<p>Since each community in our network represents a thematic area, we can filter specific communities to explore the terms they contain and their connections to the broader network.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to Isolate a Community in Retina
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A straightforward way to isolate communities is by using Retina’s “Explore” feature:</p>
+<ol type="1">
+<li>Open the Explore menu.</li>
+<li>Click on a community to highlight it.</li>
+<li>Use the filter options to hide other nodes and focus on a single thematic area.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/Retina-filter-by-community.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Retina Filter by Community"><img src="../static/imgs/Retina-filter-by-community.png" class="img-fluid figure-img" alt="Retina Filter by Community"></a></p>
+<figcaption>Retina Filter by Community</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Our analysis reveals 11 distinct communities, with three major groups containing most of the terms. Some communities are very small, consisting of just two or three nodes.</p>
+<p>To explore this further, let’s isolate the largest community (Community 0) and analyze its structure in more detail:</p>
+<iframe width="800" height="600" src="https://ouestware.gitlab.io/retina/beta/#/embed/?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&amp;c=m-s&amp;s=ei&amp;sa[]=h&amp;sa[]=b&amp;sa[]=cu&amp;sa[]=t&amp;sa[]=ei&amp;sa[]=r&amp;sa[]=co&amp;ca[]=ec-s&amp;ca[]=w-s&amp;ca[]=m-s&amp;ca[]=s-s&amp;m-s.t=0&amp;er=0.1&amp;ec=s&amp;ds=1" frameborder="0" title="Retina" allowfullscreen="">
+</iframe>
+<p>With this filter applied, we can better interpret the network. Community 0 appears to represent “Animals, Plants, and Objects”, a broad category that connects mythical, religious, and historical figures with specific objects such as flowers, horses, and medallions.</p>
+</section>
+<section id="spotlight-on-horses" class="level3">
+<h3 class="anchored" data-anchor-id="spotlight-on-horses">Spotlight on “Horses”</h3>
+<p>To further explore connections within Community 0, let’s isolate the term “Horses” using the search bar in Retina.</p>
+<p>Doing this reveals that “Horses” serves as a bridge between multiple thematic areas. It connects to mythical and historical figures like Achilles, Alexander the Great, Andromache, Hercules, and Saint George. It also connects with other communities, such as Community 4, which centers on “Men” and “Women”, and Community 3, which focuses on “Christ” and “Virgin Mary”.</p>
+<iframe width="800" height="600" src="https://ouestware.gitlab.io/retina/beta/#/graph/?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&amp;c=m-s&amp;s=b&amp;n=Horses&amp;sa[]=h&amp;sa[]=b&amp;sa[]=cu&amp;sa[]=t&amp;sa[]=ei&amp;sa[]=r&amp;sa[]=co&amp;ca[]=ec-s&amp;ca[]=w-s&amp;ca[]=m-s&amp;ca[]=s-s&amp;m-s.t=0&amp;er=0.1&amp;ec=s&amp;ds=1" frameborder="0" title="Retina" allowfullscreen="">
+</iframe>
+<p>You can also notice other values displayed in the explore menu. Let’s explore those values in more detail and what they mean in the context of our network.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Metric</strong></th>
+<th style="text-align: center;"><strong>Value (Horses)</strong></th>
+<th style="text-align: center;"><strong>Meaning in Context</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Eccentricity</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">The longest shortest path from ‘Horses’ to any other node is 3 steps, meaning it is relatively central within the network.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Closeness Centrality</td>
+<td style="text-align: center;">0.56</td>
+<td style="text-align: center;">A high value (0.56) suggests ‘Horses’ is relatively close to all other nodes, meaning it is well-positioned in the network.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Harmonic Closeness Centrality</td>
+<td style="text-align: center;">0.622</td>
+<td style="text-align: center;">A variation of closeness centrality that accounts for disconnected components; 0.622 indicates that ‘Horses’ is influential even in sub-networks.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Betweenness Centrality</td>
+<td style="text-align: center;">0.041</td>
+<td style="text-align: center;">Low betweenness means ‘Horses’ is not a major bridge but still plays a minor role in connecting subgroups.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Weighted Degree</td>
+<td style="text-align: center;">174</td>
+<td style="text-align: center;">Very high, meaning ‘Horses’ has a large number of connections, suggesting it is a key thematic term in the dataset.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Modularity Class</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">Belongs to Modularity Class 0, indicating it is part of a major thematic community in the network.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Stat Inf Class</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">Categorized in statistical inference class 14, which may represent a specific thematic or metadata classification in the dataset.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Clustering Coefficient</td>
+<td style="text-align: center;">0.167</td>
+<td style="text-align: center;">Low, meaning ‘Horses’ is not in a highly clustered environment but still has meaningful interconnections.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Triangles</td>
+<td style="text-align: center;">381</td>
+<td style="text-align: center;">Forms 381 triangles, meaning it frequently appears in tightly interconnected clusters with other nodes.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Eigenvector Centrality</td>
+<td style="text-align: center;">0.584</td>
+<td style="text-align: center;">Relatively high, meaning ‘Horses’ is well connected to other important nodes and has a strong influence in the network.</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -633,6 +840,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
