@@ -11,7 +11,7 @@ website:
       ![<a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a>](/static/imgs/integration.png)
     contents:
       - text: "Introduction"
-        href: index.qmd
+        href: chapters/index.qmd
       - text: What are APIs and why do they exists
         href: chapters/what-is-an-api.qmd
       - section: Interacting with APIs
@@ -28,6 +28,8 @@ website:
             href: chapters/collecting-data-for-analysis.qmd
           - text: "Analyzing Data"
             href: chapters/analyzing-data.qmd
+      - text: "Conclusion"
+        href: chapters/closing.qmd
       - text: "A Catalog of APIs"
         href: resources/catalog.qmd
 
