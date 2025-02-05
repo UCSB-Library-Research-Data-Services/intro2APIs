@@ -108,7 +108,7 @@ With this filter applied, we can better interpret the network. Community 0 appea
 
 To further explore connections within Community 0, let’s isolate the term "Horses" using the search bar in Retina.
 
-Doing this reveals that "Horses" serves as a bridge between multiple thematic areas. It connects to mythical and historical figures like Achilles, Alexander the Great, Andromache, Hercules, and Saint George. It also connects with other communities, such as Community 4, which centers on "Men" and "Women", and Community 3, which focuses on "Christ" and "Virgin Mary".
+This reveals that "Horses" acts as a bridge between multiple thematic areas. It links to mythical and historical figures like Achilles, Alexander the Great, Andromache, Hercules, and Saint George. Additionally, it connects with other communities, including Community 4 (centered on "Men" and "Women") and Community 3 (focused on "Christ" and "Virgin Mary"), highlighting its broad thematic relevance.
 
 <iframe
   width="800"
@@ -119,17 +119,67 @@ Doing this reveals that "Horses" serves as a bridge between multiple thematic ar
   allowFullScreen
 ></iframe>
 
-You can also notice other values displayed in the explore menu. Let's explore those values in more detail and what they mean in the context of our network.
+Beyond connections, we can examine network metrics in the explore menu to better understand the role of "Horses" in the dataset. Below is a breakdown of key values and their meaning in the network:
 
 **Metric**|**Value (Horses)**|**Meaning in Context**
 :-----:|:-----:|:-----:
-Eccentricity|3|The longest shortest path from 'Horses' to any other node is 3 steps, meaning it is relatively central within the network.
-Closeness Centrality|0.56|A high value (0.56) suggests 'Horses' is relatively close to all other nodes, meaning it is well-positioned in the network.
-Harmonic Closeness Centrality|0.622|A variation of closeness centrality that accounts for disconnected components; 0.622 indicates that 'Horses' is influential even in sub-networks.
-Betweenness Centrality|0.041|Low betweenness means 'Horses' is not a major bridge but still plays a minor role in connecting subgroups.
-Weighted Degree|174|Very high, meaning 'Horses' has a large number of connections, suggesting it is a key thematic term in the dataset.
-Modularity Class|0|Belongs to Modularity Class 0, indicating it is part of a major thematic community in the network.
-Stat Inf Class|14|Categorized in statistical inference class 14, which may represent a specific thematic or metadata classification in the dataset.
-Clustering Coefficient|0.167|Low, meaning 'Horses' is not in a highly clustered environment but still has meaningful interconnections.
-Triangles|381|Forms 381 triangles, meaning it frequently appears in tightly interconnected clusters with other nodes.
-Eigenvector Centrality|0.584|Relatively high, meaning 'Horses' is well connected to other important nodes and has a strong influence in the network.
+Eccentricity|3|"Horses" is relatively central, as its longest shortest path to another node is just 3 steps
+Closeness Centrality|0.56|A higher closeness value means "Horses" is well positioned, with short paths to many other nodes.
+Harmonic Closeness Centrality|0.622|Accounts for disconnected components, reinforcing the influence of "Horses" in the network.
+Betweenness Centrality|0.041|Low betweenness suggests that while "Horses" connects communities, it is not a major bridge.
+Weighted Degree|174|"Horses" has an exceptionally high number of connections, making it a key thematic term.
+Modularity Class|0|It belongs to the largest thematic cluster in the network.
+Stat Inf Class|14|Based on Statistical Inference, this classification suggests "Horses" belongs to a statistically significant thematic grouping.
+Clustering Coefficient|0.167|A low coefficient indicates "Horses" is not densely interconnected but still plays a linking role.
+Triangles|381|The node appears in many tightly interconnected groups, suggesting strong thematic associations.
+Eigenvector Centrality|0.584|High influence, indicating strong connections to other important terms.
+
+This approach can be applied to any term in the network—by isolating a node and interpreting its metrics and connections, we can uncover hidden patterns and thematic relationships within the collection.
+
+## Some preliminary insights
+
+After this brief exploration, we can draw several preliminary conclusions about the structure of thematic areas in the Medieval Art collection. These insights not only help us understand how objects are categorized but also highlight broader patterns in cultural and religious representation.
+
+### 1. Thematic Areas Are Well-Defined but Overlapping
+
+The network is clustered into 11 distinct communities, each representing a thematic area. From those, we can identify three major groups:
+
+- Community 0 (Animals, Plants, and Objects) is a broad category that links religious, mythical, and historical figures to specific objects like horses, flowers, and medallions.
+- Community 4 (Men & Women) represents human figures and social roles, and overlaps with religious themes.
+- Community 3 (Christ & Virgin Mary) is highly centered on religious iconography.
+
+Other communities are highly specialized and relatively isolated from the rest of the network. Community 6, for example, is composed of just three nodes—`Greek`, `Coptic`, `Documents`—suggesting a connection to textual traditions rather than visual themes. Similarly, Community 8 consists only of `Hands` and `Feet`, likely indicating specific iconographic elements, while Community 9 pairs `Dolphins` with `Female Nudes`, pointing to a connection between aquatic imagery and representations of the human body.
+
+### 2. Certain Terms Act as “Bridges” Between Communities
+
+While the network is divided into distinct thematic areas, some terms serve as key connectors, linking multiple communities and acting as conceptual bridges.
+
+One clear example is "Horses", which appears in different contexts—connecting historical figures such as Alexander the Great, Achilles, and Saint George, while also maintaining links to broader thematic groups like `Men` and `Women` and Religious Figures. Similarly, `Christ` and `Virgin Mary` are central nodes within religious iconography, reinforcing strong intra-community ties. On the other hand, `Men` and `Women` function as structural connectors, bridging religious, mythological, and historical figures, reinforcing their role as central elements in medieval art representation.
+
+### 3. The Network Reveals How Art Metadata Is Structured
+
+This exploration is not just about historical themes—it also shows how the Met Museum categorizes its objects. The fact that certain terms cluster together may reflect institutional categorization practices, rather than just organic historical connections. 
+
+### 4. Unexpected Connections & The Importance of Structure
+
+Highly connected nodes such as "Men," "Women," and "Christ" dominate the network, but less connected nodes can still reveal meaningful insights. A prime example is "Noah", a relatively isolated node that still exhibits a high clustering coefficient (0.857), indicating that it forms tight local connections despite its limited reach within the broader network.
+
+<iframe
+  width="800"
+  height="600"
+  src="https://ouestware.gitlab.io/retina/beta/#/graph/?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&c=m-s&s=ei&n=Noah&sa[]=h&sa[]=b&sa[]=cu&sa[]=t&sa[]=ei&sa[]=r&sa[]=co&ca[]=ec-s&ca[]=w-s&ca[]=m-s&ca[]=s-s&er=0.1&ec=s&ds=1"
+  frameBorder="0"
+  title="Retina"
+  allowFullScreen
+></iframe>
+
+Examining Noah’s connections reveals both expected and surprising relationships. Unsurprisingly, Noah is linked to `Moses`, another Old Testament figure. However, an unexpected connection emerges between `Noah` and several Christian themes, including `Coronation of the Virgin`, `Madonna and Child`, and `Virgin Mary`.
+
+This suggests that, within this dataset, Noah is not solely categorized within Old Testament narratives but also appears in contexts related to Marian iconography. This is surprising because Noah is typically associated with Genesis and the Flood rather than Christian representations of Mary. Why does he appear in relation to the Coronation of the Virgin? Could this be due to specific artistic traditions, metadata decisions, or broader iconographic patterns? This observation serves as a potential starting point for further research, demonstrating how network analysis can highlight overlooked connections and generate new research questions.
+
+## Wrapping Up
+This exploration of the network has revealed key thematic clusters, influential terms, and even unexpected connections within the Medieval Art collection. By structuring metadata as a network, we uncovered both historical patterns and institutional categorization practices, highlighting the interplay between data and interpretation.
+
+While this approach provides a powerful way to visualize and analyze relationships at scale, it also raises important questions: Do these clusters reflect historical realities, or are they shaped by modern cataloging decisions? How might additional data—such as object provenance, artistic schools, or iconographic traditions—further refine our understanding?
+
+As we wrap up, we’ll take a step back to reflect on what we’ve learned and consider the broader implications of using APIs and network analysis for cultural heritage research.
