@@ -1,0 +1,135 @@
+---
+title: "Analyzing Data"
+execute:
+    echo: true
+    message: false
+format:
+    html:
+        code-fold: false
+lightbox: true
+---
+
+Our final step is to analyze the data using network analysis to uncover thematic areas within the Medieval Art collection. 
+
+We have a dataset containing 1725 unique pairs of tags. By transforming this dataset into a network graph, we can visualize how terms relate to one another:
+
+- Nodes represent individual tags.
+- Edges represent co-occurrences of tags within the same object, indicating a thematic connection.
+- Weights reflect how often each tag pair appears together.
+
+While the full details of network construction are beyond the scope of this workshop, you can create and explore network graphs using tools like Gephi. The processed network data is available in the [project repository](https://github.com/jairomelo/intro2APIs-examples/tree/main/data) as [`network_medieval_art_tags.gexf`](https://github.com/jairomelo/intro2APIs-examples/blob/main/data/processed/network_medieval_art_tags.gexf). 
+
+::: {.callout-tip collapse="true"}
+## What is GEXF?
+
+The GEXF (Graph Exchange XML Format) is a widely used format for storing and sharing network graphs. It is structured using XML, making it both human-readable and compatible with various network analysis tools like Gephi and Cytoscape.
+:::
+
+## Visualizing the network
+
+To better understand our network, we need to visualize how terms are connected. A graph layout allows us to represent nodes (tags) and edges (relationships) in a structured way, making it easier to explore clusters, central terms, and thematic areas.
+
+There are multiple tools available for network visualization, ranging from desktop applications to web-based platforms:
+
+- Gephi ([desktop](https://gephi.org/) | [Gephi Lite](https://gephi.org/gephi-lite/)) – A powerful open-source tool for network analysis.
+- Cytoscape ([desktop](https://cytoscape.org/)) – Commonly used in bioinformatics and large-scale networks.
+- Retina ([web-based](https://ouestware.gitlab.io/retina/beta/)) – A browser-friendly tool that allows interactive exploration.
+
+For this workshop, we will explore the network using Retina, which enables interactive exploration directly in your browser. 
+
+::: {.callout-note collapse="true"}
+## Retina as a Web API for Network Visualization
+
+Unlike traditional network visualization tools, Retina works dynamically through URL parameters, making it function similarly to a Web API. Instead of manually adjusting settings in a graphical interface, Retina allows users to modify the view using URL parameters. These parameters control layout, node size, color attributes, filtering, and focus points—all without needing a separate backend. Because the graph is rendered directly in the user’s browser, all changes happen client-side, just like API calls retrieving data.
+
+This means we can construct Retina URLs dynamically to generate custom views of our network, making it a powerful tool for API-driven scientific research.
+
+By tweaking the URL, you can reconfigure the network visualization dynamically, much like calling an API with different query parameters! 
+
+:::
+
+The layout for this visualization was prepared in Gephi and then exported to Retina, but you can also import the raw GEXF file into Retina and generate a similar graph from scratch.
+
+<iframe
+  width="800"
+  height="600"
+  src="https://ouestware.gitlab.io/retina/beta/#/embed/?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&c=m-s&s=ei&sa[]=h&sa[]=b&sa[]=cu&sa[]=t&sa[]=ei&sa[]=r&sa[]=co&ca[]=ec-s&ca[]=w-s&ca[]=m-s&ca[]=s-s&er=0.1&ec=s&ds=1"
+  frameBorder="0"
+  title="Retina"
+  allowFullScreen
+></iframe>
+
+You can also explore the network in a new tab by clicking [here](https://ouestware.gitlab.io/retina/beta/#/graph?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&c=m-s&s=ei&sa[]=h&sa[]=b&sa[]=cu&sa[]=t&sa[]=ei&sa[]=r&sa[]=co&ca[]=ec-s&ca[]=w-s&ca[]=m-s&ca[]=s-s&er=0.1&ec=s&ds=1) 
+
+The network is fully interactive, allowing you to zoom in and out to examine specific areas or use the search bar to locate a particular term. Each node represents a tag from the dataset, and its color and size reflect important network properties.
+
+- Color is determined by the *modularity class*, which groups related terms into thematic communities. Terms that frequently appear together in the dataset will tend to cluster, forming distinct regions in the network.
+- Size is based on *Eigenvector Centrality*, a measure of influence within the network. Larger nodes indicate terms that serve as key connectors, linking multiple themes together. For instance, if a term like "Christ" or "Virgin Mary" appears prominently, it suggests that it plays a central role in shaping the overall structure of the dataset.
+
+To further customize your view, open the menu on the left and experiment with color and size settings to highlight different attributes. By adjusting these parameters, you can gain new insights into how terms interact and uncover unexpected thematic relationships within the Medieval Art collection.
+
+## Exploring the network
+
+One of the challenges of using networks as a data visualization tool is the risk of creating a "hairball" — a dense, cluttered graph with too many connections, making it difficult to interpret patterns or insights. To address this issue, Retina offers built-in features that allow us to explore the network in more detail and isolate key themes.
+
+### Isolate communities
+
+Since each community in our network represents a thematic area, we can filter specific communities to explore the terms they contain and their connections to the broader network.
+
+::: {.callout-tip collapse="true"}
+## How to Isolate a Community in Retina
+
+A straightforward way to isolate communities is by using Retina’s "Explore" feature:
+
+1. Open the Explore menu.
+2. Click on a community to highlight it.
+3. Use the filter options to hide other nodes and focus on a single thematic area.
+
+![Retina Filter by Community](/static/imgs/Retina-filter-by-community.png)
+
+:::
+
+Our analysis reveals 11 distinct communities, with three major groups containing most of the terms. Some communities are very small, consisting of just two or three nodes.
+
+To explore this further, let’s isolate the largest community (Community 0) and analyze its structure in more detail:
+
+<iframe
+  width="800"
+  height="600"
+  src="https://ouestware.gitlab.io/retina/beta/#/embed/?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&c=m-s&s=ei&sa[]=h&sa[]=b&sa[]=cu&sa[]=t&sa[]=ei&sa[]=r&sa[]=co&ca[]=ec-s&ca[]=w-s&ca[]=m-s&ca[]=s-s&m-s.t=0&er=0.1&ec=s&ds=1"
+  frameBorder="0"
+  title="Retina"
+  allowFullScreen
+></iframe>
+
+With this filter applied, we can better interpret the network. Community 0 appears to represent "Animals, Plants, and Objects", a broad category that connects mythical, religious, and historical figures with specific objects such as flowers, horses, and medallions.
+
+### Spotlight on "Horses"
+
+To further explore connections within Community 0, let’s isolate the term "Horses" using the search bar in Retina.
+
+Doing this reveals that "Horses" serves as a bridge between multiple thematic areas. It connects to mythical and historical figures like Achilles, Alexander the Great, Andromache, Hercules, and Saint George. It also connects with other communities, such as Community 4, which centers on "Men" and "Women", and Community 3, which focuses on "Christ" and "Virgin Mary".
+
+<iframe
+  width="800"
+  height="600"
+  src="https://ouestware.gitlab.io/retina/beta/#/graph/?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&c=m-s&s=b&n=Horses&sa[]=h&sa[]=b&sa[]=cu&sa[]=t&sa[]=ei&sa[]=r&sa[]=co&ca[]=ec-s&ca[]=w-s&ca[]=m-s&ca[]=s-s&m-s.t=0&er=0.1&ec=s&ds=1"
+  frameBorder="0"
+  title="Retina"
+  allowFullScreen
+></iframe>
+
+You can also notice other values displayed in the explore menu. Let's explore those values in more detail and what they mean in the context of our network.
+
+**Metric**|**Value (Horses)**|**Meaning in Context**
+:-----:|:-----:|:-----:
+Eccentricity|3|The longest shortest path from 'Horses' to any other node is 3 steps, meaning it is relatively central within the network.
+Closeness Centrality|0.56|A high value (0.56) suggests 'Horses' is relatively close to all other nodes, meaning it is well-positioned in the network.
+Harmonic Closeness Centrality|0.622|A variation of closeness centrality that accounts for disconnected components; 0.622 indicates that 'Horses' is influential even in sub-networks.
+Betweenness Centrality|0.041|Low betweenness means 'Horses' is not a major bridge but still plays a minor role in connecting subgroups.
+Weighted Degree|174|Very high, meaning 'Horses' has a large number of connections, suggesting it is a key thematic term in the dataset.
+Modularity Class|0|Belongs to Modularity Class 0, indicating it is part of a major thematic community in the network.
+Stat Inf Class|14|Categorized in statistical inference class 14, which may represent a specific thematic or metadata classification in the dataset.
+Clustering Coefficient|0.167|Low, meaning 'Horses' is not in a highly clustered environment but still has meaningful interconnections.
+Triangles|381|Forms 381 triangles, meaning it frequently appears in tightly interconnected clusters with other nodes.
+Eigenvector Centrality|0.584|Relatively high, meaning 'Horses' is well connected to other important nodes and has a strong influence in the network.
