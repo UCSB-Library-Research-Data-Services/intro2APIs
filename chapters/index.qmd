@@ -21,6 +21,12 @@ hello = "Hello, world!"
 hello
 ```
 
+::: {.callout-warning}
+## A note before we start
+
+Although this workshop is about APIs in general, we will focus specifically on web APIs—particularly REST APIs that return JSON data. We’ve chosen this focus because REST APIs are the most common type of API and are also the most accessible without requiring specialized software.
+:::
+
 The workbook is divided into two main sections:
 
 1. [**Interacting with APIs**](what-is-an-api.html): This section covers the basics—what APIs are, how they work, and how to use them.
