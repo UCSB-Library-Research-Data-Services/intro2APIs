@@ -56,7 +56,7 @@ Now, having all the parts of an endpoint, we can write the full endpoint as foll
 
 ![](/static/imgs/endpoint_diagram.png)
 
-This can be read as follows: "I want to retrieve 10 cat gif images with a small size".
+This can be read as follows: "I want to retrieve 5 cat gif images with a small size".
 
 With this result:
 
