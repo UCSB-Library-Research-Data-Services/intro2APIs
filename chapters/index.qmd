@@ -37,6 +37,8 @@ The workbook is divided into two main sections:
 
 2. [**APIs for Data Analysis**](collecting-data-for-analysis.html): This section focuses on APIs as data sources for research. It includes a lesson on collecting data via APIs and an example of how to analyze the collected data.
 
+Additionally, we have included a [catalog of APIs](../resources/catalog.html) with descriptions, links to their documentation, and authentication requirements.
+
 Each lesson can be followed independently, and the workbook will remain available even if you don’t attend the workshop.
 
-Without further ado, let’s get started!
+Without further ado, let’s get started! 🚀
