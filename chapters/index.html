@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="A Gentle Introduction to APIs">
 
-<title>A Catalog of APIs – Unlocking DataA Gentle Introduction to APIs</title>
+<title>Welcome to Unlocking Data – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/analyzing-data.html" rel="prev">
+<link href="../chapters/what-is-an-api.html" rel="next">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -68,12 +103,14 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar docked fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -82,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../resources/catalog.html">A Catalog of APIs</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/index.html">Introduction</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -116,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -180,7 +217,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources/catalog.html" class="sidebar-item-text sidebar-link active">
+  <a href="../resources/catalog.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A Catalog of APIs</span></a>
   </div>
 </li>
@@ -189,24 +226,20 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#us-based-apis" id="toc-us-based-apis" class="nav-link active" data-scroll-target="#us-based-apis">US Based APIs</a></li>
-  <li><a href="#non-us-apis" id="toc-non-us-apis" class="nav-link" data-scroll-target="#non-us-apis">Non-US APIs</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A Catalog of APIs</h1>
+<h1 class="title">Welcome to Unlocking Data</h1>
 </div>
 
+<div>
+  <div class="description">
+    A Gentle Introduction to APIs
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -221,210 +254,53 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a non-exhaustive list of APIs that can be used to retrieve data from cultural institutions, and other sources, that can be used for research, teaching, or event to build or integrate with applications.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-About Authentication
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Although some APIs do not require authentication, it is important to check the API documentation to be aware of usage limits and other restrictions. Otherwise, you can get blocked from the API provider.</p>
-</div>
-</div>
-</div>
-<section id="us-based-apis" class="level2">
-<h2 class="anchored" data-anchor-id="us-based-apis">US Based APIs</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th><strong>API</strong></th>
-<th><strong>Version</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Link to Documentation</strong></th>
-<th><strong>Requires Authentication</strong></th>
-<th><strong>Status of Documentation</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Internet Archive</strong></td>
-<td>N/A</td>
-<td>API for searching and retrieving data from public collections from the Internet Archive</td>
-<td><a href="https://archive.org/developers/index-apis.html">IA Tools and APIs</a></td>
-<td>Yes</td>
-<td>Well documented with examples and code snippets</td>
-</tr>
-<tr class="even">
-<td><strong>Library of Congress</strong></td>
-<td>N/A</td>
-<td>Provides structured data about Library of Congress collections</td>
-<td><a href="https://www.loc.gov/apis/">APIs for LoC.gov</a></td>
-<td>No</td>
-<td>Well documented. Some collections have their own documentation. See <a href="https://www.loc.gov/apis/additional-apis/">Additional APIs</a></td>
-</tr>
-<tr class="odd">
-<td><strong>Getty Museum</strong></td>
-<td>N/A</td>
-<td>API designed for tasks like getting records, tracking changes, and querying the collection</td>
-<td><a href="https://data.getty.edu/museum/collection/docs/">Getty API Documentation</a></td>
-<td>No</td>
-<td>“Work in progress”</td>
-</tr>
-<tr class="even">
-<td><strong>Metropolitan Museum of Art</strong></td>
-<td>v1</td>
-<td>Provides access to Open Access data and public domain high-resolution images</td>
-<td><a href="https://metmuseum.github.io/">The Met Collection API</a></td>
-<td>No</td>
-<td>Well documented with examples and code snippets</td>
-</tr>
-<tr class="odd">
-<td><strong>Art Institute of Chicago</strong></td>
-<td>v1</td>
-<td>REST-style service to explore and integrate the museum’s public data</td>
-<td><a href="https://api.artic.edu/docs/">Art Institute of Chicago API</a></td>
-<td>No</td>
-<td>Well documented with examples and code snippets</td>
-</tr>
-<tr class="even">
-<td><strong>Harvard Art Museums</strong></td>
-<td>N/A</td>
-<td>REST-style service for integrating museum collections in projects</td>
-<td><a href="https://harvardartmuseums.org/collections/api">Harvard Art Museums API</a></td>
-<td>Yes</td>
-<td>Detailed and well-documented. See <a href="https://github.com/harvardartmuseums/api-docs">GitHub Docs</a></td>
-</tr>
-<tr class="odd">
-<td><strong>The Cleveland Museum of Art</strong></td>
-<td>4.0.0</td>
-<td>Provides access to the museum’s collection data in JSON format</td>
-<td><a href="https://openaccess-api.clevelandart.org/">Cleveland Museum of Art API</a></td>
-<td>No</td>
-<td>Well documented but not very user-friendly</td>
-</tr>
-<tr class="even">
-<td><strong>Smithsonian Institution</strong></td>
-<td>N/A</td>
-<td>Open access to Smithsonian collections and research datasets</td>
-<td><a href="https://edan.si.edu/openaccess/apidocs/">Smithsonian API</a></td>
-<td>No</td>
-<td>Comprehensive documentation with examples</td>
-</tr>
-<tr class="odd">
-<td><strong>HathiTrust</strong></td>
-<td>N/A</td>
-<td>API for accessing and managing HathiTrust collections and data</td>
-<td><a href="https://old.www.hathitrust.org/data_api.html">HathiTrust Data API</a></td>
-<td>Yes</td>
-<td>Limited and somewhat outdated documentation</td>
-</tr>
-<tr class="even">
-<td><strong>Walters Art Museum Collections</strong></td>
-<td>N/A</td>
-<td>Access to Walters Art Museum’s public data and metadata</td>
-<td><a href="https://github.com/WaltersArtMuseum/api-thewalters-org">Walters API</a></td>
-<td>No</td>
-<td>Limited documentation available on GitHub</td>
-</tr>
-<tr class="odd">
-<td><strong>National Archives Catalog</strong></td>
-<td>v2.0</td>
-<td>Access to the National Archives collection metadata</td>
-<td><a href="https://catalog.archives.gov/api/v2/api-docs/">National Archives API</a></td>
-<td>No</td>
-<td>Well documented with examples</td>
-</tr>
-<tr class="even">
-<td><strong>The New York Times Archive</strong></td>
-<td>v3</td>
-<td>Provides access to NYT articles, archives, and multimedia</td>
-<td><a href="https://developer.nytimes.com/apis">NYT APIs</a></td>
-<td>Yes</td>
-<td>Comprehensive documentation with examples</td>
-</tr>
-<tr class="odd">
-<td><strong>Digital Public Library of America</strong></td>
-<td>N/A</td>
-<td>Provides access to metadata and content from partner libraries</td>
-<td><a href="https://pro.dp.la/developers/api-codex">DPLA API Codex</a></td>
-<td>Yes</td>
-<td>Detailed documentation available</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="non-us-apis" class="level2">
-<h2 class="anchored" data-anchor-id="non-us-apis">Non-US APIs</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
+<p>This is the workbook that accompanies the workshop <em>Unlocking Data: A Gentle Introduction to APIs</em>.</p>
+<p>The workshop is designed for people with no programming experience who want to start working with APIs, particularly web APIs.</p>
+<p>You can follow this workbook without installing any specific software. We’ve included interactive examples so you can practice alongside the workshop.</p>
+<p>Although no programming knowledge is required, you can explore the code behind each example by clicking the Code button, as shown below:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" data-startfrom="20" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 19;"><span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>hello <span class="op">=</span> <span class="st">"Hello, world!"</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>hello</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Policies for using APIs from non-US institutions may be different from those in the US. It is important to check the API documentation for each institution to be aware of usage limits and other restrictions.</p>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="expression">
+
 </div>
 </div>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th><strong>API</strong></th>
-<th><strong>Version</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Link to Documentation</strong></th>
-<th><strong>Requires Authentication</strong></th>
-<th><strong>Status of Documentation</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Europeana</strong></td>
-<td>v2.0</td>
-<td>API to search and retrieve European cultural heritage metadata</td>
-<td><a href="https://apis.europeana.eu/en">Europeana API</a></td>
-<td>Yes</td>
-<td>Comprehensive documentation with code examples</td>
-</tr>
-<tr class="even">
-<td><strong>Rijksmuseum</strong></td>
-<td>N/A</td>
-<td>Provides access to Rijksmuseum collection data and images</td>
-<td><a href="https://www.rijksmuseum.nl/en/research/conduct-research/data/overview">Rijksmuseum API</a></td>
-<td>Yes</td>
-<td>Moderately documented with examples</td>
-</tr>
-<tr class="odd">
-<td><strong>V&amp;A Collections</strong></td>
-<td>N/A</td>
-<td>API for accessing the Victoria and Albert Museum’s collection data and images</td>
-<td><a href="https://www.vam.ac.uk/api">V&amp;A API</a></td>
-<td>Yes</td>
-<td>Well-documented with examples</td>
-</tr>
-<tr class="even">
-<td><strong>Science Museum Collections</strong></td>
-<td>N/A</td>
-<td>API for accessing the Science Museum’s collection data and images</td>
-<td><a href="https://www.sciencemuseumgroup.org.uk/our-work/our-collection/using-our-collection-api">Science Museum API</a></td>
-<td>Yes</td>
-<td>Well documented but not very user-friendly</td>
-</tr>
-</tbody>
-</table>
+</div>
+</div>
+<p>The workbook is divided into two main sections:</p>
+<ol type="1">
+<li><p><a href="what-is-an-api.html"><strong>Interacting with APIs</strong></a>: This section covers the basics—what APIs are, how they work, and how to use them.</p></li>
+<li><p><a href="collecting-data-for-analysis.html"><strong>APIs for Data Analysis</strong></a>: This section focuses on APIs as data sources for research. It includes a lesson on collecting data via APIs and an example of how to analyze the collected data.</p></li>
+</ol>
+<p>Each lesson can be followed independently, and the workbook will remain available even if you don’t attend the workshop.</p>
+<p>Without further ado, let’s get started!</p>
 
 
-</section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuaGVsbG8gPSBcIkhlbGxvLCB3b3JsZCFcIlxuaGVsbG9cbiJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../chapters";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -844,11 +720,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/analyzing-data.html" class="pagination-link" aria-label="Analyzing Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Analyzing Data</span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../chapters/what-is-an-api.html" class="pagination-link" aria-label="What are APIs and why do they exists">
+        <span class="nav-page-text">What are APIs and why do they exists</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
