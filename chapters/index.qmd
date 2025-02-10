@@ -1,13 +1,32 @@
 ---
-title: "Unlocking Data"
+title: "Welcome to Unlocking Data"
 description: "A Gentle Introduction to APIs"
 format:
   html:
     toc: false
 ---
 
+This is the workbook that accompanies the workshop *Unlocking Data: A Gentle Introduction to APIs*.
 
-# Unlocking data
-## A Gentle Introduction to APIs
+The workshop is designed for people with no programming experience who want to start working with APIs, particularly web APIs.
 
-A presentation will be given here...
+You can follow this workbook without installing any specific software. We’ve included interactive examples so you can practice alongside the workshop.
+
+Although no programming knowledge is required, you can explore the code behind each example by clicking the Code button, as shown below:
+
+```{ojs}
+//| code-fold: true
+
+hello = "Hello, world!"
+hello
+```
+
+The workbook is divided into two main sections:
+
+1. [**Interacting with APIs**](what-is-an-api.html): This section covers the basics—what APIs are, how they work, and how to use them.
+
+2. [**APIs for Data Analysis**](collecting-data-for-analysis.html): This section focuses on APIs as data sources for research. It includes a lesson on collecting data via APIs and an example of how to analyze the collected data.
+
+Each lesson can be followed independently, and the workbook will remain available even if you don’t attend the workshop.
+
+Without further ado, let’s get started!

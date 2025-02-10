@@ -1,0 +1,12 @@
+{
+  "hash": "fbeb74bb60433d23610e537258da28d0",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Welcome to Unlocking Data\"\ndescription: \"A Gentle Introduction to APIs\"\nformat:\n  html:\n    toc: false\n---\n\n\n\n\n\nThis is the workbook that accompanies the workshop \"Unlocking Data: A Gentle Introduction to APIs\". \n\nThe workshop is designed for people with no programming experience, who want to start working with APIs, particularly Web APIs.\n\nYou can follow the workbook without any particular software. We have included some interactive examples in the workbook, so you can follow along with the workshop.\n\nAlthough you don't need any particular software or programming language to follow the lessons, you can look at the code that is used to generate the examples by clicking in the `Code` button, like in the example below:\n\n\n\n\n\n```{ojs}\n\nviewof code = input.code(\n  value = \"\n\n\n  ::: {#4d21a6ab .cell execution_count=1}\n  ``` {.python .cell-code}\n  print('Hello, world!')\n  ```\n  \n  ::: {.cell-output .cell-output-stdout}\n  ```\n  Hello, world!\n  ```\n  :::\n  :::\n  \n  \n  \",\n  type = \"text\"\n)\n\ncode;\n```\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

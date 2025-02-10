@@ -28,8 +28,6 @@ website:
             href: chapters/collecting-data-for-analysis.qmd
           - text: "Analyzing Data"
             href: chapters/analyzing-data.qmd
-      - text: "Conclusion"
-        href: chapters/closing.qmd
       - text: "A Catalog of APIs"
         href: resources/catalog.qmd
 
