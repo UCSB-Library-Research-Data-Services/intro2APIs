@@ -34,10 +34,6 @@ website:
       - text: "A Catalog of APIs"
         href: resources/catalog.qmd
   google-analytics: G-VR8KJJEZHW
-  cookie-consent:
-    type: express
-    style: headline
-    palette: dark
 
 format:
   html:
