@@ -33,7 +33,8 @@ website:
             href: chapters/analyzing-data.qmd
       - text: "A Catalog of APIs"
         href: resources/catalog.qmd
-  google-analytics: G-7D1S7Z4DFN
+  google-analytics: G-VR8KJJEZHW
+
 format:
   html:
     theme: united
