@@ -1,6 +1,10 @@
 # Unlocking Data. A Gentle Introduction to APIs
 
-This repository contains the source code for the workbook *Unlocking Data: A Gentle Introduction to APIs*. The workbook introduces readers to the fundamentals of working with APIs through explanations, interactive examples, and practical use cases.
+This repository contains the source code for the workbook *Unlocking Data: A Gentle Introduction to APIs*, presented at the [UC Love Data Week 2025](https://uc-love-data-week.github.io/2025/). You can access the workbook published version here: [https://jairomelo.com/intro2APIs/](https://jairomelo.com/intro2APIs/).
+
+The workbook introduces the fundamentals of working with APIs through explanations, interactive examples, and practical use cases.
+
+## Some technicalities
 
 The book is built with [Quarto](https://quarto.org/) and relies heavily on [Observable JS](https://quarto.org/docs/interactive/ojs/) to provide live, interactive content.
 
