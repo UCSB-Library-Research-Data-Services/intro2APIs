@@ -1,0 +1,148 @@
+---
+title: "Request Methods"
+format:
+    html:
+        code-fold: true
+lightbox: true
+---
+
+In our previous example,  we sent a request to **The Cat API** using this endpoint:
+
+[https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif&limit=5](https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif&limit=5) 
+
+If you paste that URL in your browser, you’ll see a response similar to this:
+
+```{ojs}
+async function getCatData() {
+    const url = `https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif&limit=5`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const data = await response.json();
+    return data;
+}
+
+catData = await getCatData();
+
+viewof catDataString = {
+  const pre = html`<pre style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">`;
+  const code = html`<code style="color: #333;">`;
+  
+  // Formatted JSON with syntax highlighting
+  const formatted = JSON.stringify(catData, null, 2)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"([^"]+)":/g, '<span style="color: #a31515;">"$1"</span>:') 
+    .replace(/: "([^"]+)"/g, ': <span style="color: #008000;">"$1"</span>')  
+    .replace(/: ([0-9]+)/g, ': <span style="color: #0000FF;">$1</span>')  
+    .replace(/\b(true|false|null)\b/g, '<span style="color: #FF0000;">$1</span>');
+    
+  code.innerHTML = formatted;
+  pre.appendChild(code);
+  return pre;
+}
+```
+
+Even though it feels like just clicking a link, what's actually happening is that your browser (the **client**) sends a request to the server, with information like:
+
+- Method: `GET` — we're asking to retrieve something
+- Authority: `api.thecatapi.com` — the server we’re contacting
+- Path: `/v1/images/search?size=small&mime_types=gif&limit=5` — the specific endpoint, including query parameters
+- Scheme: `https` — the protocol used for secure communication
+
+In everyday browsing, we don’t think about these request components because the browser handles them automatically. But when working directly with APIs we control these details ourselves, and that opens up a lot of power and flexibility.
+
+In this section, we're going to explore some common request methods that allow us to create or modify data on a server, not just read from it.
+
+## Request Methods
+
+A request method indicates the purpose of an HTTP request and the kind of response we expect. These methods act as semantic instructions for the server, which can respond with data, an error message, or a status update depending on whether the action is valid and allowed.
+
+The most common HTTP methods are:
+
+### GET
+
+As we’ve already seen, the `GET` method is used to **retrieve data** from a server or resource. It doesn’t alter anything on the server, it just requests information.
+
+The parameters included in the request URL help define the response. For example, a `GET` request can return a single item (e.g., `images/{image_id}`), or a list of items, as in the example we used at the beginning of this section.
+
+![GET request](/static/imgs/request_method_GET.png)
+
+### POST
+
+The `POST` method is used to **send data** to a server. For example, when you fill out a form and click the “Submit” button, your browser typically sends a `POST` request containing that data. The server processes it—often creating a new resource or triggering an action.
+
+Data for a `POST` request goes in the **body** (not the URL) and can be:
+
+- form-data  
+- binary (e.g., an image)  
+- raw text (e.g., JSON, XML)
+
+Later on, we’ll explore how to configure and send these request bodies using practical tools.
+
+![POST request](/static/imgs/request_method_POST.png)
+
+### PUT
+
+The `PUT` method is used to update an existing resource. It looks similar to `POST`, but there's an important difference: `PUT` requires the resource to already exist, and it typically replaces the entire object with the new data provided.
+
+In other words, while `POST` is used to create something new, `PUT` is used to **overwrite** an existing record at a specific location (e.g., `/images/{image_id}`).
+
+::: {.callout-warning}
+If you don’t include all fields in a PUT request, some servers may interpret that as a request to remove the missing fields.
+:::
+
+![PUT request](/static/imgs/request_method_PUT.png)
+
+### PATCH
+
+The `PATCH` method can be understood as a way to **edit** an existing record. Unlike `PUT`, which typically replaces the entire resource, `PATCH` allows you to **update only specific fields**.
+
+The values to be updated are included in the **body** of the request and will only overwrite the specified elements, leaving the rest of the record unchanged.
+
+For example, sending the following body to `/images/{image_id}`:
+
+```json
+{
+  "pending": 1,
+  "approved": 0
+}
+```
+
+will update only those two fields in the existing record.
+
+::: {.callout-note}
+In many cases, using `PATCH` is safer than `PUT`—especially when we want to avoid unintentionally removing fields that weren’t included in the update. For that reason, `PATCH` is more commonly supported than `PUT` in modern APIs.
+:::
+
+![PATCH request](/static/imgs/request_method_PATCH.png)
+
+### DELETE
+
+The `DELETE` method is fairly self-explanatory. It takes a specific record identifier and removes that resource from the server.
+
+Typically, the response is a success status code (such as `200 OK` or `204 No Content`) confirming that the item has been deleted.
+
+Because of its potential impact, the use of this method is usually restricted to authenticated users and requires proper authorization or ownership. It’s rarely, if ever, available to anonymous users.
+
+![DELETE request](/static/imgs/request_method_DELETE.png)
+
+### HTTP Request Methods at a Glance
+
+We can visualize the main difference between these methods using the following table.
+
+| Method  | Purpose                        | Requires Existing Resource? | Typical Use Case                        | Data Sent In     | Common Response     |
+|---------|--------------------------------|------------------------------|------------------------------------------|------------------|---------------------|
+| `GET`   | Retrieve data                  | ❌ No                        | Fetching a list or a single item         | URL (query params) | `200 OK`, JSON data |
+| `POST`  | Create a new resource          | ❌ No                        | Submitting a form, creating an object    | Body             | `201 Created`       |
+| `PUT`   | Replace an existing resource   | ✅ Yes                       | Overwriting an entire object             | Body             | `200 OK` or `204 No Content` |
+| `PATCH` | Update specific fields         | ✅ Yes                       | Editing part of an existing record       | Body             | `200 OK` or `204 No Content` |
+| `DELETE`| Remove a resource              | ✅ Yes                       | Deleting a specific item                 | URL              | `204 No Content`    |
+
+## Wrapping Up
+
+In this section, we’ve explored the five most common HTTP request methods and how each one defines a different type of interaction with a server.
+
+These request methods form the foundation of working with RESTful APIs, and you'll use them frequently as you explore or build your own data workflows.
+
+In the next section, you’ll see how to interact with APIs using the `GET` method directly from this notebook.

@@ -21,6 +21,8 @@ website:
         contents:
           - text: "Endpoints"
             href: chapters/endpoints.qmd
+          - text: "Request Methods"
+            href: chapters/request-methods.qmd
           - text: "Interacting with APIs"
             href: chapters/interact-apis.qmd
           - text: "Exercise: Calling Data"
