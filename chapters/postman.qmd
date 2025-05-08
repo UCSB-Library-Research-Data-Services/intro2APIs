@@ -8,8 +8,6 @@ format:
 lightbox: true
 ---
 
-# What is Postman
-
 **[Postman](https://www.postman.com/)** is a widely used platform that facilitates interaction with APIs. Originally designed for testing APIs in development environments, it has become a powerful tool for exploring and managing API requests in both individual and collaborative workflows.
 
 One of Postman's major strengths is that it enables users without programming experience to interact with API services in a comprehensive and structured way. Users can send requests to read, write, update, and delete information from an API, all through a visual interface. This includes managing authentication credentials securely (even OAuth), defining public and secret variables, configuring headers, adding parameters, and submitting body content in various formats (form-data, binary, raw JSON, GraphQL, etc.).
