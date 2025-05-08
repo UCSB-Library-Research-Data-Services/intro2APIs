@@ -1,0 +1,10 @@
+---
+title: "Basic Requests using Postman"
+execute:
+    echo: true
+format:
+    html:
+        code-fold: true
+lightbox: true
+---
+

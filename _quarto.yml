@@ -44,6 +44,8 @@ website:
         contents:
           - text: "Postman"
             href: chapters/postman.qmd
+          - text: "Basic Request"
+            href: chapters/postman-basic-requests.qmd
       - section: "APIs for Data Analysis"
         contents:
           - text: "Collecting Data for Analysis"
