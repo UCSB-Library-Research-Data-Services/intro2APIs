@@ -4,7 +4,19 @@ project:
 website:
   title: "Unlocking Data<br /><span style='font-size: 0.8em;'>A Gentle Introduction to APIs</span><br />"
   page-navigation: true
+  page-footer:
+    border: false
+    background: light
+    right: |
+        <div class="footer-left" style="text-align: right; font-size: 0.9em; line-height: 1.5; padding: 1rem 0;">
+          <p style="margin: 0;">Created by <strong><a href="https://www.library.ucsb.edu/research-data-services" target="_blank">UCSB Library Research Data Services</a></strong></p>
+          <p style="margin: 0;">License: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" style="text-decoration: none; color: #007BFF;">CC BY-NC 4.0</a></p>
+          <a href="https://doi.org/10.5281/zenodo.15015037" style="display: inline-block; margin-top: 5px;">
+            <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.15015037.svg" alt="DOI" style="border: none;">
+          </a>
+        </div>
   sidebar:
+    collapse-level: 1
     tools:
       - icon: github
         href: https://github.com/UCSB-Library-Research-Data-Services/intro2APIs
@@ -12,6 +24,7 @@ website:
     search: true
     header: |
       ![<a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a>](/static/imgs/integration.png)
+    
     contents:
       - text: "Introduction"
         href: chapters/index.qmd
@@ -49,3 +62,4 @@ format:
 
 execute:
   freeze: auto
+
