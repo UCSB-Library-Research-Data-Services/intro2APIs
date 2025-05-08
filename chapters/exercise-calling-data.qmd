@@ -44,7 +44,7 @@ viewof departmentListEndpoint = Inputs.text({
 })
 
 /**
- * The purpose of this function is only to validate the endpoint
+ * The purpose of this function is to validate the endpoint
  * for students. Have this in mind if want to replicate the
  * code in other exercises.
  */
