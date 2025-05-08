@@ -25,6 +25,10 @@ website:
             href: chapters/interact-apis.qmd
           - text: "Exercise: Calling Data"
             href: chapters/exercise-calling-data.qmd
+      - section: Interacting with APIs using Postman
+        contents:
+          - text: "Postman"
+            href: chapters/postman.qmd
       - section: "APIs for Data Analysis"
         contents:
           - text: "Collecting Data for Analysis"

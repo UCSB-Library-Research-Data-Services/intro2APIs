@@ -1,0 +1,38 @@
+---
+title: "What's Postman"
+execute:
+    echo: true
+format:
+    html:
+        code-fold: true
+lightbox: true
+---
+
+# What is Postman
+
+**[Postman](https://www.postman.com/)** is a widely used platform that facilitates interaction with APIs. Originally designed for testing APIs in development environments, it has become a powerful tool for exploring and managing API requests in both individual and collaborative workflows.
+
+One of Postman's major strengths is that it enables users without programming experience to interact with API services in a comprehensive and structured way. Users can send requests to read, write, update, and delete information from an API, all through a visual interface. This includes managing authentication credentials securely (even OAuth), defining public and secret variables, configuring headers, adding parameters, and submitting body content in various formats (form-data, binary, raw JSON, GraphQL, etc.).
+
+## Postman Applications
+
+Postman is available as a desktop application and as a web platform. While both offer powerful features, the combination of the two provides the best experience:
+
+- The **desktop app** handles sensitive operations such as managing secrets and authentication tokens locally.
+- The **web interface** supports real-time collaboration, making it ideal for team-based API design, testing, and documentation.
+
+When used together, Postman offers a seamless way to experiment with, document, and share API workflows, and without writing a single line of code.
+
+::: {.callout-warning}
+## Why secrets and credentials are not stored in the web interface
+
+This is largely a design decision, but it’s also an important security feature. By keeping secrets and credentials on the desktop client, rather than the web interface, Postman ensures that each user interacts with an API using their own credentials, rather than sharing a common set of keys.
+
+This approach enhances security and allows for granular control over user actions, enabling organizations to manage permissions more effectively and reduce the risk of unauthorized access.
+:::
+
+## Do I Have to Use Postman to Work with APIs?
+
+Postman is a popular, user-friendly tool, but it's not the only way to interact with APIs. In fact, open-source alternatives like [Bruno](https://www.usebruno.com/) and [HTTPie](https://httpie.io/) may be better suited for some users, especially those who prefer tools that don’t rely on web synchronization or who want more control over their workflows.
+
+We’ve chosen Postman for this workshop because of its flexibility, feature set, and beginner-friendly interface. However, the core concepts and workflows (such as sending requests, handling authentication, and organizing collections) are largely shared across platforms. Once you understand how APIs work, you’ll be able to adapt to other tools with ease.
