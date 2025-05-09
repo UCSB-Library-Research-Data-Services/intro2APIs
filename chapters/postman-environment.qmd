@@ -1,0 +1,67 @@
+---
+title: Managing Environment Variables with Postman
+execute:
+  echo: true
+format:
+  html:
+    code-fold: true
+lightbox: true
+---
+
+Now that we’ve learned how to use collections in Postman to send requests to an API, it's time to explore **environment variables**.
+
+As Postman defines it:
+
+> “An environment is a set of variables that allows you to switch the context of your requests.”
+
+Each environment variable stores a value. For example, you might create a variable named `url` with the value `https://api.thecatapi.com/v1`. You can then use `{{url}}` in your request instead of typing the full URL each time.
+
+Environment variables can also store **sensitive information**, such as passwords or API tokens, which need to be included in requests securely.
+
+## Setting Up an Environment
+
+To set up an environment in Postman, follow these steps:
+
+1. Open Postman and click the **Environments** tab in the left sidebar.
+2. Click the **+ New Environment** button.
+3. Give your environment a name — for example: `CatAPI`.
+
+---
+
+### Creating a Default Variable
+
+You’ll see a new window where you can add your variables. Let’s begin by setting a **default** variable for the base URL.
+
+Fill out the following fields:
+
+- **Variable**: `url`  
+- **Type**: `default`  
+- **Initial value**: `https://api.thecatapi.com/v1`  
+- **Current value**: (filled automatically)
+
+Click the checkbox to activate the variable, then click **Save** in the upper-right corner.
+
+![Postman default variable](/static/imgs/postman-default-var.png)
+
+---
+
+### Creating a Secret Variable
+
+Now let’s add a **secret** variable to store your API token.
+
+First, sign up for an API key at [https://thecatapi.com/signup](https://thecatapi.com/signup).  
+You’ll receive an email within a few seconds containing a token that looks something like this:  
+`live_Wi95wPeQHTsi0d4jH91jA51wjATQANFz7pqJpnQPrr2YpJ7T9sFJuyHYQXz5MMem`
+
+*(This is a fake example — never share your real API tokens publicly.)*
+
+Once you have your token, add it to the same environment you created earlier:
+
+- **Variable**: `api_token`  
+- **Type**: `secret`  
+- **Initial value**: `your_api_token_here`  
+- **Current value**: (filled automatically)
+
+Check the box to activate the variable, then click **Save**.
+
+![Postman secret variable](/static/imgs/postman-secret-var.png)
