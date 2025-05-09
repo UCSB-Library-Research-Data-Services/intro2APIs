@@ -1,6 +1,6 @@
 # Unlocking Data. A Gentle Introduction to APIs
 
-This repository contains the source code for the workbook *Unlocking Data: A Gentle Introduction to APIs*, presented at the [UC Love Data Week 2025](https://uc-love-data-week.github.io/2025/). You can access the workbook published version here: [https://jairomelo.com/intro2APIs/](https://jairomelo.com/intro2APIs/).
+This repository contains the source code for the workbook *Unlocking Data: A Gentle Introduction to APIs*, presented at the [UC Love Data Week 2025](https://uc-love-data-week.github.io/2025/). You can access the workbook published version here: [https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/](https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/).
 
 The workbook introduces the fundamentals of working with APIs through explanations, interactive examples, and practical use cases.
 
