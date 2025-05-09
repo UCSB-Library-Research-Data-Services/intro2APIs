@@ -46,7 +46,7 @@ website:
             href: chapters/postman.qmd
           - text: "Basic Request"
             href: chapters/postman-basic-requests.qmd
-          - text: "Environmental Variables"
+          - text: "Environment Variables"
             href: chapters/postman-environment.qmd
       - section: "APIs for Data Analysis"
         contents:
