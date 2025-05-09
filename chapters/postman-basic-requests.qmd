@@ -110,3 +110,13 @@ Let’s try an example using The Cat API’s search endpoint to retrieve only a 
 You should see a list of cat image objects, each with a `url` field pointing to a different cat GIF.
 
 ![Query parameters in Postman](/static/imgs/postman-query-params-catapi.png)
+
+---
+
+If you look carefully at the response, you’ll notice that it returns 10 elements instead of the 3 we specified in the `limit` parameter. This is because that parameter only works for **authenticated users**.
+
+The reason is simple: while you can request fewer items (like 3), you can also ask for much larger amounts—such as 20 or even 100 images. If anyone could do this without limits (for example, a bot), The Cat API’s resources could be overwhelmed very quickly.
+
+That’s why even seemingly harmless actions often require some form of **access control** to prevent abuse or unintended behavior.
+
+In the next section, we’ll explore how authentication works and how Postman can help you manage your credentials securely.
