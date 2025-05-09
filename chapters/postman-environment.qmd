@@ -82,9 +82,33 @@ Type `{` in the field, and you’ll see a dropdown menu showing available variab
 
 Select the `url` variable. Your request should now look like this:
 
- `{{url}}/breeds`
+ `{{{url}}}/breeds`
  
 To confirm that everything is working correctly, click **Send** again. You should see the same response as before — now powered by your environment variable!
 
 ![Postman - Request with default variable](/static/imgs/postman-request-with-variable.png)
 
+## Using Secrets in a Request
+
+The most common way to send authenticated requests is by including a token in the request **headers**. Let’s try that using our `Search Cat Images` request.
+
+First, replace the URL with your `{{{url}}}` default variable, just like we did in the previous exercise.
+
+Next, click on the **Headers** tab, located just below the URL field. You’ll see a table where you can add header keys, values, and optional descriptions. HTTP headers are metadata that provide additional context about the request and help the server prepare an appropriate response.
+
+To learn how to include the API token, let’s refer to the Cat API documentation:
+
+> To get more than 10, and additional fields then be sure to use your API Key from the welcome email as the 'x-api-key' header, or ?api_key= query string parameter to access all the images and data.
+
+::: {.callout-note}
+You may have noticed that it's also possible to send the API key as a query parameter in the URL. While this works, it’s **not recommended**. Even though Postman keeps the token secret in your environment, placing it in the URL exposes it in the browser or server logs when the request is made.
+:::
+
+To add the header, use the following values:
+
+- **Key**: `x-api-key`  
+- **Value**: `{{{api_token}}}`
+
+Now run the request again. You’ll see that the `limit=3` parameter works as expected — and you can even increase it (e.g., to 30) without any issue. Because the request is now authenticated, the API allows access to features that aren’t available to unauthenticated users.
+
+![](/static/imgs/postman-request-with-secret.png)
