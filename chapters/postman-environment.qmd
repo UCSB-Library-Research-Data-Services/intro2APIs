@@ -113,8 +113,6 @@ Now run the request again. You’ll see that the `limit=3` parameter works as ex
 
 ![](/static/imgs/postman-request-with-secret.png)
 
----
-
 ## Wrapping Up
 
 In this section, we’ve learned how to use environment variables and secrets in Postman to simplify and secure our requests. By storing values like the base URL and API token in a reusable environment, we can write cleaner, safer, and more flexible requests.
