@@ -20,3 +20,23 @@ The screenshots in this notebook were taken from the **Postman Desktop applicati
 While Postman's interface and features may continue to evolve (see the [release notes](https://www.postman.com/release-notes/postman-app/) for updates), the **core concepts covered in this guide will remain relevant** across future versions.
 :::
 
+## Starting with a Workspace
+
+**Workspaces** help keep your requests organized and make it easier to collaborate with others. To create a new workspace, go to `Workspaces` → `Create Workspace` and choose a **Blank workspace**.
+
+You'll be prompted to enter a name, select a workspace type, and manage access settings.
+
+For this exercise, we’ll use the following setup:
+
+- **Name**: `My Requests`
+- **Type**: `Internal workspace`
+- **Access**: Keep the default — everyone in your team can access it
+
+![Workspace creation form in Postman](/static/imgs/postman-workspace-creation.png)
+
+If you haven’t set up a team in Postman yet, you’ll be prompted to fill out a simple form to create one. Just keep it straightforward: choose any name for your team, select `Other` for the question *“What will your team work on?”*, and confirm.
+
+Once your team is created, you’ll be ready to add some collections.
+
+
+
