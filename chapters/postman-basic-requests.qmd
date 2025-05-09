@@ -38,5 +38,48 @@ If you haven’t set up a team in Postman yet, you’ll be prompted to fill out 
 
 Once your team is created, you’ll be ready to add some collections.
 
+## Creating a Collection
 
+Once your workspace and team are set up, the next step is to create a **collection**. Collections are folders that help you group and organize your API requests. They’re especially useful when working with multiple endpoints from the same service.
+
+To create a new collection:
+
+1. In the left sidebar, click the `Collections` tab.
+2. Click the `+ Blank Collection` button.
+3. Give your collection a name. For this exercise, you can name it **"The Cat API"**.
+4. (Optional) Add a description to explain what this collection is for.
+5. Click **Create**.
+
+You’ll now see your new collection listed in the sidebar. We’ll add our first `GET` request to it in the next step.
+
+![Creating a collection in Postman](/static/imgs/postman-create-collection.png)
+
+::: {.callout-tip}
+When you create a new workspace, Postman may automatically add a template collection named **"End-to-End Tests"**. You can safely remove it to keep your workspace clean and focused.
+
+To delete it:  
+Click the three dots (`⋮`) next to the collection name, then select **Delete**.
+:::
+
+## Adding Your First `GET` Request
+
+Now that you've created your collection, it's time to add a request. We’ll start by adding a basic `GET` request to **The Cat API** to retrieve a list of cat breeds.
+
+To do this:
+
+1. Click the name of your collection (**The Cat API**) in the left sidebar.
+2. Click the three dots (`⋮`) next to the collection name, then select **Add request**.
+3. Give your request a name — for example, **List Breeds**.
+4. In the **Request type dropdown**, make sure `GET` is selected.
+5. In the **URL field**, paste the following endpoint:  
+
+https://api.thecatapi.com/v1/breeds
+
+6. Click **Save** (upper right) and choose **Save to "The Cat API" collection**.
+
+You’re ready to send your first request! Click the **Send** button.
+
+You should see a `200 OK` response along with a list of cat breeds in the response body.
+
+![Adding a GET request in Postman](/static/imgs/postman-get-catapi-breeds.png)
 
