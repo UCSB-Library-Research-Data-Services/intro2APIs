@@ -112,3 +112,15 @@ To add the header, use the following values:
 Now run the request again. You’ll see that the `limit=3` parameter works as expected — and you can even increase it (e.g., to 30) without any issue. Because the request is now authenticated, the API allows access to features that aren’t available to unauthenticated users.
 
 ![](/static/imgs/postman-request-with-secret.png)
+
+---
+
+## Wrapping Up
+
+In this section, we’ve learned how to use environment variables and secrets in Postman to simplify and secure our requests. By storing values like the base URL and API token in a reusable environment, we can write cleaner, safer, and more flexible requests.
+
+We also explored how to pass secrets through request headers, a common and recommended practice when working with APIs that require authentication.
+
+In the next section, we’ll go a step further and explore how to use `POST` and `DELETE` methods with The Cat API to interact with user-specific data, such as favorites or image votes.
+
+After that, we’ll begin working with the GitHub API, where we’ll apply all these concepts in a more complex and widely used platform.
