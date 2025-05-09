@@ -1,0 +1,124 @@
+---
+title: Managing Environment Variables with Postman
+execute:
+  echo: true
+format:
+  html:
+    code-fold: true
+lightbox: true
+---
+
+Now that we’ve learned how to use collections in Postman to send requests to an API, it's time to explore **environment variables**.
+
+As Postman defines it:
+
+> “An environment is a set of variables that allows you to switch the context of your requests.”
+
+Each environment variable stores a value. For example, you might create a variable named `url` with the value `https://api.thecatapi.com/v1`. You can then use `{{url}}` in your request instead of typing the full URL each time.
+
+Environment variables can also store **sensitive information**, such as passwords or API tokens, which need to be included in requests securely.
+
+## Setting Up an Environment
+
+To set up an environment in Postman, follow these steps:
+
+1. Open Postman and click the **Environments** tab in the left sidebar.
+2. Click the **+ New Environment** button.
+3. Give your environment a name — for example: `CatAPI`.
+
+---
+
+### Creating a Default Variable
+
+You’ll see a new window where you can add your variables. Let’s begin by setting a **default** variable for the base URL.
+
+Fill out the following fields:
+
+- **Variable**: `url`  
+- **Type**: `default`  
+- **Initial value**: `https://api.thecatapi.com/v1`  
+- **Current value**: (filled automatically)
+
+Click the checkbox to activate the variable, then click **Save** in the upper-right corner.
+
+![Postman default variable](/static/imgs/postman-default-var.png)
+
+---
+
+### Creating a Secret Variable
+
+Now let’s add a **secret** variable to store your API token.
+
+First, sign up for an API key at [https://thecatapi.com/signup](https://thecatapi.com/signup).  
+You’ll receive an email within a few seconds containing a token that looks something like this:  
+`live_Wi95wPeQHTsi0d4jH91jA51wjATQANFz7pqJpnQPrr2YpJ7T9sFJuyHYQXz5MMem`
+
+*(This is a fake example — never share your real API tokens publicly.)*
+
+Once you have your token, add it to the same environment you created earlier:
+
+- **Variable**: `api_token`  
+- **Type**: `secret`  
+- **Initial value**: `your_api_token_here`  
+- **Current value**: (filled automatically)
+
+Check the box to activate the variable, then click **Save**.
+
+![Postman secret variable](/static/imgs/postman-secret-var.png)
+
+## Using Variables in a Request
+
+Now that we’ve saved our variables, we can include them in a request. Let’s go back to the **Collections** tab and open the **List Breeds** request.
+
+To use your environment variables, you first need to activate the `CatAPI` environment. In the top-right corner of Postman, you’ll see a button labeled **"No Environment"**. Click it and select `CatAPI` from the dropdown menu:
+
+![](/static/imgs/postman-env-select.png)
+
+Now, go to the request URL field. Carefully remove `https://api.thecatapi.com/v1` from the beginning — **but be sure to leave the trailing slash in `/breeds` intact**.
+
+Type `{` in the field, and you’ll see a dropdown menu showing available variables from the `CatAPI` environment, along with global variables provided by Postman. If you hover over a variable name, Postman will display its value.
+
+![](/static/imgs/postman-variables-request.png)
+
+Select the `url` variable. Your request should now look like this:
+
+ `{{{url}}}/breeds`
+ 
+To confirm that everything is working correctly, click **Send** again. You should see the same response as before — now powered by your environment variable!
+
+![Postman - Request with default variable](/static/imgs/postman-request-with-variable.png)
+
+## Using Secrets in a Request
+
+The most common way to send authenticated requests is by including a token in the request **headers**. Let’s try that using our `Search Cat Images` request.
+
+First, replace the URL with your `{{{url}}}` default variable, just like we did in the previous exercise.
+
+Next, click on the **Headers** tab, located just below the URL field. You’ll see a table where you can add header keys, values, and optional descriptions. HTTP headers are metadata that provide additional context about the request and help the server prepare an appropriate response.
+
+To learn how to include the API token, let’s refer to the Cat API documentation:
+
+> To get more than 10, and additional fields then be sure to use your API Key from the welcome email as the 'x-api-key' header, or ?api_key= query string parameter to access all the images and data.
+
+::: {.callout-note}
+You may have noticed that it's also possible to send the API key as a query parameter in the URL. While this works, it’s **not recommended**. Even though Postman keeps the token secret in your environment, placing it in the URL exposes it in the browser or server logs when the request is made.
+:::
+
+To add the header, use the following values:
+
+- **Key**: `x-api-key`  
+- **Value**: `{{{api_token}}}`
+
+Now run the request again. You’ll see that the `limit=3` parameter works as expected — and you can even increase it (e.g., to 30) without any issue. Because the request is now authenticated, the API allows access to features that aren’t available to unauthenticated users.
+
+![](/static/imgs/postman-request-with-secret.png)
+
+## Wrapping Up
+
+In this section, we’ve learned how to use environment variables and secrets in Postman to simplify and secure our requests. By storing values like the base URL and API token in a reusable environment, we can write cleaner, safer, and more flexible requests.
+
+We also explored how to pass secrets through request headers, a common and recommended practice when working with APIs that require authentication.
+
+In the next section, we’ll go a step further and explore how to use `POST` and `DELETE` methods with The Cat API to interact with user-specific data, such as favorites or image votes.
+
+After that, we’ll begin working with the GitHub API, where we’ll apply all these concepts in a more complex and widely used platform.
