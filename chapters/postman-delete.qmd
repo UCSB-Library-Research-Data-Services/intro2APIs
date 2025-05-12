@@ -19,3 +19,61 @@ Here’s the response returned by the API when the image was uploaded:
 ![](/static/imgs/cat-grinch.png)
 
 Now we’re ready to delete that image from our personal collection using its ID.
+
+## DELETE Request
+
+To understand how to use the `DELETE` request in the context of *The Cat API*, let’s return to the documentation — specifically to:
+
+<span style="display: inline-block; font-weight: bold; color: white; background-color: rgb(204, 51, 51); padding: 2px 8px; border-radius: 4px;">DEL</span> **/images/:image_id**
+
+According to the docs, this request requires one **path parameter**:
+
+- `image_id`: `string`. Example: `dMsUj1-nz`
+
+And, as usual, two **header parameters** — including our already familiar `x-api-key: {{api_token}}`.
+
+---
+
+Let’s set up the request:
+
+1. Create a new request in your **CatAPI** collection and name it **"Delete Cat Image"**.
+2. Change the request type to `DELETE`.
+3. Make sure the `CatAPI` environment is selected.
+4. In the URL field, enter the following base:
+
+`{{{url}}}/images`
+
+
+5. Copy the `id` value from your last successful image upload. In my case, it's `xsOtklMbs`.
+6. Append the ID to the URL like this:
+
+`{{{url}}}/images/xsOtklMbs`
+
+
+7. Go to the **Headers** tab and add your authentication header:
+
+- **Key**: `x-api-key`  
+- **Value**: `{{api_token}}`
+
+Now you're ready to send the request!
+
+::: {.callout-caution}
+You won’t receive a confirmation or warning before deletion, so make sure you're removing the image you intended to.
+:::
+
+If the request is successful, you’ll receive a `204 No Content` status — this means the image was deleted.
+
+![POSTMAN delete request](/static/imgs/postman-delete-request.png)
+
+---
+
+And that’s it! ✅
+
+You may have noticed that the endpoint used to `GET` or `DELETE` a record is the same:
+
+`{{{url}}}/images/{image_id}`
+
+
+That’s one of the core principles of REST APIs:  
+Each data *entity* — like **images** — is addressed by a consistent URL, while the **HTTP method** (`GET`, `POST`, `DELETE`, etc.) defines what action is performed on it.
+ 
