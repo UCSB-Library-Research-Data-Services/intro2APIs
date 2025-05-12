@@ -1,0 +1,10 @@
+---
+title: "POST and DELETE Requests in Postman"
+execute:
+  echo: true
+format:
+  html:
+    code-fold: true
+lightbox: true
+---
+

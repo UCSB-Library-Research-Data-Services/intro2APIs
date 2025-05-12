@@ -48,6 +48,8 @@ website:
             href: chapters/postman-basic-requests.qmd
           - text: "Environment Variables"
             href: chapters/postman-environment.qmd
+          - text: "POST and DELETE Requests in Postman"
+            href: chapters/postman-post-delete.qmd
       - section: "APIs for Data Analysis"
         contents:
           - text: "Collecting Data for Analysis"
