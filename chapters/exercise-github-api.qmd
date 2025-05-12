@@ -8,3 +8,68 @@ format:
 lightbox: true
 ---
 
+Now, instead of walking through GitHub’s many endpoints one by one, you’re going to solve a few challenges that will help reinforce the concepts we’ve explored in the previous lessons.
+
+But don’t worry — before you begin, let’s review how to navigate GitHub’s API documentation to build requests in Postman.
+
+---
+
+## The "Get Octocat" Endpoint
+
+This endpoint is part of GitHub’s **Meta** category.  
+To find it, go to the GitHub API documentation:  
+[https://docs.github.com/en/rest?apiVersion=2022-11-28](https://docs.github.com/en/rest?apiVersion=2022-11-28)
+
+In the left sidebar, scroll down to:
+
+```
+Meta
+|- Meta
+|  |- Get Octocat
+
+```
+
+
+GitHub’s documentation may seem intimidating at first, but with a closer look, it’s not that different from The Cat API’s documentation.
+
+![Get Octocat documentation](/static/imgs/github-api-docs.png)
+
+Here’s how to read it:
+
+- The **left column** explains what the endpoint does and what type of token it accepts.
+  - In our case, we’re using a **Personal Access Token (classic)**, which gives us access to repositories and endpoints we have permission for.
+  - **Fine-grained tokens** are another type of GitHub token with more limited scopes. If a note says “This endpoint works with fine-grained tokens,” it means you can use it, but you may encounter restrictions.
+
+- The **Parameters** section (still in the left column) lists:
+  - Required headers
+  - Optional query parameters
+  - Path parameters
+  - Body fields (for `POST`/`PATCH` requests)
+
+- The **right column** shows example requests in cURL, JavaScript, and GitHub CLI.  
+  Even if you’re not using those, they can help you understand what values and formats are expected.
+
+- At the **very top**, you’ll see the actual API endpoint. For this one, it’s: `GET/octocat`
+- At the bottom, you'll find **sample responses** and **schemas** — great for comparing against your own requests.
+
+## Translating GitHub Docs to Postman
+
+Let’s build the request for `/octocat` in Postman:
+
+1. Create a new `GET` request inside your **GitHub** collection.
+2. Set the URL to: `{{{gh_URL}}}/octocat`
+3. Under the **Headers** tab, add:
+- **Key**: `accept`
+- **Value**: `application/vnd.github+json`
+
+4. Under the **Params** tab, add:
+- **Key**: `s`
+- **Value**: *(any message you want — e.g., `This is me, interacting with GitHub`)*
+
+5. Make sure your GitHub environment is selected, then click **Send**.
+
+You should see the **Octocat** in your response window!
+
+![The Octocat](/static/imgs/gh-octocat.png)
+
+
