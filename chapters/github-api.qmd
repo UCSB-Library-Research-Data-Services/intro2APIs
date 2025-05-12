@@ -96,3 +96,11 @@ If you receive a `401 Unauthorized` error, double-check:
 - Your token is correct and hasn’t expired
 - You added `Bearer` before `{{{gh_token}}}`
 - The header name is exactly: `Authorization`
+
+## Ready to Explore More?
+
+With your environment set up and your authentication tested, you're now ready to explore a wide range of endpoints in the GitHub API.
+
+From retrieving repository data to creating issues or managing user activity, the GitHub API gives you programmatic access to one of the world’s largest collaborative platforms, and you’ve already taken the most important step: connecting securely.
+
+In the next section, we’ll explore a few real-world use cases with the GitHub API to practice sending `GET`, `POST`, `PATCH`, and `DEL` requests.
