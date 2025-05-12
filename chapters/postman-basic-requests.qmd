@@ -8,7 +8,7 @@ format:
 lightbox: true
 ---
 
-In this section, we’ll create a workspace in Postman and perform a few basic `GET` requests using three public APIs: **The Cat API**, the [Metropolitan Museum of Art Collection API](https://metmuseum.github.io/), and **GitHub**.
+In this section, we’ll create a workspace in Postman and perform a few basic `GET` requests using **The Cat API**.
 
 ::: {.callout-note collapse="true"}
 The screenshots in this notebook were taken from the **Postman Desktop application** running on macOS.
