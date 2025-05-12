@@ -314,6 +314,34 @@
     ]
   },
   {
+    "objectID": "CHANGELOG.html",
+    "href": "CHANGELOG.html",
+    "title": "Changelog",
+    "section": "",
+    "text": "All notable changes to this project will be documented in this file.\nThe format is based on Keep a Changelog,\nand this project adheres to Semantic Versioning.\n\n\n\n\n\n\nRequest Methods episode to Interacting with APIs chapter.\nIntroduction to APIs using Postman and The Cat API\nHands-on chapters with GET, POST, PATCH, DELETE requests\nEnvironment variable setup with secrets\nNew section on working with the GitHub REST API, including:\n\nEnvironment variable setup (gh_token, gh_URL, owner, repo)\nToken-based authentication via headers\nInteractive exercises for:\n\nRetrieving user info (GET /user)\nSearching repositories (GET /search/repositories)\nCreating, updating, listing, and unlocking issues (POST, PATCH, GET, DELETE)\n\n\nNew instructional content on reading and translating GitHub API documentation into Postman requests\nExample visuals for Postman interface, GitHub responses, and Octocat endpoint\n\n\n\n\n\nClarified explanations and formatting in earlier chapters (e.g. Cat API section)\nImproved consistency in variable usage (url, gh_URL, api_token, etc.)\n\n\n\n\n\nMinor typos and grammatical improvements throughout\nCorrected outdated references in Postman version and screenshots\n\n\n\n\n\n\n\n\n\nMinor typo corrections and formatting tweaks for clarity\n\n\n\n\n\n\n\n\nInitial public release\nWhat are APIs and why do they exists\nInteracting with APIs (GET requests) using the Web interface.\nAPIs for Data Analysis\nA Catalog of APIs"
+  },
+  {
+    "objectID": "CHANGELOG.html#section",
+    "href": "CHANGELOG.html#section",
+    "title": "Changelog",
+    "section": "",
+    "text": "Request Methods episode to Interacting with APIs chapter.\nIntroduction to APIs using Postman and The Cat API\nHands-on chapters with GET, POST, PATCH, DELETE requests\nEnvironment variable setup with secrets\nNew section on working with the GitHub REST API, including:\n\nEnvironment variable setup (gh_token, gh_URL, owner, repo)\nToken-based authentication via headers\nInteractive exercises for:\n\nRetrieving user info (GET /user)\nSearching repositories (GET /search/repositories)\nCreating, updating, listing, and unlocking issues (POST, PATCH, GET, DELETE)\n\n\nNew instructional content on reading and translating GitHub API documentation into Postman requests\nExample visuals for Postman interface, GitHub responses, and Octocat endpoint\n\n\n\n\n\nClarified explanations and formatting in earlier chapters (e.g. Cat API section)\nImproved consistency in variable usage (url, gh_URL, api_token, etc.)\n\n\n\n\n\nMinor typos and grammatical improvements throughout\nCorrected outdated references in Postman version and screenshots"
+  },
+  {
+    "objectID": "CHANGELOG.html#section-1",
+    "href": "CHANGELOG.html#section-1",
+    "title": "Changelog",
+    "section": "",
+    "text": "Minor typo corrections and formatting tweaks for clarity"
+  },
+  {
+    "objectID": "CHANGELOG.html#section-2",
+    "href": "CHANGELOG.html#section-2",
+    "title": "Changelog",
+    "section": "",
+    "text": "Initial public release\nWhat are APIs and why do they exists\nInteracting with APIs (GET requests) using the Web interface.\nAPIs for Data Analysis\nA Catalog of APIs"
+  },
+  {
     "objectID": "resources/catalog.html",
     "href": "resources/catalog.html",
     "title": "A Catalog of APIs",
