@@ -1,5 +1,5 @@
 ---
-title: "POST and DELETE Requests in Postman"
+title: "POST Requests in Postman"
 execute:
   echo: true
 format:
@@ -16,7 +16,7 @@ This is especially useful when you're:
 - Automating processes that involve sending or retrieving data
 - Building tools or workflows that rely on real-time API communication
 
-In this section, we’ll explore how to use the `POST` method to send data to a server, and the `DELETE` method to remove it, using features from *The Cat API* such as adding and removing favorite images.
+In this section, we’ll explore how to use the `POST` method to send data to a server, using features from *The Cat API* such as adding favorite images.
 
 ## Uploading Your First Image
 
