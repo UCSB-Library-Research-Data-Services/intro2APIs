@@ -1,0 +1,105 @@
+---
+title: "Exercise 2: Working with Issues in the GitHub API"
+execute:
+  echo: true
+format:
+  html:
+    code-fold: true
+lightbox: true
+---
+
+Now it’s time to interact with one of the most common features of GitHub: **issues**. You’ll create, update, list, and (sort of) delete an issue — all using the GitHub API.
+
+## Preparing Your Repository
+
+To complete this exercise, you’ll need a repository that **you own** (not one you just contribute to). If you don’t already have one, go to GitHub and create a new, empty repository.
+
+You can name it something like `api-test-repo` or `postman-playground`.
+
+## Setting Environment Variables
+
+Let’s make this exercise easier to repeat and reuse. In your **GitHub Postman environment**, add two **default** variables:
+
+- **`owner`** → your GitHub username  
+- **`repo`** → the name of your target repository
+
+Now you can reuse them like this:  
+`{{gh_URL}}/repos/{{owner}}/{{repo}}/issues`
+
+## Create a New Issue
+
+- **Method**: `POST`  
+- **Endpoint**:
+  ```
+  {{gh_URL}}/repos/{{owner}}/{{repo}}/issues
+  ```
+- **Headers**:
+  - `Authorization`: `Bearer {{gh_token}}`
+  - `accept`: `application/vnd.github+json`
+- **Body (raw, JSON)**:
+  ```json
+  {
+    "title": "API-created issue",
+    "body": "This issue was created using Postman!"
+  }
+  ```
+
+Click **Send**. If successful, you’ll receive a `201 Created` response with the new issue’s details.
+
+📌 **Save the `number` of the issue** from the response — you'll need it in the next step.
+
+## Update the Issue
+
+- **Method**: `PATCH`
+- **Endpoint**:
+  ```
+  {{gh_URL}}/repos/{{owner}}/{{repo}}/issues/{issue_number}
+  ```
+  Replace `{issue_number}` with the number from Step 1.
+
+- **Headers**: same as before
+- **Body (raw, JSON)**:
+  ```json
+  {
+    "title": "Updated title from Postman",
+    "body": "This issue has been updated via PATCH request!"
+  }
+  ```
+
+You should receive a `200 OK` response with the updated issue content.
+
+## List Issues in Your Repository
+
+- **Method**: `GET`
+- **Endpoint**:
+  ```
+  {{gh_URL}}/repos/{{owner}}/{{repo}}/issues
+  ```
+
+This request returns all open issues in your repository, including the one you just created.
+
+## "Delete" the Issue (Unlock)
+
+GitHub doesn’t allow true issue deletion via the API. However, you can simulate deletion in two ways:
+- **Close** the issue (optional)
+- **Unlock** it — which removes any restriction on further edits
+
+Let’s unlock it:
+
+- **Method**: `DELETE`
+- **Endpoint**:
+  ```
+  {{gh_URL}}/repos/{{owner}}/{{repo}}/issues/{issue_number}/lock
+  ```
+
+If successful, you’ll receive a `204 No Content` response.
+
+## Summary
+
+By completing these steps, you've now:
+
+- Created and updated GitHub content using `POST` and `PATCH`
+- Retrieved structured issue data with `GET`
+- Performed a partial deletion (unlock) with `DELETE`
+
+You're now ready to apply what you’ve learned to real project workflows, automation tasks, or your next API-powered integration.
