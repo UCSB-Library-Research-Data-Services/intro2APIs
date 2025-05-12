@@ -8,6 +8,12 @@ format:
 lightbox: true
 ---
 
+The GitHub API is a powerful tool for developers, researchers, and data analysts. It allows you to programmatically interact with almost every feature available on GitHub’s website — including repositories, issues, users, and more.
+
+In this section, we’ll explore a curated set of endpoints from the GitHub REST API using Postman. We’ll build on what we learned in previous chapters: setting headers, using variables, and making `GET`, `POST`, `PATCH`, and `DELETE` requests.
+
+The only requirement to access most of GitHub’s API is an **authorization token**, which you can generate in your GitHub settings.
+
 
 
 
