@@ -58,6 +58,8 @@ website:
             href: chapters/github-api.qmd
           - text: "Exercise 1: Getting Information from GitHub"
             href: chapters/exercise-github-api.qmd
+          - text: "Exercise 2: Adding and Removing Information from GitHub"
+            href: chapters/exercise-github-api-2.qmd
       - section: "APIs for Data Analysis"
         contents:
           - text: "Collecting Data for Analysis"
