@@ -77,3 +77,10 @@ You may have noticed that the endpoint used to `GET` or `DELETE` a record is the
 That’s one of the core principles of REST APIs:  
 Each data *entity* — like **images** — is addressed by a consistent URL, while the **HTTP method** (`GET`, `POST`, `DELETE`, etc.) defines what action is performed on it.
  
+---
+
+*The Cat API* is a user-friendly tool for getting familiar with the basic concepts of REST APIs. It also helped us explore some key features of Postman, such as environments, headers, and request bodies.
+
+As mentioned earlier, APIs can range from very simple to quite complex. The GitHub API falls somewhere in the middle. It’s highly comprehensive, but you can interact with many of its endpoints using just an authorization token.
+
+In the next section, we’ll explore some of those endpoints through a series of hands-on exercises — introducing you to the use of APIs in a more "real-world" context.
