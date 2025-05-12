@@ -178,3 +178,10 @@ displayCat(catData);
 
 ```
 
+## What About Other Types of Data?
+
+In this example, we only explored one type of request body — **form-data**. But APIs can require many different formats, and it’s up to the API designers to define how they expect data to be sent.
+
+That’s why **reading the documentation is essential**. To know how to send a `POST` (or any other type of request), you first need to understand how the API expects the request to be structured — including parameters, headers, and body format.
+
+In the next section, we’ll explore how to work with `DELETE` requests, and then move on to the more sophisticated GitHub REST API.
