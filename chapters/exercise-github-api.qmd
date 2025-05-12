@@ -72,4 +72,67 @@ You should see the **Octocat** in your response window!
 
 ![The Octocat](/static/imgs/gh-octocat.png)
 
+## Search Repositories
 
+Now it’s your turn!
+
+In this exercise, you’ll use Postman to send a request that searches for public GitHub repositories matching specific criteria.
+
+You can find the endpoint documentation by navigating to:
+
+```
+Search
+|- Search
+|  |- Search repositories
+```
+
+Once there, follow the documentation to write a request that:
+
+- Searches for repositories matching the query:
+
+`tetris+language:python`
+
+- Sorts results by: `stars`
+- Orders them in: `descending` order (`desc`)
+
+**Optional, but recommended:**
+
+- Return **30 results per page**
+- Get results from **page 3**
+
+Use the information in the documentation to set the correct query parameters in Postman.
+
+When you're done, explore the response — it will include metadata like repository names, descriptions, star counts, and links to the original repos.
+
+## Check your work
+
+If everything is set up correctly, your request should look something like this:
+
+### URL
+
+`{{gh_URL}}/search/repositories`
+
+
+### Query Parameters
+| Key         | Value                     |
+|--------------|---------------------------|
+| `q`          | `tetris+language:python`  |
+| `sort`       | `stars`                   |
+| `order`      | `desc`                    |
+| `per_page`   | `30`                      |
+| `page`       | `3`                       |
+
+### Headers (optionals)
+| Key         | Value                          |
+|--------------|-------------------------------|
+| `accept`     | `application/vnd.github+json` |
+| `Authorization` | `Bearer {{gh_token}}`     |
+
+
+Your response should include a JSON object with a key named `items` — this is a list of repositories that match your search. You can scan through the names, star counts, and descriptions to explore what's trending in the world of Python + Tetris 😄
+
+If your response returns an error or doesn't look like what’s expected:
+
+- Double-check your query parameters
+- Make sure you're using `GET` as the request method
+- Confirm your token is still valid and your environment is active
