@@ -8,3 +8,95 @@ format:
 lightbox: true
 ---
 
+One of the key advantages of using APIs is the ability to **perform actions that modify data on a service** — and to do so programmatically, without needing a graphical user interface.
+
+This is especially useful when you're:
+
+- Prototyping or testing how to interact with a platform
+- Automating processes that involve sending or retrieving data
+- Building tools or workflows that rely on real-time API communication
+
+In this section, we’ll explore how to use the `POST` method to send data to a server, and the `DELETE` method to remove it, using features from *The Cat API* such as adding and removing favorite images.
+
+## Uploading Your First Image
+
+Since we have an API key, we also have a user ID assigned. That means we can upload images to our “own” collection.
+
+::: {.callout-warning}
+Keep in mind that *The Cat API* is primarily a testing platform. It’s not intended to store personal information long-term.  
+Uploading pictures of your cats is totally fine, just don’t use it as a personal photo album! 😉
+:::
+
+Let’s test this by creating a new `GET` request called "myImages".
+
+1. Add it to your CatAPI collection.
+2. Make sure the `CatAPI` environment is selected.
+3. In the URL field, enter:
+
+`{{{url}}}/images/`
+
+If you run this request, you might see an error message like this:
+
+```bash
+AUTHENTICATION_ERROR - the header "x-api-key" is invalid, check it then try again
+```
+
+This happens because we haven’t included our api_token secret in the request headers. Once you add the header (`x-api-key: {{api_token}}`), run the request again — you should now get an empty array in the response.
+
+That means your personal image collection is accessible — and ready for uploads!
+
+![POSTMAN images collection](/static/imgs/postman-images-collection.png)
+
+### Writing the POST Request
+
+To understand how to upload an image to *The Cat API* using a `POST` request, let’s refer to their [documentation](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=aZyiLrsCh) ↗️.
+
+Once there, navigate to the **Images** section and locate:
+
+<span style="display: inline-block; font-weight: bold; color: white; background-color: rgb(24, 111, 175); padding: 2px 8px; border-radius: 4px;">POST</span> **/images/upload**
+
+This page provides useful information for constructing our request. Focus on the **"Request Body Schema"** section. It lists three parameters:
+
+| Parameter   | Type              | Description                                                                 |
+|-------------|-------------------|-----------------------------------------------------------------------------|
+| `file`      | `string <binary>` | The binary file data of the image to be uploaded.                          |
+| `sub_id`    | `string` (optional) | A string used to segment your images (e.g., identify the user).           |
+| `breeds_ids`| `string` (optional) | Comma-separated list of breed IDs shown in the image.                     |
+
+To keep things simple, we’ll just use the required `file` parameter. As noted, it accepts a string of type `binary`, which refers to the actual **image file** you want to upload.
+
+Let’s walk through how to set up this `POST` request in Postman.
+
+---
+
+1. In your collection, create a new request and name it **"Upload Cat Image"**.
+2. Change the request type from `GET` to `POST`.
+3. Ensure the **CatAPI** environment is selected.
+4. In the URL field, enter:  
+
+`{{{url}}}/images/upload`
+
+
+#### Add the API key
+
+5. Go to the **Headers** tab and add the following:
+- **Key**: `x-api-key`
+- **Value**: `{{{api_token}}}`
+
+#### Configure the request body
+
+6. Click the **Body** tab. You’ll see several content type options:
+
+| Type                  | Description                                                                 |
+|-----------------------|-----------------------------------------------------------------------------|
+| **none**              | No data will be sent with the request.                                      |
+| **form-data**         | Simulates form submissions (key, data type, and value).                     |
+| **x-www-form-urlencoded** | Sends key-value pairs in URL-encoded format (similar to form-data).     |
+| **raw**               | Used to send raw text (typically JSON or XML).                              |
+| **binary**            | Used to send files like images, video, or audio.                            |
+| **GraphQL**           | For structured GraphQL queries to compatible APIs.                          |
+
+We’ll use **form-data** for this request. In the next step, you'll upload your image file.
+
+
+
