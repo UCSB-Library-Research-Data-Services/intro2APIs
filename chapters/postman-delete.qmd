@@ -1,0 +1,21 @@
+---
+title: "DELETE Requests in Postman"
+execute:
+  echo: true
+format:
+  html:
+    code-fold: true
+lightbox: true
+---
+
+Now that we’ve learned how to send information to a server using an API endpoint, let’s explore how to **delete** content from it using a `DELETE` request.
+
+To avoid deleting the image we uploaded earlier, we’ll start this section by uploading a new image — this one of a very festive (and slightly grumpy) cat:
+
+![Is he a cat or the Grinch?](/static/imgs/Mateo.jpeg)
+
+Here’s the response returned by the API when the image was uploaded:
+
+![](/static/imgs/cat-grinch.png)
+
+Now we’re ready to delete that image from our personal collection using its ID.

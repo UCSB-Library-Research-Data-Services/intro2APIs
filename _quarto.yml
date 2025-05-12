@@ -50,6 +50,8 @@ website:
             href: chapters/postman-environment.qmd
           - text: "POST Requests in Postman"
             href: chapters/postman-post.qmd
+          - text: "DELETE Requests in Postman"
+            href: chapters/postman-delete.qmd
       - section: "APIs for Data Analysis"
         contents:
           - text: "Collecting Data for Analysis"
