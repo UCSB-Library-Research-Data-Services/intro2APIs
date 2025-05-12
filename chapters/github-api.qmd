@@ -14,6 +14,46 @@ In this section, we’ll explore a curated set of endpoints from the GitHub REST
 
 The only requirement to access most of GitHub’s API is an **authorization token**, which you can generate in your GitHub settings.
 
+## Getting Your GitHub Authorization Token
+
+To access private endpoints or perform actions like creating issues or repositories, GitHub requires an authorization token. This token acts like a password for your API requests, so keep it secret and secure.
+
+Here’s how to generate one:
+
+1. [Go to GitHub](https://github.com) and log into your account.
+2. Navigate to your [Developer settings](https://github.com/settings/apps):
+   - Click your profile photo (top right) → **Settings**
+   - Scroll down to **Developer settings**
+3. In the left sidebar, select **Personal access tokens** → then [**Tokens (classic)**](https://github.com/settings/tokens)
+4. Click the **Generate new token** (classic) button.
+5. Fill out the form:
+   - **Note**: Give your token a descriptive name, e.g. `Postman Workshop Token`
+   - **Expiration**: Choose any short duration (e.g. 7 or 30 days)
+   - **Scopes**:
+     - Check the box for **`repo`** → this includes issues, pull requests, and repo access
+     - You can also select **`read:user`** and **`user:email`** if you want user info
+6. Click **Generate token**
+
+::: {.callout-important}
+GitHub will only show the token **once**. Copy it immediately and save it somewhere secure (e.g., directly into Postman).
+:::
+
+![Github Token Form](/static/imgs/Github-token.png)
+
+### Add It to Postman
+
+1. Open your **GitHub environment** in Postman (or create one).
+2. Add a **secret** variable:
+   - **Variable**: `gh_token`
+   - **Type**: `secret`
+   - **Initial value**: *(paste your token here)*
+   - **Current value**: will be filled automatically
+3. Save the environment.
+
+You’ll now be able to authorize your GitHub requests by including this header in each request:
+
+`Authorization: Bearer {{gh_token}}`
 
 
+Postman will automatically substitute `{{gh_token}}` with your real token, keeping it secure.
 
