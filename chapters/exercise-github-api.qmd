@@ -1,0 +1,10 @@
+---
+title: "Exercise 1: Getting Information from GitHub"
+execute:
+  echo: true
+format:
+  html:
+    code-fold: true
+lightbox: true
+---
+

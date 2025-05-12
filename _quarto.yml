@@ -56,6 +56,8 @@ website:
         contents:
           - text: "Working with the GitHub API"
             href: chapters/github-api.qmd
+          - text: "Exercise 1: Getting Information from GitHub"
+            href: chapters/exercise-github-api.qmd
       - section: "APIs for Data Analysis"
         contents:
           - text: "Collecting Data for Analysis"
