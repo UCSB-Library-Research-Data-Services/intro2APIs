@@ -42,7 +42,7 @@ GitHub will only show the token **once**. Copy it immediately and save it somewh
 
 ### Add It to Postman
 
-1. Open your **GitHub environment** in Postman (or create one).
+1. Create a new environment named `GitHub Env`.
 2. Add a **secret** variable:
    - **Variable**: `gh_token`
    - **Type**: `secret`
@@ -54,6 +54,45 @@ You’ll now be able to authorize your GitHub requests by including this header 
 
 `Authorization: Bearer {{gh_token}}`
 
-
 Postman will automatically substitute `{{gh_token}}` with your real token, keeping it secure.
 
+This is also a good moment to set a default variable for the GitHub base URL.  
+We’ll use the variable `gh_URL` to store: `https://api.github.com`.
+
+## Testing the Authorization Token
+
+Let’s confirm that your GitHub token is working correctly by sending a simple authenticated `GET` request.
+
+We’ll use this endpoint:
+
+`GET {{gh_URL}}/user`
+
+This returns information about the **authenticated user** — meaning: you!
+
+### Steps
+
+1. In your **GitHub** collection in Postman, create a new request called **"Get Authenticated User"**.
+2. Set the method to `GET`.
+3. In the URL field, enter: `{{gh_URL}}/user`
+4. In the **Headers** tab, add:
+- **Key**: `Authorization`
+- **Value**: `Bearer {{gh_token}}`  
+  (**Don’t forget to include `Bearer` before the token!**)
+
+5. Make sure the **GitHub environment** is selected.
+6. Click **Send**.
+
+If everything is working, you’ll get a response that includes your GitHub user information:
+
+- `login` (your GitHub username)
+- `id`
+- `public_repos`
+- `created_at`, etc.
+
+![Example of a successful GitHub user response in Postman](/static/imgs/postman-github-user-response.png)
+
+If you receive a `401 Unauthorized` error, double-check:
+
+- Your token is correct and hasn’t expired
+- You added `Bearer` before `{{{gh_token}}}`
+- The header name is exactly: `Authorization`
