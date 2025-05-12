@@ -1,0 +1,13 @@
+---
+title: "Working with the GitHub API"
+execute:
+  echo: true
+format:
+  html:
+    code-fold: true
+lightbox: true
+---
+
+
+
+
