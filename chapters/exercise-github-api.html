@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>closing – Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;</title>
+<title>Exercise 1: Getting Information from GitHub – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../chapters/exercise-github-api-2.html" rel="next">
+<link href="../chapters/github-api.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -40,6 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-e587ec4fc83dcc4857c878ad265b6f00.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -90,9 +95,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/github-api.html">A Real-World Example: The GitHub API</a></li><li class="breadcrumb-item"><a href="../chapters/exercise-github-api.html">Exercise 1: Getting Information from GitHub</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -107,7 +110,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/imgs/integration.png" class="img-fluid figure-img"></p>
+<p><a href="../static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Api icons created by HAJICON - Flaticon"><img src="../static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
@@ -217,13 +220,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">A Real-World Example: The GitHub API</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/github-api.html" class="sidebar-item-text sidebar-link">
@@ -232,7 +235,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/exercise-github-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/exercise-github-api.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exercise 1: Getting Information from GitHub</span></a>
   </div>
 </li>
@@ -278,17 +281,211 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-get-octocat-endpoint" id="toc-the-get-octocat-endpoint" class="nav-link active" data-scroll-target="#the-get-octocat-endpoint">The “Get Octocat” Endpoint</a></li>
+  <li><a href="#translating-github-docs-to-postman" id="toc-translating-github-docs-to-postman" class="nav-link" data-scroll-target="#translating-github-docs-to-postman">Translating GitHub Docs to Postman</a></li>
+  <li><a href="#search-repositories" id="toc-search-repositories" class="nav-link" data-scroll-target="#search-repositories">Search Repositories</a></li>
+  <li><a href="#check-your-work" id="toc-check-your-work" class="nav-link" data-scroll-target="#check-your-work">Check your work</a>
+  <ul class="collapse">
+  <li><a href="#url" id="toc-url" class="nav-link" data-scroll-target="#url">URL</a></li>
+  <li><a href="#query-parameters" id="toc-query-parameters" class="nav-link" data-scroll-target="#query-parameters">Query Parameters</a></li>
+  <li><a href="#headers-optionals" id="toc-headers-optionals" class="nav-link" data-scroll-target="#headers-optionals">Headers (optionals)</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/github-api.html">A Real-World Example: The GitHub API</a></li><li class="breadcrumb-item"><a href="../chapters/exercise-github-api.html">Exercise 1: Getting Information from GitHub</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Exercise 1: Getting Information from GitHub</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<p>Now, instead of walking through GitHub’s many endpoints one by one, you’re going to solve a few challenges that will help reinforce the concepts we’ve explored in the previous lessons.</p>
+<p>But don’t worry — before you begin, let’s review how to navigate GitHub’s API documentation to build requests in Postman.</p>
+<hr>
+<section id="the-get-octocat-endpoint" class="level2">
+<h2 class="anchored" data-anchor-id="the-get-octocat-endpoint">The “Get Octocat” Endpoint</h2>
+<p>This endpoint is part of GitHub’s <strong>Meta</strong> category.<br>
+To find it, go to the GitHub API documentation:<br>
+<a href="https://docs.github.com/en/rest?apiVersion=2022-11-28">https://docs.github.com/en/rest?apiVersion=2022-11-28</a></p>
+<p>In the left sidebar, scroll down to:</p>
+<pre><code>Meta
+|- Meta
+|  |- Get Octocat
+</code></pre>
+<p>GitHub’s documentation may seem intimidating at first, but with a closer look, it’s not that different from The Cat API’s documentation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/github-api-docs.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Get Octocat documentation"><img src="../static/imgs/github-api-docs.png" class="img-fluid figure-img" alt="Get Octocat documentation"></a></p>
+<figcaption>Get Octocat documentation</figcaption>
+</figure>
+</div>
+<p>Here’s how to read it:</p>
+<ul>
+<li><p>The <strong>left column</strong> explains what the endpoint does and what type of token it accepts.</p>
+<ul>
+<li>In our case, we’re using a <strong>Personal Access Token (classic)</strong>, which gives us access to repositories and endpoints we have permission for.</li>
+<li><strong>Fine-grained tokens</strong> are another type of GitHub token with more limited scopes. If a note says “This endpoint works with fine-grained tokens,” it means you can use it, but you may encounter restrictions.</li>
+</ul></li>
+<li><p>The <strong>Parameters</strong> section (still in the left column) lists:</p>
+<ul>
+<li>Required headers</li>
+<li>Optional query parameters</li>
+<li>Path parameters</li>
+<li>Body fields (for <code>POST</code>/<code>PATCH</code> requests)</li>
+</ul></li>
+<li><p>The <strong>right column</strong> shows example requests in cURL, JavaScript, and GitHub CLI.<br>
+Even if you’re not using those, they can help you understand what values and formats are expected.</p></li>
+<li><p>At the <strong>very top</strong>, you’ll see the actual API endpoint. For this one, it’s: <code>GET/octocat</code></p></li>
+<li><p>At the bottom, you’ll find <strong>sample responses</strong> and <strong>schemas</strong> — great for comparing against your own requests.</p></li>
+</ul>
+</section>
+<section id="translating-github-docs-to-postman" class="level2">
+<h2 class="anchored" data-anchor-id="translating-github-docs-to-postman">Translating GitHub Docs to Postman</h2>
+<p>Let’s build the request for <code>/octocat</code> in Postman:</p>
+<ol type="1">
+<li>Create a new <code>GET</code> request inside your <strong>GitHub</strong> collection.</li>
+<li>Set the URL to: <code>{{gh_URL}}/octocat</code></li>
+<li>Under the <strong>Headers</strong> tab, add:</li>
+</ol>
+<ul>
+<li><strong>Key</strong>: <code>accept</code></li>
+<li><strong>Value</strong>: <code>application/vnd.github+json</code></li>
+</ul>
+<ol start="4" type="1">
+<li>Under the <strong>Params</strong> tab, add:</li>
+</ol>
+<ul>
+<li><strong>Key</strong>: <code>s</code></li>
+<li><strong>Value</strong>: <em>(any message you want — e.g., <code>This is me, interacting with GitHub</code>)</em></li>
+</ul>
+<ol start="5" type="1">
+<li>Make sure your GitHub environment is selected, then click <strong>Send</strong>.</li>
+</ol>
+<p>You should see the <strong>Octocat</strong> in your response window!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/gh-octocat.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="The Octocat"><img src="../static/imgs/gh-octocat.png" class="img-fluid figure-img" alt="The Octocat"></a></p>
+<figcaption>The Octocat</figcaption>
+</figure>
+</div>
+</section>
+<section id="search-repositories" class="level2">
+<h2 class="anchored" data-anchor-id="search-repositories">Search Repositories</h2>
+<p>Now it’s your turn!</p>
+<p>In this exercise, you’ll use Postman to send a request that searches for public GitHub repositories matching specific criteria.</p>
+<p>You can find the endpoint documentation by navigating to:</p>
+<pre><code>Search
+|- Search
+|  |- Search repositories</code></pre>
+<p>Once there, follow the documentation to write a request that:</p>
+<ul>
+<li>Searches for repositories matching the query:</li>
+</ul>
+<p><code>tetris+language:python</code></p>
+<ul>
+<li>Sorts results by: <code>stars</code></li>
+<li>Orders them in: <code>descending</code> order (<code>desc</code>)</li>
+</ul>
+<p><strong>Optional, but recommended:</strong></p>
+<ul>
+<li>Return <strong>30 results per page</strong></li>
+<li>Get results from <strong>page 3</strong></li>
+</ul>
+<p>Use the information in the documentation to set the correct query parameters in Postman.</p>
+<p>When you’re done, explore the response — it will include metadata like repository names, descriptions, star counts, and links to the original repos.</p>
+</section>
+<section id="check-your-work" class="level2">
+<h2 class="anchored" data-anchor-id="check-your-work">Check your work</h2>
+<p>If everything is set up correctly, your request should look something like this:</p>
+<section id="url" class="level3">
+<h3 class="anchored" data-anchor-id="url">URL</h3>
+<p><code>{gh_URL}/search/repositories</code></p>
+</section>
+<section id="query-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="query-parameters">Query Parameters</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>q</code></td>
+<td><code>tetris+language:python</code></td>
+</tr>
+<tr class="even">
+<td><code>sort</code></td>
+<td><code>stars</code></td>
+</tr>
+<tr class="odd">
+<td><code>order</code></td>
+<td><code>desc</code></td>
+</tr>
+<tr class="even">
+<td><code>per_page</code></td>
+<td><code>30</code></td>
+</tr>
+<tr class="odd">
+<td><code>page</code></td>
+<td><code>3</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="headers-optionals" class="level3">
+<h3 class="anchored" data-anchor-id="headers-optionals">Headers (optionals)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>accept</code></td>
+<td><code>application/vnd.github+json</code></td>
+</tr>
+<tr class="even">
+<td><code>Authorization</code></td>
+<td><code>Bearer {{gh_token}}</code></td>
+</tr>
+</tbody>
+</table>
+<p>Your response should include a JSON object with a key named <code>items</code> — this is a list of repositories that match your search. You can scan through the names, star counts, and descriptions to explore what’s trending in the world of Python + Tetris 😄</p>
+<p>If your response returns an error or doesn’t look like what’s expected:</p>
+<ul>
+<li>Double-check your query parameters</li>
+<li>Make sure you’re using <code>GET</code> as the request method</li>
+<li>Confirm your token is still valid and your environment is active</li>
+</ul>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -690,6 +887,18 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/github-api.html" class="pagination-link" aria-label="Working with the GitHub API">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Working with the GitHub API</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/exercise-github-api-2.html" class="pagination-link" aria-label="Exercise 2: Adding and Removing Information from GitHub">
+        <span class="nav-page-text">Exercise 2: Adding and Removing Information from GitHub</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -712,6 +921,38 @@ License: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blan
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

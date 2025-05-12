@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>closing – Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;</title>
+<title>DELETE Requests in Postman – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../chapters/github-api.html" rel="next">
+<link href="../chapters/postman-post.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -40,6 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-e587ec4fc83dcc4857c878ad265b6f00.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -90,9 +95,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../chapters/postman-delete.html">DELETE Requests in Postman</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -107,7 +110,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/imgs/integration.png" class="img-fluid figure-img"></p>
+<p><a href="../static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Api icons created by HAJICON - Flaticon"><img src="../static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
@@ -176,13 +179,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Interacting with APIs using Postman</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/postman.html" class="sidebar-item-text sidebar-link">
@@ -209,7 +212,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-delete.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/postman-delete.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">DELETE Requests in Postman</span></a>
   </div>
 </li>
@@ -278,17 +281,113 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#delete-request" id="toc-delete-request" class="nav-link active" data-scroll-target="#delete-request">DELETE Request</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../chapters/postman-delete.html">DELETE Requests in Postman</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">DELETE Requests in Postman</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<p>Now that we’ve learned how to send information to a server using an API endpoint, let’s explore how to <strong>delete</strong> content from it using a <code>DELETE</code> request.</p>
+<p>To avoid deleting the image we uploaded earlier, we’ll start this section by uploading a new image — this one of a very festive (and slightly grumpy) cat:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/Mateo.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Is he a cat or the Grinch?"><img src="../static/imgs/Mateo.jpeg" class="img-fluid figure-img" alt="Is he a cat or the Grinch?"></a></p>
+<figcaption>Is he a cat or the Grinch?</figcaption>
+</figure>
+</div>
+<p>Here’s the response returned by the API when the image was uploaded:</p>
+<p><a href="../static/imgs/cat-grinch.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="../static/imgs/cat-grinch.png" class="img-fluid"></a></p>
+<p>Now we’re ready to delete that image from our personal collection using its ID.</p>
+<section id="delete-request" class="level2">
+<h2 class="anchored" data-anchor-id="delete-request">DELETE Request</h2>
+<p>To understand how to use the <code>DELETE</code> request in the context of <em>The Cat API</em>, let’s return to the documentation — specifically to:</p>
+<p><span style="display: inline-block; font-weight: bold; color: white; background-color: rgb(204, 51, 51); padding: 2px 8px; border-radius: 4px;">DEL</span> <strong>/images/:image_id</strong></p>
+<p>According to the docs, this request requires one <strong>path parameter</strong>:</p>
+<ul>
+<li><code>image_id</code>: <code>string</code>. Example: <code>dMsUj1-nz</code></li>
+</ul>
+<p>And, as usual, two <strong>header parameters</strong> — including our already familiar <code>x-api-key: {{api_token}}</code>.</p>
+<hr>
+<p>Let’s set up the request:</p>
+<ol type="1">
+<li>Create a new request in your <strong>CatAPI</strong> collection and name it <strong>“Delete Cat Image”</strong>.</li>
+<li>Change the request type to <code>DELETE</code>.</li>
+<li>Make sure the <code>CatAPI</code> environment is selected.</li>
+<li>In the URL field, enter the following base:</li>
+</ol>
+<p><code>{{url}}/images</code></p>
+<ol start="5" type="1">
+<li>Copy the <code>id</code> value from your last successful image upload. In my case, it’s <code>xsOtklMbs</code>.</li>
+<li>Append the ID to the URL like this:</li>
+</ol>
+<p><code>{{url}}/images/xsOtklMbs</code></p>
+<ol start="7" type="1">
+<li>Go to the <strong>Headers</strong> tab and add your authentication header:</li>
+</ol>
+<ul>
+<li><strong>Key</strong>: <code>x-api-key</code><br>
+</li>
+<li><strong>Value</strong>: <code>{api_token}</code></li>
+</ul>
+<p>Now you’re ready to send the request!</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You won’t receive a confirmation or warning before deletion, so make sure you’re removing the image you intended to.</p>
+</div>
+</div>
+<p>If the request is successful, you’ll receive a <code>204 No Content</code> status — this means the image was deleted.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/postman-delete-request.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="POSTMAN delete request"><img src="../static/imgs/postman-delete-request.png" class="img-fluid figure-img" alt="POSTMAN delete request"></a></p>
+<figcaption>POSTMAN delete request</figcaption>
+</figure>
+</div>
+<hr>
+<p>And that’s it! ✅</p>
+<p>You may have noticed that the endpoint used to <code>GET</code> or <code>DELETE</code> a record is the same:</p>
+<p><code>{{url}}/images/{image_id}</code></p>
+<p>That’s one of the core principles of REST APIs:<br>
+Each data <em>entity</em> — like <strong>images</strong> — is addressed by a consistent URL, while the <strong>HTTP method</strong> (<code>GET</code>, <code>POST</code>, <code>DELETE</code>, etc.) defines what action is performed on it.</p>
+<hr>
+<p><em>The Cat API</em> is a user-friendly tool for getting familiar with the basic concepts of REST APIs. It also helped us explore some key features of Postman, such as environments, headers, and request bodies.</p>
+<p>As mentioned earlier, APIs can range from very simple to quite complex. The GitHub API falls somewhere in the middle. It’s highly comprehensive, but you can interact with many of its endpoints using just an authorization token.</p>
+<p>In the next section, we’ll explore some of those endpoints through a series of hands-on exercises — introducing you to the use of APIs in a more “real-world” context.</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -690,6 +789,18 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/postman-post.html" class="pagination-link" aria-label="POST Requests in Postman">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">POST Requests in Postman</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/github-api.html" class="pagination-link" aria-label="Working with the GitHub API">
+        <span class="nav-page-text">Working with the GitHub API</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -712,6 +823,38 @@ License: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blan
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

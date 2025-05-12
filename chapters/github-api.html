@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>closing – Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;</title>
+<title>Working with the GitHub API – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../chapters/exercise-github-api.html" rel="next">
+<link href="../chapters/postman-delete.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -40,6 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-e587ec4fc83dcc4857c878ad265b6f00.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -90,9 +95,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/github-api.html">A Real-World Example: The GitHub API</a></li><li class="breadcrumb-item"><a href="../chapters/github-api.html">Working with the GitHub API</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -107,7 +110,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/imgs/integration.png" class="img-fluid figure-img"></p>
+<p><a href="../static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Api icons created by HAJICON - Flaticon"><img src="../static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
@@ -217,16 +220,16 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">A Real-World Example: The GitHub API</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/github-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/github-api.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Working with the GitHub API</span></a>
   </div>
 </li>
@@ -278,17 +281,164 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#getting-your-github-authorization-token" id="toc-getting-your-github-authorization-token" class="nav-link active" data-scroll-target="#getting-your-github-authorization-token">Getting Your GitHub Authorization Token</a>
+  <ul class="collapse">
+  <li><a href="#add-it-to-postman" id="toc-add-it-to-postman" class="nav-link" data-scroll-target="#add-it-to-postman">Add It to Postman</a></li>
+  </ul></li>
+  <li><a href="#testing-the-authorization-token" id="toc-testing-the-authorization-token" class="nav-link" data-scroll-target="#testing-the-authorization-token">Testing the Authorization Token</a>
+  <ul class="collapse">
+  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a></li>
+  </ul></li>
+  <li><a href="#ready-to-explore-more" id="toc-ready-to-explore-more" class="nav-link" data-scroll-target="#ready-to-explore-more">Ready to Explore More?</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/github-api.html">A Real-World Example: The GitHub API</a></li><li class="breadcrumb-item"><a href="../chapters/github-api.html">Working with the GitHub API</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Working with the GitHub API</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<p>The GitHub API is a powerful tool for developers, researchers, and data analysts. It allows you to programmatically interact with almost every feature available on GitHub’s website — including repositories, issues, users, and more.</p>
+<p>In this section, we’ll explore a curated set of endpoints from the GitHub REST API using Postman. We’ll build on what we learned in previous chapters: setting headers, using variables, and making <code>GET</code>, <code>POST</code>, <code>PATCH</code>, and <code>DELETE</code> requests.</p>
+<p>The only requirement to access most of GitHub’s API is an <strong>authorization token</strong>, which you can generate in your GitHub settings.</p>
+<section id="getting-your-github-authorization-token" class="level2">
+<h2 class="anchored" data-anchor-id="getting-your-github-authorization-token">Getting Your GitHub Authorization Token</h2>
+<p>To access private endpoints or perform actions like creating issues or repositories, GitHub requires an authorization token. This token acts like a password for your API requests, so keep it secret and secure.</p>
+<p>Here’s how to generate one:</p>
+<ol type="1">
+<li><a href="https://github.com">Go to GitHub</a> and log into your account.</li>
+<li>Navigate to your <a href="https://github.com/settings/apps">Developer settings</a>:
+<ul>
+<li>Click your profile photo (top right) → <strong>Settings</strong></li>
+<li>Scroll down to <strong>Developer settings</strong></li>
+</ul></li>
+<li>In the left sidebar, select <strong>Personal access tokens</strong> → then <a href="https://github.com/settings/tokens"><strong>Tokens (classic)</strong></a></li>
+<li>Click the <strong>Generate new token</strong> (classic) button.</li>
+<li>Fill out the form:
+<ul>
+<li><strong>Note</strong>: Give your token a descriptive name, e.g.&nbsp;<code>Postman Workshop Token</code></li>
+<li><strong>Expiration</strong>: Choose any short duration (e.g.&nbsp;7 or 30 days)</li>
+<li><strong>Scopes</strong>:
+<ul>
+<li>Check the box for <strong><code>repo</code></strong> → this includes issues, pull requests, and repo access</li>
+<li>You can also select <strong><code>read:user</code></strong> and <strong><code>user:email</code></strong> if you want user info</li>
+</ul></li>
+</ul></li>
+<li>Click <strong>Generate token</strong></li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>GitHub will only show the token <strong>once</strong>. Copy it immediately and save it somewhere secure (e.g., directly into Postman).</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/Github-token.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Github Token Form"><img src="../static/imgs/Github-token.png" class="img-fluid figure-img" alt="Github Token Form"></a></p>
+<figcaption>Github Token Form</figcaption>
+</figure>
+</div>
+<section id="add-it-to-postman" class="level3">
+<h3 class="anchored" data-anchor-id="add-it-to-postman">Add It to Postman</h3>
+<ol type="1">
+<li>Create a new environment named <code>GitHub Env</code>.</li>
+<li>Add a <strong>secret</strong> variable:
+<ul>
+<li><strong>Variable</strong>: <code>gh_token</code></li>
+<li><strong>Type</strong>: <code>secret</code></li>
+<li><strong>Initial value</strong>: <em>(paste your token here)</em></li>
+<li><strong>Current value</strong>: will be filled automatically</li>
+</ul></li>
+<li>Save the environment.</li>
+</ol>
+<p>You’ll now be able to authorize your GitHub requests by including this header in each request:</p>
+<p><code>Authorization: Bearer {{gh_token}}</code></p>
+<p>Postman will automatically substitute <code>{gh_token}</code> with your real token, keeping it secure.</p>
+<p>This is also a good moment to set a default variable for the GitHub base URL.<br>
+We’ll use the variable <code>gh_URL</code> to store: <code>https://api.github.com</code>.</p>
+</section>
+</section>
+<section id="testing-the-authorization-token" class="level2">
+<h2 class="anchored" data-anchor-id="testing-the-authorization-token">Testing the Authorization Token</h2>
+<p>Let’s confirm that your GitHub token is working correctly by sending a simple authenticated <code>GET</code> request.</p>
+<p>We’ll use this endpoint:</p>
+<p><code>GET {{gh_URL}}/user</code></p>
+<p>This returns information about the <strong>authenticated user</strong> — meaning: you!</p>
+<section id="steps" class="level3">
+<h3 class="anchored" data-anchor-id="steps">Steps</h3>
+<ol type="1">
+<li>In your <strong>GitHub</strong> collection in Postman, create a new request called <strong>“Get Authenticated User”</strong>.</li>
+<li>Set the method to <code>GET</code>.</li>
+<li>In the URL field, enter: <code>{gh_URL}/user</code></li>
+<li>In the <strong>Headers</strong> tab, add:</li>
+</ol>
+<ul>
+<li><strong>Key</strong>: <code>Authorization</code></li>
+<li><strong>Value</strong>: <code>Bearer {{gh_token}}</code><br>
+(<strong>Don’t forget to include <code>Bearer</code> before the token!</strong>)</li>
+</ul>
+<ol start="5" type="1">
+<li>Make sure the <strong>GitHub environment</strong> is selected.</li>
+<li>Click <strong>Send</strong>.</li>
+</ol>
+<p>If everything is working, you’ll get a response that includes your GitHub user information:</p>
+<ul>
+<li><code>login</code> (your GitHub username)</li>
+<li><code>id</code></li>
+<li><code>public_repos</code></li>
+<li><code>created_at</code>, etc.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/postman-github-user-response.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Example of a successful GitHub user response in Postman"><img src="../static/imgs/postman-github-user-response.png" class="img-fluid figure-img" alt="Example of a successful GitHub user response in Postman"></a></p>
+<figcaption>Example of a successful GitHub user response in Postman</figcaption>
+</figure>
+</div>
+<p>If you receive a <code>401 Unauthorized</code> error, double-check:</p>
+<ul>
+<li>Your token is correct and hasn’t expired</li>
+<li>You added <code>Bearer</code> before <code>{{gh_token}}</code></li>
+<li>The header name is exactly: <code>Authorization</code></li>
+</ul>
+</section>
+</section>
+<section id="ready-to-explore-more" class="level2">
+<h2 class="anchored" data-anchor-id="ready-to-explore-more">Ready to Explore More?</h2>
+<p>With your environment set up and your authentication tested, you’re now ready to explore a wide range of endpoints in the GitHub API.</p>
+<p>From retrieving repository data to creating issues or managing user activity, the GitHub API gives you programmatic access to one of the world’s largest collaborative platforms, and you’ve already taken the most important step: connecting securely.</p>
+<p>In the next section, we’ll explore a few real-world use cases with the GitHub API to practice sending <code>GET</code>, <code>POST</code>, <code>PATCH</code>, and <code>DEL</code> requests.</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -690,6 +840,18 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/postman-delete.html" class="pagination-link" aria-label="DELETE Requests in Postman">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">DELETE Requests in Postman</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/exercise-github-api.html" class="pagination-link" aria-label="Exercise 1: Getting Information from GitHub">
+        <span class="nav-page-text">Exercise 1: Getting Information from GitHub</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -712,6 +874,38 @@ License: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blan
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

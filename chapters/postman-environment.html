@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>closing – Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;</title>
+<title>Managing Environment Variables with Postman – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../chapters/postman-post.html" rel="next">
+<link href="../chapters/postman-basic-requests.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -40,6 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-e587ec4fc83dcc4857c878ad265b6f00.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -90,9 +95,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../chapters/postman-environment.html">Environment Variables</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -107,7 +110,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/imgs/integration.png" class="img-fluid figure-img"></p>
+<p><a href="../static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Api icons created by HAJICON - Flaticon"><img src="../static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
@@ -176,13 +179,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Interacting with APIs using Postman</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/postman.html" class="sidebar-item-text sidebar-link">
@@ -197,7 +200,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-environment.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/postman-environment.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Environment Variables</span></a>
   </div>
 </li>
@@ -278,17 +281,166 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#setting-up-an-environment" id="toc-setting-up-an-environment" class="nav-link active" data-scroll-target="#setting-up-an-environment">Setting Up an Environment</a>
+  <ul class="collapse">
+  <li><a href="#creating-a-default-variable" id="toc-creating-a-default-variable" class="nav-link" data-scroll-target="#creating-a-default-variable">Creating a Default Variable</a></li>
+  <li><a href="#creating-a-secret-variable" id="toc-creating-a-secret-variable" class="nav-link" data-scroll-target="#creating-a-secret-variable">Creating a Secret Variable</a></li>
+  </ul></li>
+  <li><a href="#using-variables-in-a-request" id="toc-using-variables-in-a-request" class="nav-link" data-scroll-target="#using-variables-in-a-request">Using Variables in a Request</a></li>
+  <li><a href="#using-secrets-in-a-request" id="toc-using-secrets-in-a-request" class="nav-link" data-scroll-target="#using-secrets-in-a-request">Using Secrets in a Request</a></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up">Wrapping Up</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../chapters/postman-environment.html">Environment Variables</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Managing Environment Variables with Postman</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<p>Now that we’ve learned how to use collections in Postman to send requests to an API, it’s time to explore <strong>environment variables</strong>.</p>
+<p>As Postman defines it:</p>
+<blockquote class="blockquote">
+<p>“An environment is a set of variables that allows you to switch the context of your requests.”</p>
+</blockquote>
+<p>Each environment variable stores a value. For example, you might create a variable named <code>url</code> with the value <code>https://api.thecatapi.com/v1</code>. You can then use <code>{url}</code> in your request instead of typing the full URL each time.</p>
+<p>Environment variables can also store <strong>sensitive information</strong>, such as passwords or API tokens, which need to be included in requests securely.</p>
+<section id="setting-up-an-environment" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-an-environment">Setting Up an Environment</h2>
+<p>To set up an environment in Postman, follow these steps:</p>
+<ol type="1">
+<li>Open Postman and click the <strong>Environments</strong> tab in the left sidebar.</li>
+<li>Click the <strong>+ New Environment</strong> button.</li>
+<li>Give your environment a name — for example: <code>CatAPI</code>.</li>
+</ol>
+<hr>
+<section id="creating-a-default-variable" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-default-variable">Creating a Default Variable</h3>
+<p>You’ll see a new window where you can add your variables. Let’s begin by setting a <strong>default</strong> variable for the base URL.</p>
+<p>Fill out the following fields:</p>
+<ul>
+<li><strong>Variable</strong>: <code>url</code><br>
+</li>
+<li><strong>Type</strong>: <code>default</code><br>
+</li>
+<li><strong>Initial value</strong>: <code>https://api.thecatapi.com/v1</code><br>
+</li>
+<li><strong>Current value</strong>: (filled automatically)</li>
+</ul>
+<p>Click the checkbox to activate the variable, then click <strong>Save</strong> in the upper-right corner.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/postman-default-var.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Postman default variable"><img src="../static/imgs/postman-default-var.png" class="img-fluid figure-img" alt="Postman default variable"></a></p>
+<figcaption>Postman default variable</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="creating-a-secret-variable" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-secret-variable">Creating a Secret Variable</h3>
+<p>Now let’s add a <strong>secret</strong> variable to store your API token.</p>
+<p>First, sign up for an API key at <a href="https://thecatapi.com/signup">https://thecatapi.com/signup</a>.<br>
+You’ll receive an email within a few seconds containing a token that looks something like this:<br>
+<code>live_Wi95wPeQHTsi0d4jH91jA51wjATQANFz7pqJpnQPrr2YpJ7T9sFJuyHYQXz5MMem</code></p>
+<p><em>(This is a fake example — never share your real API tokens publicly.)</em></p>
+<p>Once you have your token, add it to the same environment you created earlier:</p>
+<ul>
+<li><strong>Variable</strong>: <code>api_token</code><br>
+</li>
+<li><strong>Type</strong>: <code>secret</code><br>
+</li>
+<li><strong>Initial value</strong>: <code>your_api_token_here</code><br>
+</li>
+<li><strong>Current value</strong>: (filled automatically)</li>
+</ul>
+<p>Check the box to activate the variable, then click <strong>Save</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/postman-secret-var.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Postman secret variable"><img src="../static/imgs/postman-secret-var.png" class="img-fluid figure-img" alt="Postman secret variable"></a></p>
+<figcaption>Postman secret variable</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="using-variables-in-a-request" class="level2">
+<h2 class="anchored" data-anchor-id="using-variables-in-a-request">Using Variables in a Request</h2>
+<p>Now that we’ve saved our variables, we can include them in a request. Let’s go back to the <strong>Collections</strong> tab and open the <strong>List Breeds</strong> request.</p>
+<p>To use your environment variables, you first need to activate the <code>CatAPI</code> environment. In the top-right corner of Postman, you’ll see a button labeled <strong>“No Environment”</strong>. Click it and select <code>CatAPI</code> from the dropdown menu:</p>
+<p><a href="../static/imgs/postman-env-select.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="../static/imgs/postman-env-select.png" class="img-fluid"></a></p>
+<p>Now, go to the request URL field. Carefully remove <code>https://api.thecatapi.com/v1</code> from the beginning — <strong>but be sure to leave the trailing slash in <code>/breeds</code> intact</strong>.</p>
+<p>Type <code>{</code> in the field, and you’ll see a dropdown menu showing available variables from the <code>CatAPI</code> environment, along with global variables provided by Postman. If you hover over a variable name, Postman will display its value.</p>
+<p><a href="../static/imgs/postman-variables-request.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="../static/imgs/postman-variables-request.png" class="img-fluid"></a></p>
+<p>Select the <code>url</code> variable. Your request should now look like this:</p>
+<p><code>{{url}}/breeds</code></p>
+<p>To confirm that everything is working correctly, click <strong>Send</strong> again. You should see the same response as before — now powered by your environment variable!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/postman-request-with-variable.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Postman - Request with default variable"><img src="../static/imgs/postman-request-with-variable.png" class="img-fluid figure-img" alt="Postman - Request with default variable"></a></p>
+<figcaption>Postman - Request with default variable</figcaption>
+</figure>
+</div>
+</section>
+<section id="using-secrets-in-a-request" class="level2">
+<h2 class="anchored" data-anchor-id="using-secrets-in-a-request">Using Secrets in a Request</h2>
+<p>The most common way to send authenticated requests is by including a token in the request <strong>headers</strong>. Let’s try that using our <code>Search Cat Images</code> request.</p>
+<p>First, replace the URL with your <code>{{url}}</code> default variable, just like we did in the previous exercise.</p>
+<p>Next, click on the <strong>Headers</strong> tab, located just below the URL field. You’ll see a table where you can add header keys, values, and optional descriptions. HTTP headers are metadata that provide additional context about the request and help the server prepare an appropriate response.</p>
+<p>To learn how to include the API token, let’s refer to the Cat API documentation:</p>
+<blockquote class="blockquote">
+<p>To get more than 10, and additional fields then be sure to use your API Key from the welcome email as the ‘x-api-key’ header, or ?api_key= query string parameter to access all the images and data.</p>
+</blockquote>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You may have noticed that it’s also possible to send the API key as a query parameter in the URL. While this works, it’s <strong>not recommended</strong>. Even though Postman keeps the token secret in your environment, placing it in the URL exposes it in the browser or server logs when the request is made.</p>
+</div>
+</div>
+<p>To add the header, use the following values:</p>
+<ul>
+<li><strong>Key</strong>: <code>x-api-key</code><br>
+</li>
+<li><strong>Value</strong>: <code>{{api_token}}</code></li>
+</ul>
+<p>Now run the request again. You’ll see that the <code>limit=3</code> parameter works as expected — and you can even increase it (e.g., to 30) without any issue. Because the request is now authenticated, the API allows access to features that aren’t available to unauthenticated users.</p>
+<p><a href="../static/imgs/postman-request-with-secret.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="../static/imgs/postman-request-with-secret.png" class="img-fluid"></a></p>
+</section>
+<section id="wrapping-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrapping-up">Wrapping Up</h2>
+<p>In this section, we’ve learned how to use environment variables and secrets in Postman to simplify and secure our requests. By storing values like the base URL and API token in a reusable environment, we can write cleaner, safer, and more flexible requests.</p>
+<p>We also explored how to pass secrets through request headers, a common and recommended practice when working with APIs that require authentication.</p>
+<p>In the next section, we’ll go a step further and explore how to use <code>POST</code> and <code>DELETE</code> methods with The Cat API to interact with user-specific data, such as favorites or image votes.</p>
+<p>After that, we’ll begin working with the GitHub API, where we’ll apply all these concepts in a more complex and widely used platform.</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -690,6 +842,18 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/postman-basic-requests.html" class="pagination-link" aria-label="Basic Request">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Basic Request</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/postman-post.html" class="pagination-link" aria-label="POST Requests in Postman">
+        <span class="nav-page-text">POST Requests in Postman</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -712,6 +876,38 @@ License: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blan
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

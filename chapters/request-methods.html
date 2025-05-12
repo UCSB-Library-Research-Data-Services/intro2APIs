@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>closing – Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;</title>
+<title>Request Methods – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,6 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../chapters/interact-apis.html" rel="next">
+<link href="../chapters/endpoints.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -40,6 +77,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-e587ec4fc83dcc4857c878ad265b6f00.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -76,6 +116,8 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../static/css/styles.css">
@@ -90,9 +132,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/endpoints.html">Interacting with APIs</a></li><li class="breadcrumb-item"><a href="../chapters/request-methods.html">Request Methods</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -107,7 +147,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/imgs/integration.png" class="img-fluid figure-img"></p>
+<p><a href="../static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Api icons created by HAJICON - Flaticon"><img src="../static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
@@ -141,13 +181,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Interacting with APIs</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/endpoints.html" class="sidebar-item-text sidebar-link">
@@ -156,7 +196,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/request-methods.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/request-methods.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Request Methods</span></a>
   </div>
 </li>
@@ -278,19 +318,300 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#request-methods" id="toc-request-methods" class="nav-link active" data-scroll-target="#request-methods">Request Methods</a>
+  <ul class="collapse">
+  <li><a href="#get" id="toc-get" class="nav-link" data-scroll-target="#get">GET</a></li>
+  <li><a href="#post" id="toc-post" class="nav-link" data-scroll-target="#post">POST</a></li>
+  <li><a href="#put" id="toc-put" class="nav-link" data-scroll-target="#put">PUT</a></li>
+  <li><a href="#patch" id="toc-patch" class="nav-link" data-scroll-target="#patch">PATCH</a></li>
+  <li><a href="#delete" id="toc-delete" class="nav-link" data-scroll-target="#delete">DELETE</a></li>
+  <li><a href="#http-request-methods-at-a-glance" id="toc-http-request-methods-at-a-glance" class="nav-link" data-scroll-target="#http-request-methods-at-a-glance">HTTP Request Methods at a Glance</a></li>
+  </ul></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up">Wrapping Up</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/endpoints.html">Interacting with APIs</a></li><li class="breadcrumb-item"><a href="../chapters/request-methods.html">Request Methods</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Request Methods</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<p>In our previous example, we sent a request to <strong>The Cat API</strong> using this endpoint:</p>
+<p><a href="https://api.thecatapi.com/v1/images/search?size=small&amp;mime_types=gif&amp;limit=5">https://api.thecatapi.com/v1/images/search?size=small&amp;mime_types=gif&amp;limit=5</a></p>
+<p>If you paste that URL in your browser, you’ll see a response similar to this:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" data-startfrom="16" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 15;"><span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">getCatData</span>() {</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`https://api.thecatapi.com/v1/images/search?size=small&amp;mime_types=gif&amp;limit=5`</span><span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>catData <span class="op">=</span> <span class="cf">await</span> <span class="fu">getCatData</span>()<span class="op">;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>viewof catDataString <span class="op">=</span> {</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> pre <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;"&gt;`</span><span class="op">;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> code <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;code style="color: #333;"&gt;`</span><span class="op">;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Formatted JSON with syntax highlighting</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> formatted <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(catData<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&amp;/g</span><span class="op">,</span> <span class="st">'&amp;amp;'</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&lt;/g</span><span class="op">,</span> <span class="st">'&amp;lt;'</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="op">/&gt;/</span>g<span class="op">,</span> <span class="st">'&amp;gt;'</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/"</span><span class="sc">([^"]+)</span><span class="ss">":/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #a31515;"&gt;"$1"&lt;/span&gt;:'</span>) </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: "</span><span class="sc">([^"]+)</span><span class="ss">"/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #008000;"&gt;"$1"&lt;/span&gt;'</span>)  </span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: </span><span class="sc">([0-9]+)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #0000FF;"&gt;$1&lt;/span&gt;'</span>)  </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\b(</span><span class="ss">true</span><span class="sc">|</span><span class="ss">false</span><span class="sc">|</span><span class="ss">null</span><span class="sc">)\b</span><span class="ss">/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #FF0000;"&gt;$1&lt;/span&gt;'</span>)<span class="op">;</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  code<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> formatted<span class="op">;</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  pre<span class="op">.</span><span class="fu">appendChild</span>(code)<span class="op">;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> pre<span class="op">;</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<p>Even though it feels like just clicking a link, what’s actually happening is that your browser (the <strong>client</strong>) sends a request to the server, with information like:</p>
+<ul>
+<li>Method: <code>GET</code> — we’re asking to retrieve something</li>
+<li>Authority: <code>api.thecatapi.com</code> — the server we’re contacting</li>
+<li>Path: <code>/v1/images/search?size=small&amp;mime_types=gif&amp;limit=5</code> — the specific endpoint, including query parameters</li>
+<li>Scheme: <code>https</code> — the protocol used for secure communication</li>
+</ul>
+<p>In everyday browsing, we don’t think about these request components because the browser handles them automatically. But when working directly with APIs we control these details ourselves, and that opens up a lot of power and flexibility.</p>
+<p>In this section, we’re going to explore some common request methods that allow us to create or modify data on a server, not just read from it.</p>
+<section id="request-methods" class="level2">
+<h2 class="anchored" data-anchor-id="request-methods">Request Methods</h2>
+<p>A request method indicates the purpose of an HTTP request and the kind of response we expect. These methods act as semantic instructions for the server, which can respond with data, an error message, or a status update depending on whether the action is valid and allowed.</p>
+<p>The most common HTTP methods are:</p>
+<section id="get" class="level3">
+<h3 class="anchored" data-anchor-id="get">GET</h3>
+<p>As we’ve already seen, the <code>GET</code> method is used to <strong>retrieve data</strong> from a server or resource. It doesn’t alter anything on the server, it just requests information.</p>
+<p>The parameters included in the request URL help define the response. For example, a <code>GET</code> request can return a single item (e.g., <code>images/{image_id}</code>), or a list of items, as in the example we used at the beginning of this section.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/request_method_GET.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="GET request"><img src="../static/imgs/request_method_GET.png" class="img-fluid figure-img" alt="GET request"></a></p>
+<figcaption>GET request</figcaption>
+</figure>
+</div>
+</section>
+<section id="post" class="level3">
+<h3 class="anchored" data-anchor-id="post">POST</h3>
+<p>The <code>POST</code> method is used to <strong>send data</strong> to a server. For example, when you fill out a form and click the “Submit” button, your browser typically sends a <code>POST</code> request containing that data. The server processes it—often creating a new resource or triggering an action.</p>
+<p>Data for a <code>POST</code> request goes in the <strong>body</strong> (not the URL) and can be:</p>
+<ul>
+<li>form-data<br>
+</li>
+<li>binary (e.g., an image)<br>
+</li>
+<li>raw text (e.g., JSON, XML)</li>
+</ul>
+<p>Later on, we’ll explore how to configure and send these request bodies using practical tools.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/request_method_POST.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="POST request"><img src="../static/imgs/request_method_POST.png" class="img-fluid figure-img" alt="POST request"></a></p>
+<figcaption>POST request</figcaption>
+</figure>
+</div>
+</section>
+<section id="put" class="level3">
+<h3 class="anchored" data-anchor-id="put">PUT</h3>
+<p>The <code>PUT</code> method is used to update an existing resource. It looks similar to <code>POST</code>, but there’s an important difference: <code>PUT</code> requires the resource to already exist, and it typically replaces the entire object with the new data provided.</p>
+<p>In other words, while <code>POST</code> is used to create something new, <code>PUT</code> is used to <strong>overwrite</strong> an existing record at a specific location (e.g., <code>/images/{image_id}</code>).</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you don’t include all fields in a PUT request, some servers may interpret that as a request to remove the missing fields.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/request_method_PUT.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="PUT request"><img src="../static/imgs/request_method_PUT.png" class="img-fluid figure-img" alt="PUT request"></a></p>
+<figcaption>PUT request</figcaption>
+</figure>
+</div>
+</section>
+<section id="patch" class="level3">
+<h3 class="anchored" data-anchor-id="patch">PATCH</h3>
+<p>The <code>PATCH</code> method can be understood as a way to <strong>edit</strong> an existing record. Unlike <code>PUT</code>, which typically replaces the entire resource, <code>PATCH</code> allows you to <strong>update only specific fields</strong>.</p>
+<p>The values to be updated are included in the <strong>body</strong> of the request and will only overwrite the specified elements, leaving the rest of the record unchanged.</p>
+<p>For example, sending the following body to <code>/images/{image_id}</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"pending"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"approved"</span><span class="fu">:</span> <span class="dv">0</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>will update only those two fields in the existing record.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In many cases, using <code>PATCH</code> is safer than <code>PUT</code>—especially when we want to avoid unintentionally removing fields that weren’t included in the update. For that reason, <code>PATCH</code> is more commonly supported than <code>PUT</code> in modern APIs.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/request_method_PATCH.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="PATCH request"><img src="../static/imgs/request_method_PATCH.png" class="img-fluid figure-img" alt="PATCH request"></a></p>
+<figcaption>PATCH request</figcaption>
+</figure>
+</div>
+</section>
+<section id="delete" class="level3">
+<h3 class="anchored" data-anchor-id="delete">DELETE</h3>
+<p>The <code>DELETE</code> method is fairly self-explanatory. It takes a specific record identifier and removes that resource from the server.</p>
+<p>Typically, the response is a success status code (such as <code>200 OK</code> or <code>204 No Content</code>) confirming that the item has been deleted.</p>
+<p>Because of its potential impact, the use of this method is usually restricted to authenticated users and requires proper authorization or ownership. It’s rarely, if ever, available to anonymous users.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../static/imgs/request_method_DELETE.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="DELETE request"><img src="../static/imgs/request_method_DELETE.png" class="img-fluid figure-img" alt="DELETE request"></a></p>
+<figcaption>DELETE request</figcaption>
+</figure>
+</div>
+</section>
+<section id="http-request-methods-at-a-glance" class="level3">
+<h3 class="anchored" data-anchor-id="http-request-methods-at-a-glance">HTTP Request Methods at a Glance</h3>
+<p>We can visualize the main difference between these methods using the following table.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 21%">
+<col style="width: 19%">
+<col style="width: 27%">
+<col style="width: 11%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Purpose</th>
+<th>Requires Existing Resource?</th>
+<th>Typical Use Case</th>
+<th>Data Sent In</th>
+<th>Common Response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>GET</code></td>
+<td>Retrieve data</td>
+<td>❌ No</td>
+<td>Fetching a list or a single item</td>
+<td>URL (query params)</td>
+<td><code>200 OK</code>, JSON data</td>
+</tr>
+<tr class="even">
+<td><code>POST</code></td>
+<td>Create a new resource</td>
+<td>❌ No</td>
+<td>Submitting a form, creating an object</td>
+<td>Body</td>
+<td><code>201 Created</code></td>
+</tr>
+<tr class="odd">
+<td><code>PUT</code></td>
+<td>Replace an existing resource</td>
+<td>✅ Yes</td>
+<td>Overwriting an entire object</td>
+<td>Body</td>
+<td><code>200 OK</code> or <code>204 No Content</code></td>
+</tr>
+<tr class="even">
+<td><code>PATCH</code></td>
+<td>Update specific fields</td>
+<td>✅ Yes</td>
+<td>Editing part of an existing record</td>
+<td>Body</td>
+<td><code>200 OK</code> or <code>204 No Content</code></td>
+</tr>
+<tr class="odd">
+<td><code>DELETE</code></td>
+<td>Remove a resource</td>
+<td>✅ Yes</td>
+<td>Deleting a specific item</td>
+<td>URL</td>
+<td><code>204 No Content</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="wrapping-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrapping-up">Wrapping Up</h2>
+<p>In this section, we’ve explored the five most common HTTP request methods and how each one defines a different type of interaction with a server.</p>
+<p>These request methods form the foundation of working with RESTful APIs, and you’ll use them frequently as you explore or build your own data workflows.</p>
+<p>In the next section, you’ll see how to interact with APIs using the <code>GET</code> method directly from this notebook.</p>
+
+
+</section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImFzeW5jIGZ1bmN0aW9uIGdldENhdERhdGEoKSB7XG4gICAgY29uc3QgdXJsID0gYGh0dHBzOi8vYXBpLnRoZWNhdGFwaS5jb20vdjEvaW1hZ2VzL3NlYXJjaD9zaXplPXNtYWxsJm1pbWVfdHlwZXM9Z2lmJmxpbWl0PTVgO1xuICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2godXJsKTtcbiAgICBpZiAoIXJlc3BvbnNlLm9rKSB0aHJvdyBuZXcgRXJyb3IoYEhUVFAgZXJyb3IhIHN0YXR1czogJHtyZXNwb25zZS5zdGF0dXN9YCk7XG4gICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcbiAgICByZXR1cm4gZGF0YTtcbn1cblxuY2F0RGF0YSA9IGF3YWl0IGdldENhdERhdGEoKTtcblxudmlld29mIGNhdERhdGFTdHJpbmcgPSB7XG4gIGNvbnN0IHByZSA9IGh0bWxgPHByZSBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICNmOGY5ZmE7IHBhZGRpbmc6IDE1cHg7IGJvcmRlci1yYWRpdXM6IDVweDsgb3ZlcmZsb3cteDogYXV0bztcIj5gO1xuICBjb25zdCBjb2RlID0gaHRtbGA8Y29kZSBzdHlsZT1cImNvbG9yOiAjMzMzO1wiPmA7XG4gIFxuICAvLyBGb3JtYXR0ZWQgSlNPTiB3aXRoIHN5bnRheCBoaWdobGlnaHRpbmdcbiAgY29uc3QgZm9ybWF0dGVkID0gSlNPTi5zdHJpbmdpZnkoY2F0RGF0YSwgbnVsbCwgMilcbiAgICAucmVwbGFjZSgvJi9nLCAnJmFtcDsnKVxuICAgIC5yZXBsYWNlKC88L2csICcmbHQ7JylcbiAgICAucmVwbGFjZSgvPi9nLCAnJmd0OycpXG4gICAgLnJlcGxhY2UoL1wiKFteXCJdKylcIjovZywgJzxzcGFuIHN0eWxlPVwiY29sb3I6ICNhMzE1MTU7XCI+XCIkMVwiPC9zcGFuPjonKSBcbiAgICAucmVwbGFjZSgvOiBcIihbXlwiXSspXCIvZywgJzogPHNwYW4gc3R5bGU9XCJjb2xvcjogIzAwODAwMDtcIj5cIiQxXCI8L3NwYW4+JykgIFxuICAgIC5yZXBsYWNlKC86IChbMC05XSspL2csICc6IDxzcGFuIHN0eWxlPVwiY29sb3I6ICMwMDAwRkY7XCI+JDE8L3NwYW4+JykgIFxuICAgIC5yZXBsYWNlKC9cXGIodHJ1ZXxmYWxzZXxudWxsKVxcYi9nLCAnPHNwYW4gc3R5bGU9XCJjb2xvcjogI0ZGMDAwMDtcIj4kMTwvc3Bhbj4nKTtcbiAgICBcbiAgY29kZS5pbm5lckhUTUwgPSBmb3JtYXR0ZWQ7XG4gIHByZS5hcHBlbmRDaGlsZChjb2RlKTtcbiAgcmV0dXJuIHByZTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnY2F0RGF0YVN0cmluZycpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../chapters";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -690,6 +1011,18 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/endpoints.html" class="pagination-link" aria-label="Endpoints">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Endpoints</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/interact-apis.html" class="pagination-link" aria-label="Interacting with APIs">
+        <span class="nav-page-text">Interacting with APIs</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -712,6 +1045,38 @@ License: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blan
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
