@@ -52,14 +52,18 @@ website:
             href: chapters/postman-post.qmd
           - text: "DELETE Requests in Postman"
             href: chapters/postman-delete.qmd
-      - section: "A Real-World Example: The GitHub API"
+          - section: "A Real-World Example: The GitHub API"
+            contents:
+              - text: "Working with the GitHub API"
+                href: chapters/github-api.qmd
+              - text: "Exercise 1: Getting Information from GitHub"
+                href: chapters/exercise-github-api.qmd
+              - text: "Exercise 2: Adding and Removing Information from GitHub"
+                href: chapters/exercise-github-api-2.qmd
+      - section: "Getting Data Programmatically"
         contents:
-          - text: "Working with the GitHub API"
-            href: chapters/github-api.qmd
-          - text: "Exercise 1: Getting Information from GitHub"
-            href: chapters/exercise-github-api.qmd
-          - text: "Exercise 2: Adding and Removing Information from GitHub"
-            href: chapters/exercise-github-api-2.qmd
+          - text: "Interacting with APIs with Python"
+            href: chapters/python.qmd
       - section: "APIs for Data Analysis"
         contents:
           - text: "Collecting Data for Analysis"

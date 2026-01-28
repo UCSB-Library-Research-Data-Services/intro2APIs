@@ -1,0 +1,9 @@
+---
+title: "Interacting with APIs with Python"
+execute:
+    echo: true
+format:
+    html:
+        code-fold: true
+lightbox: true
+---
