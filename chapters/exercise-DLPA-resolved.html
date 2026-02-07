@@ -355,10 +355,49 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <p>WARNING: Don’t use the API to download large quantities of data. Use the files available for download instead following these instructions: https://pro.dp.la/developers/bulk-download</p>
 <section id="import-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="import-libraries">Import Libraries</h2>
-<div id="e4c1b167" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install yake</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e4c1b167" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install yake</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install tqdm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>Requirement already satisfied: yake in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (0.7.1)
+
+Requirement already satisfied: click&gt;=6.0 in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (8.3.1)
+
+Requirement already satisfied: jellyfish in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (1.2.1)
+
+Requirement already satisfied: networkx in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (3.4.2)
+
+Requirement already satisfied: numpy&lt;2.0.0,&gt;=1.24.0 in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (1.26.4)
+
+Requirement already satisfied: segtok in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (1.5.11)
+
+Requirement already satisfied: tabulate in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (0.9.0)
+
+Requirement already satisfied: regex in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from segtok-&gt;yake) (2026.1.15)
+
+
+
+<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> A new release of pip is available: <span class="ansi-red-fg">24.3.1</span> -&gt; <span class="ansi-green-fg">26.0</span>
+
+<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> To update, run: <span class="ansi-green-fg">pip install --upgrade pip</span>
+
+Note: you may need to restart the kernel to use updated packages.
+
+Requirement already satisfied: tqdm in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (4.67.3)
+
+
+
+<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> A new release of pip is available: <span class="ansi-red-fg">24.3.1</span> -&gt; <span class="ansi-green-fg">26.0</span>
+
+<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> To update, run: <span class="ansi-green-fg">pip install --upgrade pip</span>
+
+Note: you may need to restart the kernel to use updated packages.
+</pre>
 </div>
-<div id="133b1fdf" class="cell" data-execution_count="1">
+</div>
+</div>
+<div id="133b1fdf" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
@@ -367,18 +406,19 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> httpx</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yake</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="setting-up-the-api-key-variable" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-the-api-key-variable">Setting up the API key variable</h2>
-<div id="21c6dbc8" class="cell" data-execution_count="2">
+<div id="21c6dbc8" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>API_URL<span class="op">=</span><span class="st">"https://api.dp.la/v2/"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ENV_VAR <span class="op">=</span> <span class="st">"DPLA_API_KEY"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>TIMEOUT<span class="op">=</span><span class="fl">30.0</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>FALLBACK_DATA_URL <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/intro2APIs/refs/heads/main/data/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="bc393e26" class="cell" data-execution_count="3">
+<div id="bc393e26" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>key<span class="op">=</span> os.getenv(ENV_VAR)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This method avoids hardcoding the API key in the script</span></span>
@@ -397,7 +437,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </section>
 <section id="helping-functions" class="level2">
 <h2 class="anchored" data-anchor-id="helping-functions">Helping Functions</h2>
-<div id="3f6fd690" class="cell" data-execution_count="4">
+<div id="3f6fd690" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _join_list(x, sep<span class="op">=</span><span class="st">"; "</span>, keep_first_only<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">list</span>):</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> keep_first_only <span class="kw">and</span> <span class="bu">len</span>(x) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
@@ -405,11 +445,11 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sep.join(<span class="bu">str</span>(v) <span class="cf">for</span> v <span class="kw">in</span> x <span class="cf">if</span> v <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">""</span> <span class="cf">if</span> x <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> <span class="bu">str</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ca053f83" class="cell" data-execution_count="5">
+<div id="ca053f83" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> top_n(d, n<span class="op">=</span><span class="dv">10</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(<span class="bu">sorted</span>(d.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:n])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="74a0cdf4" class="cell" data-execution_count="6">
+<div id="74a0cdf4" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_items(query, verbose<span class="op">=</span><span class="va">False</span>, facets<span class="op">=</span><span class="va">None</span>, <span class="op">**</span>parameters):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Search DPLA items with given query and parameters.</span></span>
@@ -474,7 +514,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status() </span>
 <span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="487aedcd" class="cell" data-execution_count="7">
+<div id="487aedcd" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_all_items(query, max_items<span class="op">=</span><span class="dv">100</span>, sleep<span class="op">=</span><span class="fl">0.5</span>, verbose<span class="op">=</span><span class="va">False</span>, facets<span class="op">=</span><span class="va">None</span>, <span class="op">**</span>parameters):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Collect up to max_items across pages.</span></span>
@@ -512,7 +552,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> all_docs[:max_items]</span>
 <span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="4998341d" class="cell" data-execution_count="8">
+<div id="4998341d" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    mysearch <span class="op">=</span> search_items(</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"artificial AND intelligence"</span>,</span>
@@ -532,9 +572,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>mysearch<span class="sc">.</span>get(<span class="st">'count'</span>)<span class="sc">}</span><span class="ss"> results found."</span>) <span class="cf">if</span> <span class="bu">isinstance</span>(mysearch, <span class="bu">dict</span>) <span class="cf">else</span> <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(mysearch)<span class="sc">}</span><span class="ss"> results found."</span>)</span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Facets: </span><span class="sc">{</span>mysearch<span class="sc">.</span>get(<span class="st">'facets'</span>)<span class="sc">}</span><span class="ss">"</span>) <span class="cf">if</span> <span class="bu">isinstance</span>(mysearch, <span class="bu">dict</span>) <span class="cf">else</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Request URL: https://api.dp.la/v2/items?q=artificial+AND+intelligence&amp;api_key=f%3Bqw3orebfg%3Bp%5Bqbre&amp;facets=sourceResource.date.begin%2CsourceResource.date.end&amp;page_size=25&amp;page=1
-HTTP error occurred: Client error '403 Forbidden' for url 'https://api.dp.la/v2/items?q=artificial+AND+intelligence&amp;api_key=f%3Bqw3orebfg%3Bp%5Bqbre&amp;facets=sourceResource.date.begin%2CsourceResource.date.end&amp;page_size=25&amp;page=1'
-For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Using preloaded data instead.
+<pre><code>Request URL: https://api.dp.la/v2/items?q=artificial+AND+intelligence&amp;api_key=699260cc7c4417f8a89e0afce4a31baa&amp;facets=sourceResource.date.begin%2CsourceResource.date.end&amp;page_size=25&amp;page=1
 3379 results found.
 Facets: {'sourceResource.date.begin': {'_type': 'date_histogram', 'entries': [{'count': 4, 'time': '2026'}, {'count': 128, 'time': '2025'}, {'count': 173, 'time': '2024'}, {'count': 100, 'time': '2023'}, {'count': 34, 'time': '2022'}, {'count': 34, 'time': '2021'}, {'count': 33, 'time': '2020'}, {'count': 23, 'time': '2019'}, {'count': 15, 'time': '2018'}, {'count': 3, 'time': '2017'}, {'count': 4, 'time': '2016'}, {'count': 6, 'time': '2015'}, {'count': 4, 'time': '2014'}, {'count': 26, 'time': '2013'}, {'count': 2, 'time': '2012'}, {'count': 1, 'time': '2011'}, {'count': 4, 'time': '2010'}, {'count': 6, 'time': '2008'}, {'count': 1, 'time': '2007'}, {'count': 31, 'time': '2006'}, {'count': 27, 'time': '2005'}, {'count': 71, 'time': '2004'}, {'count': 89, 'time': '2003'}, {'count': 67, 'time': '2002'}, {'count': 122, 'time': '2001'}, {'count': 327, 'time': '2000'}, {'count': 95, 'time': '1999'}, {'count': 171, 'time': '1998'}, {'count': 52, 'time': '1997'}, {'count': 97, 'time': '1996'}, {'count': 18, 'time': '1995'}, {'count': 22, 'time': '1994'}, {'count': 87, 'time': '1993'}, {'count': 17, 'time': '1992'}, {'count': 40, 'time': '1991'}, {'count': 8, 'time': '1990'}, {'count': 14, 'time': '1989'}, {'count': 9, 'time': '1988'}, {'count': 8, 'time': '1987'}, {'count': 30, 'time': '1986'}, {'count': 4, 'time': '1985'}, {'count': 12, 'time': '1984'}, {'count': 4, 'time': '1983'}, {'count': 13, 'time': '1982'}, {'count': 27, 'time': '1981'}, {'count': 33, 'time': '1980'}, {'count': 3, 'time': '1979'}, {'count': 5, 'time': '1978'}, {'count': 9, 'time': '1977'}, {'count': 7, 'time': '1976'}, {'count': 5, 'time': '1975'}, {'count': 10, 'time': '1974'}, {'count': 9, 'time': '1973'}, {'count': 4, 'time': '1972'}, {'count': 2, 'time': '1971'}, {'count': 19, 'time': '1970'}, {'count': 13, 'time': '1969'}, {'count': 16, 'time': '1968'}, {'count': 7, 'time': '1967'}, {'count': 30, 'time': '1966'}, {'count': 3, 'time': '1965'}, {'count': 25, 'time': '1964'}, {'count': 84, 'time': '1963'}, {'count': 62, 'time': '1962'}, {'count': 53, 'time': '1961'}, {'count': 10, 'time': '1960'}, {'count': 24, 'time': '1959'}, {'count': 13, 'time': '1958'}, {'count': 16, 'time': '1957'}, {'count': 17, 'time': '1956'}, {'count': 4, 'time': '1955'}, {'count': 16, 'time': '1954'}, {'count': 16, 'time': '1952'}, {'count': 1, 'time': '1951'}, {'count': 13, 'time': '1950'}, {'count': 2, 'time': '1949'}, {'count': 2, 'time': '1947'}, {'count': 3, 'time': '1946'}, {'count': 6, 'time': '1944'}, {'count': 3, 'time': '1942'}, {'count': 1, 'time': '1938'}, {'count': 2, 'time': '1930'}, {'count': 1, 'time': '1927'}, {'count': 1, 'time': '1926'}, {'count': 4, 'time': '1925'}, {'count': 12, 'time': '1924'}, {'count': 4, 'time': '1923'}, {'count': 1, 'time': '1914'}, {'count': 1, 'time': '1885'}, {'count': 1, 'time': '1871'}, {'count': 1, 'time': '1844'}]}, 'sourceResource.date.end': {'_type': 'date_histogram', 'entries': [{'count': 4, 'time': '2026'}, {'count': 129, 'time': '2025'}, {'count': 173, 'time': '2024'}, {'count': 99, 'time': '2023'}, {'count': 34, 'time': '2022'}, {'count': 34, 'time': '2021'}, {'count': 33, 'time': '2020'}, {'count': 23, 'time': '2019'}, {'count': 15, 'time': '2018'}, {'count': 3, 'time': '2017'}, {'count': 4, 'time': '2016'}, {'count': 6, 'time': '2015'}, {'count': 4, 'time': '2014'}, {'count': 26, 'time': '2013'}, {'count': 2, 'time': '2012'}, {'count': 1, 'time': '2011'}, {'count': 4, 'time': '2010'}, {'count': 6, 'time': '2008'}, {'count': 1, 'time': '2007'}, {'count': 31, 'time': '2006'}, {'count': 27, 'time': '2005'}, {'count': 71, 'time': '2004'}, {'count': 89, 'time': '2003'}, {'count': 67, 'time': '2002'}, {'count': 122, 'time': '2001'}, {'count': 327, 'time': '2000'}, {'count': 95, 'time': '1999'}, {'count': 171, 'time': '1998'}, {'count': 52, 'time': '1997'}, {'count': 97, 'time': '1996'}, {'count': 18, 'time': '1995'}, {'count': 22, 'time': '1994'}, {'count': 87, 'time': '1993'}, {'count': 17, 'time': '1992'}, {'count': 40, 'time': '1991'}, {'count': 8, 'time': '1990'}, {'count': 14, 'time': '1989'}, {'count': 9, 'time': '1988'}, {'count': 8, 'time': '1987'}, {'count': 30, 'time': '1986'}, {'count': 4, 'time': '1985'}, {'count': 12, 'time': '1984'}, {'count': 4, 'time': '1983'}, {'count': 13, 'time': '1982'}, {'count': 28, 'time': '1981'}, {'count': 33, 'time': '1980'}, {'count': 3, 'time': '1979'}, {'count': 5, 'time': '1978'}, {'count': 9, 'time': '1977'}, {'count': 7, 'time': '1976'}, {'count': 5, 'time': '1975'}, {'count': 10, 'time': '1974'}, {'count': 9, 'time': '1973'}, {'count': 4, 'time': '1972'}, {'count': 2, 'time': '1971'}, {'count': 19, 'time': '1970'}, {'count': 13, 'time': '1969'}, {'count': 16, 'time': '1968'}, {'count': 7, 'time': '1967'}, {'count': 30, 'time': '1966'}, {'count': 3, 'time': '1965'}, {'count': 25, 'time': '1964'}, {'count': 84, 'time': '1963'}, {'count': 62, 'time': '1962'}, {'count': 53, 'time': '1961'}, {'count': 10, 'time': '1960'}, {'count': 24, 'time': '1959'}, {'count': 13, 'time': '1958'}, {'count': 16, 'time': '1957'}, {'count': 17, 'time': '1956'}, {'count': 4, 'time': '1955'}, {'count': 16, 'time': '1954'}, {'count': 16, 'time': '1952'}, {'count': 1, 'time': '1951'}, {'count': 13, 'time': '1950'}, {'count': 1, 'time': '1949'}, {'count': 2, 'time': '1947'}, {'count': 3, 'time': '1946'}, {'count': 6, 'time': '1944'}, {'count': 3, 'time': '1942'}, {'count': 1, 'time': '1938'}, {'count': 2, 'time': '1930'}, {'count': 1, 'time': '1927'}, {'count': 1, 'time': '1926'}, {'count': 4, 'time': '1925'}, {'count': 12, 'time': '1924'}, {'count': 4, 'time': '1923'}, {'count': 1, 'time': '1914'}, {'count': 1, 'time': '1885'}, {'count': 1, 'time': '1871'}, {'count': 1, 'time': '1844'}]}}</code></pre>
 </div>
@@ -542,7 +580,7 @@ Facets: {'sourceResource.date.begin': {'_type': 'date_histogram', 'entries': [{'
 </section>
 <section id="lets-play-with-the-faceted-elements" class="level2">
 <h2 class="anchored" data-anchor-id="lets-play-with-the-faceted-elements">Let’s play with the faceted elements</h2>
-<div id="c2e380a1" class="cell" data-execution_count="9">
+<div id="c2e380a1" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the histogram of entries dates</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>facets_list <span class="op">=</span> mysearch.get(<span class="st">'facets'</span>).get(<span class="st">'sourceResource.date.begin'</span>).get(<span class="st">'entries'</span>)</span>
@@ -566,19 +604,19 @@ Facets: {'sourceResource.date.begin': {'_type': 'date_histogram', 'entries': [{'
 </div>
 </div>
 </div>
-<div id="41447dcc" class="cell" data-execution_count="10">
+<div id="41447dcc" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>waves <span class="op">=</span> [</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"first_wave"</span>, <span class="st">"1955-1975"</span>),</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"second_wave"</span>, <span class="st">"1990-2005"</span>),</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"third_wave"</span>, <span class="st">"2018-2026"</span>),</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="460afff1" class="cell" data-execution_count="11">
+<div id="460afff1" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a pool of results for each period</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>ai_results <span class="op">=</span> {}</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> period_name, date_range <span class="kw">in</span> waves:</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> period_name, date_range <span class="kw">in</span> tqdm(waves):</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Searching for AI items in the </span><span class="sc">{</span>period_name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>date_range<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        ai_results[period_name] <span class="op">=</span> search_all_items(</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"artificial AND intelligence"</span>,</span>
@@ -587,7 +625,7 @@ Facets: {'sourceResource.date.begin': {'_type': 'date_histogram', 'entries': [{'
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>            page_size<span class="op">=</span><span class="dv">50</span>,</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>            after<span class="op">=</span>date_range.split(<span class="st">'-'</span>)[<span class="dv">0</span>],</span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>            before<span class="op">=</span>date_range.split(<span class="st">'-'</span>)[<span class="dv">1</span>],</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            verbose<span class="op">=</span><span class="va">True</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            verbose<span class="op">=</span><span class="va">False</span></span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        )</span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Found </span><span class="sc">{</span><span class="bu">len</span>(ai_results[period_name])<span class="sc">}</span><span class="ss"> items for period </span><span class="sc">{</span>period_name<span class="sc">}</span><span class="ss">.</span><span class="ch">\n</span><span class="ss">"</span>)</span>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> httpx.HTTPStatusError <span class="im">as</span> e:</span>
@@ -597,24 +635,44 @@ Facets: {'sourceResource.date.begin': {'_type': 'date_histogram', 'entries': [{'
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    ai_results <span class="op">=</span> r.json()</span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> period_name <span class="kw">in</span> ai_results:</span>
 <span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Loaded </span><span class="sc">{</span><span class="bu">len</span>(ai_results[period_name])<span class="sc">}</span><span class="ss"> items for period </span><span class="sc">{</span>period_name<span class="sc">}</span><span class="ss"> from preloaded data.</span><span class="ch">\n</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  0%|          | 0/3 [00:00&lt;?, ?it/s]</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Searching for AI items in the first_wave: 1955-1975
-Request URL: https://api.dp.la/v2/items?q=artificial+AND+intelligence&amp;api_key=f%3Bqw3orebfg%3Bp%5Bqbre&amp;facets=sourceResource.date.begin%2CsourceResource.date.end&amp;page_size=50&amp;page=1&amp;sourceResource.date.after=1955&amp;sourceResource.date.before=1975
-HTTP error occurred: Client error '403 Forbidden' for url 'https://api.dp.la/v2/items?q=artificial+AND+intelligence&amp;api_key=f%3Bqw3orebfg%3Bp%5Bqbre&amp;facets=sourceResource.date.begin%2CsourceResource.date.end&amp;page_size=50&amp;page=1&amp;sourceResource.date.after=1955&amp;sourceResource.date.before=1975'
-For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403. Using preloaded data instead.
-Loaded 427 items for period first_wave from preloaded data.
+<pre><code>Searching for AI items in the first_wave: 1955-1975</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> 33%|███▎      | 1/3 [00:08&lt;00:16,  8.25s/it]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Found 427 items for period first_wave.
 
-Loaded 1310 items for period second_wave from preloaded data.
+Searching for AI items in the second_wave: 1990-2005</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> 67%|██████▋   | 2/3 [00:31&lt;00:17, 17.32s/it]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Found 1310 items for period second_wave.
 
-Loaded 544 items for period third_wave from preloaded data.
+Searching for AI items in the third_wave: 2018-2026</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 3/3 [00:42&lt;00:00, 14.00s/it]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Found 544 items for period third_wave.
 </code></pre>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
 </div>
-<div id="6d6c0491" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ai_results_summary <span class="op">=</span> {period: <span class="bu">len</span>(items) <span class="cf">for</span> period, items <span class="kw">in</span> ai_results.items()}</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AI Results Summary by Period:"</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, count <span class="kw">in</span> ai_results_summary.items():</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> items"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="6d6c0491" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ai_results_summary <span class="op">=</span> {period: <span class="bu">len</span>(items) <span class="cf">for</span> period, items <span class="kw">in</span> ai_results.items()}</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AI Results Summary by Period:"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, count <span class="kw">in</span> ai_results_summary.items():</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> items"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>AI Results Summary by Period:
 first_wave: 427 items
@@ -622,9 +680,9 @@ second_wave: 1310 items
 third_wave: 544 items</code></pre>
 </div>
 </div>
-<div id="8dfb54d3" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ai_results[<span class="st">'first_wave'</span>][<span class="dv">400</span>].get(<span class="st">'sourceResource'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div id="8dfb54d3" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ai_results[<span class="st">'first_wave'</span>][<span class="dv">400</span>].get(<span class="st">'sourceResource'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>{'@id': 'http://dp.la/api/items/607326c580d76ec37c21240b67e8a571#SourceResource',
  'date': [{'begin': '1962', 'displayDate': '1962', 'end': '1962'}],
  'description': ['Construction site showing excavation work and heavy machinery for the East Stacks addition to Watson Library. Multiple bulldozers and construction equipment are visible in the excavated area, with workers overseeing the construction. A multi-story building appears in the background.',
@@ -641,43 +699,43 @@ third_wave: 544 items</code></pre>
  'title': ['Watson Library East Stacks Addition Construction']}</code></pre>
 </div>
 </div>
-<div id="939ac5bb" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ai_results[<span class="st">'first_wave'</span>][<span class="dv">400</span>].get(<span class="st">'sourceResource'</span>).get(<span class="st">'subject'</span>)[<span class="dv">1</span>].get(<span class="st">'name'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div id="939ac5bb" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ai_results[<span class="st">'first_wave'</span>][<span class="dv">400</span>].get(<span class="st">'sourceResource'</span>).get(<span class="st">'subject'</span>)[<span class="dv">1</span>].get(<span class="st">'name'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>'Construction equipment'</code></pre>
 </div>
 </div>
-<div id="2e869ced" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">## subject pools</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>ai_subjects <span class="op">=</span> {}</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, items <span class="kw">in</span> ai_results.items():</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    subjects <span class="op">=</span> {}</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> items:</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        source_res <span class="op">=</span> item.get(<span class="st">'sourceResource'</span>, {})</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        item_subjects <span class="op">=</span> source_res.get(<span class="st">'subject'</span>, [])</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> subj <span class="kw">in</span> item_subjects:</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>            name <span class="op">=</span> subj.get(<span class="st">'name'</span>)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>            terms <span class="op">=</span> re.split(<span class="vs">r'</span><span class="pp">[^</span><span class="dv">\w\s</span><span class="pp">]</span><span class="op">+</span><span class="vs">'</span>, name) <span class="cf">if</span> name <span class="cf">else</span> []</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> term <span class="kw">in</span> terms:</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> term <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> term.strip() <span class="op">!=</span> <span class="st">""</span>:</span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>                    term <span class="op">=</span> term.strip().lower()</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>                    subjects[term] <span class="op">=</span> subjects.get(term, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    ai_subjects[period] <span class="op">=</span> subjects</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="2e869ced" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">## subject pools</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>ai_subjects <span class="op">=</span> {}</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, items <span class="kw">in</span> ai_results.items():</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    subjects <span class="op">=</span> {}</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> items:</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>        source_res <span class="op">=</span> item.get(<span class="st">'sourceResource'</span>, {})</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>        item_subjects <span class="op">=</span> source_res.get(<span class="st">'subject'</span>, [])</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> subj <span class="kw">in</span> item_subjects:</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>            name <span class="op">=</span> subj.get(<span class="st">'name'</span>)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>            terms <span class="op">=</span> re.split(<span class="vs">r'</span><span class="pp">[^</span><span class="dv">\w\s</span><span class="pp">]</span><span class="op">+</span><span class="vs">'</span>, name) <span class="cf">if</span> name <span class="cf">else</span> []</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> term <span class="kw">in</span> terms:</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> term <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> term.strip() <span class="op">!=</span> <span class="st">""</span>:</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>                    term <span class="op">=</span> term.strip().lower()</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>                    subjects[term] <span class="op">=</span> subjects.get(term, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    ai_subjects[period] <span class="op">=</span> subjects</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="862f1bc0" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># top five subjects per period</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, subjects <span class="kw">in</span> ai_subjects.items():</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    sorted_subjects <span class="op">=</span> <span class="bu">sorted</span>(subjects.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:top]</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Top </span><span class="sc">{</span>top<span class="sc">}</span><span class="ss"> subjects for </span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> subj, count <span class="kw">in</span> sorted_subjects:</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>subj<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="862f1bc0" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># top five subjects per period</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, subjects <span class="kw">in</span> ai_subjects.items():</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    sorted_subjects <span class="op">=</span> <span class="bu">sorted</span>(subjects.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:top]</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Top </span><span class="sc">{</span>top<span class="sc">}</span><span class="ss"> subjects for </span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> subj, count <span class="kw">in</span> sorted_subjects:</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>subj<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Top 10 subjects for first_wave:
   university of kansas: 558
@@ -717,21 +775,21 @@ Top 10 subjects for third_wave:
 </code></pre>
 </div>
 </div>
-<div id="7ceea882" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">6</span>), sharex<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (key, title) <span class="kw">in</span> <span class="bu">zip</span>(axes, waves):</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> top_n(ai_subjects[key], <span class="dv">10</span>)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    terms <span class="op">=</span> <span class="bu">list</span>(data.keys())[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> <span class="bu">list</span>(data.values())[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    ax.barh(terms, counts)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Frequency"</span>)</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"How 'Artificial Intelligence' appears across time in DPLA"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7ceea882" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">6</span>), sharex<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (key, title) <span class="kw">in</span> <span class="bu">zip</span>(axes, waves):</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> top_n(ai_subjects[key], <span class="dv">10</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    terms <span class="op">=</span> <span class="bu">list</span>(data.keys())[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> <span class="bu">list</span>(data.values())[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    ax.barh(terms, counts)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"How 'Artificial Intelligence' appears across time in DPLA"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -740,34 +798,37 @@ Top 10 subjects for third_wave:
 </div>
 </div>
 </div>
-<div id="a41b71b7" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ai_keywords <span class="op">=</span> {}</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>kw_extractor <span class="op">=</span> yake.KeywordExtractor(lan<span class="op">=</span><span class="st">"en"</span>, n<span class="op">=</span><span class="dv">2</span>, top<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, items <span class="kw">in</span> ai_results.items():</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    period_keywords <span class="op">=</span> {}</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> items:</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>        source_res <span class="op">=</span> item.get(<span class="st">'sourceResource'</span>, {})</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> _join_list(source_res.get(<span class="st">'title'</span>, <span class="st">''</span>), keep_first_only<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>        description <span class="op">=</span> _join_list(source_res.get(<span class="st">'description'</span>, <span class="st">''</span>), keep_first_only<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>description<span class="sc">}</span><span class="ss">"</span>.lower()</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        keywords <span class="op">=</span> kw_extractor.extract_keywords(text)</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> kw, score <span class="kw">in</span> keywords:</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>            period_keywords[kw] <span class="op">=</span> period_keywords.get(kw, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    ai_keywords[period] <span class="op">=</span> period_keywords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a41b71b7" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ai_keywords <span class="op">=</span> {}</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>kw_extractor <span class="op">=</span> yake.KeywordExtractor(lan<span class="op">=</span><span class="st">"en"</span>, n<span class="op">=</span><span class="dv">2</span>, top<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, items <span class="kw">in</span> tqdm(ai_results.items()):</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    period_keywords <span class="op">=</span> {}</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> items:</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>        source_res <span class="op">=</span> item.get(<span class="st">'sourceResource'</span>, {})</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> _join_list(source_res.get(<span class="st">'title'</span>, <span class="st">''</span>), keep_first_only<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>        description <span class="op">=</span> _join_list(source_res.get(<span class="st">'description'</span>, <span class="st">''</span>), keep_first_only<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>description<span class="sc">}</span><span class="ss">"</span>.lower()</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>        keywords <span class="op">=</span> kw_extractor.extract_keywords(text)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> kw, score <span class="kw">in</span> keywords:</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>            period_keywords[kw] <span class="op">=</span> period_keywords.get(kw, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    ai_keywords[period] <span class="op">=</span> period_keywords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 3/3 [00:03&lt;00:00,  1.02s/it]</code></pre>
 </div>
-<div id="101f65d1" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, keywords <span class="kw">in</span> ai_keywords.items():</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    sorted_keywords <span class="op">=</span> <span class="bu">sorted</span>(keywords.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:top]</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Top </span><span class="sc">{</span>top<span class="sc">}</span><span class="ss"> keywords for </span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> kw, count <span class="kw">in</span> sorted_keywords:</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>kw<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="101f65d1" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, keywords <span class="kw">in</span> ai_keywords.items():</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    sorted_keywords <span class="op">=</span> <span class="bu">sorted</span>(keywords.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:top]</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Top </span><span class="sc">{</span>top<span class="sc">}</span><span class="ss"> keywords for </span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> kw, count <span class="kw">in</span> sorted_keywords:</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>kw<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Top 10 keywords for first_wave:
   watson library: 204
@@ -807,27 +868,27 @@ Top 10 keywords for third_wave:
 </code></pre>
 </div>
 </div>
-<div id="f4e3cc98" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">6</span>), sharex<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>waves <span class="op">=</span> [</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"first_wave"</span>, <span class="st">"1955–1975"</span>),</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"second_wave"</span>, <span class="st">"1990–2005"</span>),</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"third_wave"</span>, <span class="st">"2018–2026"</span>),</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (key, title) <span class="kw">in</span> <span class="bu">zip</span>(axes, waves):</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> top_n(ai_keywords[key], <span class="dv">10</span>)</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    terms <span class="op">=</span> <span class="bu">list</span>(data.keys())[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> <span class="bu">list</span>(data.values())[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    ax.barh(terms, counts)</span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Frequency"</span>)</span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"How 'Artificial Intelligence' appears across time in DPLA"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f4e3cc98" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">6</span>), sharex<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>waves <span class="op">=</span> [</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"first_wave"</span>, <span class="st">"1955–1975"</span>),</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"second_wave"</span>, <span class="st">"1990–2005"</span>),</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"third_wave"</span>, <span class="st">"2018–2026"</span>),</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (key, title) <span class="kw">in</span> <span class="bu">zip</span>(axes, waves):</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> top_n(ai_keywords[key], <span class="dv">10</span>)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    terms <span class="op">=</span> <span class="bu">list</span>(data.keys())[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> <span class="bu">list</span>(data.values())[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    ax.barh(terms, counts)</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"How 'Artificial Intelligence' appears across time in DPLA"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
