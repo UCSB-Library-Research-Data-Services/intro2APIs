@@ -358,13 +358,78 @@ h2 {
   height: 10rem;
 }
 
+.nav-footer p {
+  color: white;
+}
+
+.nav-footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-footer a:hover,
+.nav-footer a:focus,
+.nav-footer a:active {
+  color: #d2e3f3 !important;
+}
+
+.nav-footer-center {
+  margin: auto;
+}
+
+.nav-footer-center p {
+  margin: 0.5rem;
+}
+
+.footer-tech {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.footer-tech-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: $white;
+  margin-bottom: 0.6rem;
+}
+
+.footer-tech-item:last-child {
+  margin-bottom: 0;
+}
+
+.footer-tech-item:hover,
+.footer-tech-item:focus,
+.footer-tech-item:active {
+  color: #d2e3f3 !important;
+}
+
+.footer-tech-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  line-height: 1;
+  filter: brightness(0) invert(1);
+}
+
+.footer-tech-item:hover .footer-tech-icon,
+.footer-tech-item:focus .footer-tech-icon,
+.footer-tech-item:active .footer-tech-icon {
+  filter: brightness(0) invert(1) brightness(0.85);
+}
+
+.nav-footer i {
+  font-size: large;
+}
+
 // Footer CC license icons
 .footer-cc-license {
   display: inline-flex;
   gap: 0.3rem;
   align-items: center;
   text-decoration: none;
-  margin: 0.5rem 0;
 }
 
 .cc-icon {
@@ -375,7 +440,8 @@ h2 {
 // Footer DOI badge
 .footer-doi-badge {
   display: inline-block;
-  margin-top: 5px;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
 
   img {
     border: none;

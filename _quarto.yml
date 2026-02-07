@@ -21,7 +21,16 @@ website:
         <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.15015037.svg" alt="DOI"/>
       </a>
     right: |
-      Built with [Quarto](https://quarto.org/) <br /> [<i class="bi bi-github"></i>](https://github.com/UCSB-Library-Research-Data-Services/intro2APIs)
+      <div class="footer-tech">
+        <a class="footer-tech-item" href="https://quarto.org/">
+          <img src="/_static/imgs/quarto-no-official.svg" alt="Quarto" class="footer-tech-icon"/>
+          Quarto
+        </a>
+        <a class="footer-tech-item" href="https://github.com/UCSB-Library-Research-Data-Services/intro2APIs">
+          <i class="bi bi-github footer-tech-icon" aria-hidden="true"></i>
+          GitHub
+        </a>
+      </div>
   sidebar:
     collapse-level: 1
     style: "docked"
