@@ -8,18 +8,22 @@ website:
     background: "#003660"
     left: |
       <img src="https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/rds-ws-catalogue/refs/heads/main/assets/imgs/HexSticker-RDS.png" alt="UCSB Library Research Data Services logo" class="footer-badge"/>
-    center: >
-      This website is built with [Quarto](https://quarto.org/), [RStudio/Posit](https://posit.co/).
-      UCSB Library Research Data Services. [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.en)
-    right: |
-      <a href="https://doi.org/10.5281/zenodo.15015037" style="display: inline-block;">
-        <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.15015037.svg" alt="DOI" style="border: none;">
+    center: |
+      <strong>UCSB Library Research Data Services</strong>
+      
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en" class="footer-cc-license">
+        <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="CC" class="cc-icon"/>
+        <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="BY" class="cc-icon"/>
+        <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="NC" class="cc-icon"/>
       </a>
+      
+      <a href="https://doi.org/10.5281/zenodo.15015037" class="footer-doi-badge">
+        <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.15015037.svg" alt="DOI"/>
+      </a>
+    right: |
+      Built with [Quarto](https://quarto.org/) <br /> [<i class="bi bi-github"></i>](https://github.com/UCSB-Library-Research-Data-Services/intro2APIs)
   sidebar:
     collapse-level: 1
-    tools:
-      - icon: github
-        href: https://github.com/UCSB-Library-Research-Data-Services/intro2APIs
     style: "docked"
     search: true
     header: |

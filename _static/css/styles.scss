@@ -357,3 +357,27 @@ h2 {
 .footer-badge {
   height: 10rem;
 }
+
+// Footer CC license icons
+.footer-cc-license {
+  display: inline-flex;
+  gap: 0.3rem;
+  align-items: center;
+  text-decoration: none;
+  margin: 0.5rem 0;
+}
+
+.cc-icon {
+  width: 20px;
+  height: 20px;
+}
+
+// Footer DOI badge
+.footer-doi-badge {
+  display: inline-block;
+  margin-top: 5px;
+
+  img {
+    border: none;
+  }
+}
