@@ -273,6 +273,17 @@
     ]
   },
   {
+    "objectID": "chapters/python.html",
+    "href": "chapters/python.html",
+    "title": "Interacting with APIs with Python",
+    "section": "",
+    "text": "Request an API key:\n\ncurl -v -X POST \"https://api.dp.la/v2/api_key/youremail@example.com\"\nThe API key will be sent to your email address.\n\nStore your API key as an environment variable:\n\nGoogl Colab badge",
+    "crumbs": [
+      "Getting Data Programmatically",
+      "Interacting with APIs with Python"
+    ]
+  },
+  {
     "objectID": "chapters/exercise-DLPA.html",
     "href": "chapters/exercise-DLPA.html",
     "title": "Unlocking Data<br /><span style='font-size: 0.8em;'>A Gentle Introduction to APIs</span><br />",
