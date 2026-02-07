@@ -23,7 +23,7 @@ website:
     style: "docked"
     search: true
     header: |
-      ![<a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a>](/static/imgs/integration.png)
+      ![<a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a>](/_static/imgs/integration.png)
     
     contents:
       - text: "Introduction"
@@ -77,7 +77,7 @@ website:
 format:
   html:
     theme: united
-    css: static/css/styles.css
+    css: /_static/css/styles.scss
     toc: true
 
 execute:

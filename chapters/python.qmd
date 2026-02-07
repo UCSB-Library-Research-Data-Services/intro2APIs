@@ -7,3 +7,19 @@ format:
         code-fold: true
 lightbox: true
 ---
+
+1. Request an API key:
+
+```
+curl -v -X POST "https://api.dp.la/v2/api_key/youremail@example.com"
+```
+
+The API key will be sent to your email address.
+
+2. Store your API key as an environment variable:
+
+Googl Colab badge
+
+<a target="_blank" href="https://colab.research.google.com/github/UCSB-Library-Research-Data-Services/intro2APIs/blob/main/chapters/exercise-DLPA.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
