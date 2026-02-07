@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.4">
+<meta name="generator" content="quarto-1.9.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Interacting with APIs – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,14 +72,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../chapters/request-methods.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-19cd9126a9a9c64aacb03dc90954a64a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-3f61aac59b63c3a2d0e87c59ee7d0662.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e587ec4fc83dcc4857c878ad265b6f00.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-30e0e922914d92ad2286f837ec61905e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -253,9 +257,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
  <span class="menu-text">DELETE Requests in Postman</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
+          <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">A Real-World Example: The GitHub API</span></a>
@@ -263,7 +265,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/github-api.html" class="sidebar-item-text sidebar-link">
@@ -284,15 +286,34 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </li>
       </ul>
   </li>
+      </ul>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">APIs for Data Analysis</span></a>
+ <span class="menu-text">Getting Data Programmatically</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interacting with APIs with Python</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">APIs for Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/collecting-data-for-analysis.html" class="sidebar-item-text sidebar-link">
@@ -367,7 +388,7 @@ Note
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" data-startfrom="26" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 25;"><span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>viewof method <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-startfrom="26" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 25;"><span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>viewof method <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"HTTP Method"</span><span class="op">,</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">attributes</span><span class="op">:</span> {</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="dt">class</span><span class="op">:</span> <span class="st">"form-select mb-3"</span></span>
@@ -434,7 +455,7 @@ Note
 <span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span>content<span class="sc">}</span></span>
 <span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
 <span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -476,7 +497,7 @@ Note
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2" data-startfrom="100" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 99;"><span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>viewof methodParts <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-startfrom="100" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 99;"><span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>viewof methodParts <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
 <span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"HTTP Method"</span><span class="op">,</span></span>
 <span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
 <span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-select mb-3"</span></span>
@@ -560,7 +581,7 @@ Note
 <span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>content<span class="sc">}</span></span>
 <span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
 <span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -616,7 +637,7 @@ Note
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3" data-startfrom="190" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 189;"><span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>viewof methodDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-startfrom="190" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 189;"><span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>viewof methodDetails <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
 <span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"HTTP Method"</span><span class="op">,</span></span>
 <span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
 <span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>        <span class="dt">class</span><span class="op">:</span> <span class="st">"form-select mb-3"</span></span>
@@ -693,7 +714,7 @@ Note
 <span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>content<span class="sc">}</span></span>
 <span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
 <span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -749,7 +770,7 @@ Note
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4" data-startfrom="272" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 271;"><span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a>viewof primaryImage <span class="op">=</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-startfrom="272" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 271;"><span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a>viewof primaryImage <span class="op">=</span> {</span>
 <span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> primaryImage <span class="op">=</span> responseDetails<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> responseDetails<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">primaryImageSmall</span> <span class="op">:</span> <span class="st">"https://placehold.co/600x400"</span><span class="op">;</span></span>
 <span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (primaryImage) {</span>
 <span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> img <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;img src="</span><span class="sc">${</span>primaryImage<span class="sc">}</span><span class="vs">" alt="Primary Image"&gt;`</span><span class="op">;</span></span>
@@ -758,7 +779,7 @@ Note
 <span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;img src="https://placehold.co/600x400" alt="Placeholder"&gt;`</span><span class="op">;</span></span>
 <span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
@@ -833,13 +854,14 @@ window._ojs.runtime.interpretFromScriptTags();
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
