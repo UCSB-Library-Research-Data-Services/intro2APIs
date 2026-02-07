@@ -1,12 +1,17 @@
 /*-- scss:defaults --*/
 
 // Import fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Nunito:wght@300;800&family=Roboto+Mono:wght@300;400&family=Sanchez&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sanchez&family=Roboto+Mono:wght@300;400&display=swap');
 
 // fonts
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-family-serif: 'Sanchez', serif;
-$font-family-monospace: 'Roboto Mono', monospace;
+$nunito: 'Nunito', sans-serif;
+$sanchez: 'Sanchez', serif;
+$roboto-mono: 'Roboto Mono', monospace;
+
+// Quarto font variables
+$font-family-sans-serif: $nunito;
+$font-family-serif: $sanchez;
+$font-family-monospace: $roboto-mono; 
 
 // colors
 $baby-blue: #d2e3f3;
@@ -19,6 +24,7 @@ $off-white: #F7F7F7;
 $gray: #ADADAD;
 $dark-gray: #373A3E;
 $peach: #DF8073;
+$ucsb-beige: #ede9e1;
 
 // quarto sass variables
 $navbar-bg: $off-white;
@@ -38,8 +44,16 @@ $code-color: $dark-gray;
 /*-- scss:rules --*/
 
 // header font & color
+
+body {
+  font-family: $nunito;
+  line-height: 1.5;
+  font-size: 19.5px;
+  font-weight: 375;
+}
+
 h1, h2, h3, h4 {
-  font-family: $font-family-serif;
+  font-family: $sanchez;
   color: $dark-blue;
 }
 

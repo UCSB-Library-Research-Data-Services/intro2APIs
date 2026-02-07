@@ -3,6 +3,7 @@ project:
 
 website:
   title: "Unlocking Data<br /><span style='font-size: 0.8em;'>A Gentle Introduction to APIs</span><br />"
+  site-url: "https://ucsb-library-research-data-services.github.io/intro2APIs/"
   page-navigation: true
   page-footer:
     background: "#003660"
@@ -90,9 +91,12 @@ website:
 
 format:
   html:
-    theme: united
-    css: /_static/css/styles.scss
+    theme:
+      - united
+      - _static/css/styles.scss
     toc: true
+    page-layout: full
+    mainfont: Nunito
 
 execute:
   freeze: auto
