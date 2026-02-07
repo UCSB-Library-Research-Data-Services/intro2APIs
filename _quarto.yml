@@ -34,6 +34,7 @@ website:
   sidebar:
     collapse-level: 1
     style: "docked"
+    background: "#ede9e1"
     search: true
     header: |
       ![<a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a>](/_static/imgs/integration.png)
