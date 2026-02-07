@@ -10,6 +10,11 @@ lightbox: true
 
 **[Postman](https://www.postman.com/)** is a widely used platform that facilitates interaction with APIs. Originally designed for testing APIs in development environments, it has become a powerful tool for exploring and managing API requests in both individual and collaborative workflows.
 
+::: {.callout-caution}
+Postman is a commercial product, and while it's possible to use it for free, some of its features are only available in paid plans.
+We're in the process of writing a chapter using [Bruno](https://www.usebruno.com/) as an open source alternative to Postman. The interface and workflow are very similar, so the concepts and exercises in this chapter will be applicable to both platforms. We strongly encourage you to try both and see which one works best for you. :) 
+:::
+
 One of Postman's major strengths is that it enables users without programming experience to interact with API services in a comprehensive and structured way. Users can send requests to read, write, update, and delete information from an API, all through a visual interface. This includes managing authentication credentials securely (even OAuth), defining public and secret variables, configuring headers, adding parameters, and submitting body content in various formats (form-data, binary, raw JSON, GraphQL, etc.).
 
 ## Postman Applications
