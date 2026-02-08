@@ -1,0 +1,154 @@
+---
+title: "Interacting with APIs Programmatically"
+execute:
+    echo: true
+format:
+    html:
+        code-fold: true
+lightbox: true
+---
+
+Although tools like Postman and Bruno are great for testing and exploring APIs, it's plausible that your goal is to retrieve data from multiple endpoints, select specific fields, automate processes, or manipulate the data obtained in a response.
+
+Most of the high-level programming languages used in data science and digital humanities (e.g., Python, R, JavaScript) have libraries that allow you to interact with APIs programmatically. That means that the heavy lifting of constructing and handling requests, parsing responses, and managing authentication is taken care of by the library. The dificulty usually lies in how complex the API is, particularly the multiple methods of authentication, the structure of the endpoints, and the format of the responses.
+
+In this section, we will use Python to interact with the [Digital Public Library of America (DPLA) API](https://pro.dp.la/developers/api-codex). The rationality behind this choice is that the DPLA API, besides the fact that it provides access to a large amount of data, has a relatively straightforward structure and authentication process, making it an ideal candidate for learning how to interact with APIs programmatically. 
+
+::: {.callout-note appearance="simple" collapse="false"}
+## Comming Soon!
+
+We are planning to expand this section to include examples of how to interact with APIs using R and JavaScript as well. Stay tuned for updates!
+:::
+
+## Where to Start?
+
+Before writing a single line of code, we need to understand the API requests and the structure of the responses. Therefore, the first place we must go is the API documentation. In the case of the DPLA API, we can find it [here](https://pro.dp.la/developers/api-codex). The DPLA developers are very generous and provide a 'how to use it' guide that summarizes the basic steps to interact with the API in three steps:
+
+1. **Request an API key from DPLA**: The way to generate an API key is to send a request to a DPLA endpoint with your email address. A 32-character hash API key will be sent to your email. 
+
+You can use the following `curl` command to request an API key:
+
+```bash
+https://api.dp.la/v2/api_key/YOUR_EMAIL@example.com
+```
+
+You can also use this form to send the request (Test version below):
+
+::: {.callout-warning appearance="simple"}
+**Test First**: Below is a simple test form that performs a random arithmetic operation. Use this to test the form functionality before requesting a real API key.
+:::
+
+<div style="margin-bottom: 2rem;">
+<h4>Test Form (Random Addition/Subtraction)</h4>
+<form id="test-form" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+    <input type="number" id="num1" placeholder="First number" value="5" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+    <input type="number" id="num2" placeholder="Second number" value="3" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+    <button type="submit" style="padding: 0.5rem 1rem; background-color: #0d6efd; color: white; border: none; border-radius: 4px; cursor: pointer;">Test Request</button>
+</form>
+<div id="test-response" style="display: none;"></div>
+</div>
+
+<hr>
+
+<h4>Request DPLA API Key</h4>
+<form id="api-key-request-form" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+    <input type="email" id="email" placeholder="your-email@example.com" required style="flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+    <button type="submit" style="padding: 0.5rem 1rem; background-color: #198754; color: white; border: none; border-radius: 4px; cursor: pointer;">Request API Key</button>
+</form>
+<div id="api-response" style="display: none;"></div>
+
+<script>
+    // Test form functionality
+    const testForm = document.getElementById('test-form');
+    const testResponseDiv = document.getElementById('test-response');
+    
+    testForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        const operation = Math.random() > 0.5 ? 'addition' : 'subtraction';
+        const result = operation === 'addition' ? num1 + num2 : num1 - num2;
+        
+        const testResponse = {
+            num1: num1,
+            num2: num2,
+            operation: operation,
+            result: result,
+            timestamp: new Date().toISOString()
+        };
+        
+        // Format and display the response
+        const badgeClass = "bg-success";
+        const responseHTML = `
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Test Response</span>
+                    <span class="badge ${badgeClass}">200 OK</span>
+                </div>
+                <pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(testResponse, null, 2)}</pre>
+            </div>
+        `;
+        
+        testResponseDiv.innerHTML = responseHTML;
+        testResponseDiv.style.display = 'block';
+    });
+
+    // DPLA API key request form
+    const form = document.getElementById('api-key-request-form');
+    const apiResponseDiv = document.getElementById('api-response');
+    
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+
+        try {
+            const response = await fetch(`https://api.dp.la/v2/api_key/${email}`);
+            const status = {
+                code: response.status,
+                ok: response.ok,
+                text: response.statusText
+            };
+            
+            let data;
+            try {
+                data = await response.json();
+            } catch {
+                data = { message: response.statusText };
+            }
+            
+            // Format and display the response
+            let content;
+            if (status.ok) {
+                content = `<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(data, null, 2)}</pre>`;
+            } else {
+                content = `<div class="alert alert-warning m-0">API Response: ${JSON.stringify(data, null, 2)}</div>`;
+            }
+            
+            const badgeClass = status.ok ? "bg-success" : "bg-warning";
+            const responseHTML = `
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>API Response</span>
+                        <span class="badge ${badgeClass}">${status.code} ${status.text}</span>
+                    </div>
+                    ${content}
+                </div>
+            `;
+            
+            apiResponseDiv.innerHTML = responseHTML;
+            apiResponseDiv.style.display = 'block';
+        } catch (error) {
+            const errorHTML = `
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Error</span>
+                        <span class="badge bg-danger">Error</span>
+                    </div>
+                    <div class="alert alert-danger m-0">An error occurred: ${error.message}</div>
+                </div>
+            `;
+            apiResponseDiv.innerHTML = errorHTML;
+            apiResponseDiv.style.display = 'block';
+        }
+    });
+</script>

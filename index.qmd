@@ -97,7 +97,7 @@ Each workshop in this series can be followed independently, depending on your in
 </div>
 <h3 class="card-title text-center">Programmatic Access</h3>
 <p class="card-text">Learn how to interact with APIs programmatically using Python for automated data collection.</p>
-<p class="mt-auto align-self-center"><a href="chapters/python/python.html" class="btn btn-primary">Code</a></p>
+<p class="mt-auto align-self-center"><a href="chapters/coding/coding-intro.html" class="btn btn-primary">Code</a></p>
 :::
 :::
 :::

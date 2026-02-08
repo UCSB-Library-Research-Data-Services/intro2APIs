@@ -82,7 +82,7 @@ website:
       - section: "Getting Data Programmatically"
         contents:
           - text: "Interacting with APIs with Python"
-            href: chapters/python/python.qmd
+            href: chapters/coding/coding-intro.qmd
       - section: "APIs for Data Analysis"
         contents:
           - text: "Collecting Data for Analysis"
