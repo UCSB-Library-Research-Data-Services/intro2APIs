@@ -10,7 +10,7 @@ This is the workbook that accompanies the workshop *Unlocking Data: A Gentle Int
 
 The workshop is designed for people with no programming experience who want to start working with APIs, particularly web APIs.
 
-You can follow this workbook without installing any specific software. We've included interactive examples so you can practice alongside the workshop.
+You can follow this workbook without installing any specific software. We’ve included interactive examples so you can practice alongside the workshop.
 
 Although no programming knowledge is required, you can explore the code behind each example by clicking the Code button, as shown below:
 
@@ -24,9 +24,9 @@ hello
 ::: {.callout-warning}
 ## A few notes before we start
 
-Although this workshop is about APIs in general, we will focus specifically on web APIs—particularly REST APIs that return JSON data. We've chosen this focus because REST APIs are the most common type of API and are also the most accessible without requiring specialized software.
+Although this workshop is about APIs in general, we will focus specifically on web APIs—particularly REST APIs that return JSON data. We’ve chosen this focus because REST APIs are the most common type of API and are also the most accessible without requiring specialized software.
 
-Finally, we will only be working with GET requests, meaning we won't be creating, updating, or deleting any data.
+Finally, we will only be working with GET requests, meaning we won’t be creating, updating, or deleting any data.
 :::
 
 ## Workshop Sections
@@ -41,7 +41,7 @@ Finally, we will only be working with GET requests, meaning we won't be creating
 </div>
 <h3 class="card-title text-center">What are APIs?</h3>
 <p class="card-text">Learn the fundamentals of APIs, what they are, and why they exist.</p>
-<a href="chapters/what-is-an-api.html" class="btn btn-primary">Start Learning</a>
+<a href="what-is-an-api.html" class="btn btn-primary">Start Learning</a>
 :::
 :::
 :::
@@ -50,11 +50,11 @@ Finally, we will only be working with GET requests, meaning we won't be creating
 ::: {.card .h-100}
 ::: {.card-body}
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
-<i class="bi bi-arrows-move"></i>
+<i class="bi bi-arrow-left-right"></i>
 </div>
 <h3 class="card-title text-center">Interacting with APIs</h3>
-<p class="card-text">Discover different methods and tools for interacting with APIs.</p>
-<a href="chapters/interactingAPIs/interact-apis.html" class="btn btn-primary">Get Started</a>
+<p class="card-text">Discover how to interact with APIs using endpoints, request methods, and practical exercises.</p>
+<a href="interactingAPIs/endpoints.html" class="btn btn-primary">Explore</a>
 :::
 :::
 :::
@@ -63,11 +63,11 @@ Finally, we will only be working with GET requests, meaning we won't be creating
 ::: {.card .h-100}
 ::: {.card-body}
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
-<i class="bi bi-palette"></i>
+<i class="bi bi-send"></i>
 </div>
 <h3 class="card-title text-center">Using Postman</h3>
-<p class="card-text">Learn how to use Postman, a popular tool for testing and working with APIs.</p>
-<a href="chapters/postman/postman.html" class="btn btn-primary">Explore Postman</a>
+<p class="card-text">Master API testing with Postman, including GET, POST, and DELETE requests with hands-on GitHub API exercises.</p>
+<a href="postman/postman.html" class="btn btn-primary">Get Started</a>
 :::
 :::
 :::
@@ -78,9 +78,9 @@ Finally, we will only be working with GET requests, meaning we won't be creating
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
 <i class="bi bi-code-slash"></i>
 </div>
-<h3 class="card-title text-center">Programming with APIs</h3>
-<p class="card-text">Use Python to programmatically interact with APIs and automate data collection.</p>
-<a href="chapters/python/python.html" class="btn btn-primary">Write Code</a>
+<h3 class="card-title text-center">Programmatic Access</h3>
+<p class="card-text">Learn how to interact with APIs programmatically using Python for automated data collection.</p>
+<a href="python/python.html" class="btn btn-primary">Code</a>
 :::
 :::
 :::
@@ -92,8 +92,8 @@ Finally, we will only be working with GET requests, meaning we won't be creating
 <i class="bi bi-bar-chart"></i>
 </div>
 <h3 class="card-title text-center">Data Analysis</h3>
-<p class="card-text">Collect and analyze data from APIs for research and insights.</p>
-<a href="chapters/dataAnalysis/collecting-data-for-analysis.html" class="btn btn-primary">Analyze Data</a>
+<p class="card-text">Apply your API knowledge to collect and analyze real data for research purposes.</p>
+<a href="dataAnalysis/collecting-data-for-analysis.html" class="btn btn-primary">Analyze</a>
 :::
 :::
 :::
@@ -105,16 +105,14 @@ Finally, we will only be working with GET requests, meaning we won't be creating
 <i class="bi bi-book"></i>
 </div>
 <h3 class="card-title text-center">API Catalog</h3>
-<p class="card-text">Browse a catalog of interesting APIs you can explore and use.</p>
-<a href="resources/catalog.html" class="btn btn-primary">View Catalog</a>
+<p class="card-text">Browse our curated catalog of APIs with documentation links and authentication requirements.</p>
+<a href="../resources/catalog.html" class="btn btn-primary">Browse</a>
 :::
 :::
 :::
 
 :::
 
-## About This Workshop
+Each lesson can be followed independently, and the workbook will remain available even if you don’t attend the workshop.
 
-This workshop was developed by the UCSB Library Research Data Services team to help researchers and students understand and work with APIs effectively. Whether you're looking to collect data for analysis, automate workflows, or simply understand how modern web applications communicate, this workshop will give you the foundational knowledge you need.
-
-Ready to get started? Begin with [What are APIs?](chapters/what-is-an-api.html) or explore any section that interests you!
+Without further ado, let’s get started! 🚀
