@@ -67,13 +67,15 @@ chapters/
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
-# Preview (watches for changes)
+# ALWAYS use preview for development (watches for changes, live reload)
 quarto preview
-# Renders to _site/, opens live preview
-
-# Full render (same as CI/CD)
-quarto render
+# Renders to _site/, opens live preview at http://localhost:XXXX
 ```
+
+**CRITICAL: Use `quarto preview` for local development, NOT `quarto render`**
+- `quarto preview` watches files, auto-reloads browser, preserves frozen outputs
+- `quarto render` is only for CI/CD pipeline—don't run manually unless testing the full build
+- Preview is faster and provides immediate feedback on changes
 
 **Known Issue:** OJS environment variable access unreliable locally. Always test data loading with fallback files.
 
@@ -179,7 +181,8 @@ lightbox: true  # Enable image lightbox
 | `quarto preview` fails with "module not found" | Missing Python deps | `pip install -r requirements.txt` |
 | OJS sees undefined CAT_API_KEY | Local builds don't inherit GitHub secrets | Use `_dev/cats-fallback.json` fallback |
 | Stale images in carousel | `_data/cats.json` not updated | Run fetch script: `node .github/scripts/fetch-cats.js` |
-| HTML doesn't update after editing .qmd | Frozen render cache | Delete `_freeze/chapters/your-chapter/` and re-render |
+| HTML doesn't update after editing .qmd | Frozen render cache | Delete `_freeze/chapters/your-chapter/` and restart preview |
+| AI agent runs `quarto render` instead of preview | Misunderstanding workflow | ALWAYS use `quarto preview` for development—render is CI/CD only |
 
 ## Key Files Reference
 - **Config:** [`_quarto.yml`](_quarto.yml) – site structure, sidebar nav, styling
