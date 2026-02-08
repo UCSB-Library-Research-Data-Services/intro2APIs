@@ -31,6 +31,10 @@ website:
           <i class="bi bi-github footer-tech-icon" aria-hidden="true"></i>
           GitHub
         </a>
+        <a class="footer-tech-item" href="/CHANGELOG.html">
+          <i class="bi bi-clock-history footer-tech-icon" aria-hidden="true"></i>
+          Changelog
+        </a>
       </div>
   sidebar:
     collapse-level: 1
@@ -42,7 +46,7 @@ website:
     
     contents:
       - text: "Introduction"
-        href: chapters/index.qmd
+        href: index.qmd
       - text: What are APIs and why do they exists
         href: chapters/what-is-an-api.qmd
       - section: Interacting with APIs
