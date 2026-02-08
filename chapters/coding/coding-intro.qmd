@@ -26,24 +26,17 @@ In this exercise, we’ll use DPLA data to ask a research-style question: **How 
 
 We’ll start from this public DPLA search:
 
-[https://dp.la/search?q=artificial+AND+intelligence&sort_by=created&sort_order=asc&page=1](https://dp.la/search?q=artificial+AND+intelligence&sort_by=created&sort_order=asc&page=1)
+[https://dp.la/search?q=artificial+AND+intelligence&subject=%22Artificial+intelligence%22&page=1](https://dp.la/search?q=artificial+AND+intelligence&subject=%22Artificial+intelligence%22&page=1)
 
-![Search results for "artificial AND intelligence" in the DPLA](../../_static/imgs/coding-dpla-web-results.png){width="800"}
+![Search results for "artificial AND intelligence" in the DPLA](../../_static/imgs/coding-dpla-filtered-results.png){width="800"}
 
-This is a great workshop example because the query isn’t complicated, but it still returns 3,000+ results. It’s also the kind of question where the public interface quickly hits limits: to do a structured analysis (dates, facets, filtering, repeatable queries), we need the API.
+As you can see, the search is filtered to include only items with the subject "Artificial intelligence". This is because not all matches in the simple query are actually about this topic but, for instance, disclaimers about using AI to generate or enhance metadata. 
 
-There’s another reason this dataset is interesting: if you scan the subjects, many results are not “artifacts about AI.” Instead, they reflect **AI being used to enhance or generate metadata** (for example, “AI was used for description enhancement”). That “messiness” is not a failure—it’s the point. It gives us a realistic case where we have to refine a query and interpret what the metadata is actually saying.
+This is a useful example for our lesson because you can’t bulk download all of these filtered results from the DPLA website, and the website’s subject filter is case-sensitive (small changes can lead to very different counts). The API behaves differently, so we can run a more consistent search and work with a larger (but still manageable) set of results.
 
-![Subjects for the search results of "artificial AND intelligence" in the DPLA](../../_static/imgs/coding-dpla-list-of-subjects.png){width="300"}
+From there, we’ll use the API to fetch metadata, then use facets and dates to get a first “trend” view. We’ll also compare three time windows—`preCovid` (1844–2019), `Covid` (2019–2022), and `postCovid` (2022–2026)—and extract keywords from titles and descriptions (excluding obvious phrases) to see what stands out in each period.
 
-Here’s what we’ll do:
-
-1. Use the API to fetch results and metadata for this query.
-2. Use dates and facets to look for patterns over time.
-3. Extract keywords from titles and descriptions to see how AI is being described.
-4. Improve the search by targeting specific fields (like titles) to separate “about AI” from “AI used in metadata.”
-
-By the end, you’ll have a clear takeaway: APIs don’t just let you download data—they let you ask *better questions* by making your searches more precise than the public interface.
+This gives us a high-level view of how “artificial intelligence” appears in a large cultural heritage collection across time, and shows how adjusting parameters can refine results into a better pool of data for analysis.
 
 ## Where to Start?
 
