@@ -228,3 +228,9 @@ viewof providerInfo = {
 ```
 
 These are just a few examples. To go further, see the DPLA documentation on [requests](https://pro.dp.la/developers/requests){target="_blank"} and [responses](https://pro.dp.la/developers/responses){target="_blank"}.
+
+:::{.callout-warning appearance="simple" collapse="false"}
+## Bulk downloads
+
+The API is great for searching and sampling, but it’s not meant for downloading large volumes of data. If you need a full dataset, use DPLA’s [bulk download files](https://pro.dp.la/developers/bulk-download){target="_blank"} instead.
+:::
