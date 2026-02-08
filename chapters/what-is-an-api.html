@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-613bac74c3b9ed204b2393943ef307b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ccbd950bd26879ede8143c66518df84f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -429,43 +429,24 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 </div>
 </div>
-<p>An API (Application Programming Interface) is a set of rules and protocols enabling software programs to communicate and share information. While the term is often associated with “web APIs,” it encompasses a broader concept. For instance, an API might allow a library to share its collection data with a museum or enable a weather service to provide updates to a news organization. APIs operate based on predefined rules set by developers, specifying how data can be accessed and used. While some APIs are public, most are internal, facilitating communication between systems within an organization.</p>
-<section id="using-an-api" class="level2">
-<h2 class="anchored" data-anchor-id="using-an-api">Using an API</h2>
-<p>For those unfamiliar with computer science, APIs can be a bit abstract, so let’s try to explain it better with this example using the <a href="https://thecatapi.com/">The Cat API</a>. This API allows you to get information about different cat and dog breeds, with images and descriptions. The information is not available through a public interface, so if you want to see a cat image, you must use the API.</p>
-<p>In this example, let’s get the information about the Ragdoll cat breed. To do this, we require to use this API endpoint: <a href="https://api.thecatapi.com/v1/images/XFhRpYS_D">https://api.thecatapi.com/v1/images/XFhRpYS_D</a>.</p>
-<p>You can click on that link to view the information about the cat in a format similar to this:</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Code Examples
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Although no programming knowledge is required, you can explore the code behind interactive examples throughout this workshop by clicking the <strong>Code</strong> button, as shown below:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-startfrom="93" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 92;"><span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">getCatData</span>(catId) {</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`https://api.thecatapi.com/v1/images/</span><span class="sc">${</span>catId<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>catData <span class="op">=</span> <span class="cf">await</span> <span class="fu">getCatData</span>(<span class="st">"XFhRpYS_D"</span>)<span class="op">;</span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>viewof catDataString <span class="op">=</span> {</span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> pre <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;"&gt;`</span><span class="op">;</span></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> code <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;code style="color: #333;"&gt;`</span><span class="op">;</span></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Formatted JSON with syntax highlighting</span></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> formatted <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(catData<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)</span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&amp;/g</span><span class="op">,</span> <span class="st">'&amp;amp;'</span>)</span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&lt;/g</span><span class="op">,</span> <span class="st">'&amp;lt;'</span>)</span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="op">/&gt;/</span>g<span class="op">,</span> <span class="st">'&amp;gt;'</span>)</span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/"</span><span class="sc">([^"]+)</span><span class="ss">":/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #a31515;"&gt;"$1"&lt;/span&gt;:'</span>) </span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: "</span><span class="sc">([^"]+)</span><span class="ss">"/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #008000;"&gt;"$1"&lt;/span&gt;'</span>)  </span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: </span><span class="sc">([0-9]+)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #0000FF;"&gt;$1&lt;/span&gt;'</span>)  </span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\b(</span><span class="ss">true</span><span class="sc">|</span><span class="ss">false</span><span class="sc">|</span><span class="ss">null</span><span class="sc">)\b</span><span class="ss">/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #FF0000;"&gt;$1&lt;/span&gt;'</span>)<span class="op">;</span></span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>  code<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> formatted<span class="op">;</span></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>  pre<span class="op">.</span><span class="fu">appendChild</span>(code)<span class="op">;</span></span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> pre<span class="op">;</span></span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-startfrom="88" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 87;"><span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>hello <span class="op">=</span> <span class="st">"Hello, world!"</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>hello</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -476,14 +457,87 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-1-2" data-nodetype="declaration">
+<div id="ojs-cell-1-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Our Focus
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>While this workshop series covers APIs in general, we focus specifically on <strong>web APIs</strong>—particularly REST APIs that return JSON data. We’ve chosen this focus because REST APIs are the most common type of API and are the most accessible without requiring specialized software.</p>
+<p>Throughout the workshops, we will primarily work with <strong>GET requests</strong>, meaning we’ll be retrieving data rather than creating, updating, or deleting information.</p>
+</div>
+</div>
+</div>
+<p>An API (Application Programming Interface) is a set of rules and protocols enabling software programs to communicate and share information. While the term is often associated with “web APIs,” it encompasses a broader concept. For instance, an API might allow a library to share its collection data with a museum or enable a weather service to provide updates to a news organization. APIs operate based on predefined rules set by developers, specifying how data can be accessed and used. While some APIs are public, most are internal, facilitating communication between systems within an organization.</p>
+<section id="using-an-api" class="level2">
+<h2 class="anchored" data-anchor-id="using-an-api">Using an API</h2>
+<p>For those unfamiliar with computer science, APIs can be a bit abstract, so let’s try to explain it better with this example using the <a href="https://thecatapi.com/">The Cat API</a>. This API allows you to get information about different cat and dog breeds, with images and descriptions. The information is not available through a public interface, so if you want to see a cat image, you must use the API.</p>
+<p>In this example, let’s get the information about the Ragdoll cat breed. To do this, we require to use this API endpoint: <a href="https://api.thecatapi.com/v1/images/XFhRpYS_D">https://api.thecatapi.com/v1/images/XFhRpYS_D</a>.</p>
+<p>You can click on that link to view the information about the cat in a format similar to this:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-startfrom="114" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 113;"><span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">getCatData</span>(catId) {</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`https://api.thecatapi.com/v1/images/</span><span class="sc">${</span>catId<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>catData <span class="op">=</span> <span class="cf">await</span> <span class="fu">getCatData</span>(<span class="st">"XFhRpYS_D"</span>)<span class="op">;</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>viewof catDataString <span class="op">=</span> {</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> pre <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;"&gt;`</span><span class="op">;</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> code <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;code style="color: #333;"&gt;`</span><span class="op">;</span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Formatted JSON with syntax highlighting</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> formatted <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(catData<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&amp;/g</span><span class="op">,</span> <span class="st">'&amp;amp;'</span>)</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&lt;/g</span><span class="op">,</span> <span class="st">'&amp;lt;'</span>)</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="op">/&gt;/</span>g<span class="op">,</span> <span class="st">'&amp;gt;'</span>)</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/"</span><span class="sc">([^"]+)</span><span class="ss">":/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #a31515;"&gt;"$1"&lt;/span&gt;:'</span>) </span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: "</span><span class="sc">([^"]+)</span><span class="ss">"/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #008000;"&gt;"$1"&lt;/span&gt;'</span>)  </span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: </span><span class="sc">([0-9]+)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #0000FF;"&gt;$1&lt;/span&gt;'</span>)  </span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\b(</span><span class="ss">true</span><span class="sc">|</span><span class="ss">false</span><span class="sc">|</span><span class="ss">null</span><span class="sc">)\b</span><span class="ss">/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #FF0000;"&gt;$1&lt;/span&gt;'</span>)<span class="op">;</span></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>  code<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> formatted<span class="op">;</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>  pre<span class="op">.</span><span class="fu">appendChild</span>(code)<span class="op">;</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> pre<span class="op">;</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-1-3" data-nodetype="declaration">
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
 
 </div>
 </div>
@@ -500,29 +554,29 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-startfrom="131" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 130;"><span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">displayCat</span>(data) {</span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card" style="max-width: 300px; margin: 15px auto;"&gt;</span></span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;img src="</span><span class="sc">${</span>data<span class="op">.</span><span class="at">url</span><span class="sc">}</span><span class="vs">" class="card-img-top" alt="Ragdoll cat"&gt;</span></span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="card-body"&gt;</span></span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;h5 class="card-title"&gt;Breed: </span><span class="sc">${</span>data<span class="op">.</span><span class="at">breeds</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">&lt;/h5&gt;</span></span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;p class="card-text"&gt;</span><span class="sc">${</span>data<span class="op">.</span><span class="at">breeds</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">description</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="fu">displayCat</span>(catData)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-startfrom="152" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 151;"><span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">displayCat</span>(data) {</span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card" style="max-width: 300px; margin: 15px auto;"&gt;</span></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;img src="</span><span class="sc">${</span>data<span class="op">.</span><span class="at">url</span><span class="sc">}</span><span class="vs">" class="card-img-top" alt="Ragdoll cat"&gt;</span></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="card-body"&gt;</span></span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;h5 class="card-title"&gt;Breed: </span><span class="sc">${</span>data<span class="op">.</span><span class="at">breeds</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">name</span><span class="sc">}</span><span class="vs">&lt;/h5&gt;</span></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;p class="card-text"&gt;</span><span class="sc">${</span>data<span class="op">.</span><span class="at">breeds</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">description</span><span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a><span class="fu">displayCat</span>(catData)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-1" data-nodetype="declaration">
+<div id="ojs-cell-3-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-2" data-nodetype="expression">
+<div id="ojs-cell-3-2" data-nodetype="expression">
 
 </div>
 </div>
@@ -540,19 +594,19 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-startfrom="155" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 154;"><span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>bengalCatData <span class="op">=</span> <span class="cf">await</span> <span class="fu">getCatData</span>(<span class="st">"LSaDk6OjY"</span>)<span class="op">;</span></span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a><span class="fu">displayCat</span>(bengalCatData)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-startfrom="176" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 175;"><span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a>bengalCatData <span class="op">=</span> <span class="cf">await</span> <span class="fu">getCatData</span>(<span class="st">"LSaDk6OjY"</span>)<span class="op">;</span></span>
+<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a><span class="fu">displayCat</span>(bengalCatData)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-1" data-nodetype="declaration">
+<div id="ojs-cell-4-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-2" data-nodetype="expression">
+<div id="ojs-cell-4-2" data-nodetype="expression">
 
 </div>
 </div>
@@ -617,8 +671,8 @@ Click here to get a random cat :)
 <h3 class="anchored" data-anchor-id="why-not-share-data-as-a-downloadable-file">Why Not Share Data as a Downloadable File?</h3>
 <p>Sharing data in formats like Excel or CSV files can sometimes be a practical solution. However, this approach has significant limitations, for instance, downloadable files do not automatically update when the source data changes. Users must re-download the file every time updates are made, which can lead to outdated information. Another limitation is associated with the size of the file. For large datasets, downloading and processing the entire file can be inefficient and cumbersome.</p>
 <p>Ultimately, whether to use an API or share data as a downloadable file depends on the project’s specific needs, balancing dynamic access with ease of use. When you need to retrieve specific data subsets or interact with the data dynamically, an API is ideal. It provides granularity and ensures users access the most up-to-date information. When users need the entire dataset for analysis or offline use, offering a downloadable file might be more appropriate.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -627,7 +681,7 @@ Click here to get a random cat :)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>APIs are not designed for bulk data retrieval but for accessing data in a more focused and controlled way. It bridges the gap between complex databases and the users who need specific, timely information.</p>
 </div>
@@ -638,8 +692,8 @@ Click here to get a random cat :)
 <section id="apis-in-research" class="level2">
 <h2 class="anchored" data-anchor-id="apis-in-research">APIs in Research</h2>
 <p>In research, APIs bridge the gap between data and analysis by automating data collection and streamlining workflows. A historian studying digitized newspapers, for instance, can use APIs to query articles that mention specific events, dates, or people. Social scientists can analyze real-time conversations and trends through APIs from platforms like <em>X</em> or <em>YouTube</em>, while environmental researchers can leverage satellite data APIs to monitor deforestation patterns. By enabling seamless integration across datasets, APIs foster interdisciplinary collaboration and empower scholars to tackle complex questions with innovative approaches.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -648,7 +702,7 @@ Click here to get a random cat :)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>APIs are not just tools for developers—they hold immense potential for researchers, too. By providing structured, dynamic access to datasets, APIs enable scholars to automate data collection, access real-time information, and integrate diverse data sources into their workflows. Whether you’re studying digital humanities, analyzing climate data, or investigating social media trends, APIs allow you to retrieve exactly the data you need, at scale and with precision. Embracing APIs as part of your research toolkit opens doors to innovative methodologies and insights that might otherwise remain out of reach.</p>
 </div>
@@ -660,7 +714,7 @@ Click here to get a random cat :)
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuYXN5bmMgZnVuY3Rpb24gZ2V0Q2F0RGF0YShjYXRJZCkge1xuICAgIGNvbnN0IHVybCA9IGBodHRwczovL2FwaS50aGVjYXRhcGkuY29tL3YxL2ltYWdlcy8ke2NhdElkfWA7XG4gICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaCh1cmwpO1xuICAgIGlmICghcmVzcG9uc2Uub2spIHRocm93IG5ldyBFcnJvcihgSFRUUCBlcnJvciEgc3RhdHVzOiAke3Jlc3BvbnNlLnN0YXR1c31gKTtcbiAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpO1xuICAgIHJldHVybiBkYXRhO1xufVxuXG5jYXREYXRhID0gYXdhaXQgZ2V0Q2F0RGF0YShcIlhGaFJwWVNfRFwiKTtcblxudmlld29mIGNhdERhdGFTdHJpbmcgPSB7XG4gIGNvbnN0IHByZSA9IGh0bWxgPHByZSBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICNmOGY5ZmE7IHBhZGRpbmc6IDE1cHg7IGJvcmRlci1yYWRpdXM6IDVweDsgb3ZlcmZsb3cteDogYXV0bztcIj5gO1xuICBjb25zdCBjb2RlID0gaHRtbGA8Y29kZSBzdHlsZT1cImNvbG9yOiAjMzMzO1wiPmA7XG4gIFxuICAvLyBGb3JtYXR0ZWQgSlNPTiB3aXRoIHN5bnRheCBoaWdobGlnaHRpbmdcbiAgY29uc3QgZm9ybWF0dGVkID0gSlNPTi5zdHJpbmdpZnkoY2F0RGF0YSwgbnVsbCwgMilcbiAgICAucmVwbGFjZSgvJi9nLCAnJmFtcDsnKVxuICAgIC5yZXBsYWNlKC88L2csICcmbHQ7JylcbiAgICAucmVwbGFjZSgvPi9nLCAnJmd0OycpXG4gICAgLnJlcGxhY2UoL1wiKFteXCJdKylcIjovZywgJzxzcGFuIHN0eWxlPVwiY29sb3I6ICNhMzE1MTU7XCI+XCIkMVwiPC9zcGFuPjonKSBcbiAgICAucmVwbGFjZSgvOiBcIihbXlwiXSspXCIvZywgJzogPHNwYW4gc3R5bGU9XCJjb2xvcjogIzAwODAwMDtcIj5cIiQxXCI8L3NwYW4+JykgIFxuICAgIC5yZXBsYWNlKC86IChbMC05XSspL2csICc6IDxzcGFuIHN0eWxlPVwiY29sb3I6ICMwMDAwRkY7XCI+JDE8L3NwYW4+JykgIFxuICAgIC5yZXBsYWNlKC9cXGIodHJ1ZXxmYWxzZXxudWxsKVxcYi9nLCAnPHNwYW4gc3R5bGU9XCJjb2xvcjogI0ZGMDAwMDtcIj4kMTwvc3Bhbj4nKTtcbiAgICBcbiAgY29kZS5pbm5lckhUTUwgPSBmb3JtYXR0ZWQ7XG4gIHByZS5hcHBlbmRDaGlsZChjb2RlKTtcbiAgcmV0dXJuIHByZTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuZnVuY3Rpb24gZGlzcGxheUNhdChkYXRhKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gaHRtbGA8ZGl2IGNsYXNzPVwiY2FyZFwiIHN0eWxlPVwibWF4LXdpZHRoOiAzMDBweDsgbWFyZ2luOiAxNXB4IGF1dG87XCI+XG4gICAgICAgIDxpbWcgc3JjPVwiJHtkYXRhLnVybH1cIiBjbGFzcz1cImNhcmQtaW1nLXRvcFwiIGFsdD1cIlJhZ2RvbGwgY2F0XCI+XG4gICAgICAgIDxkaXYgY2xhc3M9XCJjYXJkLWJvZHlcIj5cbiAgICAgICAgICAgIDxoNSBjbGFzcz1cImNhcmQtdGl0bGVcIj5CcmVlZDogJHtkYXRhLmJyZWVkc1swXS5uYW1lfTwvaDU+XG4gICAgICAgICAgICA8cCBjbGFzcz1cImNhcmQtdGV4dFwiPiR7ZGF0YS5icmVlZHNbMF0uZGVzY3JpcHRpb259PC9wPlxuICAgICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5gO1xuICAgIHJldHVybiBjb250YWluZXI7XG59XG5cbmRpc3BsYXlDYXQoY2F0RGF0YSk7XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJiZW5nYWxDYXREYXRhID0gYXdhaXQgZ2V0Q2F0RGF0YShcIkxTYURrNk9qWVwiKTtcbmRpc3BsYXlDYXQoYmVuZ2FsQ2F0RGF0YSk7XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2NhdERhdGFTdHJpbmcnKSJ9XX0=
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuaGVsbG8gPSBcIkhlbGxvLCB3b3JsZCFcIlxuaGVsbG9cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuYXN5bmMgZnVuY3Rpb24gZ2V0Q2F0RGF0YShjYXRJZCkge1xuICAgIGNvbnN0IHVybCA9IGBodHRwczovL2FwaS50aGVjYXRhcGkuY29tL3YxL2ltYWdlcy8ke2NhdElkfWA7XG4gICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaCh1cmwpO1xuICAgIGlmICghcmVzcG9uc2Uub2spIHRocm93IG5ldyBFcnJvcihgSFRUUCBlcnJvciEgc3RhdHVzOiAke3Jlc3BvbnNlLnN0YXR1c31gKTtcbiAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpO1xuICAgIHJldHVybiBkYXRhO1xufVxuXG5jYXREYXRhID0gYXdhaXQgZ2V0Q2F0RGF0YShcIlhGaFJwWVNfRFwiKTtcblxudmlld29mIGNhdERhdGFTdHJpbmcgPSB7XG4gIGNvbnN0IHByZSA9IGh0bWxgPHByZSBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICNmOGY5ZmE7IHBhZGRpbmc6IDE1cHg7IGJvcmRlci1yYWRpdXM6IDVweDsgb3ZlcmZsb3cteDogYXV0bztcIj5gO1xuICBjb25zdCBjb2RlID0gaHRtbGA8Y29kZSBzdHlsZT1cImNvbG9yOiAjMzMzO1wiPmA7XG4gIFxuICAvLyBGb3JtYXR0ZWQgSlNPTiB3aXRoIHN5bnRheCBoaWdobGlnaHRpbmdcbiAgY29uc3QgZm9ybWF0dGVkID0gSlNPTi5zdHJpbmdpZnkoY2F0RGF0YSwgbnVsbCwgMilcbiAgICAucmVwbGFjZSgvJi9nLCAnJmFtcDsnKVxuICAgIC5yZXBsYWNlKC88L2csICcmbHQ7JylcbiAgICAucmVwbGFjZSgvPi9nLCAnJmd0OycpXG4gICAgLnJlcGxhY2UoL1wiKFteXCJdKylcIjovZywgJzxzcGFuIHN0eWxlPVwiY29sb3I6ICNhMzE1MTU7XCI+XCIkMVwiPC9zcGFuPjonKSBcbiAgICAucmVwbGFjZSgvOiBcIihbXlwiXSspXCIvZywgJzogPHNwYW4gc3R5bGU9XCJjb2xvcjogIzAwODAwMDtcIj5cIiQxXCI8L3NwYW4+JykgIFxuICAgIC5yZXBsYWNlKC86IChbMC05XSspL2csICc6IDxzcGFuIHN0eWxlPVwiY29sb3I6ICMwMDAwRkY7XCI+JDE8L3NwYW4+JykgIFxuICAgIC5yZXBsYWNlKC9cXGIodHJ1ZXxmYWxzZXxudWxsKVxcYi9nLCAnPHNwYW4gc3R5bGU9XCJjb2xvcjogI0ZGMDAwMDtcIj4kMTwvc3Bhbj4nKTtcbiAgICBcbiAgY29kZS5pbm5lckhUTUwgPSBmb3JtYXR0ZWQ7XG4gIHByZS5hcHBlbmRDaGlsZChjb2RlKTtcbiAgcmV0dXJuIHByZTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuZnVuY3Rpb24gZGlzcGxheUNhdChkYXRhKSB7XG4gICAgY29uc3QgY29udGFpbmVyID0gaHRtbGA8ZGl2IGNsYXNzPVwiY2FyZFwiIHN0eWxlPVwibWF4LXdpZHRoOiAzMDBweDsgbWFyZ2luOiAxNXB4IGF1dG87XCI+XG4gICAgICAgIDxpbWcgc3JjPVwiJHtkYXRhLnVybH1cIiBjbGFzcz1cImNhcmQtaW1nLXRvcFwiIGFsdD1cIlJhZ2RvbGwgY2F0XCI+XG4gICAgICAgIDxkaXYgY2xhc3M9XCJjYXJkLWJvZHlcIj5cbiAgICAgICAgICAgIDxoNSBjbGFzcz1cImNhcmQtdGl0bGVcIj5CcmVlZDogJHtkYXRhLmJyZWVkc1swXS5uYW1lfTwvaDU+XG4gICAgICAgICAgICA8cCBjbGFzcz1cImNhcmQtdGV4dFwiPiR7ZGF0YS5icmVlZHNbMF0uZGVzY3JpcHRpb259PC9wPlxuICAgICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5gO1xuICAgIHJldHVybiBjb250YWluZXI7XG59XG5cbmRpc3BsYXlDYXQoY2F0RGF0YSk7XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJiZW5nYWxDYXREYXRhID0gYXdhaXQgZ2V0Q2F0RGF0YShcIkxTYURrNk9qWVwiKTtcbmRpc3BsYXlDYXQoYmVuZ2FsQ2F0RGF0YSk7XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2NhdERhdGFTdHJpbmcnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

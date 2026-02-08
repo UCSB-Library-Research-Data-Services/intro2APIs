@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-613bac74c3b9ed204b2393943ef307b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ccbd950bd26879ede8143c66518df84f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -388,7 +388,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <li><code>processed_term_pairs.csv</code>: The processed dataset containing term pairs with weights.</li>
 </ul>
 <p>Visit the project repository on GitHub to explore the full directory structure, example files, and scripts.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -530,19 +530,22 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <p>For our analysis, we will focus on the <strong>tags</strong> field, which provides a list of terms associated with the object. The tags field is particularly valuable because it uses controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata, ensuring consistency across the dataset. These terms capture key themes and concepts, making them ideal for analyzing thematic areas in Medieval Art.</p>
 <p>Documenting the focus of our analysis in a <code>README.md</code> file is a critical step in ensuring transparency and reproducibility. The <code>README.md</code> file provides future researchers (or your future self!) with a clear understanding of the dataset, its purpose, and how it was used. Here’s an example of how you can document this information:</p>
 <p>Having identified the tags field as the focus of our analysis, we can include that information in our <code>README.md</code> file to document the project. This is an example of how we can include that information in the <code>README.md</code> file:</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Note</span>Medieval Art Collection Analysis
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <p>This project aims to analyze the Medieval Art collection of the Metropolitan Museum of Art. The focus of this analysis is on the tags field, which provides a list of terms associated with each object, using controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata. With that information, we aim to identify thematic areas and explore whether these topics reveal insights about Medieval Art — at least from the perspective of the Metropolitan Museum of Art’s metadata, and propose a method to analyze arbitrary terms associated with museum collections.</p>
 <p><strong>License and right of use</strong></p>
 <p>The data provided by the Metropolitan Museum of Art is published under a <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero (CC0) license</a>. This means that the data is in the public domain and can be used for any purpose without restriction. The derived data and code written for this project is published under the same license.</p>
+</div>
 </div>
 </div>
 </section>
@@ -659,10 +662,10 @@ Cross,Christ,1</code></pre>
 20 Adoration of the Magi                      Jesus      6</code></pre>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout callout-style-simple callout-note" data-appearance="minimal">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
 <p>Both raw and processed data are stored in the <a href="https://github.com/jairomelo/intro2APIs-examples/tree/main/data">project repository</a>. You can download the data directly from the repository to use it in your own analysis.</p>
@@ -670,7 +673,7 @@ Cross,Christ,1</code></pre>
 </div>
 </div>
 <p>In the next chapter, we’ll use this full dataset to build a comprehensive network graph, analyze its structure, and uncover thematic clusters that provide deeper insights into the Medieval Art collection.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>

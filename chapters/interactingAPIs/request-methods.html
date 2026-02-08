@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-613bac74c3b9ed204b2393943ef307b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ccbd950bd26879ede8143c66518df84f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -382,11 +382,11 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-startfrom="16" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 15;"><span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">getCatData</span>() {</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`https://api.thecatapi.com/v1/images/search?size=small&amp;mime_types=gif&amp;limit=5`</span><span class="op">;</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`https://api.thecatapi.com/v1/images/search?size=small&amp;mime_types=gif&amp;limit=5`</span><span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> data<span class="op">;</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>catData <span class="op">=</span> <span class="cf">await</span> <span class="fu">getCatData</span>()<span class="op">;</span></span>
@@ -397,14 +397,14 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Formatted JSON with syntax highlighting</span></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> formatted <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(catData<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&amp;/g</span><span class="op">,</span> <span class="st">'&amp;amp;'</span>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&lt;/g</span><span class="op">,</span> <span class="st">'&amp;lt;'</span>)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="op">/&gt;/</span>g<span class="op">,</span> <span class="st">'&amp;gt;'</span>)</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/"</span><span class="sc">([^"]+)</span><span class="ss">":/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #a31515;"&gt;"$1"&lt;/span&gt;:'</span>) </span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: "</span><span class="sc">([^"]+)</span><span class="ss">"/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #008000;"&gt;"$1"&lt;/span&gt;'</span>)  </span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: </span><span class="sc">([0-9]+)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #0000FF;"&gt;$1&lt;/span&gt;'</span>)  </span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\b(</span><span class="ss">true</span><span class="sc">|</span><span class="ss">false</span><span class="sc">|</span><span class="ss">null</span><span class="sc">)\b</span><span class="ss">/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #FF0000;"&gt;$1&lt;/span&gt;'</span>)<span class="op">;</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&amp;/g</span><span class="op">,</span> <span class="st">'&amp;amp;'</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&lt;/g</span><span class="op">,</span> <span class="st">'&amp;lt;'</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="op">/&gt;/</span>g<span class="op">,</span> <span class="st">'&amp;gt;'</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/"</span><span class="sc">([^"]+)</span><span class="ss">":/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #a31515;"&gt;"$1"&lt;/span&gt;:'</span>) </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: "</span><span class="sc">([^"]+)</span><span class="ss">"/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #008000;"&gt;"$1"&lt;/span&gt;'</span>)  </span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: </span><span class="sc">([0-9]+)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #0000FF;"&gt;$1&lt;/span&gt;'</span>)  </span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\b(</span><span class="ss">true</span><span class="sc">|</span><span class="ss">false</span><span class="sc">|</span><span class="ss">null</span><span class="sc">)\b</span><span class="ss">/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #FF0000;"&gt;$1&lt;/span&gt;'</span>)<span class="op">;</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  code<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> formatted<span class="op">;</span></span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  pre<span class="op">.</span><span class="fu">appendChild</span>(code)<span class="op">;</span></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> pre<span class="op">;</span></span>
@@ -479,17 +479,14 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="put">PUT</h3>
 <p>The <code>PUT</code> method is used to update an existing resource. It looks similar to <code>POST</code>, but there’s an important difference: <code>PUT</code> requires the resource to already exist, and it typically replaces the entire object with the new data provided.</p>
 <p>In other words, while <code>POST</code> is used to create something new, <code>PUT</code> is used to <strong>overwrite</strong> an existing record at a specific location (e.g., <code>/images/{image_id}</code>).</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>If you don’t include all fields in a PUT request, some servers may interpret that as a request to remove the missing fields.</p>
+</div>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -509,17 +506,14 @@ Warning
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"approved"</span><span class="fu">:</span> <span class="dv">0</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>will update only those two fields in the existing record.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>In many cases, using <code>PATCH</code> is safer than <code>PUT</code>—especially when we want to avoid unintentionally removing fields that weren’t included in the update. For that reason, <code>PATCH</code> is more commonly supported than <code>PUT</code> in modern APIs.</p>
+</div>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -619,7 +613,7 @@ Note
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImFzeW5jIGZ1bmN0aW9uIGdldENhdERhdGEoKSB7XG4gICAgY29uc3QgdXJsID0gYGh0dHBzOi8vYXBpLnRoZWNhdGFwaS5jb20vdjEvaW1hZ2VzL3NlYXJjaD9zaXplPXNtYWxsJm1pbWVfdHlwZXM9Z2lmJmxpbWl0PTVgO1xuICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2godXJsKTtcbiAgICBpZiAoIXJlc3BvbnNlLm9rKSB0aHJvdyBuZXcgRXJyb3IoYEhUVFAgZXJyb3IhIHN0YXR1czogJHtyZXNwb25zZS5zdGF0dXN9YCk7XG4gICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcbiAgICByZXR1cm4gZGF0YTtcbn1cblxuY2F0RGF0YSA9IGF3YWl0IGdldENhdERhdGEoKTtcblxudmlld29mIGNhdERhdGFTdHJpbmcgPSB7XG4gIGNvbnN0IHByZSA9IGh0bWxgPHByZSBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICNmOGY5ZmE7IHBhZGRpbmc6IDE1cHg7IGJvcmRlci1yYWRpdXM6IDVweDsgb3ZlcmZsb3cteDogYXV0bztcIj5gO1xuICBjb25zdCBjb2RlID0gaHRtbGA8Y29kZSBzdHlsZT1cImNvbG9yOiAjMzMzO1wiPmA7XG4gIFxuICAvLyBGb3JtYXR0ZWQgSlNPTiB3aXRoIHN5bnRheCBoaWdobGlnaHRpbmdcbiAgY29uc3QgZm9ybWF0dGVkID0gSlNPTi5zdHJpbmdpZnkoY2F0RGF0YSwgbnVsbCwgMilcbiAgICAucmVwbGFjZSgvJi9nLCAnJmFtcDsnKVxuICAgIC5yZXBsYWNlKC88L2csICcmbHQ7JylcbiAgICAucmVwbGFjZSgvPi9nLCAnJmd0OycpXG4gICAgLnJlcGxhY2UoL1wiKFteXCJdKylcIjovZywgJzxzcGFuIHN0eWxlPVwiY29sb3I6ICNhMzE1MTU7XCI+XCIkMVwiPC9zcGFuPjonKSBcbiAgICAucmVwbGFjZSgvOiBcIihbXlwiXSspXCIvZywgJzogPHNwYW4gc3R5bGU9XCJjb2xvcjogIzAwODAwMDtcIj5cIiQxXCI8L3NwYW4+JykgIFxuICAgIC5yZXBsYWNlKC86IChbMC05XSspL2csICc6IDxzcGFuIHN0eWxlPVwiY29sb3I6ICMwMDAwRkY7XCI+JDE8L3NwYW4+JykgIFxuICAgIC5yZXBsYWNlKC9cXGIodHJ1ZXxmYWxzZXxudWxsKVxcYi9nLCAnPHNwYW4gc3R5bGU9XCJjb2xvcjogI0ZGMDAwMDtcIj4kMTwvc3Bhbj4nKTtcbiAgICBcbiAgY29kZS5pbm5lckhUTUwgPSBmb3JtYXR0ZWQ7XG4gIHByZS5hcHBlbmRDaGlsZChjb2RlKTtcbiAgcmV0dXJuIHByZTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnY2F0RGF0YVN0cmluZycpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImFzeW5jIGZ1bmN0aW9uIGdldENhdERhdGEoKSB7XG4gIGNvbnN0IHVybCA9IGBodHRwczovL2FwaS50aGVjYXRhcGkuY29tL3YxL2ltYWdlcy9zZWFyY2g/c2l6ZT1zbWFsbCZtaW1lX3R5cGVzPWdpZiZsaW1pdD01YDtcbiAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaCh1cmwpO1xuICBpZiAoIXJlc3BvbnNlLm9rKSB0aHJvdyBuZXcgRXJyb3IoYEhUVFAgZXJyb3IhIHN0YXR1czogJHtyZXNwb25zZS5zdGF0dXN9YCk7XG4gIGNvbnN0IGRhdGEgPSBhd2FpdCByZXNwb25zZS5qc29uKCk7XG4gIHJldHVybiBkYXRhO1xufVxuXG5jYXREYXRhID0gYXdhaXQgZ2V0Q2F0RGF0YSgpO1xuXG52aWV3b2YgY2F0RGF0YVN0cmluZyA9IHtcbiAgY29uc3QgcHJlID0gaHRtbGA8cHJlIHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogI2Y4ZjlmYTsgcGFkZGluZzogMTVweDsgYm9yZGVyLXJhZGl1czogNXB4OyBvdmVyZmxvdy14OiBhdXRvO1wiPmA7XG4gIGNvbnN0IGNvZGUgPSBodG1sYDxjb2RlIHN0eWxlPVwiY29sb3I6ICMzMzM7XCI+YDtcbiAgXG4gIC8vIEZvcm1hdHRlZCBKU09OIHdpdGggc3ludGF4IGhpZ2hsaWdodGluZ1xuICBjb25zdCBmb3JtYXR0ZWQgPSBKU09OLnN0cmluZ2lmeShjYXREYXRhLCBudWxsLCAyKVxuICAucmVwbGFjZSgvJi9nLCAnJmFtcDsnKVxuICAucmVwbGFjZSgvPC9nLCAnJmx0OycpXG4gIC5yZXBsYWNlKC8+L2csICcmZ3Q7JylcbiAgLnJlcGxhY2UoL1wiKFteXCJdKylcIjovZywgJzxzcGFuIHN0eWxlPVwiY29sb3I6ICNhMzE1MTU7XCI+XCIkMVwiPC9zcGFuPjonKSBcbiAgLnJlcGxhY2UoLzogXCIoW15cIl0rKVwiL2csICc6IDxzcGFuIHN0eWxlPVwiY29sb3I6ICMwMDgwMDA7XCI+XCIkMVwiPC9zcGFuPicpICBcbiAgLnJlcGxhY2UoLzogKFswLTldKykvZywgJzogPHNwYW4gc3R5bGU9XCJjb2xvcjogIzAwMDBGRjtcIj4kMTwvc3Bhbj4nKSAgXG4gIC5yZXBsYWNlKC9cXGIodHJ1ZXxmYWxzZXxudWxsKVxcYi9nLCAnPHNwYW4gc3R5bGU9XCJjb2xvcjogI0ZGMDAwMDtcIj4kMTwvc3Bhbj4nKTtcbiAgXG4gIGNvZGUuaW5uZXJIVE1MID0gZm9ybWF0dGVkO1xuICBwcmUuYXBwZW5kQ2hpbGQoY29kZSk7XG4gIHJldHVybiBwcmU7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2NhdERhdGFTdHJpbmcnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

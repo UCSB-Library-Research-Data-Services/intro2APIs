@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-613bac74c3b9ed204b2393943ef307b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ccbd950bd26879ede8143c66518df84f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -382,18 +382,15 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <section id="uploading-your-first-image" class="level2">
 <h2 class="anchored" data-anchor-id="uploading-your-first-image">Uploading Your First Image</h2>
 <p>Since we have an API key, we also have a user ID assigned. That means we can upload images to our “own” collection.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>Keep in mind that <em>The Cat API</em> is primarily a testing platform. It’s not intended to store personal information long-term.<br>
 Uploading pictures of your cats is totally fine, just don’t use it as a personal photo album! 😉</p>
+</div>
 </div>
 </div>
 <p>Let’s test this by creating a new <code>GET</code> request called “myImages”.</p>
@@ -519,22 +516,19 @@ Uploading pictures of your cats is totally fine, just don’t use it as a person
 <section id="sending-binary-content" class="level3">
 <h3 class="anchored" data-anchor-id="sending-binary-content">Sending Binary Content</h3>
 <p>Postman makes it easy to upload files as part of a request. When using the <strong>desktop application</strong>, you can simply select the image file from your computer, and Postman will attach it as binary content in the body of the request.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>Remember that this is a public testing API. If you’re uploading a picture of your cat, make sure <strong>not to include any people, addresses, or personal information</strong> in the image or filename.</p>
 </div>
 </div>
+</div>
 <p>Now, this part can be a little confusing: although the file itself is binary, we still need to use the <strong>form-data</strong> option — <strong>not</strong> the <code>binary</code> option.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -543,7 +537,7 @@ Warning
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The reason is that the API expects the image to be sent as part of a <strong>multipart/form-data</strong> request — just like a file upload in a browser form. The <code>binary</code> mode in Postman sends <em>only</em> the file content, without a field name or other metadata. But the Cat API expects a form-like structure with the field named <code>file</code>.<br>
 In simple terms: if we send the data as <code>binary</code>, the server won’t know what to do with it.</p>
@@ -578,11 +572,11 @@ In simple terms: if we send the data as <code>binary</code>, the server won’t 
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-startfrom="138" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 137;"><span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">getCatData</span>(catId) {</span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`https://api.thecatapi.com/v1/images/</span><span class="sc">${</span>catId<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`https://api.thecatapi.com/v1/images/</span><span class="sc">${</span>catId<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> data<span class="op">;</span></span>
 <span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>catData <span class="op">=</span> <span class="cf">await</span> <span class="fu">getCatData</span>(<span class="st">"8ML9aFY8p"</span>)</span>
@@ -593,27 +587,27 @@ In simple terms: if we send the data as <code>binary</code>, the server won’t 
 <span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Formatted JSON with syntax highlighting</span></span>
 <span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> formatted <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(catData<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)</span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&amp;/g</span><span class="op">,</span> <span class="st">'&amp;amp;'</span>)</span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&lt;/g</span><span class="op">,</span> <span class="st">'&amp;lt;'</span>)</span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="op">/&gt;/</span>g<span class="op">,</span> <span class="st">'&amp;gt;'</span>)</span>
-<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/"</span><span class="sc">([^"]+)</span><span class="ss">":/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #a31515;"&gt;"$1"&lt;/span&gt;:'</span>) </span>
-<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: "</span><span class="sc">([^"]+)</span><span class="ss">"/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #008000;"&gt;"$1"&lt;/span&gt;'</span>)  </span>
-<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: </span><span class="sc">([0-9]+)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #0000FF;"&gt;$1&lt;/span&gt;'</span>)  </span>
-<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\b(</span><span class="ss">true</span><span class="sc">|</span><span class="ss">false</span><span class="sc">|</span><span class="ss">null</span><span class="sc">)\b</span><span class="ss">/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #FF0000;"&gt;$1&lt;/span&gt;'</span>)<span class="op">;</span></span>
-<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&amp;/g</span><span class="op">,</span> <span class="st">'&amp;amp;'</span>)</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&lt;/g</span><span class="op">,</span> <span class="st">'&amp;lt;'</span>)</span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="op">/&gt;/</span>g<span class="op">,</span> <span class="st">'&amp;gt;'</span>)</span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/"</span><span class="sc">([^"]+)</span><span class="ss">":/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #a31515;"&gt;"$1"&lt;/span&gt;:'</span>) </span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: "</span><span class="sc">([^"]+)</span><span class="ss">"/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #008000;"&gt;"$1"&lt;/span&gt;'</span>)  </span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: </span><span class="sc">([0-9]+)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #0000FF;"&gt;$1&lt;/span&gt;'</span>)  </span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\b(</span><span class="ss">true</span><span class="sc">|</span><span class="ss">false</span><span class="sc">|</span><span class="ss">null</span><span class="sc">)\b</span><span class="ss">/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #FF0000;"&gt;$1&lt;/span&gt;'</span>)<span class="op">;</span></span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>  code<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> formatted<span class="op">;</span></span>
 <span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>  pre<span class="op">.</span><span class="fu">appendChild</span>(code)<span class="op">;</span></span>
 <span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> pre<span class="op">;</span></span>
 <span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">displayCat</span>(data) {</span>
-<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card" style="max-width: 300px; margin: 15px auto;"&gt;</span></span>
-<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;img src="</span><span class="sc">${</span>data<span class="op">.</span><span class="at">url</span><span class="sc">}</span><span class="vs">" class="card-img-top" alt="Silvestre"&gt;</span></span>
-<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="card-body"&gt;</span></span>
-<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;h5 class="card-title"&gt;Let me introduce you to Silvestre :)&lt;/h5&gt;</span></span>
-<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
-<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card" style="max-width: 300px; margin: 15px auto;"&gt;</span></span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;img src="</span><span class="sc">${</span>data<span class="op">.</span><span class="at">url</span><span class="sc">}</span><span class="vs">" class="card-img-top" alt="Silvestre"&gt;</span></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="card-body"&gt;</span></span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h5 class="card-title"&gt;Let me introduce you to Silvestre :)&lt;/h5&gt;</span></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
 <span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a><span class="fu">displayCat</span>(catData)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -667,7 +661,7 @@ In simple terms: if we send the data as <code>binary</code>, the server won’t 
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuYXN5bmMgZnVuY3Rpb24gZ2V0Q2F0RGF0YShjYXRJZCkge1xuICAgIGNvbnN0IHVybCA9IGBodHRwczovL2FwaS50aGVjYXRhcGkuY29tL3YxL2ltYWdlcy8ke2NhdElkfWA7XG4gICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaCh1cmwpO1xuICAgIGlmICghcmVzcG9uc2Uub2spIHRocm93IG5ldyBFcnJvcihgSFRUUCBlcnJvciEgc3RhdHVzOiAke3Jlc3BvbnNlLnN0YXR1c31gKTtcbiAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpO1xuICAgIHJldHVybiBkYXRhO1xufVxuXG5jYXREYXRhID0gYXdhaXQgZ2V0Q2F0RGF0YShcIjhNTDlhRlk4cFwiKVxuXG52aWV3b2YgY2F0RGF0YVN0cmluZyA9IHtcbiAgY29uc3QgcHJlID0gaHRtbGA8cHJlIHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogI2Y4ZjlmYTsgcGFkZGluZzogMTVweDsgYm9yZGVyLXJhZGl1czogNXB4OyBvdmVyZmxvdy14OiBhdXRvO1wiPmA7XG4gIGNvbnN0IGNvZGUgPSBodG1sYDxjb2RlIHN0eWxlPVwiY29sb3I6ICMzMzM7XCI+YDtcbiAgXG4gIC8vIEZvcm1hdHRlZCBKU09OIHdpdGggc3ludGF4IGhpZ2hsaWdodGluZ1xuICBjb25zdCBmb3JtYXR0ZWQgPSBKU09OLnN0cmluZ2lmeShjYXREYXRhLCBudWxsLCAyKVxuICAgIC5yZXBsYWNlKC8mL2csICcmYW1wOycpXG4gICAgLnJlcGxhY2UoLzwvZywgJyZsdDsnKVxuICAgIC5yZXBsYWNlKC8+L2csICcmZ3Q7JylcbiAgICAucmVwbGFjZSgvXCIoW15cIl0rKVwiOi9nLCAnPHNwYW4gc3R5bGU9XCJjb2xvcjogI2EzMTUxNTtcIj5cIiQxXCI8L3NwYW4+OicpIFxuICAgIC5yZXBsYWNlKC86IFwiKFteXCJdKylcIi9nLCAnOiA8c3BhbiBzdHlsZT1cImNvbG9yOiAjMDA4MDAwO1wiPlwiJDFcIjwvc3Bhbj4nKSAgXG4gICAgLnJlcGxhY2UoLzogKFswLTldKykvZywgJzogPHNwYW4gc3R5bGU9XCJjb2xvcjogIzAwMDBGRjtcIj4kMTwvc3Bhbj4nKSAgXG4gICAgLnJlcGxhY2UoL1xcYih0cnVlfGZhbHNlfG51bGwpXFxiL2csICc8c3BhbiBzdHlsZT1cImNvbG9yOiAjRkYwMDAwO1wiPiQxPC9zcGFuPicpO1xuICAgIFxuICBjb2RlLmlubmVySFRNTCA9IGZvcm1hdHRlZDtcbiAgcHJlLmFwcGVuZENoaWxkKGNvZGUpO1xuICByZXR1cm4gcHJlO1xufVxuXG5mdW5jdGlvbiBkaXNwbGF5Q2F0KGRhdGEpIHtcbiAgICBjb25zdCBjb250YWluZXIgPSBodG1sYDxkaXYgY2xhc3M9XCJjYXJkXCIgc3R5bGU9XCJtYXgtd2lkdGg6IDMwMHB4OyBtYXJnaW46IDE1cHggYXV0bztcIj5cbiAgICAgICAgPGltZyBzcmM9XCIke2RhdGEudXJsfVwiIGNsYXNzPVwiY2FyZC1pbWctdG9wXCIgYWx0PVwiU2lsdmVzdHJlXCI+XG4gICAgICAgIDxkaXYgY2xhc3M9XCJjYXJkLWJvZHlcIj5cbiAgICAgICAgICAgIDxoNSBjbGFzcz1cImNhcmQtdGl0bGVcIj5MZXQgbWUgaW50cm9kdWNlIHlvdSB0byBTaWx2ZXN0cmUgOik8L2g1PlxuICAgICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5gO1xuICAgIHJldHVybiBjb250YWluZXI7XG59XG5cbmRpc3BsYXlDYXQoY2F0RGF0YSk7XG5cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnY2F0RGF0YVN0cmluZycpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuYXN5bmMgZnVuY3Rpb24gZ2V0Q2F0RGF0YShjYXRJZCkge1xuICBjb25zdCB1cmwgPSBgaHR0cHM6Ly9hcGkudGhlY2F0YXBpLmNvbS92MS9pbWFnZXMvJHtjYXRJZH1gO1xuICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKHVybCk7XG4gIGlmICghcmVzcG9uc2Uub2spIHRocm93IG5ldyBFcnJvcihgSFRUUCBlcnJvciEgc3RhdHVzOiAke3Jlc3BvbnNlLnN0YXR1c31gKTtcbiAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcbiAgcmV0dXJuIGRhdGE7XG59XG5cbmNhdERhdGEgPSBhd2FpdCBnZXRDYXREYXRhKFwiOE1MOWFGWThwXCIpXG5cbnZpZXdvZiBjYXREYXRhU3RyaW5nID0ge1xuICBjb25zdCBwcmUgPSBodG1sYDxwcmUgc3R5bGU9XCJiYWNrZ3JvdW5kLWNvbG9yOiAjZjhmOWZhOyBwYWRkaW5nOiAxNXB4OyBib3JkZXItcmFkaXVzOiA1cHg7IG92ZXJmbG93LXg6IGF1dG87XCI+YDtcbiAgY29uc3QgY29kZSA9IGh0bWxgPGNvZGUgc3R5bGU9XCJjb2xvcjogIzMzMztcIj5gO1xuICBcbiAgLy8gRm9ybWF0dGVkIEpTT04gd2l0aCBzeW50YXggaGlnaGxpZ2h0aW5nXG4gIGNvbnN0IGZvcm1hdHRlZCA9IEpTT04uc3RyaW5naWZ5KGNhdERhdGEsIG51bGwsIDIpXG4gIC5yZXBsYWNlKC8mL2csICcmYW1wOycpXG4gIC5yZXBsYWNlKC88L2csICcmbHQ7JylcbiAgLnJlcGxhY2UoLz4vZywgJyZndDsnKVxuICAucmVwbGFjZSgvXCIoW15cIl0rKVwiOi9nLCAnPHNwYW4gc3R5bGU9XCJjb2xvcjogI2EzMTUxNTtcIj5cIiQxXCI8L3NwYW4+OicpIFxuICAucmVwbGFjZSgvOiBcIihbXlwiXSspXCIvZywgJzogPHNwYW4gc3R5bGU9XCJjb2xvcjogIzAwODAwMDtcIj5cIiQxXCI8L3NwYW4+JykgIFxuICAucmVwbGFjZSgvOiAoWzAtOV0rKS9nLCAnOiA8c3BhbiBzdHlsZT1cImNvbG9yOiAjMDAwMEZGO1wiPiQxPC9zcGFuPicpICBcbiAgLnJlcGxhY2UoL1xcYih0cnVlfGZhbHNlfG51bGwpXFxiL2csICc8c3BhbiBzdHlsZT1cImNvbG9yOiAjRkYwMDAwO1wiPiQxPC9zcGFuPicpO1xuICBcbiAgY29kZS5pbm5lckhUTUwgPSBmb3JtYXR0ZWQ7XG4gIHByZS5hcHBlbmRDaGlsZChjb2RlKTtcbiAgcmV0dXJuIHByZTtcbn1cblxuZnVuY3Rpb24gZGlzcGxheUNhdChkYXRhKSB7XG4gIGNvbnN0IGNvbnRhaW5lciA9IGh0bWxgPGRpdiBjbGFzcz1cImNhcmRcIiBzdHlsZT1cIm1heC13aWR0aDogMzAwcHg7IG1hcmdpbjogMTVweCBhdXRvO1wiPlxuICAgIDxpbWcgc3JjPVwiJHtkYXRhLnVybH1cIiBjbGFzcz1cImNhcmQtaW1nLXRvcFwiIGFsdD1cIlNpbHZlc3RyZVwiPlxuICAgIDxkaXYgY2xhc3M9XCJjYXJkLWJvZHlcIj5cbiAgICA8aDUgY2xhc3M9XCJjYXJkLXRpdGxlXCI+TGV0IG1lIGludHJvZHVjZSB5b3UgdG8gU2lsdmVzdHJlIDopPC9oNT5cbiAgICA8L2Rpdj5cbiAgPC9kaXY+YDtcbiAgcmV0dXJuIGNvbnRhaW5lcjtcbn1cblxuZGlzcGxheUNhdChjYXREYXRhKTtcblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdjYXREYXRhU3RyaW5nJykifV19
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
