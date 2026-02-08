@@ -19,7 +19,7 @@ We have a dataset containing 1725 unique pairs of tags. By transforming this dat
 
 While the full details of network construction are beyond the scope of this workshop, you can create and explore network graphs using tools like Gephi. The processed network data is available in the [project repository](https://github.com/jairomelo/intro2APIs-examples/tree/main/data) as [`network_medieval_art_tags.gexf`](https://github.com/jairomelo/intro2APIs-examples/blob/main/data/processed/network_medieval_art_tags.gexf). 
 
-::: {.callout-tip collapse="true"}
+::: {.callout-tip appearance="simple" collapse="true"}
 ## What is GEXF?
 
 The GEXF (Graph Exchange XML Format) is a widely used format for storing and sharing network graphs. It is structured using XML, making it both human-readable and compatible with various network analysis tools like Gephi and Cytoscape.
@@ -37,7 +37,7 @@ There are multiple tools available for network visualization, ranging from deskt
 
 For this workshop, we will explore the network using Retina, which enables interactive exploration directly in your browser. 
 
-::: {.callout-note collapse="true"}
+::: {.callout-note appearance="simple" collapse="true"}
 ## Retina as a Web API for Network Visualization
 
 Unlike traditional network visualization tools, Retina works dynamically through URL parameters, making it function similarly to a Web API. Instead of manually adjusting settings in a graphical interface, Retina allows users to modify the view using URL parameters. These parameters control layout, node size, color attributes, filtering, and focus points—all without needing a separate backend. Because the graph is rendered directly in the user’s browser, all changes happen client-side, just like API calls retrieving data.
@@ -76,7 +76,7 @@ One of the challenges of using networks as a data visualization tool is the risk
 
 Since each community in our network represents a thematic area, we can filter specific communities to explore the terms they contain and their connections to the broader network.
 
-::: {.callout-tip collapse="true"}
+::: {.callout-tip appearance="simple" collapse="true"}
 ## How to Isolate a Community in Retina
 
 A straightforward way to isolate communities is by using Retina’s "Explore" feature:

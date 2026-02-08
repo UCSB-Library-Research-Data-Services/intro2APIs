@@ -57,7 +57,7 @@ Let’s set up the request:
 
 Now you're ready to send the request!
 
-::: {.callout-caution}
+::: {.callout-caution appearance="simple" collapse="false"}
 You won’t receive a confirmation or warning before deletion, so make sure you're removing the image you intended to.
 :::
 

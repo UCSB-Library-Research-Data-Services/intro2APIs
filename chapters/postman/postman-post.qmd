@@ -22,7 +22,7 @@ In this section, we’ll explore how to use the `POST` method to send data to a 
 
 Since we have an API key, we also have a user ID assigned. That means we can upload images to our “own” collection.
 
-::: {.callout-warning}
+::: {.callout-warning appearance="simple" collapse="false"}
 Keep in mind that *The Cat API* is primarily a testing platform. It’s not intended to store personal information long-term.  
 Uploading pictures of your cats is totally fine, just don’t use it as a personal photo album! 😉
 :::
@@ -57,11 +57,11 @@ Once there, navigate to the **Images** section and locate:
 
 This page provides useful information for constructing our request. Focus on the **"Request Body Schema"** section. It lists three parameters:
 
-| Parameter   | Type              | Description                                                                 |
+| Parameter | Type      | Description                       |
 |-------------|-------------------|-----------------------------------------------------------------------------|
-| `file`      | `string <binary>` | The binary file data of the image to be uploaded.                          |
-| `sub_id`    | `string` (optional) | A string used to segment your images (e.g., identify the user).           |
-| `breeds_ids`| `string` (optional) | Comma-separated list of breed IDs shown in the image.                     |
+| `file`  | `string <binary>` | The binary file data of the image to be uploaded.          |
+| `sub_id`  | `string` (optional) | A string used to segment your images (e.g., identify the user).     |
+| `breeds_ids`| `string` (optional) | Comma-separated list of breed IDs shown in the image.       |
 
 To keep things simple, we’ll just use the required `file` parameter. As noted, it accepts a string of type `binary`, which refers to the actual **image file** you want to upload.
 
@@ -87,14 +87,14 @@ Let’s walk through how to set up this `POST` request in Postman.
 
 6. Click the **Body** tab. You’ll see several content type options:
 
-| Type                  | Description                                                                 |
+| Type      | Description                       |
 |-----------------------|-----------------------------------------------------------------------------|
-| **none**              | No data will be sent with the request.                                      |
-| **form-data**         | Simulates form submissions (key, data type, and value).                     |
-| **x-www-form-urlencoded** | Sends key-value pairs in URL-encoded format (similar to form-data).     |
-| **raw**               | Used to send raw text (typically JSON or XML).                              |
-| **binary**            | Used to send files like images, video, or audio.                            |
-| **GraphQL**           | For structured GraphQL queries to compatible APIs.                          |
+| **none**      | No data will be sent with the request.              |
+| **form-data**   | Simulates form submissions (key, data type, and value).       |
+| **x-www-form-urlencoded** | Sends key-value pairs in URL-encoded format (similar to form-data).   |
+| **raw**     | Used to send raw text (typically JSON or XML).          |
+| **binary**    | Used to send files like images, video, or audio.          |
+| **GraphQL**     | For structured GraphQL queries to compatible APIs.          |
 
 We’ll use **form-data** for this request — even though the image is binary — as indicated in The Cat API documentation.
 
@@ -102,13 +102,13 @@ We’ll use **form-data** for this request — even though the image is binary �
 
 Postman makes it easy to upload files as part of a request. When using the **desktop application**, you can simply select the image file from your computer, and Postman will attach it as binary content in the body of the request.
 
-::: {.callout-warning}
+::: {.callout-warning appearance="simple"  }
 Remember that this is a public testing API. If you're uploading a picture of your cat, make sure **not to include any people, addresses, or personal information** in the image or filename.
 :::
 
 Now, this part can be a little confusing: although the file itself is binary, we still need to use the **form-data** option — **not** the `binary` option.
 
-::: {.callout-note collapse="true"}
+::: {.callout-note appearance="simple" collapse="true"}
 ## Why use form-data instead of binary?
 
 The reason is that the API expects the image to be sent as part of a **multipart/form-data** request — just like a file upload in a browser form. The `binary` mode in Postman sends *only* the file content, without a field name or other metadata. But the Cat API expects a form-like structure with the field named `file`.  
@@ -136,11 +136,11 @@ Once uploaded, you can access the image directly from The Cat API using the ID i
 ```{ojs}
 
 async function getCatData(catId) {
-    const url = `https://api.thecatapi.com/v1/images/${catId}`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    const data = await response.json();
-    return data;
+  const url = `https://api.thecatapi.com/v1/images/${catId}`;
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+  const data = await response.json();
+  return data;
 }
 
 catData = await getCatData("8ML9aFY8p")
@@ -151,27 +151,27 @@ viewof catDataString = {
   
   // Formatted JSON with syntax highlighting
   const formatted = JSON.stringify(catData, null, 2)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"([^"]+)":/g, '<span style="color: #a31515;">"$1"</span>:') 
-    .replace(/: "([^"]+)"/g, ': <span style="color: #008000;">"$1"</span>')  
-    .replace(/: ([0-9]+)/g, ': <span style="color: #0000FF;">$1</span>')  
-    .replace(/\b(true|false|null)\b/g, '<span style="color: #FF0000;">$1</span>');
-    
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"([^"]+)":/g, '<span style="color: #a31515;">"$1"</span>:') 
+  .replace(/: "([^"]+)"/g, ': <span style="color: #008000;">"$1"</span>')  
+  .replace(/: ([0-9]+)/g, ': <span style="color: #0000FF;">$1</span>')  
+  .replace(/\b(true|false|null)\b/g, '<span style="color: #FF0000;">$1</span>');
+  
   code.innerHTML = formatted;
   pre.appendChild(code);
   return pre;
 }
 
 function displayCat(data) {
-    const container = html`<div class="card" style="max-width: 300px; margin: 15px auto;">
-        <img src="${data.url}" class="card-img-top" alt="Silvestre">
-        <div class="card-body">
-            <h5 class="card-title">Let me introduce you to Silvestre :)</h5>
-        </div>
-    </div>`;
-    return container;
+  const container = html`<div class="card" style="max-width: 300px; margin: 15px auto;">
+    <img src="${data.url}" class="card-img-top" alt="Silvestre">
+    <div class="card-body">
+    <h5 class="card-title">Let me introduce you to Silvestre :)</h5>
+    </div>
+  </div>`;
+  return container;
 }
 
 displayCat(catData);

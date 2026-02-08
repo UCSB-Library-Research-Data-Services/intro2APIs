@@ -10,7 +10,7 @@ lightbox: true
 
 In this section, we’ll create a workspace in Postman and perform a few basic `GET` requests using **The Cat API**.
 
-::: {.callout-note collapse="true"}
+::: {.callout-note appearance="simple" collapse="true"}
 The screenshots in this notebook were taken from the **Postman Desktop application** running on macOS.
 
 - **Version**: 11.42.1  
@@ -54,7 +54,7 @@ You’ll now see your new collection listed in the sidebar. We’ll add our firs
 
 ![Creating a collection in Postman](/static/imgs/postman-create-collection.png)
 
-::: {.callout-tip}
+::: {.callout-tip appearance="simple" collapse="false"}
 When you create a new workspace, Postman may automatically add a template collection named **"End-to-End Tests"**. You can safely remove it to keep your workspace clean and focused.
 
 To delete it:  

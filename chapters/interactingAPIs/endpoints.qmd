@@ -1,10 +1,10 @@
 ---
 title: "Endpoints"
 execute:
-    echo: true
+  echo: true
 format:
-    html:
-        code-fold: true
+  html:
+    code-fold: true
 lightbox: true
 ---
 
@@ -20,7 +20,7 @@ Then, let's break the pieces of an endpoint into four parts:
 
 The protocol is the first part of an endpoint, specifying whether access to the resource is done through HTTP or HTTPS. In simple terms, HTTP is the same protocol used by the web browser to retrieve web pages. The "S" in HTTPS stands for "secure" and it means that the communication between the client and the server is encrypted. 
 
-::: {.callout-note}
+::: {.callout-note appearance="simple"  }
 Currently, HTTPS is the de facto standard for APIs, due to enhanced security.
 :::
 
@@ -28,7 +28,7 @@ Currently, HTTPS is the de facto standard for APIs, due to enhanced security.
 
 The second part of an endpoint is the domain name. This means the unique name of the host that provides the resource. In our example, the domain of the cat API is `api.thecatapi.com`. 
 
-::: {.callout-note}
+::: {.callout-note appearance="simple"  }
 The domain name of the API is not necessarily the same as the name of the main website of the API provider. For instance, the domain name of the cat API is `api.thecatapi.com`, but the main website of the cat API is `thecatapi.com`.
 :::
 
@@ -65,46 +65,46 @@ With this result:
 // catch error if the file is not found
 cats = {
   try {
-    return await FileAttachment("../_data/cats.json").json();
+  return await FileAttachment("../_data/cats.json").json();
   } catch (e) {
-    console.error("Error loading cats data. This is normal if you're running the book locally.", e);
-    return await FileAttachment("../_dev/cats-fallback.json").json()
+  console.error("Error loading cats data. This is normal if you're running the book locally.", e);
+  return await FileAttachment("../_dev/cats-fallback.json").json()
   }
 }
 
 viewof carousel = {
   const container = html`
-    <div class="carousel-container">
-      <div class="carousel-wrapper"></div>
-      <button class="carousel-button prev">←</button>
-      <button class="carousel-button next">→</button>
-    </div>
+  <div class="carousel-container">
+  <div class="carousel-wrapper"></div>
+  <button class="carousel-button prev">←</button>
+  <button class="carousel-button next">→</button>
+  </div>
   `;
   
   const wrapper = container.querySelector('.carousel-wrapper');
   
   cats.forEach(cat => {
-    const img = document.createElement('img');
-    img.src = cat.url;
-    img.alt = 'Cat image';
-    wrapper.appendChild(img);
+  const img = document.createElement('img');
+  img.src = cat.url;
+  img.alt = 'Cat image';
+  wrapper.appendChild(img);
   });
 
   let currentIndex = 0;
   const totalImages = cats.length;
   
   function updateCarousel() {
-    wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+  wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
 
   container.querySelector('.next').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalImages;
-    updateCarousel();
+  currentIndex = (currentIndex + 1) % totalImages;
+  updateCarousel();
   });
 
   container.querySelector('.prev').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-    updateCarousel();
+  currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+  updateCarousel();
   });
   
   return container;

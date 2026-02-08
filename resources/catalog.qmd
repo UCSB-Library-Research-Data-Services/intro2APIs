@@ -5,7 +5,7 @@ title: "A Catalog of APIs"
 This is a non-exhaustive list of APIs that can be used to retrieve data from cultural institutions, and other sources, that can be used for research, teaching, or event to build or integrate with applications.
 
 
-::: {.callout-caution collapse="true"}
+::: {.callout-caution appearance="simple" collapse="true"}
 ## About Authentication
 Although some APIs do not require authentication, it is important to check the API documentation to be aware of usage limits and other restrictions. Otherwise, you can get blocked from the API provider.
 :::
@@ -30,7 +30,7 @@ Although some APIs do not require authentication, it is important to check the A
 
 ## Non-US APIs
 
-::: {.callout-note}
+::: {.callout-note appearance="simple" collapse="false"}
 Policies for using APIs from non-US institutions may be different from those in the US. It is important to check the API documentation for each institution to be aware of usage limits and other restrictions.
 :::
 

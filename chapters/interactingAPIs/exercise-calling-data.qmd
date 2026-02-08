@@ -1,10 +1,10 @@
 ---
 title: "Exercise: Calling Data from an API"
 execute:
-    echo: true
+  echo: true
 format:
-    html:
-        code-fold: true
+  html:
+    code-fold: true
 lightbox: true
 ---
 
@@ -35,12 +35,12 @@ Scroll down to see the list of departments and their `departmentId`. Copy the va
 ```{ojs}
 
 viewof departmentListEndpoint = Inputs.text({
-    label: "Department list",
-    placeholder: "",
-    value: "",
-    attributes: {
-        class: "form-control mb-3"
-    }
+  label: "Department list",
+  placeholder: "",
+  value: "",
+  attributes: {
+    class: "form-control mb-3"
+  }
 })
 
 /**
@@ -49,167 +49,167 @@ viewof departmentListEndpoint = Inputs.text({
  * code in other exercises.
  */
 async function validateEndpoint(endpoint, query, params) {
-    const checks = [
-        {
-            pattern: /^https:\/\//,
-            message: "URL must start with 'https://'"
-        },
-        {
-            pattern: /collectionapi\.metmuseum\.org/,
-            message: "URL must contain 'collectionapi.metmuseum.org'"
-        },
-        {
-            pattern: /\/public\//,
-            message: "Missing '/public/' in the path"
-        },
-        {
-            pattern: /\/collection\//,
-            message: "Missing '/collection/' in the path"
-        },
-        {
-            pattern: /\/v1\//,
-            message: "Missing '/v1/' in the path"
-        }
-    ];
-
-    if (params) {
-        const paramsList = params.split("&");
-        checks.push(
-            {
-                pattern: new RegExp(`${query}\\?`),
-                message: `URL must contain '${query}' before parameters`
-            },
-            {
-                pattern: /[?]/g,
-                message: "Query and parameters must be separated by '?'"
-            },
-            ...paramsList.map(param => ({
-                pattern: new RegExp(param),
-                message: `Missing parameter: ${param}`
-            }))
-        );
-    } else {
-        checks.push(
-            {
-                pattern: new RegExp(`${query}$`),
-                message: `URL must end with '${query}'`
-            }
-        )
+  const checks = [
+    {
+    pattern: /^https:\/\//,
+    message: "URL must start with 'https://'"
+    },
+    {
+    pattern: /collectionapi\.metmuseum\.org/,
+    message: "URL must contain 'collectionapi.metmuseum.org'"
+    },
+    {
+    pattern: /\/public\//,
+    message: "Missing '/public/' in the path"
+    },
+    {
+    pattern: /\/collection\//,
+    message: "Missing '/collection/' in the path"
+    },
+    {
+    pattern: /\/v1\//,
+    message: "Missing '/v1/' in the path"
     }
+  ];
 
-    if (/[^:]\/\//.test(endpoint)) {
-        return "Invalid URL: Contains double slashes (//)";
+  if (params) {
+    const paramsList = params.split("&");
+    checks.push(
+    {
+      pattern: new RegExp(`${query}\\?`),
+      message: `URL must contain '${query}' before parameters`
+    },
+    {
+      pattern: /[?]/g,
+      message: "Query and parameters must be separated by '?'"
+    },
+    ...paramsList.map(param => ({
+      pattern: new RegExp(param),
+      message: `Missing parameter: ${param}`
+    }))
+    );
+  } else {
+    checks.push(
+    {
+      pattern: new RegExp(`${query}$`),
+      message: `URL must end with '${query}'`
     }
+    )
+  }
 
-    const segments = ['collectionapi.metmuseum.org', 'public', 'collection', 'v1', query];
-    for (let i = 0; i < segments.length - 1; i++) {
-        const pattern = new RegExp(`${segments[i]}[^/]+${segments[i + 1]}`);
-        if (pattern.test(endpoint)) {
-            return `Missing slash between '${segments[i]}' and '${segments[i + 1]}'`;
-        }
+  if (/[^:]\/\//.test(endpoint)) {
+    return "Invalid URL: Contains double slashes (//)";
+  }
+
+  const segments = ['collectionapi.metmuseum.org', 'public', 'collection', 'v1', query];
+  for (let i = 0; i < segments.length - 1; i++) {
+    const pattern = new RegExp(`${segments[i]}[^/]+${segments[i + 1]}`);
+    if (pattern.test(endpoint)) {
+    return `Missing slash between '${segments[i]}' and '${segments[i + 1]}'`;
     }
+  }
 
-    const basePattern = new RegExp(`^https:\/\/collectionapi\.metmuseum\.org\/public\/collection\/v1\/${query}`);
-    if (!basePattern.test(endpoint.split('?')[0])) {
-        return `Base URL is incorrect. Should start with: https://collectionapi.metmuseum.org/public/collection/v1/${query}`;
+  const basePattern = new RegExp(`^https:\/\/collectionapi\.metmuseum\.org\/public\/collection\/v1\/${query}`);
+  if (!basePattern.test(endpoint.split('?')[0])) {
+    return `Base URL is incorrect. Should start with: https://collectionapi.metmuseum.org/public/collection/v1/${query}`;
+  }
+
+  for (const check of checks) {
+    if (!check.pattern.test(endpoint)) {
+    return check.message;
     }
+  }
 
-    for (const check of checks) {
-        if (!check.pattern.test(endpoint)) {
-            return check.message;
-        }
-    }
-
-    return null;
+  return null;
 }
 
 async function fetchDepartmentList(endpoint) {
-    try {
-        const response = await fetch(endpoint);
-        const status = {
-            code: response.status,
-            ok: response.ok,
-            text: response.statusText
-        };
+  try {
+    const response = await fetch(endpoint);
+    const status = {
+    code: response.status,
+    ok: response.ok,
+    text: response.statusText
+    };
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        return { data, status};
-    } catch (error) {
-        return {
-            data: { "Message": `Error: ${error.message}` },
-            status: {
-                code: 400,
-                ok: false,
-                text: "Bad Request"
-            }
-        };
+    if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
     }
+
+    const data = await response.json();
+    return { data, status};
+  } catch (error) {
+    return {
+    data: { "Message": `Error: ${error.message}` },
+    status: {
+      code: 400,
+      ok: false,
+      text: "Bad Request"
+    }
+    };
+  }
 }
 
 departmentList = {
-    if (departmentListEndpoint) {
-        const validation = await validateEndpoint(departmentListEndpoint, "departments", "");
-        if (validation) {
-            return {
-                data: { "Message": validation },
-                status: {
-                    code: 400,
-                    ok: false,
-                    text: "Bad Request"
-                }
-            };
-        }
-        const result = await fetchDepartmentList(departmentListEndpoint);
-        return result;
-    } else {
-        return {
-            data: { "Message": "You need to enter a valid endpoint." },
-            status: {
-                code: 400,
-                ok: false,
-                text: "Bad Request"
-            }
-        };
+  if (departmentListEndpoint) {
+    const validation = await validateEndpoint(departmentListEndpoint, "departments", "");
+    if (validation) {
+    return {
+      data: { "Message": validation },
+      status: {
+        code: 400,
+        ok: false,
+        text: "Bad Request"
+      }
+    };
     }
+    const result = await fetchDepartmentList(departmentListEndpoint);
+    return result;
+  } else {
+    return {
+    data: { "Message": "You need to enter a valid endpoint." },
+    status: {
+      code: 400,
+      ok: false,
+      text: "Bad Request"
+    }
+    };
+  }
 }
 
 prettyDepartmentList = {
-    let jsonString;
-    if (typeof departmentList === 'string') {
-        jsonString = JSON.stringify(JSON.parse(departmentList), null, 2);
-    } else {
-        jsonString = JSON.stringify(departmentList, null, 2);
-    }
-    
-    // Highlight the entire Medieval Art object
-    return jsonString.replace(
-        /(\{[^\}]*"displayName":\s*"Medieval Art"[^\}]*\})/g, 
-        '<span style="background-color: #fff3cd; display: inline-block; width: 100%;">$1</span>'
-    );
-}    
+  let jsonString;
+  if (typeof departmentList === 'string') {
+    jsonString = JSON.stringify(JSON.parse(departmentList), null, 2);
+  } else {
+    jsonString = JSON.stringify(departmentList, null, 2);
+  }
+  
+  // Highlight the entire Medieval Art object
+  return jsonString.replace(
+    /(\{[^\}]*"displayName":\s*"Medieval Art"[^\}]*\})/g, 
+    '<span style="background-color: #fff3cd; display: inline-block; width: 100%;">$1</span>'
+  );
+}  
 
 viewof prettyDepartmentListContainer = {
-    let content;
-    if (departmentList.data.Message) {
-        content = html`<div class="alert alert-warning m-0">${departmentList.data.Message}</div>`;
-    } else {
-        content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${prettyDepartmentList}</pre>`;
-    }
-    
-    const badgeClass = departmentList.status.ok ? "bg-success" : "bg-danger";
-    
-    const container = html`<div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <span>Department list</span>
-            <span class="badge ${badgeClass}">${departmentList.status.code} ${departmentList.status.text}</span>
-        </div>
-        ${content}
-    </div>`;
-    return container;
+  let content;
+  if (departmentList.data.Message) {
+    content = html`<div class="alert alert-warning m-0">${departmentList.data.Message}</div>`;
+  } else {
+    content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${prettyDepartmentList}</pre>`;
+  }
+  
+  const badgeClass = departmentList.status.ok ? "bg-success" : "bg-danger";
+  
+  const container = html`<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+    <span>Department list</span>
+    <span class="badge ${badgeClass}">${departmentList.status.code} ${departmentList.status.text}</span>
+    </div>
+    ${content}
+  </div>`;
+  return container;
 }
 ```
 
@@ -223,96 +223,96 @@ Therefore, write here the query that will retrive all the objects that contain t
 ```{ojs}
 
 viewof knightsQuery = Inputs.text({
-    label: "Query",
-    placeholder: "",
-    value: "",
-    attributes: {
-        class: "form-control mb-3"
-    }
+  label: "Query",
+  placeholder: "",
+  value: "",
+  attributes: {
+    class: "form-control mb-3"
+  }
 });
 
 async function fetchQuery(endpoint) {
-    try {
-        const response = await fetch(endpoint);
-        const status = {
-            code: response.status,
-            ok: response.ok,
-            text: response.statusText
-        };
+  try {
+    const response = await fetch(endpoint);
+    const status = {
+    code: response.status,
+    ok: response.ok,
+    text: response.statusText
+    };
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        return { data, status };
-    } catch (error) {
-        return {
-            data: { "Message": `Error: ${error.message}` },
-            status: {
-                code: 400,
-                ok: false,
-                text: "Bad Request"
-            }
-        };
+    if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
     }
+
+    const data = await response.json();
+    return { data, status };
+  } catch (error) {
+    return {
+    data: { "Message": `Error: ${error.message}` },
+    status: {
+      code: 400,
+      ok: false,
+      text: "Bad Request"
+    }
+    };
+  }
 }
 
 queryResult = {
-    if (knightsQuery) {
-        const validation = await validateEndpoint(knightsQuery, "search", "q=knight&departmentId=17");
-        if (validation) {
-            return {
-                data: { "Message": validation },
-                status: {
-                    code: 400,
-                    ok: false,
-                    text: "Bad Request"
-                }
-            };
-        }
-        const result = await fetchQuery(knightsQuery);
-        return result;
-    } else {
-        return {
-            data: { "Message": "You need to enter a valid endpoint." },
-            status: {
-                code: 400,
-                ok: false,
-                text: "Bad Request"
-            }
-        };
+  if (knightsQuery) {
+    const validation = await validateEndpoint(knightsQuery, "search", "q=knight&departmentId=17");
+    if (validation) {
+    return {
+      data: { "Message": validation },
+      status: {
+        code: 400,
+        ok: false,
+        text: "Bad Request"
+      }
+    };
     }
+    const result = await fetchQuery(knightsQuery);
+    return result;
+  } else {
+    return {
+    data: { "Message": "You need to enter a valid endpoint." },
+    status: {
+      code: 400,
+      ok: false,
+      text: "Bad Request"
+    }
+    };
+  }
 }
 
 prettyQueryResult = {
-    let jsonString;
-    if (typeof queryResult === 'string') {
-        jsonString = JSON.stringify(JSON.parse(queryResult), null, 2);
-    } else {
-        jsonString = JSON.stringify(queryResult, null, 2);
-    }
-    return jsonString;
+  let jsonString;
+  if (typeof queryResult === 'string') {
+    jsonString = JSON.stringify(JSON.parse(queryResult), null, 2);
+  } else {
+    jsonString = JSON.stringify(queryResult, null, 2);
+  }
+  return jsonString;
 }
 
 viewof prettyQueryResultContainer = {
-    let content;
-    if (queryResult.data.Message) {
-        content = html`<div class="alert alert-warning m-0">${queryResult.data.Message}</div>`;
-    } else {
-        content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${prettyQueryResult}</pre>`;
-    }
-    
-    const badgeClass = queryResult.status.ok ? "bg-success" : "bg-danger";
-    
-    const container = html`<div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <span>Query result</span>
-            <span class="badge ${badgeClass}">${queryResult.status.code} ${queryResult.status.text}</span>
-        </div>
-        ${content}
-    </div>`;
-    return container;
+  let content;
+  if (queryResult.data.Message) {
+    content = html`<div class="alert alert-warning m-0">${queryResult.data.Message}</div>`;
+  } else {
+    content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${prettyQueryResult}</pre>`;
+  }
+  
+  const badgeClass = queryResult.status.ok ? "bg-success" : "bg-danger";
+  
+  const container = html`<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+    <span>Query result</span>
+    <span class="badge ${badgeClass}">${queryResult.status.code} ${queryResult.status.text}</span>
+    </div>
+    ${content}
+  </div>`;
+  return container;
 }
 ```
 
@@ -321,39 +321,39 @@ Having the query result, the only thing left to do is to get the specific inform
 ```{ojs}
 
 viewof knightsTotal = Inputs.number({
-    label: "Total number of knights",
-    placeholder: "",
-    value: 0,
-    attributes: {
-        class: "form-control mb-3"
-    }
+  label: "Total number of knights",
+  placeholder: "",
+  value: 0,
+  attributes: {
+    class: "form-control mb-3"
+  }
 });
 
 viewof validationResult = {
-    const container = html`<div></div>`;
-    
-    if (!queryResult.status.ok || queryResult.data.Message) {
-        if (knightsTotal !== 0) {  // Only show warning if user has entered a number
-            container.innerHTML = `
-                <div class="alert alert-warning">
-                    Please enter a valid query first before submitting your answer!
-                </div>`;
-        }
-    } else if (queryResult.data.total !== undefined) {
-        if (knightsTotal === queryResult.data.total) {
-            container.innerHTML = `
-                <div class="alert alert-success">
-                    Correct! There are ${queryResult.data.total} objects that contain the term 'knight' in the Medieval Art department.
-                </div>`;
-        } else {
-            container.innerHTML = `
-                <div class="alert alert-danger">
-                    That's not correct. Try again!
-                </div>`;
-        }
+  const container = html`<div></div>`;
+  
+  if (!queryResult.status.ok || queryResult.data.Message) {
+    if (knightsTotal !== 0) {  // Only show warning if user has entered a number
+    container.innerHTML = `
+      <div class="alert alert-warning">
+        Please enter a valid query first before submitting your answer!
+      </div>`;
     }
-    
-    return container;
+  } else if (queryResult.data.total !== undefined) {
+    if (knightsTotal === queryResult.data.total) {
+    container.innerHTML = `
+      <div class="alert alert-success">
+        Correct! There are ${queryResult.data.total} objects that contain the term 'knight' in the Medieval Art department.
+      </div>`;
+    } else {
+    container.innerHTML = `
+      <div class="alert alert-danger">
+        That's not correct. Try again!
+      </div>`;
+    }
+  }
+  
+  return container;
 }
 ```
 

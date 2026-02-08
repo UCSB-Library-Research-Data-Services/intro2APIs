@@ -10,7 +10,7 @@ lightbox: true
 
 **[Postman](https://www.postman.com/)** is a widely used platform that facilitates interaction with APIs. Originally designed for testing APIs in development environments, it has become a powerful tool for exploring and managing API requests in both individual and collaborative workflows.
 
-::: {.callout-caution}
+::: {.callout-caution appearance="simple" collapse="false"}
 Postman is a commercial product, and while it's possible to use it for free, some of its features are only available in paid plans.
 We're in the process of writing a chapter using [Bruno](https://www.usebruno.com/) as an open source alternative to Postman. The interface and workflow are very similar, so the concepts and exercises in this chapter will be applicable to both platforms. We strongly encourage you to try both and see which one works best for you. :) 
 :::
@@ -26,7 +26,7 @@ Postman is available as a desktop application and as a web platform. While both 
 
 When used together, Postman offers a seamless way to experiment with, document, and share API workflows, and without writing a single line of code.
 
-::: {.callout-warning}
+::: {.callout-warning appearance="simple" collapse="false"}
 ## Why secrets and credentials are not stored in the web interface
 
 This is largely a design decision, but it’s also an important security feature. By keeping secrets and credentials on the desktop client, rather than the web interface, Postman ensures that each user interacts with an API using their own credentials, rather than sharing a common set of keys.

@@ -1,10 +1,10 @@
 ---
 title: "Interacting with APIs"
 execute:
-    echo: true
+  echo: true
 format:
-    html:
-        code-fold: true
+  html:
+    code-fold: true
 lightbox: true
 ---
 
@@ -17,7 +17,7 @@ Try these examples:
 - `/v1/breeds` - Get a list of cat breeds
 - `/v1/breeds/siam` - Get information about Siamese cats
 
-::: {.callout-note}
+::: {.callout-note appearance="simple"  }
 The response will be shown in JSON format, which is a common data format used by APIs. JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate.
 :::
 
@@ -26,7 +26,7 @@ The response will be shown in JSON format, which is a common data format used by
 viewof method = Inputs.select(["GET"], {
   label: "HTTP Method",
   attributes: {
-    class: "form-select mb-3"
+  class: "form-select mb-3"
   }
 })
 
@@ -35,7 +35,7 @@ viewof endpoint = Inputs.text({
   placeholder: "/v1/images/search?limit=1",
   value: "/v1/images/search?limit=1",
   attributes: {
-    class: "form-control mb-3"
+  class: "form-control mb-3"
   }
 })
 
@@ -43,26 +43,26 @@ viewof endpoint = Inputs.text({
 async function fetchFromApi(method, path) {
   const baseUrl = "https://api.thecatapi.com";
   try {
-    const response = await fetch(`${baseUrl}${path}`);
-    const status = {
-        code: response.status,
-        ok: response.ok,
-        text: response.statusText
-    };
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
-    return { data, status };
+  const response = await fetch(`${baseUrl}${path}`);
+  const status = {
+    code: response.status,
+    ok: response.ok,
+    text: response.statusText
+  };
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  const data = await response.json();
+  return { data, status };
   } catch (error) {
-    return {
-        data: { "Message": `Error: ${error.message}` },
-        status: {
-            code: 400,
-            ok: false,
-            text: "Bad Request"
-        }
-    };
+  return {
+    data: { "Message": `Error: ${error.message}` },
+    status: {
+    code: 400,
+    ok: false,
+    text: "Bad Request"
+    }
+  };
   }
 }
 
@@ -72,22 +72,22 @@ response = {
 }
 
 viewof prettyResponse = {
-    let content;
+  let content;
 
-    if (response.data.Message) {
-        content = html`<div class="alert alert-warning m-0">${response.data.Message}</div>`;
-    } else {
-        content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(response.data, null, 2)}</pre>`;
-    }
+  if (response.data.Message) {
+    content = html`<div class="alert alert-warning m-0">${response.data.Message}</div>`;
+  } else {
+    content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(response.data, null, 2)}</pre>`;
+  }
 
-    const badgeClass = response.status.ok ? "bg-success" : "bg-danger";
+  const badgeClass = response.status.ok ? "bg-success" : "bg-danger";
 
   const container = html`<div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <span>Response</span>
-      <span class="badge ${badgeClass}">${response.status.code} ${response.status.text}</span>
-    </div>
-    ${content}
+  <div class="card-header d-flex justify-content-between align-items-center">
+  <span>Response</span>
+  <span class="badge ${badgeClass}">${response.status.code} ${response.status.text}</span>
+  </div>
+  ${content}
   </div>`;
   return container;
 }
@@ -98,13 +98,103 @@ In fact, with the same structure, we can interact with multiple APIs. Let's try 
 ```{ojs}
 
 viewof methodParts = Inputs.select(["GET"], {
-    label: "HTTP Method",
-    attributes: {
-        class: "form-select mb-3"
-    }
+  label: "HTTP Method",
+  attributes: {
+    class: "form-select mb-3"
+  }
 })
 
 viewof domain = Inputs.text({
+  label: "Domain",
+  placeholder: "collectionapi.metmuseum.org",
+  value: "collectionapi.metmuseum.org",
+  attributes: {
+  class: "form-control mb-3"
+  }
+})
+
+viewof path = Inputs.text({
+  label: "Path",
+  placeholder: "/public/collection/v1/search",
+  value: "/public/collection/v1/search",
+  attributes: {
+    class: "form-control mb-3"
+  }
+})
+
+viewof query = Inputs.text({
+  label: "Query parameters",
+  placeholder: "?q=cat",
+  value: "q=cat",
+  attributes: {
+    class: "form-control mb-3"
+  }
+})
+
+async function fetchFromApiParts(method, domain, path, query) {
+  try {
+    const baseUrl = `https://${domain}`;
+    const url = `${baseUrl}${path}?${query}`;
+    const response = await fetch(url);
+    const status = {
+    code: response.status,
+    ok: response.ok,
+    text: response.statusText
+    };
+    if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return { data, status };
+  } catch (error) {
+    return {
+    data: { "Message": `Error: ${error.message}` },
+    status: {
+      code: 400,
+      ok: false,
+      text: "Bad Request"
+    }
+    };
+  }
+}
+
+responseParts = {
+  const result = await fetchFromApiParts(methodParts, domain, path, query);
+  return result;
+}
+
+viewof prettyResponseParts = {
+  let content;
+  if (responseParts.data.Message) {
+    content = html`<div class="alert alert-warning m-0">${responseParts.data.Message}</div>`;
+  } else {
+    content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(responseParts.data, null, 2)}</pre>`;
+  }
+  
+  const badgeClass = responseParts.status.ok ? "bg-success" : "bg-danger";
+  
+  const container = html`<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+    <span>Response</span>
+    <span class="badge ${badgeClass}">${responseParts.status.code} ${responseParts.status.text}</span>
+    </div>
+    ${content}
+  </div>`;
+  return container;
+}
+```
+
+Now, take any ID from the result and use it to get the object details from the API.
+
+```{ojs}
+viewof methodDetails = Inputs.select(["GET"], {
+  label: "HTTP Method",
+  attributes: {
+    class: "form-select mb-3"
+  }
+})
+
+viewof domainDetails = Inputs.text({
   label: "Domain",
   placeholder: "collectionapi.metmuseum.org",
   value: "collectionapi.metmuseum.org",
@@ -113,157 +203,67 @@ viewof domain = Inputs.text({
   }
 })
 
-viewof path = Inputs.text({
-    label: "Path",
-    placeholder: "/public/collection/v1/search",
-    value: "/public/collection/v1/search",
-    attributes: {
-        class: "form-control mb-3"
-    }
-})
-
-viewof query = Inputs.text({
-    label: "Query parameters",
-    placeholder: "?q=cat",
-    value: "q=cat",
-    attributes: {
-        class: "form-control mb-3"
-    }
-})
-
-async function fetchFromApiParts(method, domain, path, query) {
-    try {
-        const baseUrl = `https://${domain}`;
-        const url = `${baseUrl}${path}?${query}`;
-        const response = await fetch(url);
-        const status = {
-            code: response.status,
-            ok: response.ok,
-            text: response.statusText
-        };
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        return { data, status };
-    } catch (error) {
-        return {
-            data: { "Message": `Error: ${error.message}` },
-            status: {
-                code: 400,
-                ok: false,
-                text: "Bad Request"
-            }
-        };
-    }
-}
-
-responseParts = {
-    const result = await fetchFromApiParts(methodParts, domain, path, query);
-    return result;
-}
-
-viewof prettyResponseParts = {
-    let content;
-    if (responseParts.data.Message) {
-        content = html`<div class="alert alert-warning m-0">${responseParts.data.Message}</div>`;
-    } else {
-        content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(responseParts.data, null, 2)}</pre>`;
-    }
-    
-    const badgeClass = responseParts.status.ok ? "bg-success" : "bg-danger";
-    
-    const container = html`<div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <span>Response</span>
-            <span class="badge ${badgeClass}">${responseParts.status.code} ${responseParts.status.text}</span>
-        </div>
-        ${content}
-    </div>`;
-    return container;
-}
-```
-
-Now, take any ID from the result and use it to get the object details from the API.
-
-```{ojs}
-viewof methodDetails = Inputs.select(["GET"], {
-    label: "HTTP Method",
-    attributes: {
-        class: "form-select mb-3"
-    }
-})
-
-viewof domainDetails = Inputs.text({
-    label: "Domain",
-    placeholder: "collectionapi.metmuseum.org",
-    value: "collectionapi.metmuseum.org",
-    attributes: {
-        class: "form-control mb-3"
-    }
-})
-
 viewof pathDetails = Inputs.text({
-    label: "Path",
-    placeholder: "/public/collection/v1/objects/",
-    value: "/public/collection/v1/objects/",
-    attributes: {
-        class: "form-control mb-3"
-    }
+  label: "Path",
+  placeholder: "/public/collection/v1/objects/",
+  value: "/public/collection/v1/objects/",
+  attributes: {
+    class: "form-control mb-3"
+  }
 })
 
 viewof parameterDetails = Inputs.text({
-    label: "Parameter",
-    placeholder: "Write the object id here",
-    value: "570744",
-    attributes: {
-        class: "form-control mb-3"
-    }
+  label: "Parameter",
+  placeholder: "Write the object id here",
+  value: "570744",
+  attributes: {
+    class: "form-control mb-3"
+  }
 })
 
 async function fetchFromApiDetails(method, domain, path, parameter) {
-    try {
-        const baseUrl = `https://${domain}`;
-        const url = `${baseUrl}${path}${parameter}`;
-        const response = await fetch(url);
-        const status = {
-            code: response.status,
-            ok: response.ok,
-            text: response.statusText
-        };
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        return { data, status };
-    } catch (error) {
-        return { error: error.message };
+  try {
+    const baseUrl = `https://${domain}`;
+    const url = `${baseUrl}${path}${parameter}`;
+    const response = await fetch(url);
+    const status = {
+    code: response.status,
+    ok: response.ok,
+    text: response.statusText
+    };
+    if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
     }
+    const data = await response.json();
+    return { data, status };
+  } catch (error) {
+    return { error: error.message };
+  }
 }
 
 responseDetails = {
-    const result = await fetchFromApiDetails(methodDetails, domainDetails, pathDetails, parameterDetails);
-    return result;
+  const result = await fetchFromApiDetails(methodDetails, domainDetails, pathDetails, parameterDetails);
+  return result;
 }
 
 viewof prettyResponseDetailsContainer = {
-    let content;
-    if (responseDetails.data.Message) {
-        content = html`<div class="alert alert-warning m-0">${responseDetails.data.Message}</div>`;
-    } else {
-        content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(responseDetails.data, null, 2)}</pre>`;
-    }
+  let content;
+  if (responseDetails.data.Message) {
+    content = html`<div class="alert alert-warning m-0">${responseDetails.data.Message}</div>`;
+  } else {
+    content = html`<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(responseDetails.data, null, 2)}</pre>`;
+  }
 
-    const badgeClass = responseDetails.status.ok ? "bg-success" : "bg-danger";
+  const badgeClass = responseDetails.status.ok ? "bg-success" : "bg-danger";
 
-    const container = html`<div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <span>Response</span>
-            <span class="badge ${badgeClass}">${responseDetails.status.code} ${responseDetails.status.text}</span>
-        </div>
-        ${content}
-    </div>`;
-    return container;
+  const container = html`<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+    <span>Response</span>
+    <span class="badge ${badgeClass}">${responseDetails.status.code} ${responseDetails.status.text}</span>
+    </div>
+    ${content}
+  </div>`;
+  return container;
 }
 ```
 
@@ -271,13 +271,13 @@ And that allows us to retrieve, for instance, the image of the object, that is s
 
 ```{ojs}
 viewof primaryImage = {
-    const primaryImage = responseDetails.status.ok ? responseDetails.data.primaryImageSmall : "https://placehold.co/600x400";
-    if (primaryImage) {
-        const img = html`<img src="${primaryImage}" alt="Primary Image">`;
-        return img;
-    } else {
-        return html`<img src="https://placehold.co/600x400" alt="Placeholder">`;
-    }
+  const primaryImage = responseDetails.status.ok ? responseDetails.data.primaryImageSmall : "https://placehold.co/600x400";
+  if (primaryImage) {
+    const img = html`<img src="${primaryImage}" alt="Primary Image">`;
+    return img;
+  } else {
+    return html`<img src="https://placehold.co/600x400" alt="Placeholder">`;
+  }
 
 }
 ```

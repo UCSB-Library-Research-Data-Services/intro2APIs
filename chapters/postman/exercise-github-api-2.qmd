@@ -39,8 +39,8 @@ Now you can reuse them like this:
 - **Body (raw, JSON)**:
   ```json
   {
-    "title": "API-created issue",
-    "body": "This issue was created using Postman!"
+  "title": "API-created issue",
+  "body": "This issue was created using Postman!"
   }
   ```
 
@@ -61,8 +61,8 @@ Click **Send**. If successful, you’ll receive a `201 Created` response with th
 - **Body (raw, JSON)**:
   ```json
   {
-    "title": "Updated title from Postman",
-    "body": "This issue has been updated via PATCH request!"
+  "title": "Updated title from Postman",
+  "body": "This issue has been updated via PATCH request!"
   }
   ```
 

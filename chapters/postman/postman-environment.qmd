@@ -100,7 +100,7 @@ To learn how to include the API token, let’s refer to the Cat API documentatio
 
 > To get more than 10, and additional fields then be sure to use your API Key from the welcome email as the 'x-api-key' header, or ?api_key= query string parameter to access all the images and data.
 
-::: {.callout-note}
+::: {.callout-note appearance="simple" collapse="false"}
 You may have noticed that it's also possible to send the API key as a query parameter in the URL. While this works, it’s **not recommended**. Even though Postman keeps the token secret in your environment, placing it in the URL exposes it in the browser or server logs when the request is made.
 :::
 

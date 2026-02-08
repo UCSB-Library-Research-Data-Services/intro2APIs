@@ -1,10 +1,10 @@
 ---
 title: "cURL - APIs from the command line"
 execute:
-    echo: true
+  echo: true
 format:
-    html:
-        code-fold: true
+  html:
+    code-fold: true
 lightbox: true
 ---
 

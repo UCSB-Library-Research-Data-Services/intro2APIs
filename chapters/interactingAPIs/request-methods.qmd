@@ -1,8 +1,8 @@
 ---
 title: "Request Methods"
 format:
-    html:
-        code-fold: true
+  html:
+    code-fold: true
 lightbox: true
 ---
 
@@ -14,11 +14,11 @@ If you paste that URL in your browser, you’ll see a response similar to this:
 
 ```{ojs}
 async function getCatData() {
-    const url = `https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif&limit=5`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    const data = await response.json();
-    return data;
+  const url = `https://api.thecatapi.com/v1/images/search?size=small&mime_types=gif&limit=5`;
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+  const data = await response.json();
+  return data;
 }
 
 catData = await getCatData();
@@ -29,14 +29,14 @@ viewof catDataString = {
   
   // Formatted JSON with syntax highlighting
   const formatted = JSON.stringify(catData, null, 2)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"([^"]+)":/g, '<span style="color: #a31515;">"$1"</span>:') 
-    .replace(/: "([^"]+)"/g, ': <span style="color: #008000;">"$1"</span>')  
-    .replace(/: ([0-9]+)/g, ': <span style="color: #0000FF;">$1</span>')  
-    .replace(/\b(true|false|null)\b/g, '<span style="color: #FF0000;">$1</span>');
-    
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"([^"]+)":/g, '<span style="color: #a31515;">"$1"</span>:') 
+  .replace(/: "([^"]+)"/g, ': <span style="color: #008000;">"$1"</span>')  
+  .replace(/: ([0-9]+)/g, ': <span style="color: #0000FF;">$1</span>')  
+  .replace(/\b(true|false|null)\b/g, '<span style="color: #FF0000;">$1</span>');
+  
   code.innerHTML = formatted;
   pre.appendChild(code);
   return pre;
@@ -88,7 +88,7 @@ The `PUT` method is used to update an existing resource. It looks similar to `PO
 
 In other words, while `POST` is used to create something new, `PUT` is used to **overwrite** an existing record at a specific location (e.g., `/images/{image_id}`).
 
-::: {.callout-warning}
+::: {.callout-warning appearance="simple"  }
 If you don’t include all fields in a PUT request, some servers may interpret that as a request to remove the missing fields.
 :::
 
@@ -111,7 +111,7 @@ For example, sending the following body to `/images/{image_id}`:
 
 will update only those two fields in the existing record.
 
-::: {.callout-note}
+::: {.callout-note appearance="simple"  }
 In many cases, using `PATCH` is safer than `PUT`—especially when we want to avoid unintentionally removing fields that weren’t included in the update. For that reason, `PATCH` is more commonly supported than `PUT` in modern APIs.
 :::
 
@@ -131,13 +131,13 @@ Because of its potential impact, the use of this method is usually restricted to
 
 We can visualize the main difference between these methods using the following table.
 
-| Method  | Purpose                        | Requires Existing Resource? | Typical Use Case                        | Data Sent In     | Common Response     |
+| Method  | Purpose        | Requires Existing Resource? | Typical Use Case        | Data Sent In   | Common Response   |
 |---------|--------------------------------|------------------------------|------------------------------------------|------------------|---------------------|
-| `GET`   | Retrieve data                  | ❌ No                        | Fetching a list or a single item         | URL (query params) | `200 OK`, JSON data |
-| `POST`  | Create a new resource          | ❌ No                        | Submitting a form, creating an object    | Body             | `201 Created`       |
-| `PUT`   | Replace an existing resource   | ✅ Yes                       | Overwriting an entire object             | Body             | `200 OK` or `204 No Content` |
-| `PATCH` | Update specific fields         | ✅ Yes                       | Editing part of an existing record       | Body             | `200 OK` or `204 No Content` |
-| `DELETE`| Remove a resource              | ✅ Yes                       | Deleting a specific item                 | URL              | `204 No Content`    |
+| `GET` | Retrieve data      | ❌ No        | Fetching a list or a single item   | URL (query params) | `200 OK`, JSON data |
+| `POST`  | Create a new resource    | ❌ No        | Submitting a form, creating an object  | Body     | `201 Created`   |
+| `PUT` | Replace an existing resource | ✅ Yes         | Overwriting an entire object     | Body     | `200 OK` or `204 No Content` |
+| `PATCH` | Update specific fields   | ✅ Yes         | Editing part of an existing record   | Body     | `200 OK` or `204 No Content` |
+| `DELETE`| Remove a resource      | ✅ Yes         | Deleting a specific item       | URL      | `204 No Content`  |
 
 ## Wrapping Up
 

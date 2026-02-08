@@ -42,7 +42,7 @@ To ensure consistency, we will use **clear** and **descriptive** names for our f
 
 Visit the project repository on GitHub to explore the full directory structure, example files, and scripts.
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip appearance="simple" collapse="false"}
 ## About Data Use
 It’s important to check the data source documentation to identify the terms of use and any possible restrictions. In this case, the Metropolitan Museum of Art has published the data under a [Creative Commons Zero (CC0)](https://creativecommons.org/publicdomain/zero/1.0/) license. This means the data is free to use and distribute without restrictions.
 For more details, visit the [API documentation](https://metmuseum.github.io/).
@@ -163,7 +163,7 @@ Documenting the focus of our analysis in a `README.md` file is a critical step i
 
 Having identified the tags field as the focus of our analysis, we can include that information in our `README.md` file to document the project. This is an example of how we can include that information in the `README.md` file:
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note appearance="simple" collapse="false"}
 # Medieval Art Collection Analysis
 
 This project aims to analyze the Medieval Art collection of the Metropolitan Museum of Art. The focus of this analysis is on the tags field, which provides a list of terms associated with each object, using controlled vocabularies like the Art and Architecture Thesaurus (AAT) and Wikidata. With that information, we aim to identify thematic areas and explore whether these topics reveal insights about Medieval Art — at least from the perspective of the Metropolitan Museum of Art's metadata, and propose a method to analyze arbitrary terms associated with museum collections.
@@ -277,13 +277,13 @@ terms_collection <- read.csv("https://raw.githubusercontent.com/jairomelo/intro2
 head(terms_collection, 20)
 ```
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note appearance="simple" appearance="minimal"}
 Both raw and processed data are stored in the [project repository](https://github.com/jairomelo/intro2APIs-examples/tree/main/data). You can download the data directly from the repository to use it in your own analysis.
 :::
 
 In the next chapter, we’ll use this full dataset to build a comprehensive network graph, analyze its structure, and uncover thematic clusters that provide deeper insights into the Medieval Art collection.
 
-::: {.callout-tip collapse="true"}
+::: {.callout-tip appearance="simple" collapse="true"}
 ## A Note About Automation
 Manually collecting data from over 7,000+ objects would be time-consuming and error-prone. By automating the retrieval and processing of metadata, we ensure accuracy, reproducibility, and scalability—allowing us to apply this method to other museum collections in the future.
 

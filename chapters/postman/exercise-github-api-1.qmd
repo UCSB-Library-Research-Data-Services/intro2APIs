@@ -114,19 +114,19 @@ If everything is set up correctly, your request should look something like this:
 
 
 ### Query Parameters
-| Key         | Value                     |
+| Key   | Value       |
 |--------------|---------------------------|
-| `q`          | `tetris+language:python`  |
-| `sort`       | `stars`                   |
-| `order`      | `desc`                    |
-| `per_page`   | `30`                      |
-| `page`       | `3`                       |
+| `q`    | `tetris+language:python`  |
+| `sort`   | `stars`       |
+| `order`  | `desc`        |
+| `per_page` | `30`        |
+| `page`   | `3`         |
 
 ### Headers (optionals)
-| Key         | Value                          |
+| Key   | Value          |
 |--------------|-------------------------------|
-| `accept`     | `application/vnd.github+json` |
-| `Authorization` | `Bearer {{gh_token}}`     |
+| `accept`   | `application/vnd.github+json` |
+| `Authorization` | `Bearer {{gh_token}}`   |
 
 
 Your response should include a JSON object with a key named `items` — this is a list of repositories that match your search. You can scan through the names, star counts, and descriptions to explore what's trending in the world of Python + Tetris 😄
