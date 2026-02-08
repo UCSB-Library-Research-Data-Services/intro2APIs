@@ -93,7 +93,7 @@ Finally, we will only be working with GET requests, meaning we won’t be creati
 </div>
 <h3 class="card-title text-center">Data Analysis</h3>
 <p class="card-text">Apply your API knowledge to collect and analyze real data for research purposes.</p>
-<p class="mt-auto align-self-center"><a href="../chapters/dataAnalysis/collecting-data-for-analysis.html" class="btn btn-primary">Analyze</a></p>
+<p class="mt-auto align-self-center"><a href="chapters/dataAnalysis/collecting-data-for-analysis.html" class="btn btn-primary">Analyze</a></p>
 :::
 :::
 :::
@@ -106,7 +106,7 @@ Finally, we will only be working with GET requests, meaning we won’t be creati
 </div>
 <h3 class="card-title text-center">API Catalog</h3>
 <p class="card-text">Browse our curated catalog of APIs with documentation links and authentication requirements.</p>
-<p class="mt-auto align-self-center"><a href="../resources/catalog.html" class="btn btn-primary">Browse</a></p>
+<p class="mt-auto align-self-center"><a href="resources/catalog.html" class="btn btn-primary">Browse</a></p>
 :::
 :::
 :::
