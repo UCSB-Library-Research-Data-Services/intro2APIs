@@ -66,7 +66,7 @@ As we’ve already seen, the `GET` method is used to **retrieve data** from a se
 
 The parameters included in the request URL help define the response. For example, a `GET` request can return a single item (e.g., `images/{image_id}`), or a list of items, as in the example we used at the beginning of this section.
 
-![GET request](/static/imgs/request_method_GET.png)
+![GET request]( /_static/imgs/request_method_GET.png)
 
 ### POST
 
@@ -80,7 +80,7 @@ Data for a `POST` request goes in the **body** (not the URL) and can be:
 
 Later on, we’ll explore how to configure and send these request bodies using practical tools.
 
-![POST request](/static/imgs/request_method_POST.png)
+![POST request]( /_static/imgs/request_method_POST.png)
 
 ### PUT
 
@@ -92,7 +92,7 @@ In other words, while `POST` is used to create something new, `PUT` is used to *
 If you don’t include all fields in a PUT request, some servers may interpret that as a request to remove the missing fields.
 :::
 
-![PUT request](/static/imgs/request_method_PUT.png)
+![PUT request]( /_static/imgs/request_method_PUT.png)
 
 ### PATCH
 
@@ -115,7 +115,7 @@ will update only those two fields in the existing record.
 In many cases, using `PATCH` is safer than `PUT`—especially when we want to avoid unintentionally removing fields that weren’t included in the update. For that reason, `PATCH` is more commonly supported than `PUT` in modern APIs.
 :::
 
-![PATCH request](/static/imgs/request_method_PATCH.png)
+![PATCH request]( /_static/imgs/request_method_PATCH.png)
 
 ### DELETE
 
@@ -125,7 +125,7 @@ Typically, the response is a success status code (such as `200 OK` or `204 No Co
 
 Because of its potential impact, the use of this method is usually restricted to authenticated users and requires proper authorization or ownership. It’s rarely, if ever, available to anonymous users.
 
-![DELETE request](/static/imgs/request_method_DELETE.png)
+![DELETE request]( /_static/imgs/request_method_DELETE.png)
 
 ### HTTP Request Methods at a Glance
 
