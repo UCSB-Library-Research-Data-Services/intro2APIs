@@ -35,78 +35,78 @@ Finally, we will only be working with GET requests, meaning we won’t be creati
 
 ::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
 ::: {.card .h-100}
-::: {.card-body}
+::: {.card-body .d-flex .flex-column}
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
 <i class="bi bi-question-circle"></i>
 </div>
 <h3 class="card-title text-center">What are APIs?</h3>
 <p class="card-text">Learn the fundamentals of APIs, what they are, and why they exist.</p>
-<a href="what-is-an-api.html" class="btn btn-primary">Start Learning</a>
+<p class="mt-auto align-self-center"><a href="what-is-an-api.html" class="btn btn-primary">Start Learning</a></p>
 :::
 :::
 :::
 
 ::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
 ::: {.card .h-100}
-::: {.card-body}
+::: {.card-body .d-flex .flex-column}
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
 {{< fa up-down >}}
 </div>
 <h3 class="card-title text-center">Interacting with APIs</h3>
 <p class="card-text">Discover how to interact with APIs using endpoints, request methods, and practical exercises.</p>
-<a href="interactingAPIs/endpoints.html" class="btn btn-primary">Explore</a>
+<p class="mt-auto align-self-center"><a href="chapters/interactingAPIs/endpoints.html" class="btn btn-primary">Explore</a></p>
 :::
 :::
 :::
 
 ::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
 ::: {.card .h-100}
-::: {.card-body}
+::: {.card-body .d-flex .flex-column}
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
 <i class="bi bi-send"></i>
 </div>
 <h3 class="card-title text-center">Using Postman</h3>
 <p class="card-text">Master API testing with Postman, including GET, POST, and DELETE requests with hands-on GitHub API exercises.</p>
-<a href="postman/postman.html" class="btn btn-primary">Get Started</a>
+<p class="mt-auto align-self-center"><a href="chapters/postman/postman.html" class="btn btn-primary">Get Started</a></p>
 :::
 :::
 :::
 
 ::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
 ::: {.card .h-100}
-::: {.card-body}
+::: {.card-body .d-flex .flex-column}
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
 {{< fa brands python >}}
 </div>
 <h3 class="card-title text-center">Programmatic Access</h3>
 <p class="card-text">Learn how to interact with APIs programmatically using Python for automated data collection.</p>
-<a href="python/python.html" class="btn btn-primary">Code</a>
+<p class="mt-auto align-self-center"><a href="chapters/python/python.html" class="btn btn-primary">Code</a></p>
 :::
 :::
 :::
 
 ::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
 ::: {.card .h-100}
-::: {.card-body}
+::: {.card-body .d-flex .flex-column}
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
 {{< fa magnifying-glass-chart >}}
 </div>
 <h3 class="card-title text-center">Data Analysis</h3>
 <p class="card-text">Apply your API knowledge to collect and analyze real data for research purposes.</p>
-<a href="dataAnalysis/collecting-data-for-analysis.html" class="btn btn-primary">Analyze</a>
+<p class="mt-auto align-self-center"><a href="../chapters/dataAnalysis/collecting-data-for-analysis.html" class="btn btn-primary">Analyze</a></p>
 :::
 :::
 :::
 
 ::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
 ::: {.card .h-100}
-::: {.card-body}
+::: {.card-body .d-flex .flex-column}
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
 <i class="bi bi-book"></i>
 </div>
 <h3 class="card-title text-center">API Catalog</h3>
 <p class="card-text">Browse our curated catalog of APIs with documentation links and authentication requirements.</p>
-<a href="../resources/catalog.html" class="btn btn-primary">Browse</a>
+<p class="mt-auto align-self-center"><a href="../resources/catalog.html" class="btn btn-primary">Browse</a></p>
 :::
 :::
 :::
