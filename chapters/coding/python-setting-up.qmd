@@ -1,0 +1,42 @@
+---
+title: "Setting Up Your Python Environment for API Interaction"
+execute:
+    echo: true
+format:
+    html:
+        code-fold: true
+lightbox: true
+---
+
+You can run the Python parts of this workshop either in your browser (recommended) or on your own computer. This page helps you get set up so you can focus on the API concepts, not the tooling.
+
+:::{.callout-note appearance="simple" collapse="true"}
+## No coding experience required
+You can follow along even if you’re new to coding. Some setup steps may feel unfamiliar at first—that’s normal.
+
+- Questions? [Ask here](https://github.com/UCSB-Library-Research-Data-Services/text-analysis-series/issues/new?title=Python%20APIs%20Question){target="_blank"}.
+- Want a gentle Python intro? Try [Python for Everybody](https://www.py4e.com/){target="_blank"}.
+- UCSB Carpentry also offers beginner workshops: [upcoming events](https://carpentry.library.ucsb.edu/){target="_blank"}.
+
+Also, don’t forget your **library resources**! Library catalogs often include excellent beginner-friendly programming books (print and online).
+:::
+
+:::{.callout-tip appearance="simple" collapse="true"}
+## How to Run Python Code
+There are many ways to run Python. For this workshop, we recommend a browser-based option like [Google Colab](https://colab.research.google.com/){target="_blank"} or [Binder](https://mybinder.org/){target="_blank"}. No installation required, and it’s easy to share work during a live session.
+
+If you prefer to work locally, you can use an IDE such as [VSCodium](https://vscodium.com/){target="_blank"}, [Spyder](https://www.spyder-ide.org/){target="_blank"}, or [VS Code](https://code.visualstudio.com/){target="_blank"}.
+:::
+
+This workshop uses a **starter notebook** that’s already filled in with the code you’ll need. That way you can run cells immediately, follow along in a live workshop, and edit small parts without having to type everything from scratch.
+
+::: {.text-center}
+\| <a target="_blank" href="https://colab.research.google.com/github/UCSB-Library-Research-Data-Services/intro2APIs/blob/main/chapters/coding/exercise-DLPA.ipynb" style='text-decoration: none;'>
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a> | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UCSB-Library-Research-Data-Services/intro2APIs/main?urlpath=%2Fdoc%2Ftree%2Fchapters%2Fcoding%2Fexercise-DLPA.ipynb){target="_blank"} |
+:::
+
+## Our Goal
+
+
+

@@ -20,6 +20,31 @@ In this section, we’ll use Python with the [Digital Public Library of America 
 We plan to add R and JavaScript examples as well. For now, this chapter uses Python.
 :::
 
+## Our Goal
+
+In this exercise, we’ll use DPLA data to ask a research-style question: **How does “artificial intelligence” show up in cultural heritage metadata over time?**
+
+We’ll start from this public DPLA search:
+
+[https://dp.la/search?q=artificial+AND+intelligence&sort_by=created&sort_order=asc&page=1](https://dp.la/search?q=artificial+AND+intelligence&sort_by=created&sort_order=asc&page=1)
+
+![Search results for "artificial AND intelligence" in the DPLA](../../_static/imgs/coding-dpla-web-results.png){width="800"}
+
+This is a great workshop example because the query isn’t complicated, but it still returns 3,000+ results. It’s also the kind of question where the public interface quickly hits limits: to do a structured analysis (dates, facets, filtering, repeatable queries), we need the API.
+
+There’s another reason this dataset is interesting: if you scan the subjects, many results are not “artifacts about AI.” Instead, they reflect **AI being used to enhance or generate metadata** (for example, “AI was used for description enhancement”). That “messiness” is not a failure—it’s the point. It gives us a realistic case where we have to refine a query and interpret what the metadata is actually saying.
+
+![Subjects for the search results of "artificial AND intelligence" in the DPLA](../../_static/imgs/coding-dpla-list-of-subjects.png){width="300"}
+
+Here’s what we’ll do:
+
+1. Use the API to fetch results and metadata for this query.
+2. Use dates and facets to look for patterns over time.
+3. Extract keywords from titles and descriptions to see how AI is being described.
+4. Improve the search by targeting specific fields (like titles) to separate “about AI” from “AI used in metadata.”
+
+By the end, you’ll have a clear takeaway: APIs don’t just let you download data—they let you ask *better questions* by making your searches more precise than the public interface.
+
 ## Where to Start?
 
 Before writing code, it helps to understand what the API expects (requests) and what it returns (responses). The best place to start is the documentation—in this case, the DPLA [API Codex](https://pro.dp.la/developers/api-codex){target="_blank"}. The DPLA team provides a short “how to use it” guide that boils things down to two steps:
