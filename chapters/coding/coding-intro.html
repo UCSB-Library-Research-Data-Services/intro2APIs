@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Exercise 2: Working with Issues in the GitHub API – Unlocking DataA Gentle Introduction to APIs</title>
+<title>Interacting with APIs Programmatically – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../chapters/coding/coding-intro.html" rel="next">
-<link href="../../chapters/postman/exercise-github-api-1.html" rel="prev">
+<link href="../../chapters/dataAnalysis/collecting-data-for-analysis.html" rel="next">
+<link href="../../chapters/postman/exercise-github-api-2.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -133,7 +133,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/postman/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/exercise-github-api.html">Exercise: The GitHub API</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/exercise-github-api-2.html">Exercise 2: Adding and Removing Information from GitHub</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/coding/coding-intro.html">Getting Data Programmatically</a></li><li class="breadcrumb-item"><a href="../../chapters/coding/coding-intro.html">Interacting with APIs with Python</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -214,13 +214,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Interacting with APIs using Postman</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/postman/postman.html" class="sidebar-item-text sidebar-link">
@@ -253,13 +253,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Exercise: The GitHub API</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/postman/exercise-github-api.html" class="sidebar-item-text sidebar-link">
@@ -274,7 +274,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/postman/exercise-github-api-2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../chapters/postman/exercise-github-api-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 2: Adding and Removing Information from GitHub</span></a>
   </div>
 </li>
@@ -284,16 +284,16 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Getting Data Programmatically</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/coding/coding-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/coding/coding-intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Interacting with APIs with Python</span></a>
   </div>
 </li>
@@ -338,22 +338,16 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#preparing-your-repository" id="toc-preparing-your-repository" class="nav-link active" data-scroll-target="#preparing-your-repository">Preparing Your Repository</a></li>
-  <li><a href="#setting-environment-variables" id="toc-setting-environment-variables" class="nav-link" data-scroll-target="#setting-environment-variables">Setting Environment Variables</a></li>
-  <li><a href="#create-a-new-issue" id="toc-create-a-new-issue" class="nav-link" data-scroll-target="#create-a-new-issue">Create a New Issue</a></li>
-  <li><a href="#update-the-issue" id="toc-update-the-issue" class="nav-link" data-scroll-target="#update-the-issue">Update the Issue</a></li>
-  <li><a href="#list-issues-in-your-repository" id="toc-list-issues-in-your-repository" class="nav-link" data-scroll-target="#list-issues-in-your-repository">List Issues in Your Repository</a></li>
-  <li><a href="#delete-the-issue-unlock" id="toc-delete-the-issue-unlock" class="nav-link" data-scroll-target="#delete-the-issue-unlock">“Delete” the Issue (Unlock)</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#where-to-start" id="toc-where-to-start" class="nav-link active" data-scroll-target="#where-to-start">Where to Start?</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/postman/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/exercise-github-api.html">Exercise: The GitHub API</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/exercise-github-api-2.html">Exercise 2: Adding and Removing Information from GitHub</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/coding/coding-intro.html">Getting Data Programmatically</a></li><li class="breadcrumb-item"><a href="../../chapters/coding/coding-intro.html">Interacting with APIs with Python</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Exercise 2: Working with Issues in the GitHub API</h1>
+<h1 class="title">Interacting with APIs Programmatically</h1>
 </div>
 
 
@@ -370,89 +364,160 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </header>
 
 
-<p>Now it’s time to interact with one of the most common features of GitHub: <strong>issues</strong>. You’ll create, update, list, and (sort of) delete an issue — all using the GitHub API.</p>
-<section id="preparing-your-repository" class="level2">
-<h2 class="anchored" data-anchor-id="preparing-your-repository">Preparing Your Repository</h2>
-<p>To complete this exercise, you’ll need a repository that <strong>you own</strong> (not one you just contribute to). If you don’t already have one, go to GitHub and create a new, empty repository.</p>
-<p>You can name it something like <code>api-test-repo</code> or <code>postman-playground</code>.</p>
-</section>
-<section id="setting-environment-variables" class="level2">
-<h2 class="anchored" data-anchor-id="setting-environment-variables">Setting Environment Variables</h2>
-<p>Let’s make this exercise easier to repeat and reuse. In your <strong>GitHub Postman environment</strong>, add two <strong>default</strong> variables:</p>
-<ul>
-<li><strong><code>owner</code></strong> → your GitHub username<br>
-</li>
-<li><strong><code>repo</code></strong> → the name of your target repository</li>
-</ul>
-<p>Now you can reuse them like this:<br>
-<code>{gh_URL}/repos/{{owner}}/{{repo}}/issues</code></p>
-</section>
-<section id="create-a-new-issue" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-new-issue">Create a New Issue</h2>
-<ul>
-<li><p><strong>Method</strong>: <code>POST</code><br>
-</p></li>
-<li><p><strong>Endpoint</strong>:</p>
-<pre><code>{{gh_URL}}/repos/{{owner}}/{{repo}}/issues</code></pre></li>
-<li><p><strong>Headers</strong>:</p>
-<ul>
-<li><code>Authorization</code>: <code>Bearer {{gh_token}}</code></li>
-<li><code>accept</code>: <code>application/vnd.github+json</code></li>
-</ul></li>
-<li><p><strong>Body (raw, JSON)</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">"title"</span><span class="fu">:</span> <span class="st">"API-created issue"</span><span class="fu">,</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">"body"</span><span class="fu">:</span> <span class="st">"This issue was created using Postman!"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ul>
-<p>Click <strong>Send</strong>. If successful, you’ll receive a <code>201 Created</code> response with the new issue’s details.</p>
-<p>📌 <strong>Save the <code>number</code> of the issue</strong> from the response — you’ll need it in the next step.</p>
-</section>
-<section id="update-the-issue" class="level2">
-<h2 class="anchored" data-anchor-id="update-the-issue">Update the Issue</h2>
-<ul>
-<li><p><strong>Method</strong>: <code>PATCH</code></p></li>
-<li><p><strong>Endpoint</strong>:</p>
-<pre><code>{{gh_URL}}/repos/{{owner}}/{{repo}}/issues/{issue_number}</code></pre>
-<p>Replace <code>{issue_number}</code> with the number from Step 1.</p></li>
-<li><p><strong>Headers</strong>: same as before</p></li>
-<li><p><strong>Body (raw, JSON)</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">"title"</span><span class="fu">:</span> <span class="st">"Updated title from Postman"</span><span class="fu">,</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">"body"</span><span class="fu">:</span> <span class="st">"This issue has been updated via PATCH request!"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ul>
-<p>You should receive a <code>200 OK</code> response with the updated issue content.</p>
-</section>
-<section id="list-issues-in-your-repository" class="level2">
-<h2 class="anchored" data-anchor-id="list-issues-in-your-repository">List Issues in Your Repository</h2>
-<ul>
-<li><p><strong>Method</strong>: <code>GET</code></p></li>
-<li><p><strong>Endpoint</strong>:</p>
-<pre><code>{{gh_URL}}/repos/{{owner}}/{{repo}}/issues</code></pre></li>
-</ul>
-<p>This request returns all open issues in your repository, including the one you just created.</p>
-</section>
-<section id="delete-the-issue-unlock" class="level2">
-<h2 class="anchored" data-anchor-id="delete-the-issue-unlock">“Delete” the Issue (Unlock)</h2>
-<p>GitHub doesn’t allow true issue deletion via the API. However, you can simulate deletion in two ways: - <strong>Close</strong> the issue (optional) - <strong>Unlock</strong> it — which removes any restriction on further edits</p>
-<p>Let’s unlock it:</p>
-<ul>
-<li><p><strong>Method</strong>: <code>DELETE</code></p></li>
-<li><p><strong>Endpoint</strong>:</p>
-<pre><code>{{gh_URL}}/repos/{{owner}}/{{repo}}/issues/{issue_number}/lock</code></pre></li>
-</ul>
-<p>If successful, you’ll receive a <code>204 No Content</code> response.</p>
-</section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>By completing these steps, you’ve now:</p>
-<ul>
-<li>Created and updated GitHub content using <code>POST</code> and <code>PATCH</code></li>
-<li>Retrieved structured issue data with <code>GET</code></li>
-<li>Performed a partial deletion (unlock) with <code>DELETE</code></li>
-</ul>
-<p>You’re now ready to apply what you’ve learned to real project workflows, automation tasks, or your next API-powered integration.</p>
+<p>Although tools like Postman and Bruno are great for testing and exploring APIs, it’s plausible that your goal is to retrieve data from multiple endpoints, select specific fields, automate processes, or manipulate the data obtained in a response.</p>
+<p>Most of the high-level programming languages used in data science and digital humanities (e.g., Python, R, JavaScript) have libraries that allow you to interact with APIs programmatically. That means that the heavy lifting of constructing and handling requests, parsing responses, and managing authentication is taken care of by the library. The dificulty usually lies in how complex the API is, particularly the multiple methods of authentication, the structure of the endpoints, and the format of the responses.</p>
+<p>In this section, we will use Python to interact with the <a href="https://pro.dp.la/developers/api-codex">Digital Public Library of America (DPLA) API</a>. The rationality behind this choice is that the DPLA API, besides the fact that it provides access to a large amount of data, has a relatively straightforward structure and authentication process, making it an ideal candidate for learning how to interact with APIs programmatically.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Comming Soon!
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>We are planning to expand this section to include examples of how to interact with APIs using R and JavaScript as well. Stay tuned for updates!</p>
+</div>
+</div>
+</div>
+<section id="where-to-start" class="level2">
+<h2 class="anchored" data-anchor-id="where-to-start">Where to Start?</h2>
+<p>Before writing a single line of code, we need to understand the API requests and the structure of the responses. Therefore, the first place we must go is the API documentation. In the case of the DPLA API, we can find it <a href="https://pro.dp.la/developers/api-codex">here</a>. The DPLA developers are very generous and provide a ‘how to use it’ guide that summarizes the basic steps to interact with the API in three steps:</p>
+<ol type="1">
+<li><strong>Request an API key from DPLA</strong>: The way to generate an API key is to send a request to a DPLA endpoint with your email address. A 32-character hash API key will be sent to your email.</li>
+</ol>
+<p>You can use the following <code>curl</code> command to request an API key:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://api.dp.la/v2/api_key/YOUR_EMAIL@example.com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can also use this form to send the request (Test version below):</p>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Test First</strong>: Below is a simple test form that performs a random arithmetic operation. Use this to test the form functionality before requesting a real API key.</p>
+</div>
+</div>
+</div>
+<div style="margin-bottom: 2rem;">
+<h4 class="anchored">
+Test Form (Random Addition/Subtraction)
+</h4>
+<form id="test-form" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+<input type="number" id="num1" placeholder="First number" value="5" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"> <input type="number" id="num2" placeholder="Second number" value="3" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"> <button type="submit" style="padding: 0.5rem 1rem; background-color: #0d6efd; color: white; border: none; border-radius: 4px; cursor: pointer;">Test Request</button>
+</form>
+<div id="test-response" style="display: none;">
+
+</div>
+</div>
+<hr>
+<h4 class="anchored">
+Request DPLA API Key
+</h4>
+<form id="api-key-request-form" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+<input type="email" id="email" placeholder="your-email@example.com" required="" style="flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"> <button type="submit" style="padding: 0.5rem 1rem; background-color: #198754; color: white; border: none; border-radius: 4px; cursor: pointer;">Request API Key</button>
+</form>
+<div id="api-response" style="display: none;">
+
+</div>
+<script>
+    // Test form functionality
+    const testForm = document.getElementById('test-form');
+    const testResponseDiv = document.getElementById('test-response');
+    
+    testForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        const operation = Math.random() > 0.5 ? 'addition' : 'subtraction';
+        const result = operation === 'addition' ? num1 + num2 : num1 - num2;
+        
+        const testResponse = {
+            num1: num1,
+            num2: num2,
+            operation: operation,
+            result: result,
+            timestamp: new Date().toISOString()
+        };
+        
+        // Format and display the response
+        const badgeClass = "bg-success";
+        const responseHTML = `
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Test Response</span>
+                    <span class="badge ${badgeClass}">200 OK</span>
+                </div>
+                <pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(testResponse, null, 2)}</pre>
+            </div>
+        `;
+        
+        testResponseDiv.innerHTML = responseHTML;
+        testResponseDiv.style.display = 'block';
+    });
+
+    // DPLA API key request form
+    const form = document.getElementById('api-key-request-form');
+    const apiResponseDiv = document.getElementById('api-response');
+    
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+
+        try {
+            const response = await fetch(`https://api.dp.la/v2/api_key/${email}`);
+            const status = {
+                code: response.status,
+                ok: response.ok,
+                text: response.statusText
+            };
+            
+            let data;
+            try {
+                data = await response.json();
+            } catch {
+                data = { message: response.statusText };
+            }
+            
+            // Format and display the response
+            let content;
+            if (status.ok) {
+                content = `<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(data, null, 2)}</pre>`;
+            } else {
+                content = `<div class="alert alert-warning m-0">API Response: ${JSON.stringify(data, null, 2)}</div>`;
+            }
+            
+            const badgeClass = status.ok ? "bg-success" : "bg-warning";
+            const responseHTML = `
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>API Response</span>
+                        <span class="badge ${badgeClass}">${status.code} ${status.text}</span>
+                    </div>
+                    ${content}
+                </div>
+            `;
+            
+            apiResponseDiv.innerHTML = responseHTML;
+            apiResponseDiv.style.display = 'block';
+        } catch (error) {
+            const errorHTML = `
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Error</span>
+                        <span class="badge bg-danger">Error</span>
+                    </div>
+                    <div class="alert alert-danger m-0">An error occurred: ${error.message}</div>
+                </div>
+            `;
+            apiResponseDiv.innerHTML = errorHTML;
+            apiResponseDiv.style.display = 'block';
+        }
+    });
+</script>
 
 
 </section>
@@ -860,13 +925,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../../chapters/postman/exercise-github-api-1.html" class="pagination-link" aria-label="Exercise 1: Getting Information from GitHub">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 1: Getting Information from GitHub</span>
+      <a href="../../chapters/postman/exercise-github-api-2.html" class="pagination-link" aria-label="Exercise 2: Adding and Removing Information from GitHub">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 2: Adding and Removing Information from GitHub</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../chapters/coding/coding-intro.html" class="pagination-link" aria-label="Interacting with APIs with Python">
-        <span class="nav-page-text">Interacting with APIs with Python</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../chapters/dataAnalysis/collecting-data-for-analysis.html" class="pagination-link" aria-label="Collecting Data for Analysis">
+        <span class="nav-page-text">Collecting Data for Analysis</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
