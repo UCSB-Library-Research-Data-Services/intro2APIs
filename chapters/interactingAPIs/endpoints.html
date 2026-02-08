@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Request Methods – Unlocking DataA Gentle Introduction to APIs</title>
+<title>Endpoints – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -61,29 +61,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../chapters/interact-apis.html" rel="next">
-<link href="../chapters/endpoints.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-613bac74c3b9ed204b2393943ef307b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../chapters/interactingAPIs/request-methods.html" rel="next">
+<link href="../../chapters/what-is-an-api.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-613bac74c3b9ed204b2393943ef307b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -120,8 +120,8 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </script>
-<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
 </head>
@@ -135,7 +135,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/endpoints.html">Interacting with APIs</a></li><li class="breadcrumb-item"><a href="../chapters/request-methods.html">Request Methods</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/interactingAPIs/endpoints.html">Interacting with APIs</a></li><li class="breadcrumb-item"><a href="../../chapters/interactingAPIs/endpoints.html">Endpoints</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -150,14 +150,14 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../_static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Api icons created by HAJICON - Flaticon"><img src="../_static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
+<p><a href="../../_static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Api icons created by HAJICON - Flaticon"><img src="../../_static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
 </div></div>
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span><br></a> 
+      <a href="../../">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span><br></a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -169,13 +169,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What are APIs and why do they exists</span></a>
   </div>
 </li>
@@ -190,25 +190,25 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/endpoints.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/interactingAPIs/endpoints.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Endpoints</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/request-methods.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../chapters/interactingAPIs/request-methods.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Request Methods</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/interact-apis.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/interactingAPIs/interact-apis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interacting with APIs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/exercise-calling-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/interactingAPIs/exercise-calling-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise: Calling Data</span></a>
   </div>
 </li>
@@ -225,38 +225,38 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Postman</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-basic-requests.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman-basic-requests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic Request</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-environment.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman-environment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environment Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-post.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman-post.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">POST Requests in Postman</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-delete.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman-delete.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">DELETE Requests in Postman</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">A Real-World Example: The GitHub API</span></a>
+ <span class="menu-text">Exercise: The GitHub API</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -264,19 +264,19 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/github-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/exercise-github-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Working with the GitHub API</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/exercise-github-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/exercise-github-api-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 1: Getting Information from GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/exercise-github-api-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/exercise-github-api-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 2: Adding and Removing Information from GitHub</span></a>
   </div>
 </li>
@@ -295,7 +295,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interacting with APIs with Python</span></a>
   </div>
 </li>
@@ -312,13 +312,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/collecting-data-for-analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/dataAnalysis/collecting-data-for-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Collecting Data for Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/analyzing-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/dataAnalysis/analyzing-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Analyzing Data</span></a>
   </div>
 </li>
@@ -326,7 +326,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources/catalog.html" class="sidebar-item-text sidebar-link">
+  <a href="../../resources/catalog.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A Catalog of APIs</span></a>
   </div>
 </li>
@@ -340,25 +340,20 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#request-methods" id="toc-request-methods" class="nav-link active" data-scroll-target="#request-methods">Request Methods</a>
-  <ul class="collapse">
-  <li><a href="#get" id="toc-get" class="nav-link" data-scroll-target="#get">GET</a></li>
-  <li><a href="#post" id="toc-post" class="nav-link" data-scroll-target="#post">POST</a></li>
-  <li><a href="#put" id="toc-put" class="nav-link" data-scroll-target="#put">PUT</a></li>
-  <li><a href="#patch" id="toc-patch" class="nav-link" data-scroll-target="#patch">PATCH</a></li>
-  <li><a href="#delete" id="toc-delete" class="nav-link" data-scroll-target="#delete">DELETE</a></li>
-  <li><a href="#http-request-methods-at-a-glance" id="toc-http-request-methods-at-a-glance" class="nav-link" data-scroll-target="#http-request-methods-at-a-glance">HTTP Request Methods at a Glance</a></li>
-  </ul></li>
-  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up">Wrapping Up</a></li>
+  <li><a href="#the-protocol" id="toc-the-protocol" class="nav-link active" data-scroll-target="#the-protocol">The protocol</a></li>
+  <li><a href="#the-domain" id="toc-the-domain" class="nav-link" data-scroll-target="#the-domain">The domain</a></li>
+  <li><a href="#the-path" id="toc-the-path" class="nav-link" data-scroll-target="#the-path">The path</a></li>
+  <li><a href="#the-query-parameters" id="toc-the-query-parameters" class="nav-link" data-scroll-target="#the-query-parameters">The query parameters</a></li>
+  <li><a href="#the-full-endpoint" id="toc-the-full-endpoint" class="nav-link" data-scroll-target="#the-full-endpoint">The full endpoint</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/endpoints.html">Interacting with APIs</a></li><li class="breadcrumb-item"><a href="../chapters/request-methods.html">Request Methods</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/interactingAPIs/endpoints.html">Interacting with APIs</a></li><li class="breadcrumb-item"><a href="../../chapters/interactingAPIs/endpoints.html">Endpoints</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Request Methods</h1>
+<h1 class="title">Endpoints</h1>
 </div>
 
 
@@ -375,40 +370,111 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </header>
 
 
-<p>In our previous example, we sent a request to <strong>The Cat API</strong> using this endpoint:</p>
-<p><a href="https://api.thecatapi.com/v1/images/search?size=small&amp;mime_types=gif&amp;limit=5">https://api.thecatapi.com/v1/images/search?size=small&amp;mime_types=gif&amp;limit=5</a></p>
-<p>If you paste that URL in your browser, you’ll see a response similar to this:</p>
+<p>In the terminology of APIs, an <strong>endpoint</strong> is a URL that specifies the location of a resource on a server. As we saw with the cat API, most of the time you can access the data from an endpoint without requiring any particular software besides a web browser.</p>
+<p>However, an API doesn’t just retrieve data, it could also create, update, or delete data. For that reason, we could say that an endpoint is a specific type of URL that allows you to perform a specific action on a resource.</p>
+<p>Then, let’s break the pieces of an endpoint into four parts:</p>
+<section id="the-protocol" class="level2">
+<h2 class="anchored" data-anchor-id="the-protocol">The protocol</h2>
+<p>The protocol is the first part of an endpoint, specifying whether access to the resource is done through HTTP or HTTPS. In simple terms, HTTP is the same protocol used by the web browser to retrieve web pages. The “S” in HTTPS stands for “secure” and it means that the communication between the client and the server is encrypted.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Currently, HTTPS is the de facto standard for APIs, due to enhanced security.</p>
+</div>
+</div>
+</section>
+<section id="the-domain" class="level2">
+<h2 class="anchored" data-anchor-id="the-domain">The domain</h2>
+<p>The second part of an endpoint is the domain name. This means the unique name of the host that provides the resource. In our example, the domain of the cat API is <code>api.thecatapi.com</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The domain name of the API is not necessarily the same as the name of the main website of the API provider. For instance, the domain name of the cat API is <code>api.thecatapi.com</code>, but the main website of the cat API is <code>thecatapi.com</code>.</p>
+</div>
+</div>
+</section>
+<section id="the-path" class="level2">
+<h2 class="anchored" data-anchor-id="the-path">The path</h2>
+<p>The third part of an endpoint is the path. This piece of the endpoint specifies the resource we want to access. This could be a specific set of data, for instance, a list of cat breeds, but it could also be an action to be performed, for instance, searching. The path can also specify the version of the API that is being used, for instance, “v1” or “v2”.</p>
+<p>In the cat API, the path can be something like <code>/v1/breeds</code>.</p>
+<p>Some endpoints can include a resource identifier to retrieve a specific resource, for instance, the path <code>/v1/breeds/</code> gives as response a list of all cat breeds, and it’s possible to retrieve a specific breed, let’s say “Korat”, by adding the identifier <code>/kora</code> to the path, so the full path would be <code>/v1/breeds/kora</code>.</p>
+</section>
+<section id="the-query-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="the-query-parameters">The query parameters</h2>
+<p>An endpoint can retrieve lists of data and individual items. It can also perform actions, for instance, searching. The query parameters are the part of endpoints that allows us to explore the data available in the API. This can include multiple parts used to specify the search. Let’s explore this with more detail.</p>
+<p>The Cat API has an endpoint to search for cat images. The path of this endpoint is <code>/v1/images/search</code>. If we do a request to this endpoint we will get a random cat image. However, the developers have included a set of parameters that can delimit the search like the size of the image, the type of the image, the format of the response, if the image has a breed, etc. In that case, instead of just having a random cat image, we can retrieve a list of cat images with a size, media type, and with a specific limit. Then, the part of the endpoint will be like this:</p>
+<p><code>search?size=small&amp;mime_types=gif&amp;limit=10</code></p>
+<p>Note that the query parameters are separated from the path by a question mark (<code>?</code>) and they are separated by ampersands (<code>&amp;</code>). Order of the parameters is not important, but using the correct name of the parameter is crucial.</p>
+</section>
+<section id="the-full-endpoint" class="level2">
+<h2 class="anchored" data-anchor-id="the-full-endpoint">The full endpoint</h2>
+<p>Now, having all the parts of an endpoint, we can write the full endpoint as follows:</p>
+<p><a href="../../static/imgs/endpoint_diagram.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="../../static/imgs/endpoint_diagram.png" class="img-fluid"></a></p>
+<p>This can be read as follows: “I want to retrieve 5 cat gif images with a small size”.</p>
+<p>With this result:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-startfrom="16" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 15;"><span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">getCatData</span>() {</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> url <span class="op">=</span> <span class="vs">`https://api.thecatapi.com/v1/images/search?size=small&amp;mime_types=gif&amp;limit=5`</span><span class="op">;</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url)<span class="op">;</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="vs">`HTTP error! status: </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data<span class="op">;</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>catData <span class="op">=</span> <span class="cf">await</span> <span class="fu">getCatData</span>()<span class="op">;</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>viewof catDataString <span class="op">=</span> {</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> pre <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;"&gt;`</span><span class="op">;</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> code <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;code style="color: #333;"&gt;`</span><span class="op">;</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Formatted JSON with syntax highlighting</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> formatted <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(catData<span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&amp;/g</span><span class="op">,</span> <span class="st">'&amp;amp;'</span>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/&lt;/g</span><span class="op">,</span> <span class="st">'&amp;lt;'</span>)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="op">/&gt;/</span>g<span class="op">,</span> <span class="st">'&amp;gt;'</span>)</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/"</span><span class="sc">([^"]+)</span><span class="ss">":/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #a31515;"&gt;"$1"&lt;/span&gt;:'</span>) </span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: "</span><span class="sc">([^"]+)</span><span class="ss">"/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #008000;"&gt;"$1"&lt;/span&gt;'</span>)  </span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/: </span><span class="sc">([0-9]+)</span><span class="ss">/g</span><span class="op">,</span> <span class="st">': &lt;span style="color: #0000FF;"&gt;$1&lt;/span&gt;'</span>)  </span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">replace</span>(<span class="ss">/</span><span class="sc">\b(</span><span class="ss">true</span><span class="sc">|</span><span class="ss">false</span><span class="sc">|</span><span class="ss">null</span><span class="sc">)\b</span><span class="ss">/g</span><span class="op">,</span> <span class="st">'&lt;span style="color: #FF0000;"&gt;$1&lt;/span&gt;'</span>)<span class="op">;</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  code<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> formatted<span class="op">;</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  pre<span class="op">.</span><span class="fu">appendChild</span>(code)<span class="op">;</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> pre<span class="op">;</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-startfrom="66" data-source-offset="-41"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 65;"><span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>cats <span class="op">=</span> {</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"../_data/cats.json"</span>)<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (e) {</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">"Error loading cats data. This is normal if you're running the book locally."</span><span class="op">,</span> e)<span class="op">;</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="cf">await</span> <span class="fu">FileAttachment</span>(<span class="st">"../_dev/cats-fallback.json"</span>)<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>viewof carousel <span class="op">=</span> {</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="carousel-container"&gt;</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="carousel-wrapper"&gt;&lt;/div&gt;</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button class="carousel-button prev"&gt;←&lt;/button&gt;</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button class="carousel-button next"&gt;→&lt;/button&gt;</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="vs">  `</span><span class="op">;</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> wrapper <span class="op">=</span> container<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'.carousel-wrapper'</span>)<span class="op">;</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>  cats<span class="op">.</span><span class="fu">forEach</span>(cat <span class="kw">=&gt;</span> {</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> img <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">'img'</span>)<span class="op">;</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    img<span class="op">.</span><span class="at">src</span> <span class="op">=</span> cat<span class="op">.</span><span class="at">url</span><span class="op">;</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    img<span class="op">.</span><span class="at">alt</span> <span class="op">=</span> <span class="st">'Cat image'</span><span class="op">;</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    wrapper<span class="op">.</span><span class="fu">appendChild</span>(img)<span class="op">;</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> currentIndex <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> totalImages <span class="op">=</span> cats<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">updateCarousel</span>() {</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>    wrapper<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">transform</span> <span class="op">=</span> <span class="vs">`translateX(-</span><span class="sc">${</span>currentIndex <span class="op">*</span> <span class="dv">100</span><span class="sc">}</span><span class="vs">%)`</span><span class="op">;</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'.next'</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>    currentIndex <span class="op">=</span> (currentIndex <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> totalImages<span class="op">;</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>    <span class="fu">updateCarousel</span>()<span class="op">;</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>  container<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">'.prev'</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'click'</span><span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>    currentIndex <span class="op">=</span> (currentIndex <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> totalImages) <span class="op">%</span> totalImages<span class="op">;</span></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>    <span class="fu">updateCarousel</span>()<span class="op">;</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -424,208 +490,20 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-3" data-nodetype="declaration">
-
 </div>
-</div>
-</div>
-</div>
-<p>Even though it feels like just clicking a link, what’s actually happening is that your browser (the <strong>client</strong>) sends a request to the server, with information like:</p>
-<ul>
-<li>Method: <code>GET</code> — we’re asking to retrieve something</li>
-<li>Authority: <code>api.thecatapi.com</code> — the server we’re contacting</li>
-<li>Path: <code>/v1/images/search?size=small&amp;mime_types=gif&amp;limit=5</code> — the specific endpoint, including query parameters</li>
-<li>Scheme: <code>https</code> — the protocol used for secure communication</li>
-</ul>
-<p>In everyday browsing, we don’t think about these request components because the browser handles them automatically. But when working directly with APIs we control these details ourselves, and that opens up a lot of power and flexibility.</p>
-<p>In this section, we’re going to explore some common request methods that allow us to create or modify data on a server, not just read from it.</p>
-<section id="request-methods" class="level2">
-<h2 class="anchored" data-anchor-id="request-methods">Request Methods</h2>
-<p>A request method indicates the purpose of an HTTP request and the kind of response we expect. These methods act as semantic instructions for the server, which can respond with data, an error message, or a status update depending on whether the action is valid and allowed.</p>
-<p>The most common HTTP methods are:</p>
-<section id="get" class="level3">
-<h3 class="anchored" data-anchor-id="get">GET</h3>
-<p>As we’ve already seen, the <code>GET</code> method is used to <strong>retrieve data</strong> from a server or resource. It doesn’t alter anything on the server, it just requests information.</p>
-<p>The parameters included in the request URL help define the response. For example, a <code>GET</code> request can return a single item (e.g., <code>images/{image_id}</code>), or a list of items, as in the example we used at the beginning of this section.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../static/imgs/request_method_GET.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="GET request"><img src="../static/imgs/request_method_GET.png" class="img-fluid figure-img" alt="GET request"></a></p>
-<figcaption>GET request</figcaption>
-</figure>
-</div>
-</section>
-<section id="post" class="level3">
-<h3 class="anchored" data-anchor-id="post">POST</h3>
-<p>The <code>POST</code> method is used to <strong>send data</strong> to a server. For example, when you fill out a form and click the “Submit” button, your browser typically sends a <code>POST</code> request containing that data. The server processes it—often creating a new resource or triggering an action.</p>
-<p>Data for a <code>POST</code> request goes in the <strong>body</strong> (not the URL) and can be:</p>
-<ul>
-<li>form-data<br>
-</li>
-<li>binary (e.g., an image)<br>
-</li>
-<li>raw text (e.g., JSON, XML)</li>
-</ul>
-<p>Later on, we’ll explore how to configure and send these request bodies using practical tools.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../static/imgs/request_method_POST.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="POST request"><img src="../static/imgs/request_method_POST.png" class="img-fluid figure-img" alt="POST request"></a></p>
-<figcaption>POST request</figcaption>
-</figure>
-</div>
-</section>
-<section id="put" class="level3">
-<h3 class="anchored" data-anchor-id="put">PUT</h3>
-<p>The <code>PUT</code> method is used to update an existing resource. It looks similar to <code>POST</code>, but there’s an important difference: <code>PUT</code> requires the resource to already exist, and it typically replaces the entire object with the new data provided.</p>
-<p>In other words, while <code>POST</code> is used to create something new, <code>PUT</code> is used to <strong>overwrite</strong> an existing record at a specific location (e.g., <code>/images/{image_id}</code>).</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you don’t include all fields in a PUT request, some servers may interpret that as a request to remove the missing fields.</p>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../static/imgs/request_method_PUT.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="PUT request"><img src="../static/imgs/request_method_PUT.png" class="img-fluid figure-img" alt="PUT request"></a></p>
-<figcaption>PUT request</figcaption>
-</figure>
-</div>
-</section>
-<section id="patch" class="level3">
-<h3 class="anchored" data-anchor-id="patch">PATCH</h3>
-<p>The <code>PATCH</code> method can be understood as a way to <strong>edit</strong> an existing record. Unlike <code>PUT</code>, which typically replaces the entire resource, <code>PATCH</code> allows you to <strong>update only specific fields</strong>.</p>
-<p>The values to be updated are included in the <strong>body</strong> of the request and will only overwrite the specified elements, leaving the rest of the record unchanged.</p>
-<p>For example, sending the following body to <code>/images/{image_id}</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"pending"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"approved"</span><span class="fu">:</span> <span class="dv">0</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>will update only those two fields in the existing record.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In many cases, using <code>PATCH</code> is safer than <code>PUT</code>—especially when we want to avoid unintentionally removing fields that weren’t included in the update. For that reason, <code>PATCH</code> is more commonly supported than <code>PUT</code> in modern APIs.</p>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../static/imgs/request_method_PATCH.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="PATCH request"><img src="../static/imgs/request_method_PATCH.png" class="img-fluid figure-img" alt="PATCH request"></a></p>
-<figcaption>PATCH request</figcaption>
-</figure>
-</div>
-</section>
-<section id="delete" class="level3">
-<h3 class="anchored" data-anchor-id="delete">DELETE</h3>
-<p>The <code>DELETE</code> method is fairly self-explanatory. It takes a specific record identifier and removes that resource from the server.</p>
-<p>Typically, the response is a success status code (such as <code>200 OK</code> or <code>204 No Content</code>) confirming that the item has been deleted.</p>
-<p>Because of its potential impact, the use of this method is usually restricted to authenticated users and requires proper authorization or ownership. It’s rarely, if ever, available to anonymous users.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../static/imgs/request_method_DELETE.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="DELETE request"><img src="../static/imgs/request_method_DELETE.png" class="img-fluid figure-img" alt="DELETE request"></a></p>
-<figcaption>DELETE request</figcaption>
-</figure>
-</div>
-</section>
-<section id="http-request-methods-at-a-glance" class="level3">
-<h3 class="anchored" data-anchor-id="http-request-methods-at-a-glance">HTTP Request Methods at a Glance</h3>
-<p>We can visualize the main difference between these methods using the following table.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 21%">
-<col style="width: 19%">
-<col style="width: 27%">
-<col style="width: 11%">
-<col style="width: 13%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Method</th>
-<th>Purpose</th>
-<th>Requires Existing Resource?</th>
-<th>Typical Use Case</th>
-<th>Data Sent In</th>
-<th>Common Response</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>GET</code></td>
-<td>Retrieve data</td>
-<td>❌ No</td>
-<td>Fetching a list or a single item</td>
-<td>URL (query params)</td>
-<td><code>200 OK</code>, JSON data</td>
-</tr>
-<tr class="even">
-<td><code>POST</code></td>
-<td>Create a new resource</td>
-<td>❌ No</td>
-<td>Submitting a form, creating an object</td>
-<td>Body</td>
-<td><code>201 Created</code></td>
-</tr>
-<tr class="odd">
-<td><code>PUT</code></td>
-<td>Replace an existing resource</td>
-<td>✅ Yes</td>
-<td>Overwriting an entire object</td>
-<td>Body</td>
-<td><code>200 OK</code> or <code>204 No Content</code></td>
-</tr>
-<tr class="even">
-<td><code>PATCH</code></td>
-<td>Update specific fields</td>
-<td>✅ Yes</td>
-<td>Editing part of an existing record</td>
-<td>Body</td>
-<td><code>200 OK</code> or <code>204 No Content</code></td>
-</tr>
-<tr class="odd">
-<td><code>DELETE</code></td>
-<td>Remove a resource</td>
-<td>✅ Yes</td>
-<td>Deleting a specific item</td>
-<td>URL</td>
-<td><code>204 No Content</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="wrapping-up" class="level2">
-<h2 class="anchored" data-anchor-id="wrapping-up">Wrapping Up</h2>
-<p>In this section, we’ve explored the five most common HTTP request methods and how each one defines a different type of interaction with a server.</p>
-<p>These request methods form the foundation of working with RESTful APIs, and you’ll use them frequently as you explore or build your own data workflows.</p>
-<p>In the next section, you’ll see how to interact with APIs using the <code>GET</code> method directly from this notebook.</p>
 
 
 </section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImFzeW5jIGZ1bmN0aW9uIGdldENhdERhdGEoKSB7XG4gICAgY29uc3QgdXJsID0gYGh0dHBzOi8vYXBpLnRoZWNhdGFwaS5jb20vdjEvaW1hZ2VzL3NlYXJjaD9zaXplPXNtYWxsJm1pbWVfdHlwZXM9Z2lmJmxpbWl0PTVgO1xuICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2godXJsKTtcbiAgICBpZiAoIXJlc3BvbnNlLm9rKSB0aHJvdyBuZXcgRXJyb3IoYEhUVFAgZXJyb3IhIHN0YXR1czogJHtyZXNwb25zZS5zdGF0dXN9YCk7XG4gICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcbiAgICByZXR1cm4gZGF0YTtcbn1cblxuY2F0RGF0YSA9IGF3YWl0IGdldENhdERhdGEoKTtcblxudmlld29mIGNhdERhdGFTdHJpbmcgPSB7XG4gIGNvbnN0IHByZSA9IGh0bWxgPHByZSBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICNmOGY5ZmE7IHBhZGRpbmc6IDE1cHg7IGJvcmRlci1yYWRpdXM6IDVweDsgb3ZlcmZsb3cteDogYXV0bztcIj5gO1xuICBjb25zdCBjb2RlID0gaHRtbGA8Y29kZSBzdHlsZT1cImNvbG9yOiAjMzMzO1wiPmA7XG4gIFxuICAvLyBGb3JtYXR0ZWQgSlNPTiB3aXRoIHN5bnRheCBoaWdobGlnaHRpbmdcbiAgY29uc3QgZm9ybWF0dGVkID0gSlNPTi5zdHJpbmdpZnkoY2F0RGF0YSwgbnVsbCwgMilcbiAgICAucmVwbGFjZSgvJi9nLCAnJmFtcDsnKVxuICAgIC5yZXBsYWNlKC88L2csICcmbHQ7JylcbiAgICAucmVwbGFjZSgvPi9nLCAnJmd0OycpXG4gICAgLnJlcGxhY2UoL1wiKFteXCJdKylcIjovZywgJzxzcGFuIHN0eWxlPVwiY29sb3I6ICNhMzE1MTU7XCI+XCIkMVwiPC9zcGFuPjonKSBcbiAgICAucmVwbGFjZSgvOiBcIihbXlwiXSspXCIvZywgJzogPHNwYW4gc3R5bGU9XCJjb2xvcjogIzAwODAwMDtcIj5cIiQxXCI8L3NwYW4+JykgIFxuICAgIC5yZXBsYWNlKC86IChbMC05XSspL2csICc6IDxzcGFuIHN0eWxlPVwiY29sb3I6ICMwMDAwRkY7XCI+JDE8L3NwYW4+JykgIFxuICAgIC5yZXBsYWNlKC9cXGIodHJ1ZXxmYWxzZXxudWxsKVxcYi9nLCAnPHNwYW4gc3R5bGU9XCJjb2xvcjogI0ZGMDAwMDtcIj4kMTwvc3Bhbj4nKTtcbiAgICBcbiAgY29kZS5pbm5lckhUTUwgPSBmb3JtYXR0ZWQ7XG4gIHByZS5hcHBlbmRDaGlsZChjb2RlKTtcbiAgcmV0dXJuIHByZTtcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnY2F0RGF0YVN0cmluZycpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gY2F0Y2ggZXJyb3IgaWYgdGhlIGZpbGUgaXMgbm90IGZvdW5kXG5jYXRzID0ge1xuICB0cnkge1xuICAgIHJldHVybiBhd2FpdCBGaWxlQXR0YWNobWVudChcIi4uL19kYXRhL2NhdHMuanNvblwiKS5qc29uKCk7XG4gIH0gY2F0Y2ggKGUpIHtcbiAgICBjb25zb2xlLmVycm9yKFwiRXJyb3IgbG9hZGluZyBjYXRzIGRhdGEuIFRoaXMgaXMgbm9ybWFsIGlmIHlvdSdyZSBydW5uaW5nIHRoZSBib29rIGxvY2FsbHkuXCIsIGUpO1xuICAgIHJldHVybiBhd2FpdCBGaWxlQXR0YWNobWVudChcIi4uL19kZXYvY2F0cy1mYWxsYmFjay5qc29uXCIpLmpzb24oKVxuICB9XG59XG5cbnZpZXdvZiBjYXJvdXNlbCA9IHtcbiAgY29uc3QgY29udGFpbmVyID0gaHRtbGBcbiAgICA8ZGl2IGNsYXNzPVwiY2Fyb3VzZWwtY29udGFpbmVyXCI+XG4gICAgICA8ZGl2IGNsYXNzPVwiY2Fyb3VzZWwtd3JhcHBlclwiPjwvZGl2PlxuICAgICAgPGJ1dHRvbiBjbGFzcz1cImNhcm91c2VsLWJ1dHRvbiBwcmV2XCI+4oaQPC9idXR0b24+XG4gICAgICA8YnV0dG9uIGNsYXNzPVwiY2Fyb3VzZWwtYnV0dG9uIG5leHRcIj7ihpI8L2J1dHRvbj5cbiAgICA8L2Rpdj5cbiAgYDtcbiAgXG4gIGNvbnN0IHdyYXBwZXIgPSBjb250YWluZXIucXVlcnlTZWxlY3RvcignLmNhcm91c2VsLXdyYXBwZXInKTtcbiAgXG4gIGNhdHMuZm9yRWFjaChjYXQgPT4ge1xuICAgIGNvbnN0IGltZyA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2ltZycpO1xuICAgIGltZy5zcmMgPSBjYXQudXJsO1xuICAgIGltZy5hbHQgPSAnQ2F0IGltYWdlJztcbiAgICB3cmFwcGVyLmFwcGVuZENoaWxkKGltZyk7XG4gIH0pO1xuXG4gIGxldCBjdXJyZW50SW5kZXggPSAwO1xuICBjb25zdCB0b3RhbEltYWdlcyA9IGNhdHMubGVuZ3RoO1xuICBcbiAgZnVuY3Rpb24gdXBkYXRlQ2Fyb3VzZWwoKSB7XG4gICAgd3JhcHBlci5zdHlsZS50cmFuc2Zvcm0gPSBgdHJhbnNsYXRlWCgtJHtjdXJyZW50SW5kZXggKiAxMDB9JSlgO1xuICB9XG5cbiAgY29udGFpbmVyLnF1ZXJ5U2VsZWN0b3IoJy5uZXh0JykuYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCAoKSA9PiB7XG4gICAgY3VycmVudEluZGV4ID0gKGN1cnJlbnRJbmRleCArIDEpICUgdG90YWxJbWFnZXM7XG4gICAgdXBkYXRlQ2Fyb3VzZWwoKTtcbiAgfSk7XG5cbiAgY29udGFpbmVyLnF1ZXJ5U2VsZWN0b3IoJy5wcmV2JykuYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCAoKSA9PiB7XG4gICAgY3VycmVudEluZGV4ID0gKGN1cnJlbnRJbmRleCAtIDEgKyB0b3RhbEltYWdlcykgJSB0b3RhbEltYWdlcztcbiAgICB1cGRhdGVDYXJvdXNlbCgpO1xuICB9KTtcbiAgXG4gIHJldHVybiBjb250YWluZXI7XG59XG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2Nhcm91c2VsJykifV19
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../../chapters";
+window._ojs.paths.runtimeToDoc = "../../chapters/interactingAPIs";
 window._ojs.paths.runtimeToRoot = "../..";
-window._ojs.paths.docToRoot = "..";
+window._ojs.paths.docToRoot = "../..";
 window._ojs.selfContained = false;
 window._ojs.runtime.interpretFromScriptTags();
 </script>
@@ -1031,13 +909,13 @@ window._ojs.runtime.interpretFromScriptTags();
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/endpoints.html" class="pagination-link" aria-label="Endpoints">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Endpoints</span>
+      <a href="../../chapters/what-is-an-api.html" class="pagination-link" aria-label="What are APIs and why do they exists">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">What are APIs and why do they exists</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/interact-apis.html" class="pagination-link" aria-label="Interacting with APIs">
-        <span class="nav-page-text">Interacting with APIs</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../chapters/interactingAPIs/request-methods.html" class="pagination-link" aria-label="Request Methods">
+        <span class="nav-page-text">Request Methods</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1054,7 +932,7 @@ window._ojs.runtime.interpretFromScriptTags();
 </div>
     <div class="nav-footer-right">
 <div class="footer-tech">
-<p><a class="footer-tech-item" href="https://quarto.org/"> <img src="../_static/imgs/quarto-no-official.svg" alt="Quarto" class="footer-tech-icon"> Quarto </a> <a class="footer-tech-item" href="https://github.com/UCSB-Library-Research-Data-Services/intro2APIs"> <i class="bi bi-github footer-tech-icon" aria-hidden="true"></i> GitHub </a></p>
+<p><a class="footer-tech-item" href="https://quarto.org/"> <img src="../../_static/imgs/quarto-no-official.svg" alt="Quarto" class="footer-tech-icon"> Quarto </a> <a class="footer-tech-item" href="https://github.com/UCSB-Library-Research-Data-Services/intro2APIs"> <i class="bi bi-github footer-tech-icon" aria-hidden="true"></i> GitHub </a></p>
 </div>
 </div>
   </div>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Basic Requests using Postman – Unlocking DataA Gentle Introduction to APIs</title>
+<title>Working with the GitHub API – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,29 +26,29 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../chapters/postman-environment.html" rel="next">
-<link href="../chapters/postman.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-613bac74c3b9ed204b2393943ef307b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../chapters/postman/exercise-github-api-1.html" rel="next">
+<link href="../../chapters/postman/postman-delete.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-613bac74c3b9ed204b2393943ef307b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -98,7 +98,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../chapters/postman-basic-requests.html">Basic Request</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/postman/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/exercise-github-api.html">Exercise: The GitHub API</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/exercise-github-api.html">Working with the GitHub API</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -113,14 +113,14 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../_static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Api icons created by HAJICON - Flaticon"><img src="../_static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
+<p><a href="../../_static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Api icons created by HAJICON - Flaticon"><img src="../../_static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
 </div></div>
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span><br></a> 
+      <a href="../../">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span><br></a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -132,13 +132,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What are APIs and why do they exists</span></a>
   </div>
 </li>
@@ -153,25 +153,25 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/endpoints.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/interactingAPIs/endpoints.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Endpoints</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/request-methods.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/interactingAPIs/request-methods.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Request Methods</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/interact-apis.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/interactingAPIs/interact-apis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interacting with APIs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/exercise-calling-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/interactingAPIs/exercise-calling-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise: Calling Data</span></a>
   </div>
 </li>
@@ -188,58 +188,58 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Postman</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-basic-requests.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../chapters/postman/postman-basic-requests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic Request</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-environment.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman-environment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environment Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-post.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman-post.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">POST Requests in Postman</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-delete.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman-delete.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">DELETE Requests in Postman</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">A Real-World Example: The GitHub API</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Exercise: The GitHub API</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/github-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/exercise-github-api.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Working with the GitHub API</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/exercise-github-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/exercise-github-api-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 1: Getting Information from GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/exercise-github-api-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/exercise-github-api-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 2: Adding and Removing Information from GitHub</span></a>
   </div>
 </li>
@@ -258,7 +258,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interacting with APIs with Python</span></a>
   </div>
 </li>
@@ -275,13 +275,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/collecting-data-for-analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/dataAnalysis/collecting-data-for-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Collecting Data for Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/analyzing-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/dataAnalysis/analyzing-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Analyzing Data</span></a>
   </div>
 </li>
@@ -289,7 +289,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources/catalog.html" class="sidebar-item-text sidebar-link">
+  <a href="../../resources/catalog.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A Catalog of APIs</span></a>
   </div>
 </li>
@@ -303,19 +303,24 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#starting-with-a-workspace" id="toc-starting-with-a-workspace" class="nav-link active" data-scroll-target="#starting-with-a-workspace">Starting with a Workspace</a></li>
-  <li><a href="#creating-a-collection" id="toc-creating-a-collection" class="nav-link" data-scroll-target="#creating-a-collection">Creating a Collection</a></li>
-  <li><a href="#adding-your-first-get-request" id="toc-adding-your-first-get-request" class="nav-link" data-scroll-target="#adding-your-first-get-request">Adding Your First <code>GET</code> Request</a></li>
-  <li><a href="#using-query-parameters" id="toc-using-query-parameters" class="nav-link" data-scroll-target="#using-query-parameters">Using Query Parameters</a></li>
+  <li><a href="#getting-your-github-authorization-token" id="toc-getting-your-github-authorization-token" class="nav-link active" data-scroll-target="#getting-your-github-authorization-token">Getting Your GitHub Authorization Token</a>
+  <ul class="collapse">
+  <li><a href="#add-it-to-postman" id="toc-add-it-to-postman" class="nav-link" data-scroll-target="#add-it-to-postman">Add It to Postman</a></li>
+  </ul></li>
+  <li><a href="#testing-the-authorization-token" id="toc-testing-the-authorization-token" class="nav-link" data-scroll-target="#testing-the-authorization-token">Testing the Authorization Token</a>
+  <ul class="collapse">
+  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a></li>
+  </ul></li>
+  <li><a href="#ready-to-explore-more" id="toc-ready-to-explore-more" class="nav-link" data-scroll-target="#ready-to-explore-more">Ready to Explore More?</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../chapters/postman-basic-requests.html">Basic Request</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/postman/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/exercise-github-api.html">Exercise: The GitHub API</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/exercise-github-api.html">Working with the GitHub API</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Basic Requests using Postman</h1>
+<h1 class="title">Working with the GitHub API</h1>
 </div>
 
 
@@ -332,160 +337,122 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </header>
 
 
-<p>In this section, we’ll create a workspace in Postman and perform a few basic <code>GET</code> requests using <strong>The Cat API</strong>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The screenshots in this notebook were taken from the <strong>Postman Desktop application</strong> running on macOS.</p>
-<ul>
-<li><strong>Version</strong>: 11.42.1<br>
-</li>
-<li><strong>UI Version</strong>: 11.42.1-ui-250421-2337<br>
-</li>
-<li><strong>Desktop Platform Version</strong>: 11.41.4 (11.41.4)</li>
-</ul>
-<p>While Postman’s interface and features may continue to evolve (see the <a href="https://www.postman.com/release-notes/postman-app/">release notes</a> for updates), the <strong>core concepts covered in this guide will remain relevant</strong> across future versions.</p>
-</div>
-</div>
-</div>
-<section id="starting-with-a-workspace" class="level2">
-<h2 class="anchored" data-anchor-id="starting-with-a-workspace">Starting with a Workspace</h2>
-<p><strong>Workspaces</strong> help keep your requests organized and make it easier to collaborate with others. To create a new workspace, go to <code>Workspaces</code> → <code>Create Workspace</code> and choose a <strong>Blank workspace</strong>.</p>
-<p>You’ll be prompted to enter a name, select a workspace type, and manage access settings.</p>
-<p>For this exercise, we’ll use the following setup:</p>
-<ul>
-<li><strong>Name</strong>: <code>My Requests</code></li>
-<li><strong>Type</strong>: <code>Internal workspace</code></li>
-<li><strong>Access</strong>: Keep the default — everyone in your team can access it</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../static/imgs/postman-workspace-creation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Workspace creation form in Postman"><img src="../static/imgs/postman-workspace-creation.png" class="img-fluid figure-img" alt="Workspace creation form in Postman"></a></p>
-<figcaption>Workspace creation form in Postman</figcaption>
-</figure>
-</div>
-<p>If you haven’t set up a team in Postman yet, you’ll be prompted to fill out a simple form to create one. Just keep it straightforward: choose any name for your team, select <code>Other</code> for the question <em>“What will your team work on?”</em>, and confirm.</p>
-<p>Once your team is created, you’ll be ready to add some collections.</p>
-</section>
-<section id="creating-a-collection" class="level2">
-<h2 class="anchored" data-anchor-id="creating-a-collection">Creating a Collection</h2>
-<p>Once your workspace and team are set up, the next step is to create a <strong>collection</strong>. Collections are folders that help you group and organize your API requests. They’re especially useful when working with multiple endpoints from the same service.</p>
-<p>To create a new collection:</p>
+<p>The GitHub API is a powerful tool for developers, researchers, and data analysts. It allows you to programmatically interact with almost every feature available on GitHub’s website — including repositories, issues, users, and more.</p>
+<p>In this section, we’ll explore a curated set of endpoints from the GitHub REST API using Postman. We’ll build on what we learned in previous chapters: setting headers, using variables, and making <code>GET</code>, <code>POST</code>, <code>PATCH</code>, and <code>DELETE</code> requests.</p>
+<p>The only requirement to access most of GitHub’s API is an <strong>authorization token</strong>, which you can generate in your GitHub settings.</p>
+<section id="getting-your-github-authorization-token" class="level2">
+<h2 class="anchored" data-anchor-id="getting-your-github-authorization-token">Getting Your GitHub Authorization Token</h2>
+<p>To access private endpoints or perform actions like creating issues or repositories, GitHub requires an authorization token. This token acts like a password for your API requests, so keep it secret and secure.</p>
+<p>Here’s how to generate one:</p>
 <ol type="1">
-<li>In the left sidebar, click the <code>Collections</code> tab.</li>
-<li>Click the <code>+ Blank Collection</code> button.</li>
-<li>Give your collection a name. For this exercise, you can name it <strong>“The Cat API”</strong>.</li>
-<li>(Optional) Add a description to explain what this collection is for.</li>
-<li>Click <strong>Create</strong>.</li>
+<li><a href="https://github.com">Go to GitHub</a> and log into your account.</li>
+<li>Navigate to your <a href="https://github.com/settings/apps">Developer settings</a>:
+<ul>
+<li>Click your profile photo (top right) → <strong>Settings</strong></li>
+<li>Scroll down to <strong>Developer settings</strong></li>
+</ul></li>
+<li>In the left sidebar, select <strong>Personal access tokens</strong> → then <a href="https://github.com/settings/tokens"><strong>Tokens (classic)</strong></a></li>
+<li>Click the <strong>Generate new token</strong> (classic) button.</li>
+<li>Fill out the form:
+<ul>
+<li><strong>Note</strong>: Give your token a descriptive name, e.g.&nbsp;<code>Postman Workshop Token</code></li>
+<li><strong>Expiration</strong>: Choose any short duration (e.g.&nbsp;7 or 30 days)</li>
+<li><strong>Scopes</strong>:
+<ul>
+<li>Check the box for <strong><code>repo</code></strong> → this includes issues, pull requests, and repo access</li>
+<li>You can also select <strong><code>read:user</code></strong> and <strong><code>user:email</code></strong> if you want user info</li>
+</ul></li>
+</ul></li>
+<li>Click <strong>Generate token</strong></li>
 </ol>
-<p>You’ll now see your new collection listed in the sidebar. We’ll add our first <code>GET</code> request to it in the next step.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../static/imgs/postman-create-collection.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Creating a collection in Postman"><img src="../static/imgs/postman-create-collection.png" class="img-fluid figure-img" alt="Creating a collection in Postman"></a></p>
-<figcaption>Creating a collection in Postman</figcaption>
-</figure>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When you create a new workspace, Postman may automatically add a template collection named <strong>“End-to-End Tests”</strong>. You can safely remove it to keep your workspace clean and focused.</p>
-<p>To delete it:<br>
-Click the three dots (<code>⋮</code>) next to the collection name, then select <strong>Delete</strong>.</p>
+<p>GitHub will only show the token <strong>once</strong>. Copy it immediately and save it somewhere secure (e.g., directly into Postman).</p>
 </div>
 </div>
-</section>
-<section id="adding-your-first-get-request" class="level2">
-<h2 class="anchored" data-anchor-id="adding-your-first-get-request">Adding Your First <code>GET</code> Request</h2>
-<p>Now that you’ve created your collection, it’s time to add a request. We’ll start by adding a basic <code>GET</code> request to <strong>The Cat API</strong> to retrieve a list of cat breeds.</p>
-<p>To do this:</p>
-<ol type="1">
-<li>Click the name of your collection (<strong>The Cat API</strong>) in the left sidebar.</li>
-<li>Click the three dots (<code>⋮</code>) next to the collection name, then select <strong>Add request</strong>.</li>
-<li>Give your request a name — for example, <strong>List Breeds</strong>.</li>
-<li>In the <strong>Request type dropdown</strong>, make sure <code>GET</code> is selected.</li>
-<li>In the <strong>URL field</strong>, paste the following endpoint:</li>
-</ol>
-<p><code>https://api.thecatapi.com/v1/breeds</code></p>
-<ol start="6" type="1">
-<li>Click <strong>Save</strong> (upper right) and choose <strong>Save to “The Cat API” collection</strong>.</li>
-</ol>
-<p>You’re ready to send your first request! Click the <strong>Send</strong> button.</p>
-<p>You should see a <code>200 OK</code> response along with a list of cat breeds in the response body.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../static/imgs/postman-get-catapi-breeds.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Adding a GET request in Postman"><img src="../static/imgs/postman-get-catapi-breeds.png" class="img-fluid figure-img" alt="Adding a GET request in Postman"></a></p>
-<figcaption>Adding a GET request in Postman</figcaption>
+<p><a href="../../static/imgs/Github-token.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Github Token Form"><img src="../../static/imgs/Github-token.png" class="img-fluid figure-img" alt="Github Token Form"></a></p>
+<figcaption>Github Token Form</figcaption>
 </figure>
 </div>
-</section>
-<section id="using-query-parameters" class="level2">
-<h2 class="anchored" data-anchor-id="using-query-parameters">Using Query Parameters</h2>
-<p>Many APIs allow you to filter or customize your results using <strong>query parameters</strong>. These are added to the end of the URL after a <code>?</code> symbol and follow a <code>key=value</code> format.</p>
-<p>Let’s try an example using The Cat API’s search endpoint to retrieve only a few cat images in GIF format.</p>
+<section id="add-it-to-postman" class="level3">
+<h3 class="anchored" data-anchor-id="add-it-to-postman">Add It to Postman</h3>
 <ol type="1">
-<li>In your <strong>The Cat API</strong> collection, add a new request.</li>
-<li>Name the request: <strong>Search Cat Images</strong></li>
-<li>Set the request type to <code>GET</code>.</li>
-<li>In the URL field, paste the following:</li>
+<li>Create a new environment named <code>GitHub Env</code>.</li>
+<li>Add a <strong>secret</strong> variable:
+<ul>
+<li><strong>Variable</strong>: <code>gh_token</code></li>
+<li><strong>Type</strong>: <code>secret</code></li>
+<li><strong>Initial value</strong>: <em>(paste your token here)</em></li>
+<li><strong>Current value</strong>: will be filled automatically</li>
+</ul></li>
+<li>Save the environment.</li>
 </ol>
-<p><code>https://api.thecatapi.com/v1/images/search</code></p>
+<p>You’ll now be able to authorize your GitHub requests by including this header in each request:</p>
+<p><code>Authorization: Bearer {{gh_token}}</code></p>
+<p>Postman will automatically substitute <code>{gh_token}</code> with your real token, keeping it secure.</p>
+<p>This is also a good moment to set a default variable for the GitHub base URL.<br>
+We’ll use the variable <code>gh_URL</code> to store: <code>https://api.github.com</code>.</p>
+</section>
+</section>
+<section id="testing-the-authorization-token" class="level2">
+<h2 class="anchored" data-anchor-id="testing-the-authorization-token">Testing the Authorization Token</h2>
+<p>Let’s confirm that your GitHub token is working correctly by sending a simple authenticated <code>GET</code> request.</p>
+<p>We’ll use this endpoint:</p>
+<p><code>GET {{gh_URL}}/user</code></p>
+<p>This returns information about the <strong>authenticated user</strong> — meaning: you!</p>
+<section id="steps" class="level3">
+<h3 class="anchored" data-anchor-id="steps">Steps</h3>
+<ol type="1">
+<li>In your <strong>GitHub</strong> collection in Postman, create a new request called <strong>“Get Authenticated User”</strong>.</li>
+<li>Set the method to <code>GET</code>.</li>
+<li>In the URL field, enter: <code>{gh_URL}/user</code></li>
+<li>In the <strong>Headers</strong> tab, add:</li>
+</ol>
+<ul>
+<li><strong>Key</strong>: <code>Authorization</code></li>
+<li><strong>Value</strong>: <code>Bearer {{gh_token}}</code><br>
+(<strong>Don’t forget to include <code>Bearer</code> before the token!</strong>)</li>
+</ul>
 <ol start="5" type="1">
-<li>Switch to the <strong>Params</strong> tab (below the URL field).</li>
-<li>Add the following query parameters:</li>
+<li>Make sure the <strong>GitHub environment</strong> is selected.</li>
+<li>Click <strong>Send</strong>.</li>
 </ol>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>mime_types</code></td>
-<td><code>gif</code></td>
-</tr>
-<tr class="even">
-<td><code>limit</code></td>
-<td><code>3</code></td>
-</tr>
-<tr class="odd">
-<td><code>size</code></td>
-<td><code>small</code></td>
-</tr>
-</tbody>
-</table>
-<ol start="7" type="1">
-<li>Click <strong>Send</strong> to execute the request.</li>
-</ol>
-<p>You should see a list of cat image objects, each with a <code>url</code> field pointing to a different cat GIF.</p>
+<p>If everything is working, you’ll get a response that includes your GitHub user information:</p>
+<ul>
+<li><code>login</code> (your GitHub username)</li>
+<li><code>id</code></li>
+<li><code>public_repos</code></li>
+<li><code>created_at</code>, etc.</li>
+</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../static/imgs/postman-query-params-catapi.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Query parameters in Postman"><img src="../static/imgs/postman-query-params-catapi.png" class="img-fluid figure-img" alt="Query parameters in Postman"></a></p>
-<figcaption>Query parameters in Postman</figcaption>
+<p><a href="../../static/imgs/postman-github-user-response.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Example of a successful GitHub user response in Postman"><img src="../../static/imgs/postman-github-user-response.png" class="img-fluid figure-img" alt="Example of a successful GitHub user response in Postman"></a></p>
+<figcaption>Example of a successful GitHub user response in Postman</figcaption>
 </figure>
 </div>
-<hr>
-<p>If you look carefully at the response, you’ll notice that it returns 10 elements instead of the 3 we specified in the <code>limit</code> parameter. This is because that parameter only works for <strong>authenticated users</strong>.</p>
-<p>The reason is simple: while you can request fewer items (like 3), you can also ask for much larger amounts—such as 20 or even 100 images. If anyone could do this without limits (for example, a bot), The Cat API’s resources could be overwhelmed very quickly.</p>
-<p>That’s why even seemingly harmless actions often require some form of <strong>access control</strong> to prevent abuse or unintended behavior.</p>
-<p>In the next section, we’ll explore how authentication works and how Postman can help you manage your credentials securely.</p>
+<p>If you receive a <code>401 Unauthorized</code> error, double-check:</p>
+<ul>
+<li>Your token is correct and hasn’t expired</li>
+<li>You added <code>Bearer</code> before <code>{{gh_token}}</code></li>
+<li>The header name is exactly: <code>Authorization</code></li>
+</ul>
+</section>
+</section>
+<section id="ready-to-explore-more" class="level2">
+<h2 class="anchored" data-anchor-id="ready-to-explore-more">Ready to Explore More?</h2>
+<p>With your environment set up and your authentication tested, you’re now ready to explore a wide range of endpoints in the GitHub API.</p>
+<p>From retrieving repository data to creating issues or managing user activity, the GitHub API gives you programmatic access to one of the world’s largest collaborative platforms, and you’ve already taken the most important step: connecting securely.</p>
+<p>In the next section, we’ll explore a few real-world use cases with the GitHub API to practice sending <code>GET</code>, <code>POST</code>, <code>PATCH</code>, and <code>DEL</code> requests.</p>
 
 
 </section>
@@ -893,13 +860,13 @@ Click the three dots (<code>⋮</code>) next to the collection name, then select
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/postman.html" class="pagination-link" aria-label="Postman">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Postman</span>
+      <a href="../../chapters/postman/postman-delete.html" class="pagination-link" aria-label="DELETE Requests in Postman">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">DELETE Requests in Postman</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/postman-environment.html" class="pagination-link" aria-label="Environment Variables">
-        <span class="nav-page-text">Environment Variables</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../chapters/postman/exercise-github-api-1.html" class="pagination-link" aria-label="Exercise 1: Getting Information from GitHub">
+        <span class="nav-page-text">Exercise 1: Getting Information from GitHub</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -916,7 +883,7 @@ Click the three dots (<code>⋮</code>) next to the collection name, then select
 </div>
     <div class="nav-footer-right">
 <div class="footer-tech">
-<p><a class="footer-tech-item" href="https://quarto.org/"> <img src="../_static/imgs/quarto-no-official.svg" alt="Quarto" class="footer-tech-icon"> Quarto </a> <a class="footer-tech-item" href="https://github.com/UCSB-Library-Research-Data-Services/intro2APIs"> <i class="bi bi-github footer-tech-icon" aria-hidden="true"></i> GitHub </a></p>
+<p><a class="footer-tech-item" href="https://quarto.org/"> <img src="../../_static/imgs/quarto-no-official.svg" alt="Quarto" class="footer-tech-icon"> Quarto </a> <a class="footer-tech-item" href="https://github.com/UCSB-Library-Research-Data-Services/intro2APIs"> <i class="bi bi-github footer-tech-icon" aria-hidden="true"></i> GitHub </a></p>
 </div>
 </div>
   </div>

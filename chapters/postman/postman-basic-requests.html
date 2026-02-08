@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analyzing Data – Unlocking DataA Gentle Introduction to APIs</title>
+<title>Basic Requests using Postman – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,29 +26,29 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../resources/catalog.html" rel="next">
-<link href="../chapters/collecting-data-for-analysis.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-613bac74c3b9ed204b2393943ef307b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../chapters/postman/postman-environment.html" rel="next">
+<link href="../../chapters/postman/postman.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-613bac74c3b9ed204b2393943ef307b7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -98,7 +98,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/collecting-data-for-analysis.html">APIs for Data Analysis</a></li><li class="breadcrumb-item"><a href="../chapters/analyzing-data.html">Analyzing Data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/postman/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/postman-basic-requests.html">Basic Request</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -113,14 +113,14 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../_static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Api icons created by HAJICON - Flaticon"><img src="../_static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
+<p><a href="../../_static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Api icons created by HAJICON - Flaticon"><img src="../../_static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
 <figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
 </figure>
 </div>
 </div></div>
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span><br></a> 
+      <a href="../../">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span><br></a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -132,13 +132,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What are APIs and why do they exists</span></a>
   </div>
 </li>
@@ -153,25 +153,25 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/endpoints.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/interactingAPIs/endpoints.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Endpoints</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/request-methods.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/interactingAPIs/request-methods.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Request Methods</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/interact-apis.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/interactingAPIs/interact-apis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interacting with APIs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/exercise-calling-data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/interactingAPIs/exercise-calling-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise: Calling Data</span></a>
   </div>
 </li>
@@ -179,47 +179,47 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Interacting with APIs using Postman</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Postman</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-basic-requests.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman-basic-requests.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Basic Request</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-environment.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman-environment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Environment Variables</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-post.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman-post.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">POST Requests in Postman</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/postman-delete.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/postman-delete.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">DELETE Requests in Postman</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">A Real-World Example: The GitHub API</span></a>
+ <span class="menu-text">Exercise: The GitHub API</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -227,19 +227,19 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/github-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/exercise-github-api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Working with the GitHub API</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/exercise-github-api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/exercise-github-api-1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 1: Getting Information from GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/exercise-github-api-2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/postman/exercise-github-api-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 2: Adding and Removing Information from GitHub</span></a>
   </div>
 </li>
@@ -258,7 +258,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/python.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interacting with APIs with Python</span></a>
   </div>
 </li>
@@ -266,22 +266,22 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">APIs for Data Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/collecting-data-for-analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/dataAnalysis/collecting-data-for-analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Collecting Data for Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/analyzing-data.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../chapters/dataAnalysis/analyzing-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Analyzing Data</span></a>
   </div>
 </li>
@@ -289,7 +289,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources/catalog.html" class="sidebar-item-text sidebar-link">
+  <a href="../../resources/catalog.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A Catalog of APIs</span></a>
   </div>
 </li>
@@ -303,29 +303,19 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#visualizing-the-network" id="toc-visualizing-the-network" class="nav-link active" data-scroll-target="#visualizing-the-network">Visualizing the network</a></li>
-  <li><a href="#exploring-the-network" id="toc-exploring-the-network" class="nav-link" data-scroll-target="#exploring-the-network">Exploring the network</a>
-  <ul class="collapse">
-  <li><a href="#isolate-communities" id="toc-isolate-communities" class="nav-link" data-scroll-target="#isolate-communities">Isolate communities</a></li>
-  <li><a href="#spotlight-on-horses" id="toc-spotlight-on-horses" class="nav-link" data-scroll-target="#spotlight-on-horses">Spotlight on “Horses”</a></li>
-  </ul></li>
-  <li><a href="#some-preliminary-insights" id="toc-some-preliminary-insights" class="nav-link" data-scroll-target="#some-preliminary-insights">Some preliminary insights</a>
-  <ul class="collapse">
-  <li><a href="#thematic-areas-are-well-defined-but-overlapping" id="toc-thematic-areas-are-well-defined-but-overlapping" class="nav-link" data-scroll-target="#thematic-areas-are-well-defined-but-overlapping">1. Thematic Areas Are Well-Defined but Overlapping</a></li>
-  <li><a href="#certain-terms-act-as-bridges-between-communities" id="toc-certain-terms-act-as-bridges-between-communities" class="nav-link" data-scroll-target="#certain-terms-act-as-bridges-between-communities">2. Certain Terms Act as “Bridges” Between Communities</a></li>
-  <li><a href="#the-network-reveals-how-art-metadata-is-structured" id="toc-the-network-reveals-how-art-metadata-is-structured" class="nav-link" data-scroll-target="#the-network-reveals-how-art-metadata-is-structured">3. The Network Reveals How Art Metadata Is Structured</a></li>
-  <li><a href="#unexpected-connections-the-importance-of-structure" id="toc-unexpected-connections-the-importance-of-structure" class="nav-link" data-scroll-target="#unexpected-connections-the-importance-of-structure">4. Unexpected Connections &amp; The Importance of Structure</a></li>
-  </ul></li>
-  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up">Wrapping Up</a></li>
+  <li><a href="#starting-with-a-workspace" id="toc-starting-with-a-workspace" class="nav-link active" data-scroll-target="#starting-with-a-workspace">Starting with a Workspace</a></li>
+  <li><a href="#creating-a-collection" id="toc-creating-a-collection" class="nav-link" data-scroll-target="#creating-a-collection">Creating a Collection</a></li>
+  <li><a href="#adding-your-first-get-request" id="toc-adding-your-first-get-request" class="nav-link" data-scroll-target="#adding-your-first-get-request">Adding Your First <code>GET</code> Request</a></li>
+  <li><a href="#using-query-parameters" id="toc-using-query-parameters" class="nav-link" data-scroll-target="#using-query-parameters">Using Query Parameters</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/collecting-data-for-analysis.html">APIs for Data Analysis</a></li><li class="breadcrumb-item"><a href="../chapters/analyzing-data.html">Analyzing Data</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/postman/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/postman-basic-requests.html">Basic Request</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Analyzing Data</h1>
+<h1 class="title">Basic Requests using Postman</h1>
 </div>
 
 
@@ -342,220 +332,160 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </header>
 
 
-<p>Our final step is to analyze the data using network analysis to uncover thematic areas within the Medieval Art collection.</p>
-<p>We have a dataset containing 1725 unique pairs of tags. By transforming this dataset into a network graph, we can visualize how terms relate to one another:</p>
-<ul>
-<li>Nodes represent individual tags.</li>
-<li>Edges represent co-occurrences of tags within the same object, indicating a thematic connection.</li>
-<li>Weights reflect how often each tag pair appears together.</li>
-</ul>
-<p>While the full details of network construction are beyond the scope of this workshop, you can create and explore network graphs using tools like Gephi. The processed network data is available in the <a href="https://github.com/jairomelo/intro2APIs-examples/tree/main/data">project repository</a> as <a href="https://github.com/jairomelo/intro2APIs-examples/blob/main/data/processed/network_medieval_art_tags.gexf"><code>network_medieval_art_tags.gexf</code></a>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<p>In this section, we’ll create a workspace in Postman and perform a few basic <code>GET</code> requests using <strong>The Cat API</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>What is GEXF?
+Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The GEXF (Graph Exchange XML Format) is a widely used format for storing and sharing network graphs. It is structured using XML, making it both human-readable and compatible with various network analysis tools like Gephi and Cytoscape.</p>
-</div>
-</div>
-</div>
-<section id="visualizing-the-network" class="level2">
-<h2 class="anchored" data-anchor-id="visualizing-the-network">Visualizing the network</h2>
-<p>To better understand our network, we need to visualize how terms are connected. A graph layout allows us to represent nodes (tags) and edges (relationships) in a structured way, making it easier to explore clusters, central terms, and thematic areas.</p>
-<p>There are multiple tools available for network visualization, ranging from desktop applications to web-based platforms:</p>
+<p>The screenshots in this notebook were taken from the <strong>Postman Desktop application</strong> running on macOS.</p>
 <ul>
-<li>Gephi (<a href="https://gephi.org/">desktop</a> | <a href="https://gephi.org/gephi-lite/">Gephi Lite</a>) – A powerful open-source tool for network analysis.</li>
-<li>Cytoscape (<a href="https://cytoscape.org/">desktop</a>) – Commonly used in bioinformatics and large-scale networks.</li>
-<li>Retina (<a href="https://ouestware.gitlab.io/retina/beta/">web-based</a>) – A browser-friendly tool that allows interactive exploration.</li>
+<li><strong>Version</strong>: 11.42.1<br>
+</li>
+<li><strong>UI Version</strong>: 11.42.1-ui-250421-2337<br>
+</li>
+<li><strong>Desktop Platform Version</strong>: 11.41.4 (11.41.4)</li>
 </ul>
-<p>For this workshop, we will explore the network using Retina, which enables interactive exploration directly in your browser.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Retina as a Web API for Network Visualization
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Unlike traditional network visualization tools, Retina works dynamically through URL parameters, making it function similarly to a Web API. Instead of manually adjusting settings in a graphical interface, Retina allows users to modify the view using URL parameters. These parameters control layout, node size, color attributes, filtering, and focus points—all without needing a separate backend. Because the graph is rendered directly in the user’s browser, all changes happen client-side, just like API calls retrieving data.</p>
-<p>This means we can construct Retina URLs dynamically to generate custom views of our network, making it a powerful tool for API-driven scientific research.</p>
-<p>By tweaking the URL, you can reconfigure the network visualization dynamically, much like calling an API with different query parameters!</p>
+<p>While Postman’s interface and features may continue to evolve (see the <a href="https://www.postman.com/release-notes/postman-app/">release notes</a> for updates), the <strong>core concepts covered in this guide will remain relevant</strong> across future versions.</p>
 </div>
 </div>
 </div>
-<p>The layout for this visualization was prepared in Gephi and then exported to Retina, but you can also import the raw GEXF file into Retina and generate a similar graph from scratch.</p>
-<iframe width="800" height="600" src="https://ouestware.gitlab.io/retina/beta/#/embed/?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&amp;c=m-s&amp;s=ei&amp;sa[]=h&amp;sa[]=b&amp;sa[]=cu&amp;sa[]=t&amp;sa[]=ei&amp;sa[]=r&amp;sa[]=co&amp;ca[]=ec-s&amp;ca[]=w-s&amp;ca[]=m-s&amp;ca[]=s-s&amp;er=0.1&amp;ec=s&amp;ds=1" frameborder="0" title="Retina" allowfullscreen="">
-</iframe>
-<p>You can also explore the network in a new tab by clicking <a href="https://ouestware.gitlab.io/retina/beta/#/graph?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&amp;c=m-s&amp;s=ei&amp;sa%5B%5D=h&amp;sa%5B%5D=b&amp;sa%5B%5D=cu&amp;sa%5B%5D=t&amp;sa%5B%5D=ei&amp;sa%5B%5D=r&amp;sa%5B%5D=co&amp;ca%5B%5D=ec-s&amp;ca%5B%5D=w-s&amp;ca%5B%5D=m-s&amp;ca%5B%5D=s-s&amp;er=0.1&amp;ec=s&amp;ds=1">here</a></p>
-<p>The network is fully interactive, allowing you to zoom in and out to examine specific areas or use the search bar to locate a particular term. Each node represents a tag from the dataset, and its color and size reflect important network properties.</p>
+<section id="starting-with-a-workspace" class="level2">
+<h2 class="anchored" data-anchor-id="starting-with-a-workspace">Starting with a Workspace</h2>
+<p><strong>Workspaces</strong> help keep your requests organized and make it easier to collaborate with others. To create a new workspace, go to <code>Workspaces</code> → <code>Create Workspace</code> and choose a <strong>Blank workspace</strong>.</p>
+<p>You’ll be prompted to enter a name, select a workspace type, and manage access settings.</p>
+<p>For this exercise, we’ll use the following setup:</p>
 <ul>
-<li>Color is determined by the <em>modularity class</em>, which groups related terms into thematic communities. Terms that frequently appear together in the dataset will tend to cluster, forming distinct regions in the network.</li>
-<li>Size is based on <em>Eigenvector Centrality</em>, a measure of influence within the network. Larger nodes indicate terms that serve as key connectors, linking multiple themes together. For instance, if a term like “Christ” or “Virgin Mary” appears prominently, it suggests that it plays a central role in shaping the overall structure of the dataset.</li>
+<li><strong>Name</strong>: <code>My Requests</code></li>
+<li><strong>Type</strong>: <code>Internal workspace</code></li>
+<li><strong>Access</strong>: Keep the default — everyone in your team can access it</li>
 </ul>
-<p>To further customize your view, open the menu on the left and experiment with color and size settings to highlight different attributes. By adjusting these parameters, you can gain new insights into how terms interact and uncover unexpected thematic relationships within the Medieval Art collection.</p>
-</section>
-<section id="exploring-the-network" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-the-network">Exploring the network</h2>
-<p>One of the challenges of using networks as a data visualization tool is the risk of creating a “hairball” — a dense, cluttered graph with too many connections, making it difficult to interpret patterns or insights. To address this issue, Retina offers built-in features that allow us to explore the network in more detail and isolate key themes.</p>
-<section id="isolate-communities" class="level3">
-<h3 class="anchored" data-anchor-id="isolate-communities">Isolate communities</h3>
-<p>Since each community in our network represents a thematic area, we can filter specific communities to explore the terms they contain and their connections to the broader network.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>How to Isolate a Community in Retina
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>A straightforward way to isolate communities is by using Retina’s “Explore” feature:</p>
-<ol type="1">
-<li>Open the Explore menu.</li>
-<li>Click on a community to highlight it.</li>
-<li>Use the filter options to hide other nodes and focus on a single thematic area.</li>
-</ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../static/imgs/Retina-filter-by-community.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Retina Filter by Community"><img src="../static/imgs/Retina-filter-by-community.png" class="img-fluid figure-img" alt="Retina Filter by Community"></a></p>
-<figcaption>Retina Filter by Community</figcaption>
+<p><a href="../../static/imgs/postman-workspace-creation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Workspace creation form in Postman"><img src="../../static/imgs/postman-workspace-creation.png" class="img-fluid figure-img" alt="Workspace creation form in Postman"></a></p>
+<figcaption>Workspace creation form in Postman</figcaption>
 </figure>
 </div>
-</div>
-</div>
-</div>
-<p>Our analysis reveals 11 distinct communities, with three major groups containing most of the terms. Some communities are very small, consisting of just two or three nodes.</p>
-<p>To explore this further, let’s isolate the largest community (Community 0) and analyze its structure in more detail:</p>
-<iframe width="800" height="600" src="https://ouestware.gitlab.io/retina/beta/#/embed/?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&amp;c=m-s&amp;s=ei&amp;sa[]=h&amp;sa[]=b&amp;sa[]=cu&amp;sa[]=t&amp;sa[]=ei&amp;sa[]=r&amp;sa[]=co&amp;ca[]=ec-s&amp;ca[]=w-s&amp;ca[]=m-s&amp;ca[]=s-s&amp;m-s.t=0&amp;er=0.1&amp;ec=s&amp;ds=1" frameborder="0" title="Retina" allowfullscreen="">
-</iframe>
-<p>With this filter applied, we can better interpret the network. Community 0 appears to represent “Animals, Plants, and Objects”, a broad category that connects mythical, religious, and historical figures with specific objects such as flowers, horses, and medallions.</p>
+<p>If you haven’t set up a team in Postman yet, you’ll be prompted to fill out a simple form to create one. Just keep it straightforward: choose any name for your team, select <code>Other</code> for the question <em>“What will your team work on?”</em>, and confirm.</p>
+<p>Once your team is created, you’ll be ready to add some collections.</p>
 </section>
-<section id="spotlight-on-horses" class="level3">
-<h3 class="anchored" data-anchor-id="spotlight-on-horses">Spotlight on “Horses”</h3>
-<p>To further explore connections within Community 0, let’s isolate the term “Horses” using the search bar in Retina.</p>
-<p>This reveals that “Horses” acts as a bridge between multiple thematic areas. It links to mythical and historical figures like Achilles, Alexander the Great, Andromache, Hercules, and Saint George. Additionally, it connects with other communities, including Community 4 (centered on “Men” and “Women”) and Community 3 (focused on “Christ” and “Virgin Mary”), highlighting its broad thematic relevance.</p>
-<iframe width="800" height="600" src="https://ouestware.gitlab.io/retina/beta/#/graph/?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&amp;c=m-s&amp;s=b&amp;n=Horses&amp;sa[]=h&amp;sa[]=b&amp;sa[]=cu&amp;sa[]=t&amp;sa[]=ei&amp;sa[]=r&amp;sa[]=co&amp;ca[]=ec-s&amp;ca[]=w-s&amp;ca[]=m-s&amp;ca[]=s-s&amp;m-s.t=0&amp;er=0.1&amp;ec=s&amp;ds=1" frameborder="0" title="Retina" allowfullscreen="">
-</iframe>
-<p>Beyond connections, we can examine network metrics in the explore menu to better understand the role of “Horses” in the dataset. Below is a breakdown of key values and their meaning in the network:</p>
+<section id="creating-a-collection" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-collection">Creating a Collection</h2>
+<p>Once your workspace and team are set up, the next step is to create a <strong>collection</strong>. Collections are folders that help you group and organize your API requests. They’re especially useful when working with multiple endpoints from the same service.</p>
+<p>To create a new collection:</p>
+<ol type="1">
+<li>In the left sidebar, click the <code>Collections</code> tab.</li>
+<li>Click the <code>+ Blank Collection</code> button.</li>
+<li>Give your collection a name. For this exercise, you can name it <strong>“The Cat API”</strong>.</li>
+<li>(Optional) Add a description to explain what this collection is for.</li>
+<li>Click <strong>Create</strong>.</li>
+</ol>
+<p>You’ll now see your new collection listed in the sidebar. We’ll add our first <code>GET</code> request to it in the next step.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../../static/imgs/postman-create-collection.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Creating a collection in Postman"><img src="../../static/imgs/postman-create-collection.png" class="img-fluid figure-img" alt="Creating a collection in Postman"></a></p>
+<figcaption>Creating a collection in Postman</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you create a new workspace, Postman may automatically add a template collection named <strong>“End-to-End Tests”</strong>. You can safely remove it to keep your workspace clean and focused.</p>
+<p>To delete it:<br>
+Click the three dots (<code>⋮</code>) next to the collection name, then select <strong>Delete</strong>.</p>
+</div>
+</div>
+</section>
+<section id="adding-your-first-get-request" class="level2">
+<h2 class="anchored" data-anchor-id="adding-your-first-get-request">Adding Your First <code>GET</code> Request</h2>
+<p>Now that you’ve created your collection, it’s time to add a request. We’ll start by adding a basic <code>GET</code> request to <strong>The Cat API</strong> to retrieve a list of cat breeds.</p>
+<p>To do this:</p>
+<ol type="1">
+<li>Click the name of your collection (<strong>The Cat API</strong>) in the left sidebar.</li>
+<li>Click the three dots (<code>⋮</code>) next to the collection name, then select <strong>Add request</strong>.</li>
+<li>Give your request a name — for example, <strong>List Breeds</strong>.</li>
+<li>In the <strong>Request type dropdown</strong>, make sure <code>GET</code> is selected.</li>
+<li>In the <strong>URL field</strong>, paste the following endpoint:</li>
+</ol>
+<p><code>https://api.thecatapi.com/v1/breeds</code></p>
+<ol start="6" type="1">
+<li>Click <strong>Save</strong> (upper right) and choose <strong>Save to “The Cat API” collection</strong>.</li>
+</ol>
+<p>You’re ready to send your first request! Click the <strong>Send</strong> button.</p>
+<p>You should see a <code>200 OK</code> response along with a list of cat breeds in the response body.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../../static/imgs/postman-get-catapi-breeds.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Adding a GET request in Postman"><img src="../../static/imgs/postman-get-catapi-breeds.png" class="img-fluid figure-img" alt="Adding a GET request in Postman"></a></p>
+<figcaption>Adding a GET request in Postman</figcaption>
+</figure>
+</div>
+</section>
+<section id="using-query-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="using-query-parameters">Using Query Parameters</h2>
+<p>Many APIs allow you to filter or customize your results using <strong>query parameters</strong>. These are added to the end of the URL after a <code>?</code> symbol and follow a <code>key=value</code> format.</p>
+<p>Let’s try an example using The Cat API’s search endpoint to retrieve only a few cat images in GIF format.</p>
+<ol type="1">
+<li>In your <strong>The Cat API</strong> collection, add a new request.</li>
+<li>Name the request: <strong>Search Cat Images</strong></li>
+<li>Set the request type to <code>GET</code>.</li>
+<li>In the URL field, paste the following:</li>
+</ol>
+<p><code>https://api.thecatapi.com/v1/images/search</code></p>
+<ol start="5" type="1">
+<li>Switch to the <strong>Params</strong> tab (below the URL field).</li>
+<li>Add the following query parameters:</li>
+</ol>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><strong>Metric</strong></th>
-<th style="text-align: center;"><strong>Value (Horses)</strong></th>
-<th style="text-align: center;"><strong>Meaning in Context</strong></th>
+<th>Key</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">Eccentricity</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">“Horses” is relatively central, as its longest shortest path to another node is just 3 steps</td>
+<td><code>mime_types</code></td>
+<td><code>gif</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Closeness Centrality</td>
-<td style="text-align: center;">0.56</td>
-<td style="text-align: center;">A higher closeness value means “Horses” is well positioned, with short paths to many other nodes.</td>
+<td><code>limit</code></td>
+<td><code>3</code></td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">Harmonic Closeness Centrality</td>
-<td style="text-align: center;">0.622</td>
-<td style="text-align: center;">Accounts for disconnected components, reinforcing the influence of “Horses” in the network.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Betweenness Centrality</td>
-<td style="text-align: center;">0.041</td>
-<td style="text-align: center;">Low betweenness suggests that while “Horses” connects communities, it is not a major bridge.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Weighted Degree</td>
-<td style="text-align: center;">174</td>
-<td style="text-align: center;">“Horses” has an exceptionally high number of connections, making it a key thematic term.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Modularity Class</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">It belongs to the largest thematic cluster in the network.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Stat Inf Class</td>
-<td style="text-align: center;">14</td>
-<td style="text-align: center;">Based on Statistical Inference, this classification suggests “Horses” belongs to a statistically significant thematic grouping.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Clustering Coefficient</td>
-<td style="text-align: center;">0.167</td>
-<td style="text-align: center;">A low coefficient indicates “Horses” is not densely interconnected but still plays a linking role.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Triangles</td>
-<td style="text-align: center;">381</td>
-<td style="text-align: center;">The node appears in many tightly interconnected groups, suggesting strong thematic associations.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Eigenvector Centrality</td>
-<td style="text-align: center;">0.584</td>
-<td style="text-align: center;">High influence, indicating strong connections to other important terms.</td>
+<td><code>size</code></td>
+<td><code>small</code></td>
 </tr>
 </tbody>
 </table>
-<p>This approach can be applied to any term in the network—by isolating a node and interpreting its metrics and connections, we can uncover hidden patterns and thematic relationships within the collection.</p>
-</section>
-</section>
-<section id="some-preliminary-insights" class="level2">
-<h2 class="anchored" data-anchor-id="some-preliminary-insights">Some preliminary insights</h2>
-<p>After this brief exploration, we can draw several preliminary conclusions about the structure of thematic areas in the Medieval Art collection. These insights not only help us understand how objects are categorized but also highlight broader patterns in cultural and religious representation.</p>
-<section id="thematic-areas-are-well-defined-but-overlapping" class="level3">
-<h3 class="anchored" data-anchor-id="thematic-areas-are-well-defined-but-overlapping">1. Thematic Areas Are Well-Defined but Overlapping</h3>
-<p>The network is clustered into 11 distinct communities, each representing a thematic area. From those, we can identify three major groups:</p>
-<ul>
-<li>Community 0 (Animals, Plants, and Objects) is a broad category that links religious, mythical, and historical figures to specific objects like horses, flowers, and medallions.</li>
-<li>Community 4 (Men &amp; Women) represents human figures and social roles, and overlaps with religious themes.</li>
-<li>Community 3 (Christ &amp; Virgin Mary) is highly centered on religious iconography.</li>
-</ul>
-<p>Other communities are highly specialized and relatively isolated from the rest of the network. Community 6, for example, is composed of just three nodes—<code>Greek</code>, <code>Coptic</code>, <code>Documents</code>—suggesting a connection to textual traditions rather than visual themes. Similarly, Community 8 consists only of <code>Hands</code> and <code>Feet</code>, likely indicating specific iconographic elements, while Community 9 pairs <code>Dolphins</code> with <code>Female Nudes</code>, pointing to a connection between aquatic imagery and representations of the human body.</p>
-</section>
-<section id="certain-terms-act-as-bridges-between-communities" class="level3">
-<h3 class="anchored" data-anchor-id="certain-terms-act-as-bridges-between-communities">2. Certain Terms Act as “Bridges” Between Communities</h3>
-<p>While the network is divided into distinct thematic areas, some terms serve as key connectors, linking multiple communities and acting as conceptual bridges.</p>
-<p>One clear example is “Horses”, which appears in different contexts—connecting historical figures such as Alexander the Great, Achilles, and Saint George, while also maintaining links to broader thematic groups like <code>Men</code> and <code>Women</code> and Religious Figures. Similarly, <code>Christ</code> and <code>Virgin Mary</code> are central nodes within religious iconography, reinforcing strong intra-community ties. On the other hand, <code>Men</code> and <code>Women</code> function as structural connectors, bridging religious, mythological, and historical figures, reinforcing their role as central elements in medieval art representation.</p>
-</section>
-<section id="the-network-reveals-how-art-metadata-is-structured" class="level3">
-<h3 class="anchored" data-anchor-id="the-network-reveals-how-art-metadata-is-structured">3. The Network Reveals How Art Metadata Is Structured</h3>
-<p>This exploration is not just about historical themes—it also shows how the Met Museum categorizes its objects. The fact that certain terms cluster together may reflect institutional categorization practices, rather than just organic historical connections.</p>
-</section>
-<section id="unexpected-connections-the-importance-of-structure" class="level3">
-<h3 class="anchored" data-anchor-id="unexpected-connections-the-importance-of-structure">4. Unexpected Connections &amp; The Importance of Structure</h3>
-<p>Highly connected nodes such as “Men,” “Women,” and “Christ” dominate the network, but less connected nodes can still reveal meaningful insights. A prime example is “Noah”, a relatively isolated node that still exhibits a high clustering coefficient (0.857), indicating that it forms tight local connections despite its limited reach within the broader network.</p>
-<iframe width="800" height="600" src="https://ouestware.gitlab.io/retina/beta/#/graph/?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjairomelo%2F1aebfa947f5c84b8b43c7a1eb06857fa%2Fraw%2Fa5d4243596c17b6df8cab16f2ef09585fc520d32%2Fnetwork-5fafdb38-4d8.gexf&amp;c=m-s&amp;s=ei&amp;n=Noah&amp;sa[]=h&amp;sa[]=b&amp;sa[]=cu&amp;sa[]=t&amp;sa[]=ei&amp;sa[]=r&amp;sa[]=co&amp;ca[]=ec-s&amp;ca[]=w-s&amp;ca[]=m-s&amp;ca[]=s-s&amp;er=0.1&amp;ec=s&amp;ds=1" frameborder="0" title="Retina" allowfullscreen="">
-</iframe>
-<p>Examining Noah’s connections reveals both expected and surprising relationships. Unsurprisingly, Noah is linked to <code>Moses</code>, another Old Testament figure. However, an unexpected connection emerges between <code>Noah</code> and several Christian themes, including <code>Coronation of the Virgin</code>, <code>Madonna and Child</code>, and <code>Virgin Mary</code>.</p>
-<p>This suggests that, within this dataset, Noah is not solely categorized within Old Testament narratives but also appears in contexts related to Marian iconography. This is surprising because Noah is typically associated with Genesis and the Flood rather than Christian representations of Mary. Why does he appear in relation to the Coronation of the Virgin? Could this be due to specific artistic traditions, metadata decisions, or broader iconographic patterns? This observation serves as a potential starting point for further research, demonstrating how network analysis can highlight overlooked connections and generate new research questions.</p>
-</section>
-</section>
-<section id="wrapping-up" class="level2">
-<h2 class="anchored" data-anchor-id="wrapping-up">Wrapping Up</h2>
-<p>This exploration of the network has revealed key thematic clusters, influential terms, and even unexpected connections within the Medieval Art collection. By structuring metadata as a network, we uncovered both historical patterns and institutional categorization practices, highlighting the interplay between data and interpretation.</p>
-<p>While this approach provides a powerful way to visualize and analyze relationships at scale, it also raises important questions: Do these clusters reflect historical realities, or are they shaped by modern cataloging decisions? How might additional data—such as object provenance, artistic schools, or iconographic traditions—further refine our understanding?</p>
-<p>As we wrap up, we’ll take a step back to reflect on what we’ve learned and consider the broader implications of using APIs and network analysis for cultural heritage research.</p>
+<ol start="7" type="1">
+<li>Click <strong>Send</strong> to execute the request.</li>
+</ol>
+<p>You should see a list of cat image objects, each with a <code>url</code> field pointing to a different cat GIF.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../../static/imgs/postman-query-params-catapi.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Query parameters in Postman"><img src="../../static/imgs/postman-query-params-catapi.png" class="img-fluid figure-img" alt="Query parameters in Postman"></a></p>
+<figcaption>Query parameters in Postman</figcaption>
+</figure>
+</div>
+<hr>
+<p>If you look carefully at the response, you’ll notice that it returns 10 elements instead of the 3 we specified in the <code>limit</code> parameter. This is because that parameter only works for <strong>authenticated users</strong>.</p>
+<p>The reason is simple: while you can request fewer items (like 3), you can also ask for much larger amounts—such as 20 or even 100 images. If anyone could do this without limits (for example, a bot), The Cat API’s resources could be overwhelmed very quickly.</p>
+<p>That’s why even seemingly harmless actions often require some form of <strong>access control</strong> to prevent abuse or unintended behavior.</p>
+<p>In the next section, we’ll explore how authentication works and how Postman can help you manage your credentials securely.</p>
 
 
 </section>
@@ -963,13 +893,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/collecting-data-for-analysis.html" class="pagination-link" aria-label="Collecting Data for Analysis">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Collecting Data for Analysis</span>
+      <a href="../../chapters/postman/postman.html" class="pagination-link" aria-label="Postman">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Postman</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../resources/catalog.html" class="pagination-link" aria-label="A Catalog of APIs">
-        <span class="nav-page-text">A Catalog of APIs</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../chapters/postman/postman-environment.html" class="pagination-link" aria-label="Environment Variables">
+        <span class="nav-page-text">Environment Variables</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -986,7 +916,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </div>
     <div class="nav-footer-right">
 <div class="footer-tech">
-<p><a class="footer-tech-item" href="https://quarto.org/"> <img src="../_static/imgs/quarto-no-official.svg" alt="Quarto" class="footer-tech-icon"> Quarto </a> <a class="footer-tech-item" href="https://github.com/UCSB-Library-Research-Data-Services/intro2APIs"> <i class="bi bi-github footer-tech-icon" aria-hidden="true"></i> GitHub </a></p>
+<p><a class="footer-tech-item" href="https://quarto.org/"> <img src="../../_static/imgs/quarto-no-official.svg" alt="Quarto" class="footer-tech-icon"> Quarto </a> <a class="footer-tech-item" href="https://github.com/UCSB-Library-Research-Data-Services/intro2APIs"> <i class="bi bi-github footer-tech-icon" aria-hidden="true"></i> GitHub </a></p>
 </div>
 </div>
   </div>
