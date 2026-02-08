@@ -79,6 +79,8 @@ viewof apikey = Inputs.password({
 async function fetchFromApi(method, path, q, api_key) {
   const baseUrl = "https://api.dp.la";
   const targetUrl = `${baseUrl}${path}?q=${q}&page_size=1&api_key=${api_key}`;
+  // Using All Origins proxy to bypass CORS issues
+  // See the documentation in https://allorigins.win/
   const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
 
   try {
@@ -86,9 +88,6 @@ async function fetchFromApi(method, path, q, api_key) {
     if (!response.ok) throw new Error("Proxy server is down.");
 
     const wrapper = await response.json();
-    
-    // We wrap the URL in the AllOrigins proxy
-    // See https://allorigins.win/ for more details on how it works and its limitations.
     const dplaStatus = wrapper.status.http_code; 
     const data = JSON.parse(wrapper.contents);
 
