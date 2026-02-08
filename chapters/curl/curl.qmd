@@ -1,0 +1,14 @@
+---
+title: "cURL - APIs from the command line"
+execute:
+    echo: true
+format:
+    html:
+        code-fold: true
+lightbox: true
+---
+
+In the previous chapters we have seen how to interact with APIs directly from the web browser, and by the help of software testing applications like Postman. However, there are more direct ways to interact with APIs. One of the most common is by using the command line interface (CLI) of your computer. 
+
+**cURL** (Client URL) is a powerful, Open Source, command line tool used for transfering data to and from servers using multiple protocols, including HTTP, HTTPS, FTP, and more. It is widely used for testing APIs, for automating tasks, and for debugging network issues. In its origins, cURL was developed for Unix-based systems, but its popularity has led to being packaged for Windows and macOS as well.
+
