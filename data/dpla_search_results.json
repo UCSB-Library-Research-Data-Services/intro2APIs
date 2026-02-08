@@ -1,0 +1,2219 @@
+{
+  "count": 3379,
+  "docs": [
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/945539eef24c13a0b71e20d1d4e9dc40",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "name": "University of Wisconsin"
+      },
+      "id": "945539eef24c13a0b71e20d1d4e9dc40",
+      "ingestDate": "2020-06-26T02:25:17.858Z",
+      "ingestType": "item",
+      "isShownAt": "http://catalog.hathitrust.org/Record/011261576",
+      "object": "https://books.google.com/books/content?id=q-MsKUPmsIUC&printsec=frontcover&img=1&zoom=5&edge=curl",
+      "originalRecord": {
+        "stringValue": "<record \nxmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.loc.gov/MARC21/slim\">\n  <leader>00668cam a2200217Ia 4500</leader>\n  <controlfield tag=\"001\">011261576</controlfield>\n  <controlfield tag=\"003\">MiAaHDL</controlfield>\n  <controlfield tag=\"005\">20120117000000.0</controlfield>\n  <controlfield tag=\"006\">m d </controlfield>\n  <controlfield tag=\"007\">cr bn ---auaua</controlfield>\n  <controlfield tag=\"008\">970805s1844 fr 000 0 fre </controlfield>\n  <datafield tag=\"035\" ind1=\" \" ind2=\" \">\n    <subfield code=\"a\">sdr-wu7331709</subfield>\n  </datafield>\n  <datafield tag=\"035\" ind1=\" \" ind2=\" \">\n    <subfield code=\"a\">(OCoLC)474957199</subfield>\n  </datafield>\n  <datafield tag=\"040\" ind1=\" \" ind2=\" \">\n    <subfield code=\"a\">GZM</subfield>\n    <subfield code=\"c\">GZM</subfield>\n  </datafield>\n  <datafield tag=\"050\" ind1=\" \" ind2=\"4\">\n    <subfield code=\"a\">BF411</subfield>\n    <subfield code=\"b\">.D47 1844</subfield>\n  </datafield>\n  <datafield tag=\"100\" ind1=\"1\" ind2=\" \">\n    <subfield code=\"a\">Dessaix, Jean Marie.</subfield>\n  </datafield>\n  <datafield tag=\"245\" ind1=\"1\" ind2=\"3\">\n    <subfield code=\"a\">Le noiaphanisme, ou, système des combinaisons :</subfield>\n    <subfield code=\"b\">\n      nouvelle application de la vapeur pour remplacer le génie /\n    </subfield>\n    <subfield code=\"c\">par J.M. Dessaix</subfield>\n  </datafield>\n  <datafield tag=\"250\" ind1=\" \" ind2=\" \">\n    <subfield code=\"a\">Nouvelle éd.</subfield>\n  </datafield>\n  <datafield tag=\"260\" ind1=\" \" ind2=\" \">\n    <subfield code=\"a\">Chambéry :</subfield>\n    <subfield code=\"b\">Chez J. Joly,</subfield>\n    <subfield code=\"c\">1844.</subfield>\n  </datafield>\n  <datafield tag=\"300\" ind1=\" \" ind2=\" \">\n    <subfield code=\"a\">57 p. ;</subfield>\n    <subfield code=\"c\">24 cm.</subfield>\n  </datafield>\n  <datafield tag=\"538\" ind1=\" \" ind2=\" \">\n    <subfield code=\"a\">Mode of access: Internet.</subfield>\n  </datafield>\n  <datafield tag=\"650\" ind1=\" \" ind2=\"0\">\n    <subfield code=\"a\">Artificial intelligence.</subfield>\n  </datafield>\n  <datafield tag=\"650\" ind1=\" \" ind2=\"0\">\n    <subfield code=\"a\">Combinations.</subfield>\n  </datafield>\n  <datafield tag=\"650\" ind1=\" \" ind2=\"0\">\n    <subfield code=\"a\">Creative ability.</subfield>\n  </datafield>\n  <datafield tag=\"970\" ind1=\" \" ind2=\" \">\n    <subfield code=\"a\">BK</subfield>\n  </datafield>\n  <datafield tag=\"974\" ind1=\" \" ind2=\" \">\n    <subfield code=\"b\">WU</subfield>\n    <subfield code=\"c\">WU</subfield>\n    <subfield code=\"d\">20191223</subfield>\n    <subfield code=\"s\">google</subfield>\n    <subfield code=\"u\">wu.89107613192</subfield>\n    <subfield code=\"y\">1844</subfield>\n    <subfield code=\"r\">pd</subfield>\n    <subfield code=\"q\">bib</subfield>\n    <subfield code=\"t\">non-US bib date1 &lt; 1880</subfield>\n  </datafield>\n</record>\n"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/hathi",
+        "name": "HathiTrust"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/945539eef24c13a0b71e20d1d4e9dc40#SourceResource",
+        "creator": [
+          "Dessaix, Jean Marie"
+        ],
+        "date": [
+          {
+            "begin": "1844",
+            "displayDate": "1844",
+            "end": "1844"
+          }
+        ],
+        "extent": [
+          "57 p. ; 24 cm."
+        ],
+        "format": [
+          "Language material",
+          "Electronic resource"
+        ],
+        "identifier": [
+          "LC call number: BF411 .D47 1844",
+          "sdr-wu7331709",
+          "(OCoLC)474957199",
+          "Hathi: 011261576"
+        ],
+        "language": [
+          {
+            "iso639_3": "French",
+            "name": "French"
+          }
+        ],
+        "publisher": [
+          "Chambéry : Chez J. Joly"
+        ],
+        "rights": [
+          "Public domain. Learn more at http://www.hathitrust.org/access_use"
+        ],
+        "subject": [
+          {
+            "name": "Artificial intelligence"
+          },
+          {
+            "name": "Combinations"
+          },
+          {
+            "name": "Creative ability"
+          }
+        ],
+        "title": [
+          "Le noiaphanisme, ou, système des combinaisons : nouvelle application de la vapeur pour remplacer le génie"
+        ],
+        "type": [
+          "text"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/e0c1725d9861b7480bec518a0f1647ad",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/national-museum-of-american-history",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q148584"
+        ],
+        "name": "National Museum of American History"
+      },
+      "id": "e0c1725d9861b7480bec518a0f1647ad",
+      "ingestDate": "2026-02-02T09:23:06.537Z",
+      "ingestType": "item",
+      "isShownAt": "https://n2t.net/ark:/65665/ng49ca746a6-b0f8-704b-e053-15f76fa0b4fa",
+      "mediaMaster": [
+        "https://ids.si.edu/ids/deliveryService?id=SIA-86-6160-000004",
+        "https://ids.si.edu/ids/deliveryService?id=NMAH-RWS2011-02026",
+        "https://ids.si.edu/ids/deliveryService?id=NMAH-RWS2011-02027"
+      ],
+      "object": "https://ids.si.edu/ids/deliveryService?id=SIA-86-6160-000004&max=150",
+      "originalRecord": {
+        "stringValue": "<doc>\n  <indexedStructured>\n    <date>1870s</date>\n    <geoLocation>\n      <Other type=\"Place\">United States</Other>\n    </geoLocation>\n    <geoLocation>\n      <Other type=\"Place\">New York</Other>\n    </geoLocation>\n    <geoLocation>\n      <Other type=\"Place\">New York City</Other>\n    </geoLocation>\n    <geoLocation>\n      <points>\n        <point>\n          <latitude type=\"decimal\">40.7</latitude>\n          <longitude type=\"decimal\">-74</longitude>\n        </point>\n      </points>\n    </geoLocation>\n    <object_type>Patents</object_type>\n    <object_type>mechanical doll, patent model, automaton</object_type>\n    <object_type>patent model, doll, creeping baby</object_type>\n    <object_type>mechanical doll, patent model</object_type>\n    <object_type>Models</object_type>\n    <name>Clarke, George P.</name>\n    <topic>Manufacturing industries</topic>\n    <topic>Industrialization</topic>\n    <topic>Amusements</topic>\n    <topic>Science</topic>\n    <topic>Mathematics</topic>\n    <topic>Robots and Automatons</topic>\n    <topic>Sports</topic>\n    <place>New York City</place>\n    <place>New York</place>\n    <place>United States</place>\n    <online_media_type>Images</online_media_type>\n  </indexedStructured>\n  <descriptiveNonRepeating>\n    <record_ID>nmah_856663</record_ID>\n    <online_media>\n      <media \n      thumbnail=\"https://ids.si.edu/ids/deliveryService?id=SIA-86-6160-000004&amp;max=150\" altTextAccessibility=\"\" extDescrAccessibility=\"\" idsId=\"SIA-86-6160-000004\" guid=\"https://n2t.net/ark:/65665/bq99ca746b6-ef66-704b-e053-15f76fa0b4fa\" id=\"media:SIA-86-6160-000004\" type=\"Images\">\n        <usage>\n          <access>CC0</access>\n        </usage>\n        https://ids.si.edu/ids/deliveryService?id=SIA-86-6160-000004\n</media>\n      <media \n      thumbnail=\"https://ids.si.edu/ids/deliveryService?id=NMAH-RWS2011-02026&amp;max=150\" altTextAccessibility=\"\" extDescrAccessibility=\"\" idsId=\"NMAH-RWS2011-02026\" guid=\"https://n2t.net/ark:/65665/bq99ca746b5-5d4f-704b-e053-15f76fa0b4fa\" id=\"media:NMAH-RWS2011-02026\" type=\"Images\">\n        <usage>\n          <access>CC0</access>\n        </usage>\n        https://ids.si.edu/ids/deliveryService?id=NMAH-RWS2011-02026\n</media>\n      <media \n      thumbnail=\"https://ids.si.edu/ids/deliveryService?id=NMAH-RWS2011-02027&amp;max=150\" altTextAccessibility=\"\" extDescrAccessibility=\"\" idsId=\"NMAH-RWS2011-02027\" guid=\"https://n2t.net/ark:/65665/bq99ca746b5-5d51-704b-e053-15f76fa0b4fa\" id=\"media:NMAH-RWS2011-02027\" type=\"Images\">\n        <usage>\n          <access>CC0</access>\n        </usage>\n        https://ids.si.edu/ids/deliveryService?id=NMAH-RWS2011-02027\n</media>\n    </online_media>\n    <guid>https://n2t.net/ark:/65665/ng49ca746a6-b0f8-704b-e053-15f76fa0b4fa</guid>\n    <unit_code>NMAH</unit_code>\n    <title_sort>CREEPING BABY DOLL PATENT MODEL</title_sort>\n    <title label=\"Title\">Creeping Baby Doll Patent Model</title>\n    <metadata_usage>\n      <access>CC0</access>\n    </metadata_usage>\n    <data_source>National Museum of American History</data_source>\n  </descriptiveNonRepeating>\n  <freetext>\n    <date label=\"date made\">1871</date>\n    <date label=\"patent date\">1871-08-29</date>\n    <setName label=\"See more items in\">Work and Industry: Mechanisms</setName>\n    <setName label=\"See more items in\">Robots and Automatons</setName>\n    <setName label=\"See more items in\">Industry &amp; Manufacturing</setName>\n    <setName label=\"See more items in\">Sports &amp; Leisure</setName>\n    <setName label=\"See more items in\">Science &amp; Mathematics</setName>\n    <identifier label=\"ID Number\">1984.0923.01</identifier>\n    <identifier label=\"accession number\">1984.0923</identifier>\n    <identifier label=\"catalog number\">1984.0923.01</identifier>\n    <identifier label=\"patent number\">118,435</identifier>\n    <notes label=\"Description\">\n      This model demonstrates the invention of a mechanical crawling doll. It accompanied the patent submission of George Pemberton Clarke, who received U.S. patent No. 118,435 on 29 August 1871 for his “Natural Creeping Baby Doll.” The original patent office tag is still attached with red tape. Clarke’s patent was an improvement on the crawling baby doll patent of his associate Robert J. Clay (No. 112,550 granted 14 March 1871).\n    </notes>\n    <notes label=\"Description\">\n      The doll’s head, two arms and two legs are made of painted plaster. The arms and legs are hinged to a brass clockwork body that actuates the arms and legs in imitation of crawling, but the doll moves forward by rolling along on two toothed wheels. A flat piece of wood is attached to top of the movement.\n    </notes>\n    <notes label=\"Description\">\n      A commercial version of the doll is also in the collection. See also Catalog number 2011.0204.01a.\n    </notes>\n    <notes label=\"Description\">\n      This mechanical toy is part of a fascinating continuum of figures built to imitate human life. This long Western tradition stretches from ancient Greece through the mechanical automatons of the Enlightenment, through wind-up toys to contemporary robots and other machines with artificial intelligence.\n    </notes>\n    <notes label=\"Location\">Currently not on view</notes>\n    <name label=\"inventor\">Clarke, George P.</name>\n    <place label=\"associated place\">United States: New York, New York City</place>\n    <physicalDescription label=\"Measurements\">\n      overall: 6 3/4 in x 3 5/8 in x 11 in; 17.145 cm x 9.2075 cm x 27.94 cm\n    </physicalDescription>\n    <physicalDescription label=\"Measurements\">\n      overall - from catalog card: 6 in x 3 in x 10 in; 15.24 cm x 7.62 cm x 25.4 cm\n    </physicalDescription>\n    <dataSource label=\"Data Source\">\n      National Museum of American History\n    </dataSource>\n    <objectType label=\"Object Name\">mechanical doll, patent model</objectType>\n    <objectType label=\"Object Name\">\n      mechanical doll, patent model, automaton\n    </objectType>\n    <objectType label=\"Object Name\">patent model, doll, creeping baby</objectType>\n    <objectType label=\"Object Type\">Patent Model</objectType>\n  </freetext>\n</doc>"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/smithsonian",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q131626"
+        ],
+        "name": "Smithsonian Institution"
+      },
+      "rights": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "rightsCategory": "Unlimited Re-Use",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/e0c1725d9861b7480bec518a0f1647ad#SourceResource",
+        "collection": [
+          {
+            "title": "Work and Industry: Mechanisms"
+          },
+          {
+            "title": "Robots and Automatons"
+          },
+          {
+            "title": "Industry & Manufacturing"
+          },
+          {
+            "title": "Sports & Leisure"
+          },
+          {
+            "title": "Science & Mathematics"
+          }
+        ],
+        "creator": [
+          "Clarke, George P"
+        ],
+        "date": [
+          {
+            "begin": "1871",
+            "displayDate": "1871",
+            "end": "1871"
+          },
+          {
+            "displayDate": "1871-08-29"
+          }
+        ],
+        "description": [
+          "This model demonstrates the invention of a mechanical crawling doll. It accompanied the patent submission of George Pemberton Clarke, who received U.S. patent No. 118,435 on 29 August 1871 for his “Natural Creeping Baby Doll.” The original patent office tag is still attached with red tape. Clarke’s patent was an improvement on the crawling baby doll patent of his associate Robert J. Clay (No. 112,550 granted 14 March 1871).",
+          "The doll’s head, two arms and two legs are made of painted plaster. The arms and legs are hinged to a brass clockwork body that actuates the arms and legs in imitation of crawling, but the doll moves forward by rolling along on two toothed wheels. A flat piece of wood is attached to top of the movement.",
+          "A commercial version of the doll is also in the collection. See also Catalog number 2011.0204.01a.",
+          "This mechanical toy is part of a fascinating continuum of figures built to imitate human life. This long Western tradition stretches from ancient Greece through the mechanical automatons of the Enlightenment, through wind-up toys to contemporary robots and other machines with artificial intelligence.",
+          "Currently not on view"
+        ],
+        "spatial": [
+          {},
+          {},
+          {},
+          {
+            "coordinates": "40.7, -74"
+          }
+        ],
+        "subject": [
+          {
+            "name": "Manufacturing industries"
+          },
+          {
+            "name": "Industrialization"
+          },
+          {
+            "name": "Amusements"
+          },
+          {
+            "name": "Science"
+          },
+          {
+            "name": "Mathematics"
+          },
+          {
+            "name": "Robots and Automatons"
+          },
+          {
+            "name": "Sports"
+          },
+          {
+            "name": "Clarke, George P"
+          }
+        ],
+        "temporal": [
+          {
+            "displayDate": "1871"
+          },
+          {
+            "displayDate": "1871-08-29"
+          }
+        ],
+        "title": [
+          "Creeping Baby Doll Patent Model"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/402a39db4b251941ea956e1117013bdd",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/hagley-museum",
+        "name": "Hagley Museum"
+      },
+      "id": "402a39db4b251941ea956e1117013bdd",
+      "ingestDate": "2026-02-02T11:20:34.271Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.hagley.org/08075486_ajeeb",
+      "object": "https://digital.hagley.org/islandora/object/islandora%3A2541514/datastream/TN/view/The%20Adventures%20of%20Ajeeb%3A%20The%20Wonderful%20Chess%20Automaton.jpg",
+      "originalRecord": {
+        "stringValue": "<record>\n  <header \n  xmlns=\"http://www.openarchives.org/OAI/2.0/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n    <identifier>oai:NJDEDC:oai:digital.hagley.org:islandora_2541514</identifier>\n    <datestamp>2026-02-02T10:50:54Z</datestamp>\n</header>\n  <metadata \n  xmlns=\"http://www.openarchives.org/OAI/2.0/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n    <record \n    xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:edm=\"http://www.europeana.eu/schemas/edm/\">\n      <metadata>\n        <dc:title>The Adventures of Ajeeb: The Wonderful Chess Automaton</dc:title>\n        <dc:date>1885</dc:date>\n        <dc:date>1885?</dc:date>\n        <dcterms:isPartOf>Trade catalogs and pamphlets collection</dcterms:isPartOf>\n        <dcterms:subject>\n          Artificial intelligence--Robots--Middle Eastern people--Caricatures and stereotypes--Hoaxes\n        </dcterms:subject>\n        <dcterms:type>Text</dcterms:type>\n        <dcterms:creator>Hooper, Charles Alfred</dcterms:creator>\n        <dcterms:description>\n          Ajeeb was presented as a chess-playing &quot;automaton&quot;, first presented to the Royal Polytechnical Institute in 1868 by cabinet maker Charles Hooper. The mechanical technology that powered the device was fraudulent; the cabinetry housing the &quot;machine&quot; instead housed human players. During the time Ajeeb was active, his role was played by chess players Harry Nelson Pillsbury (1898–1904), Albert Beauregard Hodges, Constant Ferdinand Burille, Charles Moehle, and Charles Francis Barker.\n        </dcterms:description>\n        <dc:rights>http://rightsstatements.org/vocab/InC-NC/1.0/</dc:rights>\n        <dc:data.state>DE</dc:data.state>\n        <edmterms>\n          <edm:dataProvider>Hagley Museum</edm:dataProvider>\n          <edm:isShownAt>https://digital.hagley.org/08075486_ajeeb</edm:isShownAt>\n          <edm:preview>\n            https://digital.hagley.org/islandora/object/islandora%3A2541514/datastream/TN/view/The%20Adventures%20of%20Ajeeb%3A%20The%20Wonderful%20Chess%20Automaton.jpg\n          </edm:preview>\n        </edmterms>\n      </metadata>\n</record>\n</metadata>\n  <about>\n    <request verb=\"ListRecords\" metadataPrefix=\"oai_dc\"/>\n    <resumptionToken>ecc8a086-275d-4ed1-b317-8b589a557ea0</resumptionToken>\n    <responseDate>2026-02-02T10:50:54.554Z</responseDate>\n  </about>\n</record>"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/njde",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q112194438"
+        ],
+        "name": "NJ/DE Digital Collective"
+      },
+      "rights": "http://rightsstatements.org/vocab/InC-NC/1.0/",
+      "rightsCategory": "Re-use, No Modification",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/402a39db4b251941ea956e1117013bdd#SourceResource",
+        "collection": [
+          {
+            "title": "Trade catalogs and pamphlets collection"
+          }
+        ],
+        "creator": [
+          "Hooper, Charles Alfred"
+        ],
+        "date": [
+          {
+            "begin": "1885",
+            "displayDate": "1885",
+            "end": "1885"
+          },
+          {
+            "displayDate": "1885?"
+          }
+        ],
+        "description": [
+          "Ajeeb was presented as a chess-playing \"automaton\", first presented to the Royal Polytechnical Institute in 1868 by cabinet maker Charles Hooper. The mechanical technology that powered the device was fraudulent; the cabinetry housing the \"machine\" instead housed human players. During the time Ajeeb was active, his role was played by chess players Harry Nelson Pillsbury (1898–1904), Albert Beauregard Hodges, Constant Ferdinand Burille, Charles Moehle, and Charles Francis Barker."
+        ],
+        "subject": [
+          {
+            "name": "Artificial intelligence--Robots--Middle Eastern people--Caricatures and stereotypes--Hoaxes"
+          }
+        ],
+        "title": [
+          "The Adventures of Ajeeb: The Wonderful Chess Automaton"
+        ],
+        "type": [
+          "text"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/e1e934e59f2d0231afae30c1a13c5c03",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/state-historical-society-of-missouri",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q7603366"
+        ],
+        "name": "State Historical Society of Missouri"
+      },
+      "id": "e1e934e59f2d0231afae30c1a13c5c03",
+      "iiifManifest": "http://cdm17228.contentdm.oclc.org/iiif/info/art/3127/manifest.json",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "http://cdm17228.contentdm.oclc.org/cdm/ref/collection/art/id/3127",
+      "object": "http://cdm17228.contentdm.oclc.org/utils/getthumbnail/collection/art/id/3127",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"http://cdm17228.contentdm.oclc.org/cdm/ref/collection/art/id/3127\",\n  \"dataProvider\" : \"State Historical Society of Missouri\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"http://cdm17228.contentdm.oclc.org/cdm/ref/collection/art/id/3127\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"http://cdm17228.contentdm.oclc.org/utils/getthumbnail/collection/art/id/3127\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Yakotlus - Quatsino (Profile)\" ],\n    \"description\" : [ \"Curtis: In physique and intelligence the Quantsino seem inferior to the other Kwakiutl tribes. This plate illustrates the artificial deformation of the head, which formerly was quite general on the North Pacific coast. The process is described in Volume X, page 52.\", \"15.125 x 11\" ],\n    \"subject\" : [ {\n      \"name\" : \"American Frontier, Native American, Indigenous American, American Indian, First Nations, First Peoples, Edward Sheriff Curtis, The North American Indian\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1914\"\n    } ],\n    \"identifier\" : [ \"http://cdm17228.contentdm.oclc.org/cdm/ref/collection/art/id/3127\" ],\n    \"creator\" : [ \"Curtis, Edward Sheriff (1868-1952)\" ],\n    \"language\" : [ ],\n    \"rights\" : \"http://rightsstatements.org/vocab/NoC-US/1.0/; No Copyright - United States\",\n    \"@id\" : \"oai:cdm17228.contentdm.oclc.org:art/3127\",\n    \"format\" : \"Photogravure; Art\"\n  },\n  \"@id\" : \"missouri--urn:data.mohistory.org:art:oai:cdm17228.contentdm.oclc.org:art/3127\",\n  \"iiifManifest\" : \"http://cdm17228.contentdm.oclc.org/iiif/info/art/3127/manifest.json\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/e1e934e59f2d0231afae30c1a13c5c03#SourceResource",
+        "creator": [
+          "Curtis, Edward Sheriff (1868-1952)"
+        ],
+        "date": [
+          {
+            "begin": "1914",
+            "displayDate": "1914",
+            "end": "1914"
+          }
+        ],
+        "description": [
+          "Curtis: In physique and intelligence the Quantsino seem inferior to the other Kwakiutl tribes. This plate illustrates the artificial deformation of the head, which formerly was quite general on the North Pacific coast. The process is described in Volume X, page 52.",
+          "15.125 x 11"
+        ],
+        "format": [
+          "Photogravure; Art"
+        ],
+        "identifier": [
+          "http://cdm17228.contentdm.oclc.org/cdm/ref/collection/art/id/3127"
+        ],
+        "rights": [
+          "http://rightsstatements.org/vocab/NoC-US/1.0/; No Copyright - United States"
+        ],
+        "subject": [
+          {
+            "name": "American Frontier, Native American, Indigenous American, American Indian, First Nations, First Peoples, Edward Sheriff Curtis, The North American Indian"
+          }
+        ],
+        "title": [
+          "Yakotlus - Quatsino (Profile)"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/0ce69247ba907b466dd2377b258c681d",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "0ce69247ba907b466dd2377b258c681d",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/35790",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35790/datastream/TN/view/Watson%20Library%20construction%20site%20with%20smoke%20and%20debris.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/35790\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/35790\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35790/datastream/TN/view/Watson%20Library%20construction%20site%20with%20smoke%20and%20debris.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library construction site with smoke and debris\" ],\n    \"description\" : [ \"Construction site showing excavation work and heavy smoke from machinery or burning debris. Buildings visible in background with bare winter trees. Single figure walking on pathway in foreground.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"University of Kansas--Buildings\"\n    }, {\n      \"name\" : \"Academic libraries--Construction\"\n    }, {\n      \"name\" : \"Excavation\"\n    }, {\n      \"name\" : \"Construction sites\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1923\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/35790\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_35790\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_35790\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/0ce69247ba907b466dd2377b258c681d#SourceResource",
+        "date": [
+          {
+            "begin": "1923",
+            "displayDate": "1923",
+            "end": "1923"
+          }
+        ],
+        "description": [
+          "Construction site showing excavation work and heavy smoke from machinery or burning debris. Buildings visible in background with bare winter trees. Single figure walking on pathway in foreground.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/35790"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "University of Kansas--Buildings"
+          },
+          {
+            "name": "Academic libraries--Construction"
+          },
+          {
+            "name": "Excavation"
+          },
+          {
+            "name": "Construction sites"
+          }
+        ],
+        "title": [
+          "Watson Library construction site with smoke and debris"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/0f0a8741e3a55b1790ddd5252bce645a",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "0f0a8741e3a55b1790ddd5252bce645a",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/35849",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35849/datastream/TN/view/Architectural%20rendering%20of%20Watson%20Library%20building%2C%20University%20of%20Kansas.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/35849\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/35849\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35849/datastream/TN/view/Architectural%20rendering%20of%20Watson%20Library%20building%2C%20University%20of%20Kansas.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Architectural rendering of Watson Library building, University of Kansas\" ],\n    \"description\" : [ \"Pen and ink architectural drawing showing the exterior design of the proposed Watson Library building with Gothic Revival features including arched windows, stone construction, and multiple chimneys.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"Library buildings\"\n    }, {\n      \"name\" : \"Gothic Revival architecture\"\n    }, {\n      \"name\" : \"Architectural drawings\"\n    }, {\n      \"name\" : \"University of Kansas\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1923\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/35849\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_35849\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_35849\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/0f0a8741e3a55b1790ddd5252bce645a#SourceResource",
+        "date": [
+          {
+            "begin": "1923",
+            "displayDate": "1923",
+            "end": "1923"
+          }
+        ],
+        "description": [
+          "Pen and ink architectural drawing showing the exterior design of the proposed Watson Library building with Gothic Revival features including arched windows, stone construction, and multiple chimneys.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/35849"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "Library buildings"
+          },
+          {
+            "name": "Gothic Revival architecture"
+          },
+          {
+            "name": "Architectural drawings"
+          },
+          {
+            "name": "University of Kansas"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Architectural rendering of Watson Library building, University of Kansas"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/2214c6f338a5dd7edee180df57603ccc",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "2214c6f338a5dd7edee180df57603ccc",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/35787",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35787/datastream/TN/view/Watson%20Library%20construction%2C%201923.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/35787\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/35787\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35787/datastream/TN/view/Watson%20Library%20construction%2C%201923.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library construction, 1923\" ],\n    \"description\" : [ \"A worker using a tool near a tree during construction of Watson Library at the University of Kansas. Gothic Revival architecture is visible in the background with construction materials scattered on the ground.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"Construction sites\"\n    }, {\n      \"name\" : \"Gothic Revival architecture\"\n    }, {\n      \"name\" : \"University of Kansas\"\n    }, {\n      \"name\" : \"Library construction\"\n    }, {\n      \"name\" : \"Construction workers\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1923\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/35787\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_35787\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_35787\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/2214c6f338a5dd7edee180df57603ccc#SourceResource",
+        "date": [
+          {
+            "begin": "1923",
+            "displayDate": "1923",
+            "end": "1923"
+          }
+        ],
+        "description": [
+          "A worker using a tool near a tree during construction of Watson Library at the University of Kansas. Gothic Revival architecture is visible in the background with construction materials scattered on the ground.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/35787"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "Construction sites"
+          },
+          {
+            "name": "Gothic Revival architecture"
+          },
+          {
+            "name": "University of Kansas"
+          },
+          {
+            "name": "Library construction"
+          },
+          {
+            "name": "Construction workers"
+          }
+        ],
+        "title": [
+          "Watson Library construction, 1923"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/a466af21bd40616d4ad81f8c32a83067",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "a466af21bd40616d4ad81f8c32a83067",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/35793",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35793/datastream/TN/view/Watson%20Library%20construction%20site%20at%20University%20of%20Kansas.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/35793\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/35793\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35793/datastream/TN/view/Watson%20Library%20construction%20site%20at%20University%20of%20Kansas.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library construction site at University of Kansas\" ],\n    \"description\" : [ \"Construction site showing excavation work and building materials scattered around the future Watson Library location, with academic buildings and bare trees visible in the background during winter or early spring.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"College buildings\"\n    }, {\n      \"name\" : \"Excavation\"\n    }, {\n      \"name\" : \"Construction sites\"\n    }, {\n      \"name\" : \"University of Kansas--Buildings\"\n    }, {\n      \"name\" : \"Academic libraries--Construction\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1923\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/35793\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_35793\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_35793\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/a466af21bd40616d4ad81f8c32a83067#SourceResource",
+        "date": [
+          {
+            "begin": "1923",
+            "displayDate": "1923",
+            "end": "1923"
+          }
+        ],
+        "description": [
+          "Construction site showing excavation work and building materials scattered around the future Watson Library location, with academic buildings and bare trees visible in the background during winter or early spring.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/35793"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "College buildings"
+          },
+          {
+            "name": "Excavation"
+          },
+          {
+            "name": "Construction sites"
+          },
+          {
+            "name": "University of Kansas--Buildings"
+          },
+          {
+            "name": "Academic libraries--Construction"
+          }
+        ],
+        "title": [
+          "Watson Library construction site at University of Kansas"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/832bbb0d66528382973e5beb9c987205",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "832bbb0d66528382973e5beb9c987205",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/35796",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35796/datastream/TN/view/Watson%20Library%20under%20construction%2C%201924.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/35796\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/35796\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35796/datastream/TN/view/Watson%20Library%20under%20construction%2C%201924.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library under construction, 1924\" ],\n    \"description\" : [ \"Multi-story academic library building under construction with bookstacks visible, early automobile parked in foreground on unpaved ground\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"Watson Library\"\n    }, {\n      \"name\" : \"University of Kansas\"\n    }, {\n      \"name\" : \"Construction\"\n    }, {\n      \"name\" : \"Library buildings\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/35796\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_35796\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_35796\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/832bbb0d66528382973e5beb9c987205#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Multi-story academic library building under construction with bookstacks visible, early automobile parked in foreground on unpaved ground",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/35796"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "Watson Library"
+          },
+          {
+            "name": "University of Kansas"
+          },
+          {
+            "name": "Construction"
+          },
+          {
+            "name": "Library buildings"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Watson Library under construction, 1924"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/ef3bdc55f96f0a1d9720e4c73befb6a5",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "ef3bdc55f96f0a1d9720e4c73befb6a5",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/36727",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36727/datastream/TN/view/Watson%20Library%20interior%20construction%20or%20renovation.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/36727\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/36727\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36727/datastream/TN/view/Watson%20Library%20interior%20construction%20or%20renovation.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library interior construction or renovation\" ],\n    \"description\" : [ \"Interior view of Watson Library showing concrete construction with columns, upper level walkway, and window openings during building phase\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"Concrete construction\"\n    }, {\n      \"name\" : \"University of Kansas\"\n    }, {\n      \"name\" : \"Construction\"\n    }, {\n      \"name\" : \"Library buildings\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/36727\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_36727\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_36727\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/ef3bdc55f96f0a1d9720e4c73befb6a5#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Interior view of Watson Library showing concrete construction with columns, upper level walkway, and window openings during building phase",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/36727"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "Concrete construction"
+          },
+          {
+            "name": "University of Kansas"
+          },
+          {
+            "name": "Construction"
+          },
+          {
+            "name": "Library buildings"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Watson Library interior construction or renovation"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/39969b4944a497d0e36f5fc592036163",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "39969b4944a497d0e36f5fc592036163",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/36728",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36728/datastream/TN/view/Watson%20Library%20basement%20interior%20with%20card%20catalog%20cases.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/36728\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/36728\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36728/datastream/TN/view/Watson%20Library%20basement%20interior%20with%20card%20catalog%20cases.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library basement interior with card catalog cases\" ],\n    \"description\" : [ \"Interior view of Watson Library basement showing built-in wooden card catalog cases along the walls, white support columns, and arched doorway in background.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"Basements\"\n    }, {\n      \"name\" : \"Library furniture\"\n    }, {\n      \"name\" : \"Card catalogs\"\n    }, {\n      \"name\" : \"Library interiors\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/36728\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_36728\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_36728\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/39969b4944a497d0e36f5fc592036163#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Interior view of Watson Library basement showing built-in wooden card catalog cases along the walls, white support columns, and arched doorway in background.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/36728"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "Basements"
+          },
+          {
+            "name": "Library furniture"
+          },
+          {
+            "name": "Card catalogs"
+          },
+          {
+            "name": "Library interiors"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Watson Library basement interior with card catalog cases"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/711796d565d0b9bf9ff67be570fcb61e",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "711796d565d0b9bf9ff67be570fcb61e",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/36726",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36726/datastream/TN/view/Watson%20Library%20interior%20archway%20and%20staircase.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/36726\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/36726\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36726/datastream/TN/view/Watson%20Library%20interior%20archway%20and%20staircase.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library interior archway and staircase\" ],\n    \"description\" : [ \"Interior view of Watson Library showing ornate Gothic Revival architecture with decorative arched entrance, carved stone details, and wooden staircase. Natural light streams through tall windows in the background.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"Staircases\"\n    }, {\n      \"name\" : \"University buildings\"\n    }, {\n      \"name\" : \"Interior architecture\"\n    }, {\n      \"name\" : \"Gothic Revival architecture\"\n    }, {\n      \"name\" : \"Library architecture\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/36726\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_36726\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_36726\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/711796d565d0b9bf9ff67be570fcb61e#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Interior view of Watson Library showing ornate Gothic Revival architecture with decorative arched entrance, carved stone details, and wooden staircase. Natural light streams through tall windows in the background.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/36726"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "Staircases"
+          },
+          {
+            "name": "University buildings"
+          },
+          {
+            "name": "Interior architecture"
+          },
+          {
+            "name": "Gothic Revival architecture"
+          },
+          {
+            "name": "Library architecture"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Watson Library interior archway and staircase"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/b3bce6edfa52f41b82f98c4c57f60f79",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "b3bce6edfa52f41b82f98c4c57f60f79",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/36724",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36724/datastream/TN/view/Watson%20Library%20interior%20construction%20or%20renovation.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/36724\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/36724\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36724/datastream/TN/view/Watson%20Library%20interior%20construction%20or%20renovation.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library interior construction or renovation\" ],\n    \"description\" : [ \"Interior view of library space during construction or renovation showing empty bookshelves along walls, large windows, and a single figure seated in the room. Image appears overexposed or faded.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"University of Kansas\"\n    }, {\n      \"name\" : \"Library interiors\"\n    }, {\n      \"name\" : \"Bookshelves\"\n    }, {\n      \"name\" : \"Library construction\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/36724\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_36724\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_36724\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/b3bce6edfa52f41b82f98c4c57f60f79#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Interior view of library space during construction or renovation showing empty bookshelves along walls, large windows, and a single figure seated in the room. Image appears overexposed or faded.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/36724"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "University of Kansas"
+          },
+          {
+            "name": "Library interiors"
+          },
+          {
+            "name": "Bookshelves"
+          },
+          {
+            "name": "Library construction"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Watson Library interior construction or renovation"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/3cddb2fc60f3e8467084af697de1183e",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "3cddb2fc60f3e8467084af697de1183e",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/36723",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36723/datastream/TN/view/Watson%20Library%20interior%20construction%20or%20renovation.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/36723\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/36723\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36723/datastream/TN/view/Watson%20Library%20interior%20construction%20or%20renovation.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library interior construction or renovation\" ],\n    \"description\" : [ \"Interior view of library space under construction showing empty bookshelves along walls, large windows, and a single person seated near the windows in an otherwise vacant room.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"University buildings\"\n    }, {\n      \"name\" : \"Bookshelves\"\n    }, {\n      \"name\" : \"Library construction\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/36723\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_36723\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_36723\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/3cddb2fc60f3e8467084af697de1183e#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Interior view of library space under construction showing empty bookshelves along walls, large windows, and a single person seated near the windows in an otherwise vacant room.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/36723"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "University buildings"
+          },
+          {
+            "name": "Bookshelves"
+          },
+          {
+            "name": "Library construction"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Watson Library interior construction or renovation"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/ad1a42b15c3be8e9e462f72f1a4311c3",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "ad1a42b15c3be8e9e462f72f1a4311c3",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/35799",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35799/datastream/TN/view/Watson%20Library%20construction%2C%20c1924.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/35799\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/35799\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35799/datastream/TN/view/Watson%20Library%20construction%2C%20c1924.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library construction, c1924\" ],\n    \"description\" : [ \"Exterior view of Watson Library during construction, showing Gothic Revival architecture with arched windows and stone construction. Old Snow Hall visible in background with temporary wooden steps leading to library entrance.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"University of Kansas\"\n    }, {\n      \"name\" : \"Construction\"\n    }, {\n      \"name\" : \"Gothic Revival architecture\"\n    }, {\n      \"name\" : \"Library buildings\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/35799\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_35799\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_35799\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/ad1a42b15c3be8e9e462f72f1a4311c3#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Exterior view of Watson Library during construction, showing Gothic Revival architecture with arched windows and stone construction. Old Snow Hall visible in background with temporary wooden steps leading to library entrance.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/35799"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "University of Kansas"
+          },
+          {
+            "name": "Construction"
+          },
+          {
+            "name": "Gothic Revival architecture"
+          },
+          {
+            "name": "Library buildings"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Watson Library construction, c1924"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/69b46372c414d1c507c1663411a3ba06",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "69b46372c414d1c507c1663411a3ba06",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/36729",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36729/datastream/TN/view/Watson%20Library%20interior%20showing%20arched%20columns%20and%20windows.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/36729\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/36729\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36729/datastream/TN/view/Watson%20Library%20interior%20showing%20arched%20columns%20and%20windows.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library interior showing arched columns and windows\" ],\n    \"description\" : [ \"Interior view of Watson Library featuring three arched openings supported by classical columns, exposed beam ceiling, tall Gothic-style windows with natural light streaming in, and built-in shelving along the walls.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"University buildings\"\n    }, {\n      \"name\" : \"Classical columns\"\n    }, {\n      \"name\" : \"Gothic Revival architecture\"\n    }, {\n      \"name\" : \"Library architecture\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/36729\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_36729\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_36729\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/69b46372c414d1c507c1663411a3ba06#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Interior view of Watson Library featuring three arched openings supported by classical columns, exposed beam ceiling, tall Gothic-style windows with natural light streaming in, and built-in shelving along the walls.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/36729"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "University buildings"
+          },
+          {
+            "name": "Classical columns"
+          },
+          {
+            "name": "Gothic Revival architecture"
+          },
+          {
+            "name": "Library architecture"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Watson Library interior showing arched columns and windows"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/0c23eabe07eb85741864a98a88f69fb3",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "0c23eabe07eb85741864a98a88f69fb3",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/35850",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35850/datastream/TN/view/Watson%20Library%20exterior%20view.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/35850\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/35850\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A35850/datastream/TN/view/Watson%20Library%20exterior%20view.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library exterior view\" ],\n    \"description\" : [ \"Sepia-toned photograph showing the exterior of Watson Library, a Gothic Revival style building with stone construction, arched windows, and a prominent tower section. The building is surrounded by landscaped grounds with trees and lawn areas.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"College buildings\"\n    }, {\n      \"name\" : \"University of Kansas\"\n    }, {\n      \"name\" : \"Gothic Revival architecture\"\n    }, {\n      \"name\" : \"Library buildings\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/35850\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_35850\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_35850\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/0c23eabe07eb85741864a98a88f69fb3#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Sepia-toned photograph showing the exterior of Watson Library, a Gothic Revival style building with stone construction, arched windows, and a prominent tower section. The building is surrounded by landscaped grounds with trees and lawn areas.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/35850"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "College buildings"
+          },
+          {
+            "name": "University of Kansas"
+          },
+          {
+            "name": "Gothic Revival architecture"
+          },
+          {
+            "name": "Library buildings"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Watson Library exterior view"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/fed55f09fe130c3c4ea62c9c79e078b3",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "fed55f09fe130c3c4ea62c9c79e078b3",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/36730",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36730/datastream/TN/view/Watson%20Library%20interior%20with%20arched%20alcoves%20and%20card%20catalog%20cases.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/36730\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/36730\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36730/datastream/TN/view/Watson%20Library%20interior%20with%20arched%20alcoves%20and%20card%20catalog%20cases.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library interior with arched alcoves and card catalog cases\" ],\n    \"description\" : [ \"Interior view of Watson Library showing three large arched alcoves with columns, tall windows, and wooden card catalog cases along the walls. The space features classical architectural elements with high ceilings and natural lighting.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"University buildings\"\n    }, {\n      \"name\" : \"Classical architecture\"\n    }, {\n      \"name\" : \"Card catalogs\"\n    }, {\n      \"name\" : \"Library interiors\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/36730\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_36730\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_36730\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/fed55f09fe130c3c4ea62c9c79e078b3#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Interior view of Watson Library showing three large arched alcoves with columns, tall windows, and wooden card catalog cases along the walls. The space features classical architectural elements with high ceilings and natural lighting.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/36730"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "University buildings"
+          },
+          {
+            "name": "Classical architecture"
+          },
+          {
+            "name": "Card catalogs"
+          },
+          {
+            "name": "Library interiors"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Watson Library interior with arched alcoves and card catalog cases"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/38b2c4269f08c97ab10f2003d57589b2",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "38b2c4269f08c97ab10f2003d57589b2",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/36733",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36733/datastream/TN/view/Watson%20Library%20interior%20construction%20view.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/36733\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/36733\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36733/datastream/TN/view/Watson%20Library%20interior%20construction%20view.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library interior construction view\" ],\n    \"description\" : [ \"Interior view of Watson Library during construction showing empty space with classical columns, arched windows, and built-in bookcases along the walls. The room features decorative ceiling beams and appears to be nearing completion.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"Classical architecture\"\n    }, {\n      \"name\" : \"Interior architecture\"\n    }, {\n      \"name\" : \"University of Kansas\"\n    }, {\n      \"name\" : \"Library buildings\"\n    }, {\n      \"name\" : \"Academic libraries--Construction\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/36733\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_36733\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_36733\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/38b2c4269f08c97ab10f2003d57589b2#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Interior view of Watson Library during construction showing empty space with classical columns, arched windows, and built-in bookcases along the walls. The room features decorative ceiling beams and appears to be nearing completion.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/36733"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "Classical architecture"
+          },
+          {
+            "name": "Interior architecture"
+          },
+          {
+            "name": "University of Kansas"
+          },
+          {
+            "name": "Library buildings"
+          },
+          {
+            "name": "Academic libraries--Construction"
+          }
+        ],
+        "title": [
+          "Watson Library interior construction view"
+        ]
+      }
+    },
+    {
+      "@context": "http://dp.la/api/items/context",
+      "@id": "http://dp.la/api/items/317175637d9dd3623c6dbfc2c99cc945",
+      "@type": "ore:Aggregation",
+      "aggregatedCHO": "#sourceResource",
+      "dataProvider": {
+        "@id": "http://dp.la/api/contributor/university-of-kansas-libraries",
+        "name": "University of Kansas Libraries"
+      },
+      "id": "317175637d9dd3623c6dbfc2c99cc945",
+      "ingestDate": "2026-01-15T17:44:49.351Z",
+      "ingestType": "item",
+      "isShownAt": "https://digital.lib.ku.edu/ku-uaphotos/36720",
+      "object": "https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36720/datastream/TN/view/Watson%20Library%20interior%20showing%20main%20staircase%20and%20entrance%20hall.jpg",
+      "originalRecord": {
+        "stringValue": "{\n  \"@context\" : \"http://dp.la/api/items/context\",\n  \"isShownAt\" : \"https://digital.lib.ku.edu/ku-uaphotos/36720\",\n  \"dataProvider\" : \"University of Kansas Libraries\",\n  \"@type\" : \"ore:Aggregation\",\n  \"hasView\" : {\n    \"@id\" : \"https://digital.lib.ku.edu/ku-uaphotos/36720\"\n  },\n  \"provider\" : {\n    \"@id\" : \"http://dp.la/api/contributor/missouri-hub\",\n    \"name\" : \"Missouri Hub\"\n  },\n  \"object\" : \"https://digital.lib.ku.edu/islandora/object/ku-uaphotos%3A36720/datastream/TN/view/Watson%20Library%20interior%20showing%20main%20staircase%20and%20entrance%20hall.jpg\",\n  \"aggregatedCHO\" : \"#sourceResource\",\n  \"sourceResource\" : {\n    \"title\" : [ \"Watson Library interior showing main staircase and entrance hall\" ],\n    \"description\" : [ \"Interior view of Watson Library featuring a curved staircase with wooden railings, classical columns, arched doorways, and a person standing on the staircase. The space shows collegiate Gothic architectural elements typical of 1920s academic buildings.\", \"Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns.\" ],\n    \"subject\" : [ {\n      \"name\" : \"University of Kansas. Libraries\"\n    }, {\n      \"name\" : \"University buildings\"\n    }, {\n      \"name\" : \"Gothic Revival architecture\"\n    }, {\n      \"name\" : \"Staircases\"\n    }, {\n      \"name\" : \"Library architecture\"\n    }, {\n      \"name\" : \"Academic libraries\"\n    } ],\n    \"temporal\" : [ {\n      \"displayDate\" : \"1924\"\n    } ],\n    \"identifier\" : [ \"https://digital.lib.ku.edu/ku-uaphotos/36720\" ],\n    \"creator\" : [ ],\n    \"language\" : [ ],\n    \"rights\" : \"This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s).\",\n    \"@id\" : \"oai:dora.ku.edu:ku-uaphotos_36720\",\n    \"format\" : \"electronic; image/tiff\",\n    \"contributor\" : \"University of Kansas Libraries\"\n  },\n  \"@id\" : \"ku43:oai:digital.lib.ku.edu:ku-uaphotos_36720\"\n}"
+      },
+      "provider": {
+        "@id": "http://dp.la/api/contributor/heartland-hub",
+        "exactMatch": [
+          "http://www.wikidata.org/entity/Q83878488"
+        ],
+        "name": "Heartland Hub"
+      },
+      "rightsCategory": "Unspecified Rights Status",
+      "sourceResource": {
+        "@id": "http://dp.la/api/items/317175637d9dd3623c6dbfc2c99cc945#SourceResource",
+        "date": [
+          {
+            "begin": "1924",
+            "displayDate": "1924",
+            "end": "1924"
+          }
+        ],
+        "description": [
+          "Interior view of Watson Library featuring a curved staircase with wooden railings, classical columns, arched doorways, and a person standing on the staircase. The space shows collegiate Gothic architectural elements typical of 1920s academic buildings.",
+          "Descriptive metadata for this item has been generated in part using AI (artificial intelligence) technologies and may be incomplete, misleading, or inaccurate. Please contact the Kenneth Spencer Research Library with specific questions or concerns."
+        ],
+        "format": [
+          "Electronic; image/tiff"
+        ],
+        "identifier": [
+          "https://digital.lib.ku.edu/ku-uaphotos/36720"
+        ],
+        "rights": [
+          "This Item may be protected by copyright and/or related rights. You are free to use this Item in any way that is permitted by the copyright and related rights legislation that applies to your use. For other uses you need to obtain permission from the rights-holder(s)."
+        ],
+        "subject": [
+          {
+            "name": "University of Kansas. Libraries"
+          },
+          {
+            "name": "University buildings"
+          },
+          {
+            "name": "Gothic Revival architecture"
+          },
+          {
+            "name": "Staircases"
+          },
+          {
+            "name": "Library architecture"
+          },
+          {
+            "name": "Academic libraries"
+          }
+        ],
+        "title": [
+          "Watson Library interior showing main staircase and entrance hall"
+        ]
+      }
+    }
+  ],
+  "facets": {
+    "sourceResource.date.begin": {
+      "_type": "date_histogram",
+      "entries": [
+        {
+          "count": 4,
+          "time": "2026"
+        },
+        {
+          "count": 128,
+          "time": "2025"
+        },
+        {
+          "count": 173,
+          "time": "2024"
+        },
+        {
+          "count": 100,
+          "time": "2023"
+        },
+        {
+          "count": 34,
+          "time": "2022"
+        },
+        {
+          "count": 34,
+          "time": "2021"
+        },
+        {
+          "count": 33,
+          "time": "2020"
+        },
+        {
+          "count": 23,
+          "time": "2019"
+        },
+        {
+          "count": 15,
+          "time": "2018"
+        },
+        {
+          "count": 3,
+          "time": "2017"
+        },
+        {
+          "count": 4,
+          "time": "2016"
+        },
+        {
+          "count": 6,
+          "time": "2015"
+        },
+        {
+          "count": 4,
+          "time": "2014"
+        },
+        {
+          "count": 26,
+          "time": "2013"
+        },
+        {
+          "count": 2,
+          "time": "2012"
+        },
+        {
+          "count": 1,
+          "time": "2011"
+        },
+        {
+          "count": 4,
+          "time": "2010"
+        },
+        {
+          "count": 6,
+          "time": "2008"
+        },
+        {
+          "count": 1,
+          "time": "2007"
+        },
+        {
+          "count": 31,
+          "time": "2006"
+        },
+        {
+          "count": 27,
+          "time": "2005"
+        },
+        {
+          "count": 71,
+          "time": "2004"
+        },
+        {
+          "count": 89,
+          "time": "2003"
+        },
+        {
+          "count": 67,
+          "time": "2002"
+        },
+        {
+          "count": 122,
+          "time": "2001"
+        },
+        {
+          "count": 327,
+          "time": "2000"
+        },
+        {
+          "count": 95,
+          "time": "1999"
+        },
+        {
+          "count": 171,
+          "time": "1998"
+        },
+        {
+          "count": 52,
+          "time": "1997"
+        },
+        {
+          "count": 97,
+          "time": "1996"
+        },
+        {
+          "count": 18,
+          "time": "1995"
+        },
+        {
+          "count": 22,
+          "time": "1994"
+        },
+        {
+          "count": 87,
+          "time": "1993"
+        },
+        {
+          "count": 17,
+          "time": "1992"
+        },
+        {
+          "count": 40,
+          "time": "1991"
+        },
+        {
+          "count": 8,
+          "time": "1990"
+        },
+        {
+          "count": 14,
+          "time": "1989"
+        },
+        {
+          "count": 9,
+          "time": "1988"
+        },
+        {
+          "count": 8,
+          "time": "1987"
+        },
+        {
+          "count": 30,
+          "time": "1986"
+        },
+        {
+          "count": 4,
+          "time": "1985"
+        },
+        {
+          "count": 12,
+          "time": "1984"
+        },
+        {
+          "count": 4,
+          "time": "1983"
+        },
+        {
+          "count": 13,
+          "time": "1982"
+        },
+        {
+          "count": 27,
+          "time": "1981"
+        },
+        {
+          "count": 33,
+          "time": "1980"
+        },
+        {
+          "count": 3,
+          "time": "1979"
+        },
+        {
+          "count": 5,
+          "time": "1978"
+        },
+        {
+          "count": 9,
+          "time": "1977"
+        },
+        {
+          "count": 7,
+          "time": "1976"
+        },
+        {
+          "count": 5,
+          "time": "1975"
+        },
+        {
+          "count": 10,
+          "time": "1974"
+        },
+        {
+          "count": 9,
+          "time": "1973"
+        },
+        {
+          "count": 4,
+          "time": "1972"
+        },
+        {
+          "count": 2,
+          "time": "1971"
+        },
+        {
+          "count": 19,
+          "time": "1970"
+        },
+        {
+          "count": 13,
+          "time": "1969"
+        },
+        {
+          "count": 16,
+          "time": "1968"
+        },
+        {
+          "count": 7,
+          "time": "1967"
+        },
+        {
+          "count": 30,
+          "time": "1966"
+        },
+        {
+          "count": 3,
+          "time": "1965"
+        },
+        {
+          "count": 25,
+          "time": "1964"
+        },
+        {
+          "count": 84,
+          "time": "1963"
+        },
+        {
+          "count": 62,
+          "time": "1962"
+        },
+        {
+          "count": 53,
+          "time": "1961"
+        },
+        {
+          "count": 10,
+          "time": "1960"
+        },
+        {
+          "count": 24,
+          "time": "1959"
+        },
+        {
+          "count": 13,
+          "time": "1958"
+        },
+        {
+          "count": 16,
+          "time": "1957"
+        },
+        {
+          "count": 17,
+          "time": "1956"
+        },
+        {
+          "count": 4,
+          "time": "1955"
+        },
+        {
+          "count": 16,
+          "time": "1954"
+        },
+        {
+          "count": 16,
+          "time": "1952"
+        },
+        {
+          "count": 1,
+          "time": "1951"
+        },
+        {
+          "count": 13,
+          "time": "1950"
+        },
+        {
+          "count": 2,
+          "time": "1949"
+        },
+        {
+          "count": 2,
+          "time": "1947"
+        },
+        {
+          "count": 3,
+          "time": "1946"
+        },
+        {
+          "count": 6,
+          "time": "1944"
+        },
+        {
+          "count": 3,
+          "time": "1942"
+        },
+        {
+          "count": 1,
+          "time": "1938"
+        },
+        {
+          "count": 2,
+          "time": "1930"
+        },
+        {
+          "count": 1,
+          "time": "1927"
+        },
+        {
+          "count": 1,
+          "time": "1926"
+        },
+        {
+          "count": 4,
+          "time": "1925"
+        },
+        {
+          "count": 12,
+          "time": "1924"
+        },
+        {
+          "count": 4,
+          "time": "1923"
+        },
+        {
+          "count": 1,
+          "time": "1914"
+        },
+        {
+          "count": 1,
+          "time": "1885"
+        },
+        {
+          "count": 1,
+          "time": "1871"
+        },
+        {
+          "count": 1,
+          "time": "1844"
+        }
+      ]
+    },
+    "sourceResource.date.end": {
+      "_type": "date_histogram",
+      "entries": [
+        {
+          "count": 4,
+          "time": "2026"
+        },
+        {
+          "count": 129,
+          "time": "2025"
+        },
+        {
+          "count": 173,
+          "time": "2024"
+        },
+        {
+          "count": 99,
+          "time": "2023"
+        },
+        {
+          "count": 34,
+          "time": "2022"
+        },
+        {
+          "count": 34,
+          "time": "2021"
+        },
+        {
+          "count": 33,
+          "time": "2020"
+        },
+        {
+          "count": 23,
+          "time": "2019"
+        },
+        {
+          "count": 15,
+          "time": "2018"
+        },
+        {
+          "count": 3,
+          "time": "2017"
+        },
+        {
+          "count": 4,
+          "time": "2016"
+        },
+        {
+          "count": 6,
+          "time": "2015"
+        },
+        {
+          "count": 4,
+          "time": "2014"
+        },
+        {
+          "count": 26,
+          "time": "2013"
+        },
+        {
+          "count": 2,
+          "time": "2012"
+        },
+        {
+          "count": 1,
+          "time": "2011"
+        },
+        {
+          "count": 4,
+          "time": "2010"
+        },
+        {
+          "count": 6,
+          "time": "2008"
+        },
+        {
+          "count": 1,
+          "time": "2007"
+        },
+        {
+          "count": 31,
+          "time": "2006"
+        },
+        {
+          "count": 27,
+          "time": "2005"
+        },
+        {
+          "count": 71,
+          "time": "2004"
+        },
+        {
+          "count": 89,
+          "time": "2003"
+        },
+        {
+          "count": 67,
+          "time": "2002"
+        },
+        {
+          "count": 122,
+          "time": "2001"
+        },
+        {
+          "count": 327,
+          "time": "2000"
+        },
+        {
+          "count": 95,
+          "time": "1999"
+        },
+        {
+          "count": 171,
+          "time": "1998"
+        },
+        {
+          "count": 52,
+          "time": "1997"
+        },
+        {
+          "count": 97,
+          "time": "1996"
+        },
+        {
+          "count": 18,
+          "time": "1995"
+        },
+        {
+          "count": 22,
+          "time": "1994"
+        },
+        {
+          "count": 87,
+          "time": "1993"
+        },
+        {
+          "count": 17,
+          "time": "1992"
+        },
+        {
+          "count": 40,
+          "time": "1991"
+        },
+        {
+          "count": 8,
+          "time": "1990"
+        },
+        {
+          "count": 14,
+          "time": "1989"
+        },
+        {
+          "count": 9,
+          "time": "1988"
+        },
+        {
+          "count": 8,
+          "time": "1987"
+        },
+        {
+          "count": 30,
+          "time": "1986"
+        },
+        {
+          "count": 4,
+          "time": "1985"
+        },
+        {
+          "count": 12,
+          "time": "1984"
+        },
+        {
+          "count": 4,
+          "time": "1983"
+        },
+        {
+          "count": 13,
+          "time": "1982"
+        },
+        {
+          "count": 28,
+          "time": "1981"
+        },
+        {
+          "count": 33,
+          "time": "1980"
+        },
+        {
+          "count": 3,
+          "time": "1979"
+        },
+        {
+          "count": 5,
+          "time": "1978"
+        },
+        {
+          "count": 9,
+          "time": "1977"
+        },
+        {
+          "count": 7,
+          "time": "1976"
+        },
+        {
+          "count": 5,
+          "time": "1975"
+        },
+        {
+          "count": 10,
+          "time": "1974"
+        },
+        {
+          "count": 9,
+          "time": "1973"
+        },
+        {
+          "count": 4,
+          "time": "1972"
+        },
+        {
+          "count": 2,
+          "time": "1971"
+        },
+        {
+          "count": 19,
+          "time": "1970"
+        },
+        {
+          "count": 13,
+          "time": "1969"
+        },
+        {
+          "count": 16,
+          "time": "1968"
+        },
+        {
+          "count": 7,
+          "time": "1967"
+        },
+        {
+          "count": 30,
+          "time": "1966"
+        },
+        {
+          "count": 3,
+          "time": "1965"
+        },
+        {
+          "count": 25,
+          "time": "1964"
+        },
+        {
+          "count": 84,
+          "time": "1963"
+        },
+        {
+          "count": 62,
+          "time": "1962"
+        },
+        {
+          "count": 53,
+          "time": "1961"
+        },
+        {
+          "count": 10,
+          "time": "1960"
+        },
+        {
+          "count": 24,
+          "time": "1959"
+        },
+        {
+          "count": 13,
+          "time": "1958"
+        },
+        {
+          "count": 16,
+          "time": "1957"
+        },
+        {
+          "count": 17,
+          "time": "1956"
+        },
+        {
+          "count": 4,
+          "time": "1955"
+        },
+        {
+          "count": 16,
+          "time": "1954"
+        },
+        {
+          "count": 16,
+          "time": "1952"
+        },
+        {
+          "count": 1,
+          "time": "1951"
+        },
+        {
+          "count": 13,
+          "time": "1950"
+        },
+        {
+          "count": 1,
+          "time": "1949"
+        },
+        {
+          "count": 2,
+          "time": "1947"
+        },
+        {
+          "count": 3,
+          "time": "1946"
+        },
+        {
+          "count": 6,
+          "time": "1944"
+        },
+        {
+          "count": 3,
+          "time": "1942"
+        },
+        {
+          "count": 1,
+          "time": "1938"
+        },
+        {
+          "count": 2,
+          "time": "1930"
+        },
+        {
+          "count": 1,
+          "time": "1927"
+        },
+        {
+          "count": 1,
+          "time": "1926"
+        },
+        {
+          "count": 4,
+          "time": "1925"
+        },
+        {
+          "count": 12,
+          "time": "1924"
+        },
+        {
+          "count": 4,
+          "time": "1923"
+        },
+        {
+          "count": 1,
+          "time": "1914"
+        },
+        {
+          "count": 1,
+          "time": "1885"
+        },
+        {
+          "count": 1,
+          "time": "1871"
+        },
+        {
+          "count": 1,
+          "time": "1844"
+        }
+      ]
+    }
+  },
+  "limit": 20,
+  "start": 1
+}
