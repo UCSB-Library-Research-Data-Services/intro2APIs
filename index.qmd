@@ -50,7 +50,7 @@ Finally, we will only be working with GET requests, meaning we won’t be creati
 ::: {.card .h-100}
 ::: {.card-body}
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
-<i class="bi bi-arrow-left-right"></i>
+{{< fa up-down >}}
 </div>
 <h3 class="card-title text-center">Interacting with APIs</h3>
 <p class="card-text">Discover how to interact with APIs using endpoints, request methods, and practical exercises.</p>
@@ -89,7 +89,7 @@ Finally, we will only be working with GET requests, meaning we won’t be creati
 ::: {.card .h-100}
 ::: {.card-body}
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
-<i class="bi bi-bar-chart"></i>
+{{< fa magnifying-glass-chart >}}
 </div>
 <h3 class="card-title text-center">Data Analysis</h3>
 <p class="card-text">Apply your API knowledge to collect and analyze real data for research purposes.</p>
