@@ -78,7 +78,7 @@ viewof apikey = Inputs.password({
 // Function to make the API request
 async function fetchFromApi(method, path, q, api_key) {
   const baseUrl = "https://api.dp.la";
-  const targetUrl = `${baseUrl}${path}?q=${q}&api_key=${api_key}`;
+  const targetUrl = `${baseUrl}${path}?q=${q}&page_size=1&api_key=${api_key}`;
   const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
 
   try {
@@ -147,3 +147,8 @@ viewof prettyResponse = {
 
 
 ```
+
+:::{.callout-note appearance="simple" collapse="false"}
+## API Key Privacy
+The API key is not stored anywhere in this book, and it's used exclusively to make the request to the DPLA API. Once you close the browser tab or refresh the page, the API key will be lost.
+:::
