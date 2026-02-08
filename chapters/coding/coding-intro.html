@@ -341,6 +341,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#where-to-start" id="toc-where-to-start" class="nav-link active" data-scroll-target="#where-to-start">Where to Start?</a></li>
+  <li><a href="#understanding-the-response" id="toc-understanding-the-response" class="nav-link" data-scroll-target="#understanding-the-response">Understanding the Response</a></li>
   </ul>
 </nav>
     </div>
@@ -366,30 +367,30 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </header>
 
 
-<p>Although tools like Postman and Bruno are great for testing and exploring APIs, it’s plausible that your goal is to retrieve data from multiple endpoints, select specific fields, automate processes, or manipulate the data obtained in a response.</p>
-<p>Most of the high-level programming languages used in data science and digital humanities (e.g., Python, R, JavaScript) have libraries that allow you to interact with APIs programmatically. That means that the heavy lifting of constructing and handling requests, parsing responses, and managing authentication is taken care of by the library. The dificulty usually lies in how complex the API is, particularly the multiple methods of authentication, the structure of the endpoints, and the format of the responses.</p>
-<p>In this section, we will use Python to interact with the <a href="https://pro.dp.la/developers/api-codex">Digital Public Library of America (DPLA) API</a>. The rationality behind this choice is that the DPLA API, besides the fact that it provides access to a large amount of data, has a relatively straightforward structure and authentication process, making it an ideal candidate for learning how to interact with APIs programmatically.</p>
+<p>Tools like Postman and Bruno are great for exploring and testing APIs. But if you want to pull data from multiple endpoints, repeat requests, automate workflows, or clean and analyze results, you’ll quickly want to use code.</p>
+<p>Most high-level languages used in data science and digital humanities (Python, R, JavaScript, etc.) have libraries for working with web APIs. Those libraries handle the basics—sending requests, parsing responses, and (often) authentication—so you can focus on what data you need and how to use it. The hardest part is usually the API itself: its authentication requirements, endpoint structure, and response format.</p>
+<p>In this section, we’ll use Python with the <a href="https://pro.dp.la/developers/api-codex">Digital Public Library of America (DPLA) API</a>. DPLA is a good learning API because it offers a lot of public data and has a relatively straightforward structure and authentication process.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Comming Soon!
+<span class="screen-reader-only">Note</span>Coming soon
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>We are planning to expand this section to include examples of how to interact with APIs using R and JavaScript as well. Stay tuned for updates!</p>
+<p>We plan to add R and JavaScript examples as well. For now, this chapter uses Python.</p>
 </div>
 </div>
 </div>
 <section id="where-to-start" class="level2">
 <h2 class="anchored" data-anchor-id="where-to-start">Where to Start?</h2>
-<p>Before writing a single line of code, we need to understand the API requests and the structure of the responses. Therefore, the first place we must go is the API documentation. In the case of the DPLA API, we can find in the <a href="https://pro.dp.la/developers/api-codex" target="_blank">API Codex</a>. The DPLA developers are very generous and provide a ‘how to use it’ guide that summarizes the basic steps to interact with the API in three steps:</p>
+<p>Before writing code, it helps to understand what the API expects (requests) and what it returns (responses). The best place to start is the documentation—in this case, the DPLA <a href="https://pro.dp.la/developers/api-codex" target="_blank">API Codex</a>. The DPLA team provides a short “how to use it” guide that boils things down to two steps:</p>
 <ol type="1">
-<li><strong>Request an API key from DPLA</strong>: The way to generate an API key is to send a request to a DPLA endpoint with your email address. A 32-character hash API key will be sent to your email.</li>
+<li><strong>Request an API key from DPLA</strong>: To get a key, send a request with your email address. DPLA will email you a 32-character API key.</li>
 </ol>
 <p>To request an API key, open your terminal and use the <code>curl</code> command:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.dp.la/v2/api_key/YOUR_EMAIL@example.com"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -400,12 +401,12 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Keep your API key secure and do not share it publicly. This is very important, as you API key is like a password associated with your email address. The developers of the DPLA have a very lenient policy regarding the use of the API, but if they detect any suspicious activity associated with your API key, they may revoke it without notice. See the <a href="https://pro.dp.la/developers/policies" target="_blank">API policies</a> for more information.</p>
+<p>Keep your API key secure and do not share it publicly. Your API key is like a password tied to your email address, and it can be revoked if it’s abused. See the DPLA <a href="https://pro.dp.la/developers/policies" target="_blank">API policies</a> for details.</p>
 </div>
 </div>
 </div>
 <ol start="2" type="1">
-<li><strong>Do a request to the API</strong>: With your API key, you’re ready to make your first request to the API. Here you can test that the API key works and that you can successfully retrieve data from the API.</li>
+<li><strong>Make a request to the API</strong>: With your API key, you’re ready to test a request and confirm that you can retrieve data.</li>
 </ol>
 <div class="cell">
 <details class="code-fold">
@@ -448,71 +449,70 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">fetchFromApi</span>(method<span class="op">,</span> path<span class="op">,</span> q<span class="op">,</span> api_key) {</span>
 <span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> baseUrl <span class="op">=</span> <span class="st">"https://api.dp.la"</span><span class="op">;</span></span>
 <span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> targetUrl <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>baseUrl<span class="sc">}${</span>path<span class="sc">}</span><span class="vs">?q=</span><span class="sc">${</span>q<span class="sc">}</span><span class="vs">&amp;page_size=1&amp;api_key=</span><span class="sc">${</span>api_key<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> proxyUrl <span class="op">=</span> <span class="vs">`https://api.allorigins.win/get?url=</span><span class="sc">${</span><span class="pp">encodeURIComponent</span>(targetUrl)<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(proxyUrl)<span class="op">;</span></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">"Proxy server is down."</span>)<span class="op">;</span></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> wrapper <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>    <span class="co">// We wrap the URL in the AllOrigins proxy</span></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>    <span class="co">// See https://allorigins.win/ for more details on how it works and its limitations.</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> dplaStatus <span class="op">=</span> wrapper<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">http_code</span><span class="op">;</span> </span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(wrapper<span class="op">.</span><span class="at">contents</span>)<span class="op">;</span></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Check for authentication errors first (403 or "Unauthorized" message)</span></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (dplaStatus <span class="op">===</span> <span class="dv">403</span> <span class="op">||</span> data<span class="op">.</span><span class="at">message</span> <span class="op">===</span> <span class="st">"Unauthorized"</span>) {</span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>        <span class="dt">data</span><span class="op">:</span> { <span class="st">"Message"</span><span class="op">:</span> <span class="st">"🔑 Invalid API Key. Please check your key and try again."</span> }<span class="op">,</span></span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="dv">403</span><span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"Unauthorized"</span> }</span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Check for other DPLA errors (like 404 or 400)</span></span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (dplaStatus <span class="op">&gt;=</span> <span class="dv">400</span>) {</span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>        <span class="dt">data</span><span class="op">:</span> data<span class="op">,</span></span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> dplaStatus<span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"DPLA Error"</span> }</span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> { data<span class="op">,</span> <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"OK"</span> } }<span class="op">;</span></span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (error) {</span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Network or Parsing errors</span></span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>      <span class="dt">data</span><span class="op">:</span> { <span class="st">"Message"</span><span class="op">:</span> <span class="vs">`🌐 Connection Error: </span><span class="sc">${</span>error<span class="op">.</span><span class="at">message</span><span class="sc">}</span><span class="vs">`</span> }<span class="op">,</span></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>      <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"Network Error"</span> }</span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> {</span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchFromApi</span>(method<span class="op">,</span> endpoint<span class="op">,</span> query<span class="op">,</span> apikey)<span class="op">;</span></span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>viewof prettyResponse <span class="op">=</span> {</span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> content<span class="op">;</span></span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span>) {</span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-warning m-0"&gt;</span><span class="sc">${</span>response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span><span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span><span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(response<span class="op">.</span><span class="at">data</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/pre&gt;`</span><span class="op">;</span></span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> badgeClass <span class="op">=</span> response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> <span class="st">"bg-success"</span> <span class="op">:</span> <span class="st">"bg-danger"</span><span class="op">;</span></span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;span&gt;Response&lt;/span&gt;</span></span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;span class="badge </span><span class="sc">${</span>badgeClass<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">text</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;</span></span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>content<span class="sc">}</span></span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Using All Origins proxy to bypass CORS issues</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  <span class="co">// See the documentation in https://allorigins.win/</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> proxyUrl <span class="op">=</span> <span class="vs">`https://api.allorigins.win/get?url=</span><span class="sc">${</span><span class="pp">encodeURIComponent</span>(targetUrl)<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(proxyUrl)<span class="op">;</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">"Proxy server is down."</span>)<span class="op">;</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> wrapper <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> dplaStatus <span class="op">=</span> wrapper<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">http_code</span><span class="op">;</span> </span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(wrapper<span class="op">.</span><span class="at">contents</span>)<span class="op">;</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Check for authentication errors first (403 or "Unauthorized" message)</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (dplaStatus <span class="op">===</span> <span class="dv">403</span> <span class="op">||</span> data<span class="op">.</span><span class="at">message</span> <span class="op">===</span> <span class="st">"Unauthorized"</span>) {</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>        <span class="dt">data</span><span class="op">:</span> { <span class="st">"Message"</span><span class="op">:</span> <span class="st">"🔑 Invalid API Key. Please check your key and try again."</span> }<span class="op">,</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="dv">403</span><span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"Unauthorized"</span> }</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Check for other DPLA errors (like 404 or 400)</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (dplaStatus <span class="op">&gt;=</span> <span class="dv">400</span>) {</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>        <span class="dt">data</span><span class="op">:</span> data<span class="op">,</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> dplaStatus<span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"DPLA Error"</span> }</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> { data<span class="op">,</span> <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"OK"</span> } }<span class="op">;</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (error) {</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Network or Parsing errors</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>      <span class="dt">data</span><span class="op">:</span> { <span class="st">"Message"</span><span class="op">:</span> <span class="vs">`🌐 Connection Error: </span><span class="sc">${</span>error<span class="op">.</span><span class="at">message</span><span class="sc">}</span><span class="vs">`</span> }<span class="op">,</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>      <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"Network Error"</span> }</span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> {</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchFromApi</span>(method<span class="op">,</span> endpoint<span class="op">,</span> query<span class="op">,</span> apikey)<span class="op">;</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>viewof prettyResponse <span class="op">=</span> {</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> content<span class="op">;</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span>) {</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-warning m-0"&gt;</span><span class="sc">${</span>response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span><span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span><span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(response<span class="op">.</span><span class="at">data</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/pre&gt;`</span><span class="op">;</span></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> badgeClass <span class="op">=</span> response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> <span class="st">"bg-success"</span> <span class="op">:</span> <span class="st">"bg-danger"</span><span class="op">;</span></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;span&gt;Response&lt;/span&gt;</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;span class="badge </span><span class="sc">${</span>badgeClass<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">text</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;</span></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>content<span class="sc">}</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -580,13 +580,135 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
+</section>
+<section id="understanding-the-response" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-the-response">Understanding the Response</h2>
+<p>For the sake of simplicity, we limit the response to one item. Even then, the response is large and not very human-readable at first. Here are a few fields that are especially useful when you’re getting started:</p>
+<ul>
+<li><a href="https://pro.dp.la/developers/field-reference#count" target="_blank"><code>count</code></a>, which indicates the total number of items that match the query.</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-startfrom="161" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 160;"><span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>viewof countInfo <span class="op">=</span> {</span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> count<span class="op">;</span></span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">count</span> <span class="op">!==</span> <span class="kw">undefined</span> ){</span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-info"&gt;Total items matching the query: &lt;strong&gt;</span><span class="sc">${</span>response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">count</span><span class="sc">}</span><span class="vs">&lt;/strong&gt;&lt;/div&gt;`</span></span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-secondary"&gt;Waiting for the response&lt;/div&gt;`</span></span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> count<span class="op">;</span></span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<ul>
+<li><a href="https://pro.dp.la/developers/field-reference#docs" target="_blank"><code>docs</code></a>, which contains the actual data of the items retrieved. It’s possible to access specific fields at this level, for example, the <a href="https://pro.dp.la/developers/field-reference#ingestDate" target="_blank"><code>ingestDate</code></a> field, which indicates the date when the item was ingested into the DPLA.</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-startfrom="179" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 178;"><span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a>viewof ingestDateInfo <span class="op">=</span> {</span>
+<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> ingestDate<span class="op">;</span></span>
+<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span> <span class="op">&amp;&amp;</span> response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span>[<span class="dv">0</span>] <span class="op">&amp;&amp;</span> response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">ingestDate</span>) {</span>
+<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a>    ingestDate <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-info"&gt;Ingest Date of the first item: &lt;strong&gt;</span><span class="sc">${</span>response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">ingestDate</span><span class="sc">}</span><span class="vs">&lt;/strong&gt;&lt;/div&gt;`</span></span>
+<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a>    ingestDate <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-secondary"&gt;Waiting for the response&lt;/div&gt;`</span></span>
+<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ingestDate<span class="op">;</span></span>
+<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<ul>
+<li><a href="https://pro.dp.la/developers/field-reference#sourceResource" target="_blank"><code>sourceResource</code></a>, which contains the metadata of the item, including fields like <code>title</code>, <code>creator</code>, <code>date</code>, <code>description</code>, etc.</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" data-startfrom="195" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 194;"><span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a>viewof source <span class="op">=</span> {</span>
+<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> title<span class="op">,</span> creator<span class="op">,</span> date<span class="op">;</span></span>
+<span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span> <span class="op">&amp;&amp;</span> response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span>[<span class="dv">0</span>] <span class="op">&amp;&amp;</span> response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">sourceResource</span>) {</span>
+<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> source <span class="op">=</span> response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">sourceResource</span><span class="op">;</span></span>
+<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> source<span class="op">.</span><span class="at">title</span> <span class="op">?</span> source<span class="op">.</span><span class="at">title</span>[<span class="dv">0</span>] <span class="op">:</span> <span class="st">"N/A"</span><span class="op">;</span></span>
+<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a>    creator <span class="op">=</span> source<span class="op">.</span><span class="at">creator</span> <span class="op">?</span> source<span class="op">.</span><span class="at">creator</span>[<span class="dv">0</span>] <span class="op">:</span> <span class="st">"N/A"</span><span class="op">;</span></span>
+<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a>    date <span class="op">=</span> source<span class="op">.</span><span class="at">date</span> <span class="op">?</span> source<span class="op">.</span><span class="at">date</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">displayDate</span> <span class="op">:</span> <span class="st">"N/A"</span><span class="op">;</span></span>
+<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
+<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="card-body"&gt;</span></span>
+<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h5 class="card-title"&gt;</span><span class="sc">${</span>title<span class="sc">}</span><span class="vs">&lt;/h5&gt;</span></span>
+<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h6 class="card-subtitle mb-2 text-muted"&gt;Creator: </span><span class="sc">${</span>creator<span class="sc">}</span><span class="vs">&lt;/h6&gt;</span></span>
+<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p class="card-text"&gt;Date: </span><span class="sc">${</span>date<span class="sc">}</span><span class="vs">&lt;/p&gt;</span></span>
+<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb5-209"><a href="#cb5-209" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-secondary"&gt;Waiting for the response&lt;/div&gt;`</span></span>
+<span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<ul>
+<li><a href="https://pro.dp.la/developers/field-reference#provider" target="_blank"><code>provider</code></a>, which indicates the institution that provided the item to the DPLA.</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-startfrom="218" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 217;"><span id="cb6-218"><a href="#cb6-218" aria-hidden="true" tabindex="-1"></a>viewof providerInfo <span class="op">=</span> {</span>
+<span id="cb6-219"><a href="#cb6-219" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> provider<span class="op">;</span></span>
+<span id="cb6-220"><a href="#cb6-220" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span> <span class="op">&amp;&amp;</span> response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span>[<span class="dv">0</span>] <span class="op">&amp;&amp;</span> response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">provider</span>) {</span>
+<span id="cb6-221"><a href="#cb6-221" aria-hidden="true" tabindex="-1"></a>    provider <span class="op">=</span> response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">docs</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">provider</span><span class="op">.</span><span class="at">name</span> <span class="op">||</span> <span class="st">"N/A"</span><span class="op">;</span></span>
+<span id="cb6-222"><a href="#cb6-222" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-info"&gt;Provider: &lt;strong&gt;</span><span class="sc">${</span>provider<span class="sc">}</span><span class="vs">&lt;/strong&gt;&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb6-223"><a href="#cb6-223" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb6-224"><a href="#cb6-224" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-secondary"&gt;Waiting for the response&lt;/div&gt;`</span></span>
+<span id="cb6-225"><a href="#cb6-225" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-226"><a href="#cb6-226" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<p>These are just a few examples. To go further, see the DPLA documentation on <a href="https://pro.dp.la/developers/requests" target="_blank">requests</a> and <a href="https://pro.dp.la/developers/responses" target="_blank">responses</a>.</p>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Bulk downloads
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>The API is great for searching and sampling, but it’s not meant for downloading large volumes of data. If you need a full dataset, use DPLA’s <a href="https://pro.dp.la/developers/bulk-download" target="_blank">bulk download files</a> instead.</p>
+</div>
+</div>
+</div>
 
 
 </section>
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBtZXRob2QgPSBJbnB1dHMuc2VsZWN0KFtcIkdFVFwiXSwge1xuICBsYWJlbDogXCJIVFRQIE1ldGhvZFwiLFxuICBhdHRyaWJ1dGVzOiB7XG4gIGNsYXNzOiBcImZvcm0tc2VsZWN0IG1iLTNcIlxuICB9XG59KVxuXG52aWV3b2YgZW5kcG9pbnQgPSBJbnB1dHMudGV4dCh7XG4gIGxhYmVsOiBcIkVuZHBvaW50IHBhdGhcIiwgXG4gIHBsYWNlaG9sZGVyOiBcIi92Mi9pdGVtc1wiLFxuICB2YWx1ZTogXCIvdjIvaXRlbXNcIixcbiAgYXR0cmlidXRlczoge1xuICBjbGFzczogXCJmb3JtLWNvbnRyb2wgbWItM1wiXG4gIH1cbn0pXG5cbnZpZXdvZiBxdWVyeSA9IElucHV0cy50ZXh0KHtcbiAgICBsYWJlbDogXCJTZWFyY2g6IFwiLFxuICAgIHBsYWNlaG9sZGVyOiBcIndlYXNlbCwgY2F0LCBkb2csIGV0Yy5cIixcbiAgICB2YWx1ZTogXCJjYXRcIixcbiAgICBhdHRyaWJ1dGVzOiB7XG4gICAgY2xhc3M6IFwiZm9ybS1jb250cm9sIG1iLTNcIlxuICAgIH1cbn0pXG5cbnZpZXdvZiBhcGlrZXkgPSBJbnB1dHMucGFzc3dvcmQoe1xuICBsYWJlbDogXCJBUEkgS2V5XCIsXG4gIHBsYWNlaG9sZGVyOiBcIllvdXIgRFBMQSBBUEkga2V5XCIsXG4gIHZhbHVlOiBcIlwiLFxuICBhdHRyaWJ1dGVzOiB7XG4gIGNsYXNzOiBcImZvcm0tY29udHJvbCBtYi0zXCJcbiAgfVxufSlcblxuLy8gRnVuY3Rpb24gdG8gbWFrZSB0aGUgQVBJIHJlcXVlc3RcbmFzeW5jIGZ1bmN0aW9uIGZldGNoRnJvbUFwaShtZXRob2QsIHBhdGgsIHEsIGFwaV9rZXkpIHtcbiAgY29uc3QgYmFzZVVybCA9IFwiaHR0cHM6Ly9hcGkuZHAubGFcIjtcbiAgY29uc3QgdGFyZ2V0VXJsID0gYCR7YmFzZVVybH0ke3BhdGh9P3E9JHtxfSZwYWdlX3NpemU9MSZhcGlfa2V5PSR7YXBpX2tleX1gO1xuICBjb25zdCBwcm94eVVybCA9IGBodHRwczovL2FwaS5hbGxvcmlnaW5zLndpbi9nZXQ/dXJsPSR7ZW5jb2RlVVJJQ29tcG9uZW50KHRhcmdldFVybCl9YDtcblxuICB0cnkge1xuICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2gocHJveHlVcmwpO1xuICAgIGlmICghcmVzcG9uc2Uub2spIHRocm93IG5ldyBFcnJvcihcIlByb3h5IHNlcnZlciBpcyBkb3duLlwiKTtcblxuICAgIGNvbnN0IHdyYXBwZXIgPSBhd2FpdCByZXNwb25zZS5qc29uKCk7XG4gICAgXG4gICAgLy8gV2Ugd3JhcCB0aGUgVVJMIGluIHRoZSBBbGxPcmlnaW5zIHByb3h5XG4gICAgLy8gU2VlIGh0dHBzOi8vYWxsb3JpZ2lucy53aW4vIGZvciBtb3JlIGRldGFpbHMgb24gaG93IGl0IHdvcmtzIGFuZCBpdHMgbGltaXRhdGlvbnMuXG4gICAgY29uc3QgZHBsYVN0YXR1cyA9IHdyYXBwZXIuc3RhdHVzLmh0dHBfY29kZTsgXG4gICAgY29uc3QgZGF0YSA9IEpTT04ucGFyc2Uod3JhcHBlci5jb250ZW50cyk7XG5cbiAgICAvLyBDaGVjayBmb3IgYXV0aGVudGljYXRpb24gZXJyb3JzIGZpcnN0ICg0MDMgb3IgXCJVbmF1dGhvcml6ZWRcIiBtZXNzYWdlKVxuICAgIGlmIChkcGxhU3RhdHVzID09PSA0MDMgfHwgZGF0YS5tZXNzYWdlID09PSBcIlVuYXV0aG9yaXplZFwiKSB7XG4gICAgICByZXR1cm4ge1xuICAgICAgICBkYXRhOiB7IFwiTWVzc2FnZVwiOiBcIvCflJEgSW52YWxpZCBBUEkgS2V5LiBQbGVhc2UgY2hlY2sgeW91ciBrZXkgYW5kIHRyeSBhZ2Fpbi5cIiB9LFxuICAgICAgICBzdGF0dXM6IHsgY29kZTogNDAzLCBvazogZmFsc2UsIHRleHQ6IFwiVW5hdXRob3JpemVkXCIgfVxuICAgICAgfTtcbiAgICB9XG5cbiAgICAvLyBDaGVjayBmb3Igb3RoZXIgRFBMQSBlcnJvcnMgKGxpa2UgNDA0IG9yIDQwMClcbiAgICBpZiAoZHBsYVN0YXR1cyA+PSA0MDApIHtcbiAgICAgIHJldHVybiB7XG4gICAgICAgIGRhdGE6IGRhdGEsXG4gICAgICAgIHN0YXR1czogeyBjb2RlOiBkcGxhU3RhdHVzLCBvazogZmFsc2UsIHRleHQ6IFwiRFBMQSBFcnJvclwiIH1cbiAgICAgIH07XG4gICAgfVxuXG4gICAgcmV0dXJuIHsgZGF0YSwgc3RhdHVzOiB7IGNvZGU6IDIwMCwgb2s6IHRydWUsIHRleHQ6IFwiT0tcIiB9IH07XG5cbiAgfSBjYXRjaCAoZXJyb3IpIHtcbiAgICAvLyBOZXR3b3JrIG9yIFBhcnNpbmcgZXJyb3JzXG4gICAgcmV0dXJuIHtcbiAgICAgIGRhdGE6IHsgXCJNZXNzYWdlXCI6IGDwn4yQIENvbm5lY3Rpb24gRXJyb3I6ICR7ZXJyb3IubWVzc2FnZX1gIH0sXG4gICAgICBzdGF0dXM6IHsgY29kZTogNTAwLCBvazogZmFsc2UsIHRleHQ6IFwiTmV0d29yayBFcnJvclwiIH1cbiAgICB9O1xuICB9XG59XG5cbnJlc3BvbnNlID0ge1xuICBjb25zdCByZXN1bHQgPSBhd2FpdCBmZXRjaEZyb21BcGkobWV0aG9kLCBlbmRwb2ludCwgcXVlcnksIGFwaWtleSk7XG4gIHJldHVybiByZXN1bHQ7XG59XG5cbnZpZXdvZiBwcmV0dHlSZXNwb25zZSA9IHtcbiAgbGV0IGNvbnRlbnQ7XG5cbiAgaWYgKHJlc3BvbnNlLmRhdGEuTWVzc2FnZSkge1xuICAgIGNvbnRlbnQgPSBodG1sYDxkaXYgY2xhc3M9XCJhbGVydCBhbGVydC13YXJuaW5nIG0tMFwiPiR7cmVzcG9uc2UuZGF0YS5NZXNzYWdlfTwvZGl2PmA7XG4gIH0gZWxzZSB7XG4gICAgY29udGVudCA9IGh0bWxgPHByZSBjbGFzcz1cImNhcmQtYm9keSBtLTBcIiBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICNmOGY5ZmE7IG1heC1oZWlnaHQ6IDQwMHB4OyBvdmVyZmxvdy15OiBhdXRvO1wiPiR7SlNPTi5zdHJpbmdpZnkocmVzcG9uc2UuZGF0YSwgbnVsbCwgMil9PC9wcmU+YDtcbiAgfVxuXG4gIGNvbnN0IGJhZGdlQ2xhc3MgPSByZXNwb25zZS5zdGF0dXMub2sgPyBcImJnLXN1Y2Nlc3NcIiA6IFwiYmctZGFuZ2VyXCI7XG5cbiAgY29uc3QgY29udGFpbmVyID0gaHRtbGA8ZGl2IGNsYXNzPVwiY2FyZFwiPlxuICA8ZGl2IGNsYXNzPVwiY2FyZC1oZWFkZXIgZC1mbGV4IGp1c3RpZnktY29udGVudC1iZXR3ZWVuIGFsaWduLWl0ZW1zLWNlbnRlclwiPlxuICA8c3Bhbj5SZXNwb25zZTwvc3Bhbj5cbiAgPHNwYW4gY2xhc3M9XCJiYWRnZSAke2JhZGdlQ2xhc3N9XCI+JHtyZXNwb25zZS5zdGF0dXMuY29kZX0gJHtyZXNwb25zZS5zdGF0dXMudGV4dH08L3NwYW4+XG4gIDwvZGl2PlxuICAke2NvbnRlbnR9XG4gIDwvZGl2PmA7XG4gIHJldHVybiBjb250YWluZXI7XG59XG5cblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtZXRob2QnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZW5kcG9pbnQnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncXVlcnknKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYXBpa2V5JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3ByZXR0eVJlc3BvbnNlJykifV19
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBtZXRob2QgPSBJbnB1dHMuc2VsZWN0KFtcIkdFVFwiXSwge1xuICBsYWJlbDogXCJIVFRQIE1ldGhvZFwiLFxuICBhdHRyaWJ1dGVzOiB7XG4gIGNsYXNzOiBcImZvcm0tc2VsZWN0IG1iLTNcIlxuICB9XG59KVxuXG52aWV3b2YgZW5kcG9pbnQgPSBJbnB1dHMudGV4dCh7XG4gIGxhYmVsOiBcIkVuZHBvaW50IHBhdGhcIiwgXG4gIHBsYWNlaG9sZGVyOiBcIi92Mi9pdGVtc1wiLFxuICB2YWx1ZTogXCIvdjIvaXRlbXNcIixcbiAgYXR0cmlidXRlczoge1xuICBjbGFzczogXCJmb3JtLWNvbnRyb2wgbWItM1wiXG4gIH1cbn0pXG5cbnZpZXdvZiBxdWVyeSA9IElucHV0cy50ZXh0KHtcbiAgICBsYWJlbDogXCJTZWFyY2g6IFwiLFxuICAgIHBsYWNlaG9sZGVyOiBcIndlYXNlbCwgY2F0LCBkb2csIGV0Yy5cIixcbiAgICB2YWx1ZTogXCJjYXRcIixcbiAgICBhdHRyaWJ1dGVzOiB7XG4gICAgY2xhc3M6IFwiZm9ybS1jb250cm9sIG1iLTNcIlxuICAgIH1cbn0pXG5cbnZpZXdvZiBhcGlrZXkgPSBJbnB1dHMucGFzc3dvcmQoe1xuICBsYWJlbDogXCJBUEkgS2V5XCIsXG4gIHBsYWNlaG9sZGVyOiBcIllvdXIgRFBMQSBBUEkga2V5XCIsXG4gIHZhbHVlOiBcIlwiLFxuICBhdHRyaWJ1dGVzOiB7XG4gIGNsYXNzOiBcImZvcm0tY29udHJvbCBtYi0zXCJcbiAgfVxufSlcblxuLy8gRnVuY3Rpb24gdG8gbWFrZSB0aGUgQVBJIHJlcXVlc3RcbmFzeW5jIGZ1bmN0aW9uIGZldGNoRnJvbUFwaShtZXRob2QsIHBhdGgsIHEsIGFwaV9rZXkpIHtcbiAgY29uc3QgYmFzZVVybCA9IFwiaHR0cHM6Ly9hcGkuZHAubGFcIjtcbiAgY29uc3QgdGFyZ2V0VXJsID0gYCR7YmFzZVVybH0ke3BhdGh9P3E9JHtxfSZwYWdlX3NpemU9MSZhcGlfa2V5PSR7YXBpX2tleX1gO1xuICAvLyBVc2luZyBBbGwgT3JpZ2lucyBwcm94eSB0byBieXBhc3MgQ09SUyBpc3N1ZXNcbiAgLy8gU2VlIHRoZSBkb2N1bWVudGF0aW9uIGluIGh0dHBzOi8vYWxsb3JpZ2lucy53aW4vXG4gIGNvbnN0IHByb3h5VXJsID0gYGh0dHBzOi8vYXBpLmFsbG9yaWdpbnMud2luL2dldD91cmw9JHtlbmNvZGVVUklDb21wb25lbnQodGFyZ2V0VXJsKX1gO1xuXG4gIHRyeSB7XG4gICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChwcm94eVVybCk7XG4gICAgaWYgKCFyZXNwb25zZS5vaykgdGhyb3cgbmV3IEVycm9yKFwiUHJveHkgc2VydmVyIGlzIGRvd24uXCIpO1xuXG4gICAgY29uc3Qgd3JhcHBlciA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcbiAgICBjb25zdCBkcGxhU3RhdHVzID0gd3JhcHBlci5zdGF0dXMuaHR0cF9jb2RlOyBcbiAgICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZSh3cmFwcGVyLmNvbnRlbnRzKTtcblxuICAgIC8vIENoZWNrIGZvciBhdXRoZW50aWNhdGlvbiBlcnJvcnMgZmlyc3QgKDQwMyBvciBcIlVuYXV0aG9yaXplZFwiIG1lc3NhZ2UpXG4gICAgaWYgKGRwbGFTdGF0dXMgPT09IDQwMyB8fCBkYXRhLm1lc3NhZ2UgPT09IFwiVW5hdXRob3JpemVkXCIpIHtcbiAgICAgIHJldHVybiB7XG4gICAgICAgIGRhdGE6IHsgXCJNZXNzYWdlXCI6IFwi8J+UkSBJbnZhbGlkIEFQSSBLZXkuIFBsZWFzZSBjaGVjayB5b3VyIGtleSBhbmQgdHJ5IGFnYWluLlwiIH0sXG4gICAgICAgIHN0YXR1czogeyBjb2RlOiA0MDMsIG9rOiBmYWxzZSwgdGV4dDogXCJVbmF1dGhvcml6ZWRcIiB9XG4gICAgICB9O1xuICAgIH1cblxuICAgIC8vIENoZWNrIGZvciBvdGhlciBEUExBIGVycm9ycyAobGlrZSA0MDQgb3IgNDAwKVxuICAgIGlmIChkcGxhU3RhdHVzID49IDQwMCkge1xuICAgICAgcmV0dXJuIHtcbiAgICAgICAgZGF0YTogZGF0YSxcbiAgICAgICAgc3RhdHVzOiB7IGNvZGU6IGRwbGFTdGF0dXMsIG9rOiBmYWxzZSwgdGV4dDogXCJEUExBIEVycm9yXCIgfVxuICAgICAgfTtcbiAgICB9XG5cbiAgICByZXR1cm4geyBkYXRhLCBzdGF0dXM6IHsgY29kZTogMjAwLCBvazogdHJ1ZSwgdGV4dDogXCJPS1wiIH0gfTtcblxuICB9IGNhdGNoIChlcnJvcikge1xuICAgIC8vIE5ldHdvcmsgb3IgUGFyc2luZyBlcnJvcnNcbiAgICByZXR1cm4ge1xuICAgICAgZGF0YTogeyBcIk1lc3NhZ2VcIjogYPCfjJAgQ29ubmVjdGlvbiBFcnJvcjogJHtlcnJvci5tZXNzYWdlfWAgfSxcbiAgICAgIHN0YXR1czogeyBjb2RlOiA1MDAsIG9rOiBmYWxzZSwgdGV4dDogXCJOZXR3b3JrIEVycm9yXCIgfVxuICAgIH07XG4gIH1cbn1cblxucmVzcG9uc2UgPSB7XG4gIGNvbnN0IHJlc3VsdCA9IGF3YWl0IGZldGNoRnJvbUFwaShtZXRob2QsIGVuZHBvaW50LCBxdWVyeSwgYXBpa2V5KTtcbiAgcmV0dXJuIHJlc3VsdDtcbn1cblxudmlld29mIHByZXR0eVJlc3BvbnNlID0ge1xuICBsZXQgY29udGVudDtcblxuICBpZiAocmVzcG9uc2UuZGF0YS5NZXNzYWdlKSB7XG4gICAgY29udGVudCA9IGh0bWxgPGRpdiBjbGFzcz1cImFsZXJ0IGFsZXJ0LXdhcm5pbmcgbS0wXCI+JHtyZXNwb25zZS5kYXRhLk1lc3NhZ2V9PC9kaXY+YDtcbiAgfSBlbHNlIHtcbiAgICBjb250ZW50ID0gaHRtbGA8cHJlIGNsYXNzPVwiY2FyZC1ib2R5IG0tMFwiIHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogI2Y4ZjlmYTsgbWF4LWhlaWdodDogNDAwcHg7IG92ZXJmbG93LXk6IGF1dG87XCI+JHtKU09OLnN0cmluZ2lmeShyZXNwb25zZS5kYXRhLCBudWxsLCAyKX08L3ByZT5gO1xuICB9XG5cbiAgY29uc3QgYmFkZ2VDbGFzcyA9IHJlc3BvbnNlLnN0YXR1cy5vayA/IFwiYmctc3VjY2Vzc1wiIDogXCJiZy1kYW5nZXJcIjtcblxuICBjb25zdCBjb250YWluZXIgPSBodG1sYDxkaXYgY2xhc3M9XCJjYXJkXCI+XG4gIDxkaXYgY2xhc3M9XCJjYXJkLWhlYWRlciBkLWZsZXgganVzdGlmeS1jb250ZW50LWJldHdlZW4gYWxpZ24taXRlbXMtY2VudGVyXCI+XG4gIDxzcGFuPlJlc3BvbnNlPC9zcGFuPlxuICA8c3BhbiBjbGFzcz1cImJhZGdlICR7YmFkZ2VDbGFzc31cIj4ke3Jlc3BvbnNlLnN0YXR1cy5jb2RlfSAke3Jlc3BvbnNlLnN0YXR1cy50ZXh0fTwvc3Bhbj5cbiAgPC9kaXY+XG4gICR7Y29udGVudH1cbiAgPC9kaXY+YDtcbiAgcmV0dXJuIGNvbnRhaW5lcjtcbn1cblxuXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbnZpZXdvZiBjb3VudEluZm8gPSB7XG4gICAgbGV0IGNvdW50O1xuXG4gICAgaWYgKHJlc3BvbnNlLmRhdGEuY291bnQgIT09IHVuZGVmaW5lZCApe1xuICAgIGNvdW50ID0gaHRtbGA8ZGl2IGNsYXNzPVwiYWxlcnQgYWxlcnQtaW5mb1wiPlRvdGFsIGl0ZW1zIG1hdGNoaW5nIHRoZSBxdWVyeTogPHN0cm9uZz4ke3Jlc3BvbnNlLmRhdGEuY291bnR9PC9zdHJvbmc+PC9kaXY+YFxuICAgIH0gZWxzZSB7XG4gICAgY291bnQgPSBodG1sYDxkaXYgY2xhc3M9XCJhbGVydCBhbGVydC1zZWNvbmRhcnlcIj5XYWl0aW5nIGZvciB0aGUgcmVzcG9uc2U8L2Rpdj5gXG4gICAgfVxuXG4gICAgcmV0dXJuIGNvdW50O1xufVxuXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgaW5nZXN0RGF0ZUluZm8gPSB7XG4gICAgbGV0IGluZ2VzdERhdGU7XG5cbiAgICBpZiAocmVzcG9uc2UuZGF0YS5kb2NzICYmIHJlc3BvbnNlLmRhdGEuZG9jc1swXSAmJiByZXNwb25zZS5kYXRhLmRvY3NbMF0uaW5nZXN0RGF0ZSkge1xuICAgIGluZ2VzdERhdGUgPSBodG1sYDxkaXYgY2xhc3M9XCJhbGVydCBhbGVydC1pbmZvXCI+SW5nZXN0IERhdGUgb2YgdGhlIGZpcnN0IGl0ZW06IDxzdHJvbmc+JHtyZXNwb25zZS5kYXRhLmRvY3NbMF0uaW5nZXN0RGF0ZX08L3N0cm9uZz48L2Rpdj5gXG4gICAgfSBlbHNlIHtcbiAgICBpbmdlc3REYXRlID0gaHRtbGA8ZGl2IGNsYXNzPVwiYWxlcnQgYWxlcnQtc2Vjb25kYXJ5XCI+V2FpdGluZyBmb3IgdGhlIHJlc3BvbnNlPC9kaXY+YFxuICAgIH1cblxuICAgIHJldHVybiBpbmdlc3REYXRlO1xufSBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBzb3VyY2UgPSB7XG4gICAgbGV0IHRpdGxlLCBjcmVhdG9yLCBkYXRlO1xuICAgIGlmIChyZXNwb25zZS5kYXRhLmRvY3MgJiYgcmVzcG9uc2UuZGF0YS5kb2NzWzBdICYmIHJlc3BvbnNlLmRhdGEuZG9jc1swXS5zb3VyY2VSZXNvdXJjZSkge1xuICAgIGNvbnN0IHNvdXJjZSA9IHJlc3BvbnNlLmRhdGEuZG9jc1swXS5zb3VyY2VSZXNvdXJjZTtcbiAgICB0aXRsZSA9IHNvdXJjZS50aXRsZSA/IHNvdXJjZS50aXRsZVswXSA6IFwiTi9BXCI7XG4gICAgY3JlYXRvciA9IHNvdXJjZS5jcmVhdG9yID8gc291cmNlLmNyZWF0b3JbMF0gOiBcIk4vQVwiO1xuICAgIGRhdGUgPSBzb3VyY2UuZGF0ZSA/IHNvdXJjZS5kYXRlWzBdLmRpc3BsYXlEYXRlIDogXCJOL0FcIjtcbiAgICByZXR1cm4gaHRtbGA8ZGl2IGNsYXNzPVwiY2FyZFwiPlxuICAgIDxkaXYgY2xhc3M9XCJjYXJkLWJvZHlcIj5cbiAgICA8aDUgY2xhc3M9XCJjYXJkLXRpdGxlXCI+JHt0aXRsZX08L2g1PlxuICAgIDxoNiBjbGFzcz1cImNhcmQtc3VidGl0bGUgbWItMiB0ZXh0LW11dGVkXCI+Q3JlYXRvcjogJHtjcmVhdG9yfTwvaDY+XG4gICAgPHAgY2xhc3M9XCJjYXJkLXRleHRcIj5EYXRlOiAke2RhdGV9PC9wPlxuICAgIDwvZGl2PlxuICAgIDwvZGl2PmA7XG4gICAgfSBlbHNlIHtcbiAgICByZXR1cm4gaHRtbGA8ZGl2IGNsYXNzPVwiYWxlcnQgYWxlcnQtc2Vjb25kYXJ5XCI+V2FpdGluZyBmb3IgdGhlIHJlc3BvbnNlPC9kaXY+YFxuICAgIH1cbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBwcm92aWRlckluZm8gPSB7XG4gICAgbGV0IHByb3ZpZGVyO1xuICAgIGlmIChyZXNwb25zZS5kYXRhLmRvY3MgJiYgcmVzcG9uc2UuZGF0YS5kb2NzWzBdICYmIHJlc3BvbnNlLmRhdGEuZG9jc1swXS5wcm92aWRlcikge1xuICAgIHByb3ZpZGVyID0gcmVzcG9uc2UuZGF0YS5kb2NzWzBdLnByb3ZpZGVyLm5hbWUgfHwgXCJOL0FcIjtcbiAgICByZXR1cm4gaHRtbGA8ZGl2IGNsYXNzPVwiYWxlcnQgYWxlcnQtaW5mb1wiPlByb3ZpZGVyOiA8c3Ryb25nPiR7cHJvdmlkZXJ9PC9zdHJvbmc+PC9kaXY+YDtcbiAgICB9IGVsc2Uge1xuICAgIHJldHVybiBodG1sYDxkaXYgY2xhc3M9XCJhbGVydCBhbGVydC1zZWNvbmRhcnlcIj5XYWl0aW5nIGZvciB0aGUgcmVzcG9uc2U8L2Rpdj5gXG4gICAgfVxufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtZXRob2QnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZW5kcG9pbnQnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncXVlcnknKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYXBpa2V5JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3ByZXR0eVJlc3BvbnNlJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2NvdW50SW5mbycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdpbmdlc3REYXRlSW5mbycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzb3VyY2UnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncHJvdmlkZXJJbmZvJykifV19
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
