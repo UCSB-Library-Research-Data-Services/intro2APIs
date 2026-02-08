@@ -1,5 +1,5 @@
 ---
-title: "Interacting with APIs Programmatically"
+title: "Getting Started with APIs and Coding"
 execute:
     echo: true
 format:

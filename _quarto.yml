@@ -59,7 +59,7 @@ website:
             href: chapters/interactingAPIs/interact-apis.qmd
           - text: "Exercise: Calling Data"
             href: chapters/interactingAPIs/exercise-calling-data.qmd
-      - section: Interacting with APIs using Postman
+      - section: Using Postman
         contents:
           - text: "Postman"
             href: chapters/postman/postman.qmd
@@ -81,9 +81,9 @@ website:
                 href: chapters/postman/exercise-github-api-2.qmd
       - section: "Getting Data Programmatically"
         contents:
-          - text: "Interacting with APIs with Python"
+          - text: "Getting Started"
             href: chapters/coding/coding-intro.qmd
-      - section: "APIs for Data Analysis"
+      - section: "Data Analysis"
         contents:
           - text: "Collecting Data for Analysis"
             href: chapters/dataAnalysis/collecting-data-for-analysis.qmd
