@@ -8,23 +8,23 @@ format:
 lightbox: true
 ---
 
-Although tools like Postman and Bruno are great for testing and exploring APIs, it's plausible that your goal is to retrieve data from multiple endpoints, select specific fields, automate processes, or manipulate the data obtained in a response.
+Tools like Postman and Bruno are great for exploring and testing APIs. But if you want to pull data from multiple endpoints, repeat requests, automate workflows, or clean and analyze results, you’ll quickly want to use code.
 
-Most of the high-level programming languages used in data science and digital humanities (e.g., Python, R, JavaScript) have libraries that allow you to interact with APIs programmatically. That means that the heavy lifting of constructing and handling requests, parsing responses, and managing authentication is taken care of by the library. The dificulty usually lies in how complex the API is, particularly the multiple methods of authentication, the structure of the endpoints, and the format of the responses.
+Most high-level languages used in data science and digital humanities (Python, R, JavaScript, etc.) have libraries for working with web APIs. Those libraries handle the basics—sending requests, parsing responses, and (often) authentication—so you can focus on what data you need and how to use it. The hardest part is usually the API itself: its authentication requirements, endpoint structure, and response format.
 
-In this section, we will use Python to interact with the [Digital Public Library of America (DPLA) API](https://pro.dp.la/developers/api-codex). The rationality behind this choice is that the DPLA API, besides the fact that it provides access to a large amount of data, has a relatively straightforward structure and authentication process, making it an ideal candidate for learning how to interact with APIs programmatically. 
+In this section, we’ll use Python with the [Digital Public Library of America (DPLA) API](https://pro.dp.la/developers/api-codex). DPLA is a good learning API because it offers a lot of public data and has a relatively straightforward structure and authentication process.
 
 ::: {.callout-note appearance="simple" collapse="false"}
-## Comming Soon!
+## Coming soon
 
-We are planning to expand this section to include examples of how to interact with APIs using R and JavaScript as well. Stay tuned for updates!
+We plan to add R and JavaScript examples as well. For now, this chapter uses Python.
 :::
 
 ## Where to Start?
 
-Before writing a single line of code, we need to understand the API requests and the structure of the responses. Therefore, the first place we must go is the API documentation. In the case of the DPLA API, we can find in the [API Codex](https://pro.dp.la/developers/api-codex){target="_blank"}. The DPLA developers are very generous and provide a 'how to use it' guide that summarizes the basic steps to interact with the API in three steps:
+Before writing code, it helps to understand what the API expects (requests) and what it returns (responses). The best place to start is the documentation—in this case, the DPLA [API Codex](https://pro.dp.la/developers/api-codex){target="_blank"}. The DPLA team provides a short “how to use it” guide that boils things down to two steps:
 
-1. **Request an API key from DPLA**: The way to generate an API key is to send a request to a DPLA endpoint with your email address. A 32-character hash API key will be sent to your email. 
+1. **Request an API key from DPLA**: To get a key, send a request with your email address. DPLA will email you a 32-character API key.
 
 To request an API key, open your terminal and use the `curl` command:
 
@@ -35,10 +35,10 @@ curl "https://api.dp.la/v2/api_key/YOUR_EMAIL@example.com"
 Replace `YOUR_EMAIL@example.com` with your actual email address. The DPLA will send you a 32-character API key to your email inbox.
 
 :::{.callout-warning appearance="simple" collapse="false"}
-Keep your API key secure and do not share it publicly. This is very important, as you API key is like a password associated with your email address. The developers of the DPLA have a very lenient policy regarding the use of the API, but if they detect any suspicious activity associated with your API key, they may revoke it without notice. See the [API policies](https://pro.dp.la/developers/policies){target="_blank"} for more information.
+Keep your API key secure and do not share it publicly. Your API key is like a password tied to your email address, and it can be revoked if it’s abused. See the DPLA [API policies](https://pro.dp.la/developers/policies){target="_blank"} for details.
 :::
 
-2. **Do a request to the API**: With your API key, you're ready to make your first request to the API. Here you can test that the API key works and that you can successfully retrieve data from the API. 
+2. **Make a request to the API**: With your API key, you’re ready to test a request and confirm that you can retrieve data.
 
 ```{ojs}
 viewof method = Inputs.select(["GET"], {
@@ -151,3 +151,80 @@ viewof prettyResponse = {
 ## API Key Privacy
 The API key is not stored anywhere in this book, and it's used exclusively to make the request to the DPLA API. Once you close the browser tab or refresh the page, the API key will be lost.
 :::
+
+## Understanding the Response
+
+For the sake of simplicity, we limit the response to one item. Even then, the response is large and not very human-readable at first. Here are a few fields that are especially useful when you’re getting started:
+
+- [`count`](https://pro.dp.la/developers/field-reference#count){target="_blank"}, which indicates the total number of items that match the query.
+
+```{ojs}
+
+viewof countInfo = {
+    let count;
+
+    if (response.data.count !== undefined ){
+    count = html`<div class="alert alert-info">Total items matching the query: <strong>${response.data.count}</strong></div>`
+    } else {
+    count = html`<div class="alert alert-secondary">Waiting for the response</div>`
+    }
+
+    return count;
+}
+
+```
+
+- [`docs`](https://pro.dp.la/developers/field-reference#docs){target="_blank"}, which contains the actual data of the items retrieved. It's possible to access specific fields at this level, for example, the [`ingestDate`](https://pro.dp.la/developers/field-reference#ingestDate){target="_blank"} field, which indicates the date when the item was ingested into the DPLA.
+
+```{ojs}
+viewof ingestDateInfo = {
+    let ingestDate;
+
+    if (response.data.docs && response.data.docs[0] && response.data.docs[0].ingestDate) {
+    ingestDate = html`<div class="alert alert-info">Ingest Date of the first item: <strong>${response.data.docs[0].ingestDate}</strong></div>`
+    } else {
+    ingestDate = html`<div class="alert alert-secondary">Waiting for the response</div>`
+    }
+
+    return ingestDate;
+} 
+```
+
+- [`sourceResource`](https://pro.dp.la/developers/field-reference#sourceResource){target="_blank"}, which contains the metadata of the item, including fields like `title`, `creator`, `date`, `description`, etc.
+
+```{ojs}
+viewof source = {
+    let title, creator, date;
+    if (response.data.docs && response.data.docs[0] && response.data.docs[0].sourceResource) {
+    const source = response.data.docs[0].sourceResource;
+    title = source.title ? source.title[0] : "N/A";
+    creator = source.creator ? source.creator[0] : "N/A";
+    date = source.date ? source.date[0].displayDate : "N/A";
+    return html`<div class="card">
+    <div class="card-body">
+    <h5 class="card-title">${title}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Creator: ${creator}</h6>
+    <p class="card-text">Date: ${date}</p>
+    </div>
+    </div>`;
+    } else {
+    return html`<div class="alert alert-secondary">Waiting for the response</div>`
+    }
+}
+```
+
+- [`provider`](https://pro.dp.la/developers/field-reference#provider){target="_blank"}, which indicates the institution that provided the item to the DPLA.
+
+```{ojs}
+viewof providerInfo = {
+    let provider;
+    if (response.data.docs && response.data.docs[0] && response.data.docs[0].provider) {
+    provider = response.data.docs[0].provider.name || "N/A";
+    return html`<div class="alert alert-info">Provider: <strong>${provider}</strong></div>`;
+    } else {
+    return html`<div class="alert alert-secondary">Waiting for the response</div>`
+    }
+}
+```
+
+These are just a few examples. To go further, see the DPLA documentation on [requests](https://pro.dp.la/developers/requests){target="_blank"} and [responses](https://pro.dp.la/developers/responses){target="_blank"}.
