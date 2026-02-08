@@ -45,7 +45,7 @@ This happens because we haven’t included our api_token secret in the request h
 
 That means your personal image collection is accessible — and ready for uploads!
 
-![POSTMAN images collection](/static/imgs/postman-images-collection.png)
+![POSTMAN images collection]( /_static/imgs/postman-images-collection.png)
 
 ### Writing the POST Request
 
@@ -123,11 +123,11 @@ Let’s attach our image by selecting **form-data** from the Body menu. Then, ad
 
 You should see something like this:
 
-![POSTMAN Body file-form attached file](/static/imgs/postman-post-prepare.png)
+![POSTMAN Body file-form attached file]( /_static/imgs/postman-post-prepare.png)
 
 Now you can send the request. If it’s successful, you’ll see a response like this:
 
-![POSTMAN POST request success message](/static/imgs/postman-post-success.png)
+![POSTMAN POST request success message]( /_static/imgs/postman-post-success.png)
 
 The warning icon before the filename and the cloud upload symbol are optional indicators — useful if you’re working in a shared workspace and want to sync files with your team.
 

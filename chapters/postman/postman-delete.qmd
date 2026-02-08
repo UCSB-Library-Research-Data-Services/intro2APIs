@@ -12,11 +12,11 @@ Now that we’ve learned how to send information to a server using an API endpoi
 
 To avoid deleting the image we uploaded earlier, we’ll start this section by uploading a new image — this one of a very festive (and slightly grumpy) cat:
 
-![Is he a cat or the Grinch?](/static/imgs/Mateo.jpeg)
+![Is he a cat or the Grinch?]( /_static/imgs/Mateo.jpeg)
 
 Here’s the response returned by the API when the image was uploaded:
 
-![](/static/imgs/cat-grinch.png)
+![]( /_static/imgs/cat-grinch.png)
 
 Now we’re ready to delete that image from our personal collection using its ID.
 
@@ -63,7 +63,7 @@ You won’t receive a confirmation or warning before deletion, so make sure you'
 
 If the request is successful, you’ll receive a `204 No Content` status — this means the image was deleted.
 
-![POSTMAN delete request](/static/imgs/postman-delete-request.png)
+![POSTMAN delete request]( /_static/imgs/postman-delete-request.png)
 
 ---
 

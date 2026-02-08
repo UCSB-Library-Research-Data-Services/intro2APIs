@@ -85,7 +85,7 @@ A straightforward way to isolate communities is by using Retina’s "Explore" fe
 2. Click on a community to highlight it.
 3. Use the filter options to hide other nodes and focus on a single thematic area.
 
-![Retina Filter by Community](/static/imgs/Retina-filter-by-community.png)
+![Retina Filter by Community]( /_static/imgs/Retina-filter-by-community.png)
 
 :::
 

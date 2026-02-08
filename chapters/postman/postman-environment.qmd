@@ -41,7 +41,7 @@ Fill out the following fields:
 
 Click the checkbox to activate the variable, then click **Save** in the upper-right corner.
 
-![Postman default variable](/static/imgs/postman-default-var.png)
+![Postman default variable]( /_static/imgs/postman-default-var.png)
 
 ---
 
@@ -64,7 +64,7 @@ Once you have your token, add it to the same environment you created earlier:
 
 Check the box to activate the variable, then click **Save**.
 
-![Postman secret variable](/static/imgs/postman-secret-var.png)
+![Postman secret variable]( /_static/imgs/postman-secret-var.png)
 
 ## Using Variables in a Request
 
@@ -72,13 +72,13 @@ Now that we’ve saved our variables, we can include them in a request. Let’s 
 
 To use your environment variables, you first need to activate the `CatAPI` environment. In the top-right corner of Postman, you’ll see a button labeled **"No Environment"**. Click it and select `CatAPI` from the dropdown menu:
 
-![](/static/imgs/postman-env-select.png)
+![]( /_static/imgs/postman-env-select.png)
 
 Now, go to the request URL field. Carefully remove `https://api.thecatapi.com/v1` from the beginning — **but be sure to leave the trailing slash in `/breeds` intact**.
 
 Type `{` in the field, and you’ll see a dropdown menu showing available variables from the `CatAPI` environment, along with global variables provided by Postman. If you hover over a variable name, Postman will display its value.
 
-![](/static/imgs/postman-variables-request.png)
+![]( /_static/imgs/postman-variables-request.png)
 
 Select the `url` variable. Your request should now look like this:
 
@@ -86,7 +86,7 @@ Select the `url` variable. Your request should now look like this:
  
 To confirm that everything is working correctly, click **Send** again. You should see the same response as before — now powered by your environment variable!
 
-![Postman - Request with default variable](/static/imgs/postman-request-with-variable.png)
+![Postman - Request with default variable]( /_static/imgs/postman-request-with-variable.png)
 
 ## Using Secrets in a Request
 
@@ -111,7 +111,7 @@ To add the header, use the following values:
 
 Now run the request again. You’ll see that the `limit=3` parameter works as expected — and you can even increase it (e.g., to 30) without any issue. Because the request is now authenticated, the API allows access to features that aren’t available to unauthenticated users.
 
-![](/static/imgs/postman-request-with-secret.png)
+![]( /_static/imgs/postman-request-with-secret.png)
 
 ## Wrapping Up
 

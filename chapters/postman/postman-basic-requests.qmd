@@ -32,7 +32,7 @@ For this exercise, we’ll use the following setup:
 - **Type**: `Internal workspace`
 - **Access**: Keep the default — everyone in your team can access it
 
-![Workspace creation form in Postman](/static/imgs/postman-workspace-creation.png)
+![Workspace creation form in Postman]( /_static/imgs/postman-workspace-creation.png)
 
 If you haven’t set up a team in Postman yet, you’ll be prompted to fill out a simple form to create one. Just keep it straightforward: choose any name for your team, select `Other` for the question *“What will your team work on?”*, and confirm.
 
@@ -52,7 +52,7 @@ To create a new collection:
 
 You’ll now see your new collection listed in the sidebar. We’ll add our first `GET` request to it in the next step.
 
-![Creating a collection in Postman](/static/imgs/postman-create-collection.png)
+![Creating a collection in Postman]( /_static/imgs/postman-create-collection.png)
 
 ::: {.callout-tip appearance="simple" collapse="false"}
 When you create a new workspace, Postman may automatically add a template collection named **"End-to-End Tests"**. You can safely remove it to keep your workspace clean and focused.
@@ -81,7 +81,7 @@ You’re ready to send your first request! Click the **Send** button.
 
 You should see a `200 OK` response along with a list of cat breeds in the response body.
 
-![Adding a GET request in Postman](/static/imgs/postman-get-catapi-breeds.png)
+![Adding a GET request in Postman]( /_static/imgs/postman-get-catapi-breeds.png)
 
 ## Using Query Parameters
 
@@ -109,7 +109,7 @@ Let’s try an example using The Cat API’s search endpoint to retrieve only a 
 
 You should see a list of cat image objects, each with a `url` field pointing to a different cat GIF.
 
-![Query parameters in Postman](/static/imgs/postman-query-params-catapi.png)
+![Query parameters in Postman]( /_static/imgs/postman-query-params-catapi.png)
 
 ---
 

@@ -38,7 +38,7 @@ Here’s how to generate one:
 GitHub will only show the token **once**. Copy it immediately and save it somewhere secure (e.g., directly into Postman).
 :::
 
-![Github Token Form](/static/imgs/Github-token.png)
+![Github Token Form]( /_static/imgs/Github-token.png)
 
 ### Add It to Postman
 
@@ -89,7 +89,7 @@ If everything is working, you’ll get a response that includes your GitHub user
 - `public_repos`
 - `created_at`, etc.
 
-![Example of a successful GitHub user response in Postman](/static/imgs/postman-github-user-response.png)
+![Example of a successful GitHub user response in Postman]( /_static/imgs/postman-github-user-response.png)
 
 If you receive a `401 Unauthorized` error, double-check:
 

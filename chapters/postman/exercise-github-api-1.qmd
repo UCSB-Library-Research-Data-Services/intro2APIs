@@ -32,7 +32,7 @@ Meta
 
 GitHub’s documentation may seem intimidating at first, but with a closer look, it’s not that different from The Cat API’s documentation.
 
-![Get Octocat documentation](/static/imgs/github-api-docs.png)
+![Get Octocat documentation]( /_static/imgs/github-api-docs.png)
 
 Here’s how to read it:
 
@@ -70,7 +70,7 @@ Let’s build the request for `/octocat` in Postman:
 
 You should see the **Octocat** in your response window!
 
-![The Octocat](/static/imgs/gh-octocat.png)
+![The Octocat]( /_static/imgs/gh-octocat.png)
 
 ## Search Repositories
 

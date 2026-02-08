@@ -54,7 +54,7 @@ Note that the query parameters are separated from the path by a question mark (`
 
 Now, having all the parts of an endpoint, we can write the full endpoint as follows:
 
-![](/static/imgs/endpoint_diagram.png)
+![](/_static/imgs/endpoint_diagram.png)
 
 This can be read as follows: "I want to retrieve 5 cat gif images with a small size".
 

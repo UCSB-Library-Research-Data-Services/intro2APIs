@@ -143,7 +143,7 @@ viewof catDataString = {
 
 This format is called JSON, and its widely used in APIs to return data. We will see more about this format later, but for now, we can say that this output is called a **response**, and it contains **keys** and **values**. Keys are the names of the information we requested and values are the information we received. For instance, in this response, the url to the image of a Ragdoll cat can be found under the `url` key, and its value is `https://cdn2.thecatapi.com/images/XFhRpYS_D.jpg`.
 
-![JSON syntax](/static/imgs/JSON-syntax.png)
+![JSON syntax]( /_static/imgs/JSON-syntax.png)
 
 Now, what we want to do is to get the image of the Ragdoll, not just the abstract information. To do this, we have to access the values associated with each key. The url to the image is under the `url` key, the name of the cat is under the `breeds` key and the description is under the `description` key. With a bit of coding, we can display the image of the cat:
 
@@ -168,7 +168,7 @@ Cute, isn't it?
 
 What the API is doing, is to get the information from the server database, return it to the client in a format that can be easily parsed by a computer, and then the browser can use this information to display the cat image, or to get additional information about the cat. 
 
-![A simple representation of an API (click to zoom)](/static/imgs/APIS.png)
+![A simple representation of an API (click to zoom)]( /_static/imgs/APIS.png)
 
 With that information, we can display the information in a more readable format, and reutilize the method to get the image of other cats, for instance, a Bengal cat:
 
