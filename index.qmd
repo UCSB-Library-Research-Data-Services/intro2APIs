@@ -76,7 +76,7 @@ Finally, we will only be working with GET requests, meaning we won’t be creati
 ::: {.card .h-100}
 ::: {.card-body}
 <div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
-<i class="bi bi-code-slash"></i>
+{{< fa brands python >}}
 </div>
 <h3 class="card-title text-center">Programmatic Access</h3>
 <p class="card-text">Learn how to interact with APIs programmatically using Python for automated data collection.</p>
