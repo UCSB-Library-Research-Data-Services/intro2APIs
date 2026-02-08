@@ -440,6 +440,36 @@
     "text": "Initial public release\nWhat are APIs and why do they exists\nInteracting with APIs (GET requests) using the Web interface.\nAPIs for Data Analysis\nA Catalog of APIs"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to Unlocking Data",
+    "section": "",
+    "text": "This is the workbook that accompanies the workshop Unlocking Data: A Gentle Introduction to APIs.\nThe workshop is designed for people with no programming experience who want to start working with APIs, particularly web APIs.\nYou can follow this workbook without installing any specific software. We’ve included interactive examples so you can practice alongside the workshop.\nAlthough no programming knowledge is required, you can explore the code behind each example by clicking the Code button, as shown below:\nCode\nhello = \"Hello, world!\"\nhello",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#workshop-sections",
+    "href": "index.html#workshop-sections",
+    "title": "Welcome to Unlocking Data",
+    "section": "Workshop Sections",
+    "text": "Workshop Sections\n\n\n\n\n\n\n\n\nWhat are APIs?\n\n\nLearn the fundamentals of APIs, what they are, and why they exist.\n\nStart Learning\n\n\n\n\n\n\n\n\n\n\nInteracting with APIs\n\n\nDiscover different methods and tools for interacting with APIs.\n\nGet Started\n\n\n\n\n\n\n\n\n\n\nUsing Postman\n\n\nLearn how to use Postman, a popular tool for testing and working with APIs.\n\nExplore Postman\n\n\n\n\n\n\n\n\n\n\nProgramming with APIs\n\n\nUse Python to programmatically interact with APIs and automate data collection.\n\nWrite Code\n\n\n\n\n\n\n\n\n\n\nData Analysis\n\n\nCollect and analyze data from APIs for research and insights.\n\nAnalyze Data\n\n\n\n\n\n\n\n\n\n\nAPI Catalog\n\n\nBrowse a catalog of interesting APIs you can explore and use.\n\nView Catalog",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#about-this-workshop",
+    "href": "index.html#about-this-workshop",
+    "title": "Welcome to Unlocking Data",
+    "section": "About This Workshop",
+    "text": "About This Workshop\nThis workshop was developed by the UCSB Library Research Data Services team to help researchers and students understand and work with APIs effectively. Whether you’re looking to collect data for analysis, automate workflows, or simply understand how modern web applications communicate, this workshop will give you the foundational knowledge you need.\nReady to get started? Begin with What are APIs? or explore any section that interests you!",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
     "objectID": "chapters/postman/exercise-github-api.html",
     "href": "chapters/postman/exercise-github-api.html",
     "title": "Working with the GitHub API",
@@ -695,20 +725,14 @@
     "href": "chapters/index.html",
     "title": "Welcome to Unlocking Data",
     "section": "",
-    "text": "This is the workbook that accompanies the workshop Unlocking Data: A Gentle Introduction to APIs.\nThe workshop is designed for people with no programming experience who want to start working with APIs, particularly web APIs.\nYou can follow this workbook without installing any specific software. We’ve included interactive examples so you can practice alongside the workshop.\nAlthough no programming knowledge is required, you can explore the code behind each example by clicking the Code button, as shown below:\nCode\nhello = \"Hello, world!\"\nhello",
-    "crumbs": [
-      "Introduction"
-    ]
+    "text": "This is the workbook that accompanies the workshop Unlocking Data: A Gentle Introduction to APIs.\nThe workshop is designed for people with no programming experience who want to start working with APIs, particularly web APIs.\nYou can follow this workbook without installing any specific software. We’ve included interactive examples so you can practice alongside the workshop.\nAlthough no programming knowledge is required, you can explore the code behind each example by clicking the Code button, as shown below:\nCode\nhello = \"Hello, world!\"\nhello"
   },
   {
     "objectID": "chapters/index.html#workshop-sections",
     "href": "chapters/index.html#workshop-sections",
     "title": "Welcome to Unlocking Data",
     "section": "Workshop Sections",
-    "text": "Workshop Sections\n\n\n\n\n\n\n\n\nWhat are APIs?\n\n\nLearn the fundamentals of APIs, what they are, and why they exist.\n\nStart Learning\n\n\n\n\n\n\n\n\n\n\nInteracting with APIs\n\n\nDiscover how to interact with APIs using endpoints, request methods, and practical exercises.\n\nExplore\n\n\n\n\n\n\n\n\n\n\nUsing Postman\n\n\nMaster API testing with Postman, including GET, POST, and DELETE requests with hands-on GitHub API exercises.\n\nGet Started\n\n\n\n\n\n\n\n\n\n\nProgrammatic Access\n\n\nLearn how to interact with APIs programmatically using Python for automated data collection.\n\nCode\n\n\n\n\n\n\n\n\n\n\nData Analysis\n\n\nApply your API knowledge to collect and analyze real data for research purposes.\n\nAnalyze\n\n\n\n\n\n\n\n\n\n\nAPI Catalog\n\n\nBrowse our curated catalog of APIs with documentation links and authentication requirements.\n\nBrowse\n\n\n\n\nEach lesson can be followed independently, and the workbook will remain available even if you don’t attend the workshop.\nWithout further ado, let’s get started! 🚀",
-    "crumbs": [
-      "Introduction"
-    ]
+    "text": "Workshop Sections\n\n\n\n\n\n\n\n\nWhat are APIs?\n\n\nLearn the fundamentals of APIs, what they are, and why they exist.\n\nStart Learning\n\n\n\n\n\n\n\n\n\n\nInteracting with APIs\n\n\nDiscover how to interact with APIs using endpoints, request methods, and practical exercises.\n\nExplore\n\n\n\n\n\n\n\n\n\n\nUsing Postman\n\n\nMaster API testing with Postman, including GET, POST, and DELETE requests with hands-on GitHub API exercises.\n\nGet Started\n\n\n\n\n\n\n\n\n\n\nProgrammatic Access\n\n\nLearn how to interact with APIs programmatically using Python for automated data collection.\n\nCode\n\n\n\n\n\n\n\n\n\n\nData Analysis\n\n\nApply your API knowledge to collect and analyze real data for research purposes.\n\nAnalyze\n\n\n\n\n\n\n\n\n\n\nAPI Catalog\n\n\nBrowse our curated catalog of APIs with documentation links and authentication requirements.\n\nBrowse\n\n\n\n\nEach lesson can be followed independently, and the workbook will remain available even if you don’t attend the workshop.\nWithout further ado, let’s get started! 🚀"
   },
   {
     "objectID": "chapters/what-is-an-api.html",
