@@ -65,10 +65,10 @@ With this result:
 // catch error if the file is not found
 cats = {
   try {
-  return await FileAttachment("../_data/cats.json").json();
+  return await FileAttachment("../../_data/cats.json").json();
   } catch (e) {
   console.error("Error loading cats data. This is normal if you're running the book locally.", e);
-  return await FileAttachment("../_dev/cats-fallback.json").json()
+  return await FileAttachment("../../_dev/cats-fallback.json").json()
   }
 }
 
