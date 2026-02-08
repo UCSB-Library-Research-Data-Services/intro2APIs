@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>What’s Postman – Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;</title>
+<title>cURL - APIs from the command line – Unlocking DataA Gentle Introduction to APIs</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../chapters/postman/postman-basic-requests.html" rel="next">
-<link href="../../chapters/interactingAPIs/exercise-calling-data.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -98,7 +96,9 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/postman/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/postman.html">Postman</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -179,16 +179,16 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Interacting with APIs using Postman</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/postman/postman.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../chapters/postman/postman.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Postman</span></a>
   </div>
 </li>
@@ -298,27 +298,20 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#postman-applications" id="toc-postman-applications" class="nav-link active" data-scroll-target="#postman-applications">Postman Applications</a></li>
-  <li><a href="#do-i-have-to-use-postman-to-work-with-apis" id="toc-do-i-have-to-use-postman-to-work-with-apis" class="nav-link" data-scroll-target="#do-i-have-to-use-postman-to-work-with-apis">Do I Have to Use Postman to Work with APIs?</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/postman/postman.html">Interacting with APIs using Postman</a></li><li class="breadcrumb-item"><a href="../../chapters/postman/postman.html">Postman</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">What’s Postman</h1>
+<h1 class="title">cURL - APIs from the command line</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-body">
+<div class="quarto-title-meta column-page-right">
 
     
   
@@ -330,51 +323,10 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </header>
 
 
-<p><strong><a href="https://www.postman.com/">Postman</a></strong> is a widely used platform that facilitates interaction with APIs. Originally designed for testing APIs in development environments, it has become a powerful tool for exploring and managing API requests in both individual and collaborative workflows.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Postman is a commercial product, and while it’s possible to use it for free, some of its features are only available in paid plans. We’re in the process of writing a chapter using <a href="https://www.usebruno.com/">Bruno</a> as an open source alternative to Postman. The interface and workflow are very similar, so the concepts and exercises in this chapter will be applicable to both platforms. We strongly encourage you to try both and see which one works best for you. :)</p>
-</div>
-</div>
-<p>One of Postman’s major strengths is that it enables users without programming experience to interact with API services in a comprehensive and structured way. Users can send requests to read, write, update, and delete information from an API, all through a visual interface. This includes managing authentication credentials securely (even OAuth), defining public and secret variables, configuring headers, adding parameters, and submitting body content in various formats (form-data, binary, raw JSON, GraphQL, etc.).</p>
-<section id="postman-applications" class="level2">
-<h2 class="anchored" data-anchor-id="postman-applications">Postman Applications</h2>
-<p>Postman is available as a desktop application and as a web platform. While both offer powerful features, the combination of the two provides the best experience:</p>
-<ul>
-<li>The <strong>desktop app</strong> handles sensitive operations such as managing secrets and authentication tokens locally.</li>
-<li>The <strong>web interface</strong> supports real-time collaboration, making it ideal for team-based API design, testing, and documentation.</li>
-</ul>
-<p>When used together, Postman offers a seamless way to experiment with, document, and share API workflows, and without writing a single line of code.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Why secrets and credentials are not stored in the web interface
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This is largely a design decision, but it’s also an important security feature. By keeping secrets and credentials on the desktop client, rather than the web interface, Postman ensures that each user interacts with an API using their own credentials, rather than sharing a common set of keys.</p>
-<p>This approach enhances security and allows for granular control over user actions, enabling organizations to manage permissions more effectively and reduce the risk of unauthorized access.</p>
-</div>
-</div>
-</section>
-<section id="do-i-have-to-use-postman-to-work-with-apis" class="level2">
-<h2 class="anchored" data-anchor-id="do-i-have-to-use-postman-to-work-with-apis">Do I Have to Use Postman to Work with APIs?</h2>
-<p>Postman is a popular, user-friendly tool, but it’s not the only way to interact with APIs. In fact, open-source alternatives like <a href="https://www.usebruno.com/">Bruno</a> and <a href="https://httpie.io/">HTTPie</a> may be better suited for some users, especially those who prefer tools that don’t rely on web synchronization or who want more control over their workflows.</p>
-<p>We’ve chosen Postman for this workshop because of its flexibility, feature set, and beginner-friendly interface. However, the core concepts and workflows (such as sending requests, handling authentication, and organizing collections) are largely shared across platforms. Once you understand how APIs work, you’ll be able to adapt to other tools with ease.</p>
+<p>In the previous chapters we have seen how to interact with APIs directly from the web browser, and by the help of software testing applications like Postman. However, there are more direct ways to interact with APIs. One of the most common is by using the command line interface (CLI) of your computer.</p>
+<p><strong>cURL</strong> (Client URL) is a powerful, Open Source, command line tool used for transfering data to and from servers using multiple protocols, including HTTP, HTTPS, FTP, and more. It is widely used for testing APIs, for automating tasks, and for debugging network issues. In its origins, cURL was developed for Unix-based systems, but its popularity has led to being packaged for Windows and macOS as well.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -777,18 +729,6 @@ Caution
     }
   });
   </script>
-<nav class="page-navigation column-body">
-  <div class="nav-page nav-page-previous">
-      <a href="../../chapters/interactingAPIs/exercise-calling-data.html" class="pagination-link" aria-label="Exercise: Calling Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise: Calling Data</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../chapters/postman/postman-basic-requests.html" class="pagination-link" aria-label="Basic Request">
-        <span class="nav-page-text">Basic Request</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
