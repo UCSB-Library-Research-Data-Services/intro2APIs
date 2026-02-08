@@ -368,7 +368,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <p>Click the checkbox to activate the variable, then click <strong>Save</strong> in the upper-right corner.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../static/imgs/postman-default-var.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Postman default variable"><img src="../../static/imgs/postman-default-var.png" class="img-fluid figure-img" alt="Postman default variable"></a></p>
+<p><a href="../../_static/imgs/postman-default-var.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Postman default variable"><img src="../../_static/imgs/postman-default-var.png" class="img-fluid figure-img" alt="Postman default variable"></a></p>
 <figcaption>Postman default variable</figcaption>
 </figure>
 </div>
@@ -394,7 +394,7 @@ You’ll receive an email within a few seconds containing a token that looks som
 <p>Check the box to activate the variable, then click <strong>Save</strong>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../static/imgs/postman-secret-var.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Postman secret variable"><img src="../../static/imgs/postman-secret-var.png" class="img-fluid figure-img" alt="Postman secret variable"></a></p>
+<p><a href="../../_static/imgs/postman-secret-var.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Postman secret variable"><img src="../../_static/imgs/postman-secret-var.png" class="img-fluid figure-img" alt="Postman secret variable"></a></p>
 <figcaption>Postman secret variable</figcaption>
 </figure>
 </div>
@@ -404,16 +404,16 @@ You’ll receive an email within a few seconds containing a token that looks som
 <h2 class="anchored" data-anchor-id="using-variables-in-a-request">Using Variables in a Request</h2>
 <p>Now that we’ve saved our variables, we can include them in a request. Let’s go back to the <strong>Collections</strong> tab and open the <strong>List Breeds</strong> request.</p>
 <p>To use your environment variables, you first need to activate the <code>CatAPI</code> environment. In the top-right corner of Postman, you’ll see a button labeled <strong>“No Environment”</strong>. Click it and select <code>CatAPI</code> from the dropdown menu:</p>
-<p><a href="../../static/imgs/postman-env-select.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="../../static/imgs/postman-env-select.png" class="img-fluid"></a></p>
+<p><a href="../../_static/imgs/postman-env-select.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="../../_static/imgs/postman-env-select.png" class="img-fluid"></a></p>
 <p>Now, go to the request URL field. Carefully remove <code>https://api.thecatapi.com/v1</code> from the beginning — <strong>but be sure to leave the trailing slash in <code>/breeds</code> intact</strong>.</p>
 <p>Type <code>{</code> in the field, and you’ll see a dropdown menu showing available variables from the <code>CatAPI</code> environment, along with global variables provided by Postman. If you hover over a variable name, Postman will display its value.</p>
-<p><a href="../../static/imgs/postman-variables-request.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="../../static/imgs/postman-variables-request.png" class="img-fluid"></a></p>
+<p><a href="../../_static/imgs/postman-variables-request.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="../../_static/imgs/postman-variables-request.png" class="img-fluid"></a></p>
 <p>Select the <code>url</code> variable. Your request should now look like this:</p>
 <p><code>{{url}}/breeds</code></p>
 <p>To confirm that everything is working correctly, click <strong>Send</strong> again. You should see the same response as before — now powered by your environment variable!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../static/imgs/postman-request-with-variable.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Postman - Request with default variable"><img src="../../static/imgs/postman-request-with-variable.png" class="img-fluid figure-img" alt="Postman - Request with default variable"></a></p>
+<p><a href="../../_static/imgs/postman-request-with-variable.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Postman - Request with default variable"><img src="../../_static/imgs/postman-request-with-variable.png" class="img-fluid figure-img" alt="Postman - Request with default variable"></a></p>
 <figcaption>Postman - Request with default variable</figcaption>
 </figure>
 </div>
@@ -444,7 +444,7 @@ You’ll receive an email within a few seconds containing a token that looks som
 <li><strong>Value</strong>: <code>{{api_token}}</code></li>
 </ul>
 <p>Now run the request again. You’ll see that the <code>limit=3</code> parameter works as expected — and you can even increase it (e.g., to 30) without any issue. Because the request is now authenticated, the API allows access to features that aren’t available to unauthenticated users.</p>
-<p><a href="../../static/imgs/postman-request-with-secret.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="../../static/imgs/postman-request-with-secret.png" class="img-fluid"></a></p>
+<p><a href="../../_static/imgs/postman-request-with-secret.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="../../_static/imgs/postman-request-with-secret.png" class="img-fluid"></a></p>
 </section>
 <section id="wrapping-up" class="level2">
 <h2 class="anchored" data-anchor-id="wrapping-up">Wrapping Up</h2>

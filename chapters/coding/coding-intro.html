@@ -120,6 +120,8 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
 </head>
@@ -385,144 +387,199 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </div>
 <section id="where-to-start" class="level2">
 <h2 class="anchored" data-anchor-id="where-to-start">Where to Start?</h2>
-<p>Before writing a single line of code, we need to understand the API requests and the structure of the responses. Therefore, the first place we must go is the API documentation. In the case of the DPLA API, we can find it <a href="https://pro.dp.la/developers/api-codex">here</a>. The DPLA developers are very generous and provide a ‘how to use it’ guide that summarizes the basic steps to interact with the API in three steps:</p>
+<p>Before writing a single line of code, we need to understand the API requests and the structure of the responses. Therefore, the first place we must go is the API documentation. In the case of the DPLA API, we can find in the <a href="https://pro.dp.la/developers/api-codex" target="_blank">API Codex</a>. The DPLA developers are very generous and provide a ‘how to use it’ guide that summarizes the basic steps to interact with the API in three steps:</p>
 <ol type="1">
 <li><strong>Request an API key from DPLA</strong>: The way to generate an API key is to send a request to a DPLA endpoint with your email address. A 32-character hash API key will be sent to your email.</li>
 </ol>
-<p>You can use the following <code>curl</code> command to request an API key:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://api.dp.la/v2/api_key/YOUR_EMAIL@example.com</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You can also use this form to send the request (Test version below):</p>
+<p>To request an API key, open your terminal and use the <code>curl</code> command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.dp.la/v2/api_key/YOUR_EMAIL@example.com"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Replace <code>YOUR_EMAIL@example.com</code> with your actual email address. The DPLA will send you a 32-character API key to your email inbox.</p>
 <div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p><strong>Test First</strong>: Below is a simple test form that performs a random arithmetic operation. Use this to test the form functionality before requesting a real API key.</p>
+<p>Keep your API key secure and do not share it publicly. This is very important, as you API key is like a password associated with your email address. The developers of the DPLA have a very lenient policy regarding the use of the API, but if they detect any suspicious activity associated with your API key, they may revoke it without notice. See the <a href="https://pro.dp.la/developers/policies" target="_blank">API policies</a> for more information.</p>
 </div>
 </div>
 </div>
-<div style="margin-bottom: 2rem;">
-<h4 class="anchored">
-Test Form (Random Addition/Subtraction)
-</h4>
-<form id="test-form" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-<input type="number" id="num1" placeholder="First number" value="5" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"> <input type="number" id="num2" placeholder="Second number" value="3" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"> <button type="submit" style="padding: 0.5rem 1rem; background-color: #0d6efd; color: white; border: none; border-radius: 4px; cursor: pointer;">Test Request</button>
-</form>
-<div id="test-response" style="display: none;">
+<ol start="2" type="1">
+<li><strong>Do a request to the API</strong>: With your API key, you’re ready to make your first request to the API. Here you can test that the API key works and that you can successfully retrieve data from the API.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-startfrom="44" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 43;"><span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>viewof method <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"GET"</span>]<span class="op">,</span> {</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"HTTP Method"</span><span class="op">,</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="dt">class</span><span class="op">:</span> <span class="st">"form-select mb-3"</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>viewof endpoint <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"Endpoint path"</span><span class="op">,</span> </span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>  <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"/v2/items"</span><span class="op">,</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="st">"/v2/items"</span><span class="op">,</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>viewof query <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">text</span>({</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Search: "</span><span class="op">,</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"weasel, cat, dog, etc."</span><span class="op">,</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="st">"cat"</span><span class="op">,</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>    <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>    <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>viewof apikey <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">password</span>({</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="st">"API Key"</span><span class="op">,</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  <span class="dt">placeholder</span><span class="op">:</span> <span class="st">"Your DPLA API key"</span><span class="op">,</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="st">""</span><span class="op">,</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>  <span class="dt">attributes</span><span class="op">:</span> {</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>  <span class="dt">class</span><span class="op">:</span> <span class="st">"form-control mb-3"</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="co">// Function to make the API request</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">fetchFromApi</span>(method<span class="op">,</span> path<span class="op">,</span> q<span class="op">,</span> api_key) {</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> baseUrl <span class="op">=</span> <span class="st">"https://api.dp.la"</span><span class="op">;</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> targetUrl <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>baseUrl<span class="sc">}${</span>path<span class="sc">}</span><span class="vs">?q=</span><span class="sc">${</span>q<span class="sc">}</span><span class="vs">&amp;api_key=</span><span class="sc">${</span>api_key<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> proxyUrl <span class="op">=</span> <span class="vs">`https://api.allorigins.win/get?url=</span><span class="sc">${</span><span class="pp">encodeURIComponent</span>(targetUrl)<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> {</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(proxyUrl)<span class="op">;</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">"Proxy server is down."</span>)<span class="op">;</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> wrapper <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>    <span class="co">// We wrap the URL in the AllOrigins proxy</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>    <span class="co">// See https://allorigins.win/ for more details on how it works and its limitations.</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> dplaStatus <span class="op">=</span> wrapper<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">http_code</span><span class="op">;</span> </span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> data <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(wrapper<span class="op">.</span><span class="at">contents</span>)<span class="op">;</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Check for authentication errors first (403 or "Unauthorized" message)</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (dplaStatus <span class="op">===</span> <span class="dv">403</span> <span class="op">||</span> data<span class="op">.</span><span class="at">message</span> <span class="op">===</span> <span class="st">"Unauthorized"</span>) {</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>        <span class="dt">data</span><span class="op">:</span> { <span class="st">"Message"</span><span class="op">:</span> <span class="st">"🔑 Invalid API Key. Please check your key and try again."</span> }<span class="op">,</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="dv">403</span><span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"Unauthorized"</span> }</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Check for other DPLA errors (like 404 or 400)</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (dplaStatus <span class="op">&gt;=</span> <span class="dv">400</span>) {</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> {</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>        <span class="dt">data</span><span class="op">:</span> data<span class="op">,</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>        <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> dplaStatus<span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"DPLA Error"</span> }</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>      }<span class="op">;</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> { data<span class="op">,</span> <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"OK"</span> } }<span class="op">;</span></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">catch</span> (error) {</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Network or Parsing errors</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>      <span class="dt">data</span><span class="op">:</span> { <span class="st">"Message"</span><span class="op">:</span> <span class="vs">`🌐 Connection Error: </span><span class="sc">${</span>error<span class="op">.</span><span class="at">message</span><span class="sc">}</span><span class="vs">`</span> }<span class="op">,</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>      <span class="dt">status</span><span class="op">:</span> { <span class="dt">code</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span> <span class="dt">ok</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"Network Error"</span> }</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> {</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetchFromApi</span>(method<span class="op">,</span> endpoint<span class="op">,</span> query<span class="op">,</span> apikey)<span class="op">;</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>viewof prettyResponse <span class="op">=</span> {</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> content<span class="op">;</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span>) {</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="alert alert-warning m-0"&gt;</span><span class="sc">${</span>response<span class="op">.</span><span class="at">data</span><span class="op">.</span><span class="at">Message</span><span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;"&gt;</span><span class="sc">${</span><span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(response<span class="op">.</span><span class="at">data</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/pre&gt;`</span><span class="op">;</span></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> badgeClass <span class="op">=</span> response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">ok</span> <span class="op">?</span> <span class="st">"bg-success"</span> <span class="op">:</span> <span class="st">"bg-danger"</span><span class="op">;</span></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="card"&gt;</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="card-header d-flex justify-content-between align-items-center"&gt;</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;span&gt;Response&lt;/span&gt;</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;span class="badge </span><span class="sc">${</span>badgeClass<span class="sc">}</span><span class="vs">"&gt;</span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">code</span><span class="sc">}</span><span class="vs"> </span><span class="sc">${</span>response<span class="op">.</span><span class="at">status</span><span class="op">.</span><span class="at">text</span><span class="sc">}</span><span class="vs">&lt;/span&gt;</span></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="vs">  </span><span class="sc">${</span>content<span class="sc">}</span></span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> container<span class="op">;</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
 
 </div>
 </div>
-<hr>
-<h4 class="anchored">
-Request DPLA API Key
-</h4>
-<form id="api-key-request-form" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-<input type="email" id="email" placeholder="your-email@example.com" required="" style="flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"> <button type="submit" style="padding: 0.5rem 1rem; background-color: #198754; color: white; border: none; border-radius: 4px; cursor: pointer;">Request API Key</button>
-</form>
-<div id="api-response" style="display: none;">
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
 
 </div>
-<script>
-    // Test form functionality
-    const testForm = document.getElementById('test-form');
-    const testResponseDiv = document.getElementById('test-response');
-    
-    testForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const num1 = parseFloat(document.getElementById('num1').value);
-        const num2 = parseFloat(document.getElementById('num2').value);
-        const operation = Math.random() > 0.5 ? 'addition' : 'subtraction';
-        const result = operation === 'addition' ? num1 + num2 : num1 - num2;
-        
-        const testResponse = {
-            num1: num1,
-            num2: num2,
-            operation: operation,
-            result: result,
-            timestamp: new Date().toISOString()
-        };
-        
-        // Format and display the response
-        const badgeClass = "bg-success";
-        const responseHTML = `
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Test Response</span>
-                    <span class="badge ${badgeClass}">200 OK</span>
-                </div>
-                <pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(testResponse, null, 2)}</pre>
-            </div>
-        `;
-        
-        testResponseDiv.innerHTML = responseHTML;
-        testResponseDiv.style.display = 'block';
-    });
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
 
-    // DPLA API key request form
-    const form = document.getElementById('api-key-request-form');
-    const apiResponseDiv = document.getElementById('api-response');
-    
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const email = document.getElementById('email').value;
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
 
-        try {
-            const response = await fetch(`https://api.dp.la/v2/api_key/${email}`);
-            const status = {
-                code: response.status,
-                ok: response.ok,
-                text: response.statusText
-            };
-            
-            let data;
-            try {
-                data = await response.json();
-            } catch {
-                data = { message: response.statusText };
-            }
-            
-            // Format and display the response
-            let content;
-            if (status.ok) {
-                content = `<pre class="card-body m-0" style="background-color: #f8f9fa; max-height: 400px; overflow-y: auto;">${JSON.stringify(data, null, 2)}</pre>`;
-            } else {
-                content = `<div class="alert alert-warning m-0">API Response: ${JSON.stringify(data, null, 2)}</div>`;
-            }
-            
-            const badgeClass = status.ok ? "bg-success" : "bg-warning";
-            const responseHTML = `
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>API Response</span>
-                        <span class="badge ${badgeClass}">${status.code} ${status.text}</span>
-                    </div>
-                    ${content}
-                </div>
-            `;
-            
-            apiResponseDiv.innerHTML = responseHTML;
-            apiResponseDiv.style.display = 'block';
-        } catch (error) {
-            const errorHTML = `
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>Error</span>
-                        <span class="badge bg-danger">Error</span>
-                    </div>
-                    <div class="alert alert-danger m-0">An error occurred: ${error.message}</div>
-                </div>
-            `;
-            apiResponseDiv.innerHTML = errorHTML;
-            apiResponseDiv.style.display = 'block';
-        }
-    });
-</script>
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
 
 
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBtZXRob2QgPSBJbnB1dHMuc2VsZWN0KFtcIkdFVFwiXSwge1xuICBsYWJlbDogXCJIVFRQIE1ldGhvZFwiLFxuICBhdHRyaWJ1dGVzOiB7XG4gIGNsYXNzOiBcImZvcm0tc2VsZWN0IG1iLTNcIlxuICB9XG59KVxuXG52aWV3b2YgZW5kcG9pbnQgPSBJbnB1dHMudGV4dCh7XG4gIGxhYmVsOiBcIkVuZHBvaW50IHBhdGhcIiwgXG4gIHBsYWNlaG9sZGVyOiBcIi92Mi9pdGVtc1wiLFxuICB2YWx1ZTogXCIvdjIvaXRlbXNcIixcbiAgYXR0cmlidXRlczoge1xuICBjbGFzczogXCJmb3JtLWNvbnRyb2wgbWItM1wiXG4gIH1cbn0pXG5cbnZpZXdvZiBxdWVyeSA9IElucHV0cy50ZXh0KHtcbiAgICBsYWJlbDogXCJTZWFyY2g6IFwiLFxuICAgIHBsYWNlaG9sZGVyOiBcIndlYXNlbCwgY2F0LCBkb2csIGV0Yy5cIixcbiAgICB2YWx1ZTogXCJjYXRcIixcbiAgICBhdHRyaWJ1dGVzOiB7XG4gICAgY2xhc3M6IFwiZm9ybS1jb250cm9sIG1iLTNcIlxuICAgIH1cbn0pXG5cbnZpZXdvZiBhcGlrZXkgPSBJbnB1dHMucGFzc3dvcmQoe1xuICBsYWJlbDogXCJBUEkgS2V5XCIsXG4gIHBsYWNlaG9sZGVyOiBcIllvdXIgRFBMQSBBUEkga2V5XCIsXG4gIHZhbHVlOiBcIlwiLFxuICBhdHRyaWJ1dGVzOiB7XG4gIGNsYXNzOiBcImZvcm0tY29udHJvbCBtYi0zXCJcbiAgfVxufSlcblxuLy8gRnVuY3Rpb24gdG8gbWFrZSB0aGUgQVBJIHJlcXVlc3RcbmFzeW5jIGZ1bmN0aW9uIGZldGNoRnJvbUFwaShtZXRob2QsIHBhdGgsIHEsIGFwaV9rZXkpIHtcbiAgY29uc3QgYmFzZVVybCA9IFwiaHR0cHM6Ly9hcGkuZHAubGFcIjtcbiAgY29uc3QgdGFyZ2V0VXJsID0gYCR7YmFzZVVybH0ke3BhdGh9P3E9JHtxfSZhcGlfa2V5PSR7YXBpX2tleX1gO1xuICBjb25zdCBwcm94eVVybCA9IGBodHRwczovL2FwaS5hbGxvcmlnaW5zLndpbi9nZXQ/dXJsPSR7ZW5jb2RlVVJJQ29tcG9uZW50KHRhcmdldFVybCl9YDtcblxuICB0cnkge1xuICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2gocHJveHlVcmwpO1xuICAgIGlmICghcmVzcG9uc2Uub2spIHRocm93IG5ldyBFcnJvcihcIlByb3h5IHNlcnZlciBpcyBkb3duLlwiKTtcblxuICAgIGNvbnN0IHdyYXBwZXIgPSBhd2FpdCByZXNwb25zZS5qc29uKCk7XG4gICAgXG4gICAgLy8gV2Ugd3JhcCB0aGUgVVJMIGluIHRoZSBBbGxPcmlnaW5zIHByb3h5XG4gICAgLy8gU2VlIGh0dHBzOi8vYWxsb3JpZ2lucy53aW4vIGZvciBtb3JlIGRldGFpbHMgb24gaG93IGl0IHdvcmtzIGFuZCBpdHMgbGltaXRhdGlvbnMuXG4gICAgY29uc3QgZHBsYVN0YXR1cyA9IHdyYXBwZXIuc3RhdHVzLmh0dHBfY29kZTsgXG4gICAgY29uc3QgZGF0YSA9IEpTT04ucGFyc2Uod3JhcHBlci5jb250ZW50cyk7XG5cbiAgICAvLyBDaGVjayBmb3IgYXV0aGVudGljYXRpb24gZXJyb3JzIGZpcnN0ICg0MDMgb3IgXCJVbmF1dGhvcml6ZWRcIiBtZXNzYWdlKVxuICAgIGlmIChkcGxhU3RhdHVzID09PSA0MDMgfHwgZGF0YS5tZXNzYWdlID09PSBcIlVuYXV0aG9yaXplZFwiKSB7XG4gICAgICByZXR1cm4ge1xuICAgICAgICBkYXRhOiB7IFwiTWVzc2FnZVwiOiBcIvCflJEgSW52YWxpZCBBUEkgS2V5LiBQbGVhc2UgY2hlY2sgeW91ciBrZXkgYW5kIHRyeSBhZ2Fpbi5cIiB9LFxuICAgICAgICBzdGF0dXM6IHsgY29kZTogNDAzLCBvazogZmFsc2UsIHRleHQ6IFwiVW5hdXRob3JpemVkXCIgfVxuICAgICAgfTtcbiAgICB9XG5cbiAgICAvLyBDaGVjayBmb3Igb3RoZXIgRFBMQSBlcnJvcnMgKGxpa2UgNDA0IG9yIDQwMClcbiAgICBpZiAoZHBsYVN0YXR1cyA+PSA0MDApIHtcbiAgICAgIHJldHVybiB7XG4gICAgICAgIGRhdGE6IGRhdGEsXG4gICAgICAgIHN0YXR1czogeyBjb2RlOiBkcGxhU3RhdHVzLCBvazogZmFsc2UsIHRleHQ6IFwiRFBMQSBFcnJvclwiIH1cbiAgICAgIH07XG4gICAgfVxuXG4gICAgcmV0dXJuIHsgZGF0YSwgc3RhdHVzOiB7IGNvZGU6IDIwMCwgb2s6IHRydWUsIHRleHQ6IFwiT0tcIiB9IH07XG5cbiAgfSBjYXRjaCAoZXJyb3IpIHtcbiAgICAvLyBOZXR3b3JrIG9yIFBhcnNpbmcgZXJyb3JzXG4gICAgcmV0dXJuIHtcbiAgICAgIGRhdGE6IHsgXCJNZXNzYWdlXCI6IGDwn4yQIENvbm5lY3Rpb24gRXJyb3I6ICR7ZXJyb3IubWVzc2FnZX1gIH0sXG4gICAgICBzdGF0dXM6IHsgY29kZTogNTAwLCBvazogZmFsc2UsIHRleHQ6IFwiTmV0d29yayBFcnJvclwiIH1cbiAgICB9O1xuICB9XG59XG5cbnJlc3BvbnNlID0ge1xuICBjb25zdCByZXN1bHQgPSBhd2FpdCBmZXRjaEZyb21BcGkobWV0aG9kLCBlbmRwb2ludCwgcXVlcnksIGFwaWtleSk7XG4gIHJldHVybiByZXN1bHQ7XG59XG5cbnZpZXdvZiBwcmV0dHlSZXNwb25zZSA9IHtcbiAgbGV0IGNvbnRlbnQ7XG5cbiAgaWYgKHJlc3BvbnNlLmRhdGEuTWVzc2FnZSkge1xuICAgIGNvbnRlbnQgPSBodG1sYDxkaXYgY2xhc3M9XCJhbGVydCBhbGVydC13YXJuaW5nIG0tMFwiPiR7cmVzcG9uc2UuZGF0YS5NZXNzYWdlfTwvZGl2PmA7XG4gIH0gZWxzZSB7XG4gICAgY29udGVudCA9IGh0bWxgPHByZSBjbGFzcz1cImNhcmQtYm9keSBtLTBcIiBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICNmOGY5ZmE7IG1heC1oZWlnaHQ6IDQwMHB4OyBvdmVyZmxvdy15OiBhdXRvO1wiPiR7SlNPTi5zdHJpbmdpZnkocmVzcG9uc2UuZGF0YSwgbnVsbCwgMil9PC9wcmU+YDtcbiAgfVxuXG4gIGNvbnN0IGJhZGdlQ2xhc3MgPSByZXNwb25zZS5zdGF0dXMub2sgPyBcImJnLXN1Y2Nlc3NcIiA6IFwiYmctZGFuZ2VyXCI7XG5cbiAgY29uc3QgY29udGFpbmVyID0gaHRtbGA8ZGl2IGNsYXNzPVwiY2FyZFwiPlxuICA8ZGl2IGNsYXNzPVwiY2FyZC1oZWFkZXIgZC1mbGV4IGp1c3RpZnktY29udGVudC1iZXR3ZWVuIGFsaWduLWl0ZW1zLWNlbnRlclwiPlxuICA8c3Bhbj5SZXNwb25zZTwvc3Bhbj5cbiAgPHNwYW4gY2xhc3M9XCJiYWRnZSAke2JhZGdlQ2xhc3N9XCI+JHtyZXNwb25zZS5zdGF0dXMuY29kZX0gJHtyZXNwb25zZS5zdGF0dXMudGV4dH08L3NwYW4+XG4gIDwvZGl2PlxuICAke2NvbnRlbnR9XG4gIDwvZGl2PmA7XG4gIHJldHVybiBjb250YWluZXI7XG59XG5cblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtZXRob2QnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZW5kcG9pbnQnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncXVlcnknKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnYXBpa2V5JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3ByZXR0eVJlc3BvbnNlJykifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../chapters/coding";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
