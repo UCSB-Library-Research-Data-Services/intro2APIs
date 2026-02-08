@@ -1,0 +1,20 @@
+.feature-box {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #003660;
+  height: 100%;
+  
+  strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #003660;
+  }
+  
+  p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+}

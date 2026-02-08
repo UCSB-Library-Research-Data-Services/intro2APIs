@@ -6,11 +6,11 @@ format:
     toc: false
 ---
 
-This is the workbook that accompanies the workshop *Unlocking Data: A Gentle Introduction to APIs*.
+This workbook accompanies the workshop series *Unlocking Data: A Gentle Introduction to APIs*.
 
-The workshop is designed for people with no programming experience who want to start working with APIs, particularly web APIs.
+These workshops are designed for people with no programming experience who want to start working with APIs, particularly web APIs. While developed with humanities researchers in mind, the content is equally valuable for information professionals in archives and libraries, as well as anyone beginning their journey into the world of APIs.
 
-You can follow this workbook without installing any specific software. We’ve included interactive examples so you can practice alongside the workshop.
+These workshops are designed to be self-taught, allowing you to learn at your own pace without installing any specific software. We've included interactive examples so you can practice as you learn. We also offer in-person workshops to guide participants through the basics and provide hands-on support.
 
 Although no programming knowledge is required, you can explore the code behind each example by clicking the Code button, as shown below:
 
@@ -25,11 +25,41 @@ hello
 ## A few notes before we start
 
 Although this workshop is about APIs in general, we will focus specifically on web APIs—particularly REST APIs that return JSON data. We’ve chosen this focus because REST APIs are the most common type of API and are also the most accessible without requiring specialized software.
+:::
+## What You'll Learn
 
-Finally, we will only be working with GET requests, meaning we won’t be creating, updating, or deleting any data.
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+::: {.feature-box}
+**{{< fa lightbulb >}} No Coding Required**
+
+Start with zero programming experience. Learn API fundamentals through interactive examples in your browser.
+:::
 :::
 
-## Workshop Sections
+::: {.g-col-12 .g-col-md-4}
+::: {.feature-box}
+**{{< fa wrench >}} Practical Tools**
+
+Master Postman (and open-source alternatives like Bruno) for API testing, then progress to Python for automation.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.feature-box}
+**{{< fa database >}} Real-World Data**
+
+Work with cultural heritage APIs from institutions like the Metropolitan Museum, the Digital Public Library of America, and more.
+:::
+:::
+
+:::
+<hr>
+
+## Workshop Series
+
+Each workshop in this series can be followed independently, depending on your interests, previous knowledge, and goals. Each workshop includes guided explanations of how to interact with different API providers, followed by hands-on exercises to practice the concepts. 
 
 ::: {.grid}
 
@@ -92,7 +122,7 @@ Finally, we will only be working with GET requests, meaning we won’t be creati
 {{< fa magnifying-glass-chart >}}
 </div>
 <h3 class="card-title text-center">Data Analysis</h3>
-<p class="card-text">Apply your API knowledge to collect and analyze real data for research purposes.</p>
+<p class="card-text">Apply your API knowledge to a complete research project: collect and analyze Medieval Art metadata from the Met Museum to uncover thematic patterns.</p>
 <p class="mt-auto align-self-center"><a href="chapters/dataAnalysis/collecting-data-for-analysis.html" class="btn btn-primary">Analyze</a></p>
 :::
 :::
@@ -105,7 +135,7 @@ Finally, we will only be working with GET requests, meaning we won’t be creati
 <i class="bi bi-book"></i>
 </div>
 <h3 class="card-title text-center">API Catalog</h3>
-<p class="card-text">Browse our curated catalog of APIs with documentation links and authentication requirements.</p>
+<p class="card-text">Explore APIs from major cultural institutions including the Metropolitan Museum, Library of Congress, Smithsonian, and international collections like Europeana and Rijksmuseum.</p>
 <p class="mt-auto align-self-center"><a href="resources/catalog.html" class="btn btn-primary">Browse</a></p>
 :::
 :::
@@ -113,6 +143,6 @@ Finally, we will only be working with GET requests, meaning we won’t be creati
 
 :::
 
-Each lesson can be followed independently, and the workbook will remain available even if you don’t attend the workshop.
+<hr>
 
-Without further ado, let’s get started! 🚀
+Let’s get started! 🚀
