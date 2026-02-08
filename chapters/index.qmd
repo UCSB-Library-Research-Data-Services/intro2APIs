@@ -29,13 +29,89 @@ Although this workshop is about APIs in general, we will focus specifically on w
 Finally, we will only be working with GET requests, meaning we won’t be creating, updating, or deleting any data.
 :::
 
-The workbook is divided into two main sections:
+## Workshop Sections
 
-1. [**Interacting with APIs**](what-is-an-api.html): This section covers the basics—what APIs are, how they work, and how to use them.
+::: {.grid}
 
-2. [**APIs for Data Analysis**](collecting-data-for-analysis.html): This section focuses on APIs as data sources for research. It includes a lesson on collecting data via APIs and an example of how to analyze the collected data.
+::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
+::: {.card .h-100}
+::: {.card-body}
+<div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
+<i class="bi bi-question-circle"></i>
+</div>
+<h3 class="card-title text-center">What are APIs?</h3>
+<p class="card-text">Learn the fundamentals of APIs, what they are, and why they exist.</p>
+<a href="what-is-an-api.html" class="btn btn-primary">Start Learning</a>
+:::
+:::
+:::
 
-Additionally, we have included a [catalog of APIs](../resources/catalog.html) with descriptions, links to their documentation, and authentication requirements.
+::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
+::: {.card .h-100}
+::: {.card-body}
+<div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
+<i class="bi bi-arrow-left-right"></i>
+</div>
+<h3 class="card-title text-center">Interacting with APIs</h3>
+<p class="card-text">Discover how to interact with APIs using endpoints, request methods, and practical exercises.</p>
+<a href="interactingAPIs/endpoints.html" class="btn btn-primary">Explore</a>
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
+::: {.card .h-100}
+::: {.card-body}
+<div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
+<i class="bi bi-send"></i>
+</div>
+<h3 class="card-title text-center">Using Postman</h3>
+<p class="card-text">Master API testing with Postman, including GET, POST, and DELETE requests with hands-on GitHub API exercises.</p>
+<a href="postman/postman.html" class="btn btn-primary">Get Started</a>
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
+::: {.card .h-100}
+::: {.card-body}
+<div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
+<i class="bi bi-code-slash"></i>
+</div>
+<h3 class="card-title text-center">Programmatic Access</h3>
+<p class="card-text">Learn how to interact with APIs programmatically using Python for automated data collection.</p>
+<a href="python/python.html" class="btn btn-primary">Code</a>
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
+::: {.card .h-100}
+::: {.card-body}
+<div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
+<i class="bi bi-bar-chart"></i>
+</div>
+<h3 class="card-title text-center">Data Analysis</h3>
+<p class="card-text">Apply your API knowledge to collect and analyze real data for research purposes.</p>
+<a href="dataAnalysis/collecting-data-for-analysis.html" class="btn btn-primary">Analyze</a>
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6 .g-col-lg-4}
+::: {.card .h-100}
+::: {.card-body}
+<div class="text-center mb-3" style="font-size: 3rem; color: #003660;">
+<i class="bi bi-book"></i>
+</div>
+<h3 class="card-title text-center">API Catalog</h3>
+<p class="card-text">Browse our curated catalog of APIs with documentation links and authentication requirements.</p>
+<a href="../resources/catalog.html" class="btn btn-primary">Browse</a>
+:::
+:::
+:::
+
+:::
 
 Each lesson can be followed independently, and the workbook will remain available even if you don’t attend the workshop.
 
