@@ -77,6 +77,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
 [End of modal code]: #
 
+::: {.callout-tip appearance="simple" collapse="false"}
+## Code Examples
+
+Although no programming knowledge is required, you can explore the code behind interactive examples throughout this workshop by clicking the **Code** button, as shown below:
+
+```{ojs}
+//| code-fold: true
+
+hello = "Hello, world!"
+hello
+```
+:::
+
+::: {.callout-note appearance="simple" collapse="false"}
+## Our Focus
+
+While this workshop series covers APIs in general, we focus specifically on **web APIs**—particularly REST APIs that return JSON data. We've chosen this focus because REST APIs are the most common type of API and are the most accessible without requiring specialized software.
+
+Throughout the workshops, we will primarily work with **GET requests**, meaning we'll be retrieving data rather than creating, updating, or deleting information.
+:::
+
 An API (Application Programming Interface) is a set of rules and protocols enabling software programs to communicate and share information. While the term is often associated with "web APIs," it encompasses a broader concept. For instance, an API might allow a library to share its collection data with a museum or enable a weather service to provide updates to a news organization. APIs operate based on predefined rules set by developers, specifying how data can be accessed and used. While some APIs are public, most are internal, facilitating communication between systems within an organization. 
 
 ## Using an API
@@ -220,7 +241,7 @@ Sharing data in formats like Excel or CSV files can sometimes be a practical sol
 
 Ultimately, whether to use an API or share data as a downloadable file depends on the project's specific needs, balancing dynamic access with ease of use. When you need to retrieve specific data subsets or interact with the data dynamically, an API is ideal. It provides granularity and ensures users access the most up-to-date information. When users need the entire dataset for analysis or offline use, offering a downloadable file might be more appropriate.
 
-::: {.callout-caution collapse="false"}
+::: {.callout-caution appearance="simple"  collapse="false"}
 ## APIs for bulk data retrieval
 APIs are not designed for bulk data retrieval but for accessing data in a more focused and controlled way. It bridges the gap between complex databases and the users who need specific, timely information.
 :::
@@ -229,7 +250,7 @@ APIs are not designed for bulk data retrieval but for accessing data in a more f
 
 In research, APIs bridge the gap between data and analysis by automating data collection and streamlining workflows. A historian studying digitized newspapers, for instance, can use APIs to query articles that mention specific events, dates, or people. Social scientists can analyze real-time conversations and trends through APIs from platforms like *X* or *YouTube*, while environmental researchers can leverage satellite data APIs to monitor deforestation patterns. By enabling seamless integration across datasets, APIs foster interdisciplinary collaboration and empower scholars to tackle complex questions with innovative approaches.
 
-::: {.callout-note collapse="false"}
+::: {.callout-note appearance="simple"  collapse="false"}
 ## In summary
 APIs are not just tools for developers—they hold immense potential for researchers, too. By providing structured, dynamic access to datasets, APIs enable scholars to automate data collection, access real-time information, and integrate diverse data sources into their workflows. Whether you’re studying digital humanities, analyzing climate data, or investigating social media trends, APIs allow you to retrieve exactly the data you need, at scale and with precision. Embracing APIs as part of your research toolkit opens doors to innovative methodologies and insights that might otherwise remain out of reach.
 :::

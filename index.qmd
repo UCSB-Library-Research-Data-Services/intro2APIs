@@ -12,20 +12,7 @@ These workshops are designed for people with no programming experience who want 
 
 These workshops are designed to be self-taught, allowing you to learn at your own pace without installing any specific software. We've included interactive examples so you can practice as you learn. We also offer in-person workshops to guide participants through the basics and provide hands-on support.
 
-Although no programming knowledge is required, you can explore the code behind each example by clicking the Code button, as shown below:
 
-```{ojs}
-//| code-fold: true
-
-hello = "Hello, world!"
-hello
-```
-
-::: {.callout-warning}
-## A few notes before we start
-
-Although this workshop is about APIs in general, we will focus specifically on web APIs—particularly REST APIs that return JSON data. We’ve chosen this focus because REST APIs are the most common type of API and are also the most accessible without requiring specialized software.
-:::
 ## What You'll Learn
 
 ::: {.grid}
