@@ -103,6 +103,7 @@ format:
     toc: true
     page-layout: full
     mainfont: Nunito
+    code-overflow: scroll
 
 execute:
   freeze: auto

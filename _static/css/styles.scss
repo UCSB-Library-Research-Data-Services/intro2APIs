@@ -470,3 +470,22 @@ h2 {
     border: none;
   }
 }
+
+// Code output scrolling
+.scrollable-output {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.cell-output {
+  margin-bottom: 2rem;
+  border: 1px dotted $baby-blue;
+}
+
+.cell-output-stdout,
+.cell-output-display {
+  max-height: 400px;
+  overflow-y: auto; // Only shows scrollbar when content exceeds max-height
+  border-left: 3px solid $baby-blue;
+  padding-left: 10px;
+}
