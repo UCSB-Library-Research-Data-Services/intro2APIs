@@ -1,10 +1,10 @@
 ---
 title: "Setting Up Your Python Environment for API Interaction"
 execute:
-    echo: true
+  echo: true
 format:
-    html:
-        code-fold: false
+  html:
+    code-fold: false
 lightbox: true
 ---
 
@@ -38,14 +38,15 @@ This workshop uses a **starter notebook** that’s already filled in with the co
 
 ## Libraries Used in This Workshop
 
-Libraries are pre-built code packages that provide specific functionalities. In our case, we're going to require a library that help us to make HTTP requests, one that keeps our API key secure, and one that helps us extract keywords from text. The first cells in our notebook will be dedicated to installing and importing these libraries.
+Libraries are pre-built code packages that provide specific functionality. In this workshop, we’ll use a few libraries: one to make HTTP requests, one to keep our API key out of the notebook output, and one to extract keywords from text. The first cells in our notebook will be dedicated to installing and importing these libraries.
 
 ### Installing Libraries
 ```{python}
+#| eval: false
 #| output: false
-%pip install yake # Keyword extraction library
-%pip install tqdm # Progress bar library
-%pip install httpx # HTTP client library
+
+# If you're running in Colab/Binder, you can install everything from inside the notebook.
+%pip install httpx tqdm yake matplotlib
 ```
 
 ### Importing Libraries
@@ -64,19 +65,9 @@ from tqdm import tqdm # For displaying progress bars
 import matplotlib.pyplot as plt # For data visualization
 ```
 
-```{python}
-#| output: false
-#| echo: false
-
-api_key = os.getenv("DPLA_API_KEY")
-if not api_key:
-    api_key = ""
-
-```
-
 ## Constants
 
-Technically speaking, a constant is a value that cannot be changed once it's set. Python doesn't have a built-in mechanism to strictly enfonce this immutability, but relies on a strong community-adopted [naming convention](https://peps.python.org/pep-0008/#constants){target="_blank"}.
+Technically speaking, a constant is a value that shouldn’t change once it’s set. Python doesn’t have a built-in mechanism to strictly enforce immutability, but it does rely on a strong community-adopted [naming convention](https://peps.python.org/pep-0008/#constants){target="_blank"}.
 
 The "Pythonic" way to define a constant is to use all uppercase letters with underscores separating words. This signals to other developers that the variable's value should not be modified after it's set.
 
@@ -85,12 +76,12 @@ For our exercise, we will define the following constants. You can copy and paste
 ```{python}
 API_BASE_URL = "https://api.dp.la/v2/" 
 ENV_VAR_NAME = "DPLA_API_KEY" 
-FALLBACK_DATA_URL = "https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/intro2APIs/refs/heads/main/data/" 
+FALLBACK_DATA_URL = "https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/intro2APIs/main/data/" 
 ```
 
 ## Storing Your API Key
 
-Although technically this is not a public application, it's still good practice to keep your API key secure and avoid hardcoding it directly, to avoid accidentally sharing it with your code. We are going to store the API key as an **environment variable**, that is, a variable that lives in your system's environment rather than in your code. This way, you can access it in your code without exposing it directly.
+Even though this isn’t a public application, it’s still good practice to keep your API key secure and avoid hardcoding it directly. We are going to store the API key as an **environment variable** (a variable that lives in your system’s environment rather than inside your notebook). This way, you can access it in your code without exposing it.
 
 [`getpass`](https://docs.python.org/3/library/getpass.html){target="_blank"} is a built-in Python module that provides a secure way to handle sensitive information, such as passwords or any other sensitive credentials.
 
@@ -113,12 +104,16 @@ print(f"API key set in environment variable '{ENV_VAR_NAME}'")
 ```
 ```{python}
 #| echo: false
-print(f"API key is set in environment variable '{ENV_VAR_NAME}'")
+api_key = os.getenv(ENV_VAR_NAME)
+if api_key:
+    print(f"API key is set in environment variable '{ENV_VAR_NAME}'")
+else:
+    print(f"API key is not set yet. Set it in '{ENV_VAR_NAME}' before making requests.")
 ```
 
 :::{.callout-important appearance="simple" collapse="false"}
 ## Never print your API key
-Note that we printed a message confirming that the API key is set, and the name of the environment variable where it's stored, but we did not print the API key itself. This is a crucial, particularly when working in Jupyter notebooks, where the output of cells is saved and can be accidentally shared. Always avoid printing sensitive information like API keys, even in development environments.
+Note that we printed a message confirming that the API key is set (and the name of the environment variable where it's stored), but we did not print the API key itself. This matters in notebooks because cell output can be saved and accidentally shared.
 :::
 
 ### Test the API Key
@@ -137,4 +132,4 @@ else:
     print(f"Response: {response.text}")
 ```
 
-Having all the libraries in place and the API key securely stored, now it's time to do some queries!!
+Having all the libraries in place and the API key securely stored, now it’s time to start querying.

@@ -1,10 +1,10 @@
 ---
 title: "Helping Functions"
 execute:
-    echo: true
+  echo: true
 format:
-    html:
-        code-overflow: wrap
+  html:
+    code-overflow: wrap
 lightbox: true
 ---
 
@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 
 API_BASE_URL = "https://api.dp.la/v2/" 
 ENV_VAR_NAME = "DPLA_API_KEY" 
-FALLBACK_DATA_URL = "https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/intro2APIs/refs/heads/main/data/" 
+FALLBACK_DATA_URL = "https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/intro2APIs/main/data/" 
 
 api_key = os.getenv("DPLA_API_KEY")
 if not api_key:
@@ -32,13 +32,13 @@ if not api_key:
 
 ```
 
-One of the most relevant features of programming languages is the ability to work with functions, which are reusable blocks of code that perform a specific task. In Python, functions are defined using the `def` keyword, and can take arguments and return values. This can seem very abstract at first, but it is a fundamental concept that allows us to take advantage of the full power of programming.
+One of the most useful features of programming languages is the ability to work with functions: reusable blocks of code that perform a specific task. In Python, functions are defined using the `def` keyword. They can take inputs (arguments) and return outputs (values).
 
-For this exercise, we're going to write four functions: two 'helper' functions that will help us to reutilize specific logic, and two 'main' functions that will handle the queries to the DPLA API and will return a well formatted response in a Pythonic way.
+For this exercise, we’ll write a few small helper functions (to avoid repeating ourselves) and two main functions that query the DPLA API and return responses in a clean, “Pythonic” format.
 
 ## Helper functions
 
-These two functions are not strictly necessary, but they will help us to write cleaner code and avoid repetition. You can copy and paste the code for these functions in your notebook, and you can read the docstrings to understand what they do:
+These helper functions aren’t strictly necessary, but they keep the rest of the notebook cleaner. You can copy/paste them into your notebook and skim the docstrings to see what they do:
 
 ```{python}
 def _join_list(x, sep="; ", keep_first_only=False):
@@ -67,21 +67,15 @@ def redact_request_url(url):
 
 ## Main functions
 
-Let's take some time to understand the following function, which will be the main function to query the DPLA API. What we want with this function are one thing: to get the results of a query, their paramenters, and facets in a well formatted way.
+Let’s take some time to understand our first main function. The goal is simple: make a DPLA request and get back a JSON response as a Python dictionary.
 
 If we take a look at the [DPLA API documentation](https://pro.dp.la/developers/requests){target="_blank"}, we can see that the endpoint is composed by the base URL (`https://api.dp.la/v2`), the resource type (`items` or `collections`), the query parameters (e.g. `q=artificial+intelligence`), and the API key (e.g. `api_key=your_api_key`).
 
 Additionally, you can request for specific facets (e.g. `facets=sourceResource.type`), specific fields to be returned (e.g. `fields=sourceResource.title,sourceResource.description`), and you can also specify the page number (e.g. `page=2`) and the number of results per page (e.g. `page_size=20`).
 
-If we have to write all the logic to handle all these parameters in a single function it will become extremely long, complicated, and difficult to read and maintain. Therefore, our goal is to write a function with an acceptable level of abstraction, that use the API logic to perform a request without reinventing the wheel.
+If we tried to handle all of that ad hoc every time, our notebook would get long and repetitive fast. Instead, we’ll write one function that builds the request and sends it for us.
 
-So, our function is goin to be called `search_items`, and it will take the following parameters:
-
-- `query`: the query string to search for (e.g. `artificial intelligence`).
-- `resource_type`: the type of resource to search for (e.g. `items` or `collections`).
-- `**parameters`: any additional parameters to be passed to the API
-- `timeout`: the timeout for the HTTP request in seconds (default is 30.0).
-- `verbose`: a boolean to indicate if we want to print the request URL, useful for debugging (default is `False`).
+Our function will be called `search_items`. It takes a `query`, a `resource_type` (usually `items`), and any additional DPLA parameters via `**parameters`.
 
 Our resulting function will return a dictionary from the JSON response.
 
@@ -118,7 +112,8 @@ def search_items(query, resource_type='items', verbose=False, timeout=30.0, **pa
     with httpx.Client(timeout=timeout) as client:
         response = client.get(base_url, params=params)
     
-    print(f"Request URL [redacted]: {redact_request_url(response.url)}") if verbose else None
+    if verbose:
+        print(f"Request URL [redacted]: {redact_request_url(response.url)}")
     
     response.raise_for_status() 
     return response.json()
@@ -143,9 +138,9 @@ response = search_items(
 print(json.dumps(response, indent=2))
 ```
 
-Hooray 🎉! We have successfully queried the DPLA API and got a well formatted response. However, this function returns a single page of results. The maximum number of results allowed per page is 100, so if we want to get all 364 results we need to handle pagination, and that's what our second main function will do.
+Hooray 🎉! we’ve successfully queried the DPLA API and got a well-formatted response. However, this function only returns a single page of results. The maximum number of results per page is 100, so if we want more than one page, we need to handle pagination.
 
-This function, that we will call `search_all_items`, will take almost the same parameters as `search_items`, but it will return a generator that yields the results page by page, until there are no more results to fetch. This way, we can iterate over the results without having to load them all in memory at once.
+Our second function, `search_all_items`, takes almost the same parameters as `search_items`, but it fetches multiple pages and returns a single list of items (up to a maximum you set).
 
 Some specific parameters for this function will allow us to control the maximum number of items to fetch (`max_items`), the sleep time between requests to avoid hitting rate limits (`sleep`), and the timeout for the HTTP requests (`timeout`).
 
