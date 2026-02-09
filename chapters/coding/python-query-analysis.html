@@ -409,7 +409,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="the-shape-of-data">The shape of data</h2>
 <p>The first thing we want to do is get a sense of the shape of the data we’re getting from the API. One interesting question is: how are items distributed across time? There are multiple ways to explore this, but perhaps the most straightforward is to use <a href="https://pro.dp.la/developers/requests#faceting" target="_blank"><code>facets</code></a> to get the distribution of items by year.</p>
 <p>Additionally, we’ll filter the results to only include titles, descriptions, and dates. This makes the data easier to work with and reduces the amount we need to process.</p>
-<div id="f5b19143" class="cell" data-execution_count="2">
+<div id="e2809be9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining the fields, facets, and filters outside the function call for better readability</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.title"</span>,</span>
@@ -473,7 +473,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 │           ├── count (int)
 │           └── label (str)</code></pre>
 <p>Therefore, if we want to get the entries of the <code>sourceResource.date.begin</code> facet, we can do it with the following code:</p>
-<div id="ae79fa2f" class="cell" data-execution_count="3">
+<div id="d46eaa82" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>facets_entries <span class="op">=</span> ai_search.get(<span class="st">"facets"</span>, {}).get(<span class="st">"sourceResource.date.begin"</span>, {}).get(<span class="st">"entries"</span>, [])</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a sample (we use 'time' because that's the label for date facets)</span></span>
@@ -488,7 +488,7 @@ Year: 2022, Count: 23</code></pre>
 </div>
 </div>
 <p>Now that we understand better the structure of the facet information, we can visualize it using a bar chart. We will use the <code>seaborn</code> library to create the bar chart, but you can use any other library you prefer (e.g.&nbsp;<code>matplotlib</code>, <code>plotly</code>, etc.).</p>
-<div id="619302b3" class="cell" data-execution_count="4">
+<div id="8a8262d9" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the year and count information from the facet entries</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> [entry.get(<span class="st">"time"</span>) <span class="cf">for</span> entry <span class="kw">in</span> facets_entries][::<span class="op">-</span><span class="dv">1</span>] <span class="co"># We use [::-1] to reverse the order</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [entry.get(<span class="st">"count"</span>) <span class="cf">for</span> entry <span class="kw">in</span> facets_entries][::<span class="op">-</span><span class="dv">1</span>]</span>
@@ -515,7 +515,7 @@ Year: 2022, Count: 23</code></pre>
 <section id="further-exploration" class="level2">
 <h2 class="anchored" data-anchor-id="further-exploration">Further exploration</h2>
 <p>With this information, we can establish three periods of interest: before 2018, between 2018 and 2022, and after 2023. We’ll set up a list with these periods and use it to filter items for further analysis:</p>
-<div id="b217a113" class="cell" data-execution_count="5">
+<div id="22d81bc9" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>periods <span class="op">=</span> [</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"preCovid"</span>, <span class="dv">1844</span>, <span class="dv">2018</span>),</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Covid"</span>, <span class="dv">2019</span>, <span class="dv">2021</span>),</span>
@@ -523,7 +523,7 @@ Year: 2022, Count: 23</code></pre>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s create a pool of items for each period using the <code>search_all_items</code> function we defined earlier. We’ll use the <code>sourceResource.date.begin</code> field to filter the items by year:</p>
-<div id="fbaaf443" class="cell" data-execution_count="6">
+<div id="18503ba6" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ai_results <span class="op">=</span> {}</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [</span>
@@ -559,11 +559,11 @@ Year: 2022, Count: 23</code></pre>
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    r.raise_for_status()</span>
 <span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    ai_results <span class="op">=</span> r.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>  0%|          | 0/3 [00:00&lt;?, ?it/s] 33%|███▎      | 1/3 [00:01&lt;00:02,  1.22s/it] 67%|██████▋   | 2/3 [00:02&lt;00:01,  1.12s/it]100%|██████████| 3/3 [00:05&lt;00:00,  2.18s/it]100%|██████████| 3/3 [00:05&lt;00:00,  1.90s/it]</code></pre>
+<pre><code>  0%|          | 0/3 [00:00&lt;?, ?it/s] 33%|███▎      | 1/3 [00:01&lt;00:02,  1.09s/it] 67%|██████▋   | 2/3 [00:02&lt;00:01,  1.07s/it]100%|██████████| 3/3 [00:05&lt;00:00,  2.15s/it]100%|██████████| 3/3 [00:05&lt;00:00,  1.86s/it]</code></pre>
 </div>
 </div>
 <p>This code will create a dictionary called <code>ai_results</code> where the keys are the period names (e.g.&nbsp;“preCovid”, “Covid”, “postCovid”) and the values are lists of items that match the search query and date filters for each period. Let’s print a summary of the results to see how many items we got for each period:</p>
-<div id="7e9e27cc" class="cell" data-execution_count="7">
+<div id="89706b72" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ai_results_summary <span class="op">=</span> {period: <span class="bu">len</span>(items) <span class="cf">for</span> period, items <span class="kw">in</span> ai_results.items()}</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AI Results Summary by Period:"</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, count <span class="kw">in</span> ai_results_summary.items():</span>
@@ -581,10 +581,10 @@ postCovid: 318 items</code></pre>
 <h2 class="anchored" data-anchor-id="extracting-keywords-with-yake">Extracting keywords with YAKE</h2>
 <p>Our last step is to extract keywords from the titles and descriptions of items in each period using the YAKE library. YAKE (Yet Another Keyword Extractor) is a simple and effective unsupervised keyword extraction method.</p>
 <p>But first, let’s explore the structure of the <code>sourceResource</code> field in our items:</p>
-<div id="6ca8df1c" class="cell" data-execution_count="8">
+<div id="59a941ef" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a sample item to explore the structure of the sourceResource field</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ai_results.get(<span class="st">"postCovid"</span>)[:<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>[{'sourceResource.date.begin': '2022',
   'sourceResource.date.end': '2022',
   'sourceResource.description': ['In scope of the U.S. Government Publishing Office Cataloging and Indexing Program (C&amp;I) and Federal Depository Library Program (FDLP).',
@@ -631,8 +631,8 @@ postCovid: 318 items</code></pre>
 <li><code>sourceResource.description</code> (str | list): A description of the item</li>
 <li><code>sourceResource.title</code> (str | list): The title of the item</li>
 </ul>
-<p>Now we can use YAKE to extract keywords from the titles and descriptions of the items in each period. We’ll create a function that takes a list of items and returns a dictionary with keyword counts for each period:</p>
-<div id="de38a5f8" class="cell" data-execution_count="9">
+<p>Now we can use YAKE to extract keywords from the titles of the items in each period. We’ll create a function that takes a list of items and returns a dictionary with keyword counts for each period:</p>
+<div id="d20b66e0" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_keywords(items, skip<span class="op">=</span><span class="va">None</span>, ngram<span class="op">=</span><span class="dv">2</span>, max_keywords<span class="op">=</span><span class="dv">5</span>, language<span class="op">=</span><span class="st">"en"</span>):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Extract keywords from a list of items using YAKE."""</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -646,24 +646,22 @@ postCovid: 318 items</code></pre>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> period, items <span class="kw">in</span> tqdm(items.items(), desc<span class="op">=</span><span class="st">"Extracting keywords"</span>):</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        period_keywords <span class="op">=</span> {}</span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> item <span class="kw">in</span> items:</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            title <span class="op">=</span> _join_list(item.get(<span class="st">"sourceResource.title"</span>, <span class="st">""</span>))</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>            description <span class="op">=</span> _join_list(item.get(<span class="st">"sourceResource.description"</span>, <span class="st">""</span>))</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>            text <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>description<span class="sc">}</span><span class="ss">"</span>.lower()</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>            keywords <span class="op">=</span> kw_extractor.extract_keywords(text)</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> kw, score <span class="kw">in</span> keywords:</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> skip <span class="kw">and</span> kw <span class="kw">in</span> skip_keywords:</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>                period_keywords[kw] <span class="op">=</span> period_keywords.get(kw, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>        ai_keywords[period] <span class="op">=</span> period_keywords</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ai_keywords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            text <span class="op">=</span> _join_list(item.get(<span class="st">"sourceResource.title"</span>, <span class="st">""</span>)).lower()</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>            keywords <span class="op">=</span> kw_extractor.extract_keywords(text)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> kw, score <span class="kw">in</span> keywords:</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> skip <span class="kw">and</span> kw <span class="kw">in</span> skip_keywords:</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>                period_keywords[kw] <span class="op">=</span> period_keywords.get(kw, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        ai_keywords[period] <span class="op">=</span> period_keywords</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ai_keywords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, we can iterate over the loaded items and extract the keywords for each period:</p>
-<div id="af6e295b" class="cell" data-execution_count="10">
+<div id="24ef12a9" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a list of common words to skip (optional)</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>skip_words <span class="op">=</span> [<span class="st">"artificial intelligence"</span>, <span class="st">"ai"</span>, <span class="st">"intelligence"</span>, <span class="st">"artificial"</span>]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>skip_words <span class="op">=</span> [<span class="st">"artificial intelligence"</span>, <span class="st">"ai"</span>, <span class="st">"intelligence"</span>, <span class="st">"artificial"</span>, <span class="st">"bibliographical references"</span>, <span class="st">"includes bibliographical"</span>, <span class="st">"online resource"</span>, <span class="st">"bibliography"</span>, <span class="st">"references"</span>, <span class="st">"bibliographical"</span>, <span class="st">"reference"</span>]</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
@@ -676,44 +674,44 @@ postCovid: 318 items</code></pre>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>kw<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Extracting keywords:   0%|          | 0/3 [00:00&lt;?, ?it/s]Extracting keywords:  33%|███▎      | 1/3 [00:00&lt;00:00,  6.38it/s]Extracting keywords:  67%|██████▋   | 2/3 [00:00&lt;00:00,  5.19it/s]Extracting keywords: 100%|██████████| 3/3 [00:01&lt;00:00,  1.58it/s]Extracting keywords: 100%|██████████| 3/3 [00:01&lt;00:00,  1.96it/s]</code></pre>
+<pre><code>Extracting keywords:   0%|          | 0/3 [00:00&lt;?, ?it/s]Extracting keywords: 100%|██████████| 3/3 [00:00&lt;00:00, 10.40it/s]Extracting keywords: 100%|██████████| 3/3 [00:00&lt;00:00, 10.38it/s]</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Top 10 keywords for preCovid:
-  includes bibliographical: 30
-  bibliographical references: 20
-  online resource: 11
-  description based: 10
-  bibliographical references.: 9
-  machine: 6
-  bibliography: 6
-  machine learning: 6
+  machine: 9
+  learning: 8
+  systems: 7
+  system: 6
+  proceedings: 6
   machine intelligence: 5
-  united states: 5
+  report: 5
+  robotics: 5
+  space: 5
+  computer: 4
 
 Top 10 keywords for Covid:
-  description based: 31
-  online resource: 28
-  includes bibliographical: 26
   sixteenth congress: 14
-  bibliographical references.: 13
   hundred sixteenth: 13
-  bibliographical references: 11
-  govinfo: 8
+  learning: 9
+  report: 8
   financial services: 8
   task force: 8
+  national security: 6
+  national: 6
+  security: 5
+  united states: 5
 
 Top 10 keywords for postCovid:
-  indexing program: 121
-  library program: 104
-  government publishing: 103
-  description based: 82
-  online resource: 78
-  includes bibliographical: 73
-  united states: 62
-  bibliographical references.: 54
-  eighteenth congress: 49
-  states senate: 43
+  eighteenth congress: 59
+  united states: 57
+  hundred eighteenth: 54
+  states senate: 52
+  hearing: 36
+  learning: 26
+  machine learning: 22
+  report: 19
+  nineteenth congress: 19
+  hundred nineteenth: 19
 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -721,7 +719,7 @@ Top 10 keywords for postCovid:
 </div>
 </div>
 <p>Finally, we can visualize the top keywords for each period using a bar chart:</p>
-<div id="0c7a4dd0" class="cell" data-fig-height="5" data-fig-width="14" data-message="false" data-execution_count="11">
+<div id="b8bff962" class="cell" data-fig-height="5" data-fig-width="14" data-message="false" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>), sharex<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (period_name, start_year, end_year) <span class="kw">in</span> <span class="bu">zip</span>(axes, periods):</span>
@@ -739,7 +737,7 @@ Top 10 keywords for postCovid:
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="python-query-analysis_files/figure-html/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="python-query-analysis_files/figure-html/cell-12-output-1.png" width="1341" height="475" class="figure-img"></a></p>
+<p><a href="python-query-analysis_files/figure-html/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="python-query-analysis_files/figure-html/cell-12-output-1.png" width="1333" height="475" class="figure-img"></a></p>
 </figure>
 </div>
 </div>

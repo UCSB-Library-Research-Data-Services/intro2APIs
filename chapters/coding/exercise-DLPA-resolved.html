@@ -365,10 +365,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <li><a href="#define-constants" id="toc-define-constants" class="nav-link" data-scroll-target="#define-constants">Define Constants</a></li>
   <li><a href="#secure-api-key-setup" id="toc-secure-api-key-setup" class="nav-link" data-scroll-target="#secure-api-key-setup">Secure API Key Setup</a></li>
   </ul></li>
-  <li><a href="#helper-functions" id="toc-helper-functions" class="nav-link" data-scroll-target="#helper-functions">Helper Functions</a>
-  <ul class="collapse">
-  <li><a href="#url-redaction-helper" id="toc-url-redaction-helper" class="nav-link" data-scroll-target="#url-redaction-helper">URL Redaction Helper</a></li>
-  </ul></li>
+  <li><a href="#helper-functions" id="toc-helper-functions" class="nav-link" data-scroll-target="#helper-functions">Helper Functions</a></li>
   <li><a href="#main-api-functions" id="toc-main-api-functions" class="nav-link" data-scroll-target="#main-api-functions">Main API Functions</a>
   <ul class="collapse">
   <li><a href="#search-items-function" id="toc-search-items-function" class="nav-link" data-scroll-target="#search-items-function">Search Items Function</a></li>
@@ -377,6 +374,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <li><a href="#exploring-the-data" id="toc-exploring-the-data" class="nav-link" data-scroll-target="#exploring-the-data">Exploring the Data</a>
   <ul class="collapse">
   <li><a href="#initial-search-query" id="toc-initial-search-query" class="nav-link" data-scroll-target="#initial-search-query">Initial Search Query</a></li>
+  <li><a href="#explore-temporal-distribution" id="toc-explore-temporal-distribution" class="nav-link" data-scroll-target="#explore-temporal-distribution">Explore Temporal Distribution</a></li>
   <li><a href="#visualizing-temporal-distribution" id="toc-visualizing-temporal-distribution" class="nav-link" data-scroll-target="#visualizing-temporal-distribution">Visualizing Temporal Distribution</a></li>
   </ul></li>
   <li><a href="#comparative-analysis-across-time-periods" id="toc-comparative-analysis-across-time-periods" class="nav-link" data-scroll-target="#comparative-analysis-across-time-periods">Comparative Analysis Across Time Periods</a>
@@ -390,6 +388,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#extract-keywords-using-yake" id="toc-extract-keywords-using-yake" class="nav-link" data-scroll-target="#extract-keywords-using-yake">Extract Keywords Using YAKE</a></li>
   <li><a href="#display-top-keywords" id="toc-display-top-keywords" class="nav-link" data-scroll-target="#display-top-keywords">Display Top Keywords</a></li>
+  <li><a href="#visualize-top-keywords" id="toc-visualize-top-keywords" class="nav-link" data-scroll-target="#visualize-top-keywords">Visualize Top Keywords</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
@@ -497,9 +496,12 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    redacted_url <span class="op">=</span> parsed_url._replace(query<span class="op">=</span>redacted_query)</span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> urlunsplit(redacted_url)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="url-redaction-helper" class="level3">
-<h3 class="anchored" data-anchor-id="url-redaction-helper">URL Redaction Helper</h3>
-<p>Removes API keys from URLs before printing (security best practice).</p>
+</section>
+<section id="main-api-functions" class="level2">
+<h2 class="anchored" data-anchor-id="main-api-functions">Main API Functions</h2>
+<section id="search-items-function" class="level3">
+<h3 class="anchored" data-anchor-id="search-items-function">Search Items Function</h3>
+<p>This function queries the DPLA API and returns a single page of results. It handles query parameters, facets, and filters.</p>
 <div id="74a0cdf4" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
@@ -539,12 +541,9 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="main-api-functions" class="level2">
-<h2 class="anchored" data-anchor-id="main-api-functions">Main API Functions</h2>
-<section id="search-items-function" class="level3">
-<h3 class="anchored" data-anchor-id="search-items-function">Search Items Function</h3>
-<p>This function queries the DPLA API and returns a single page of results. It handles query parameters, facets, and filters.</p>
+<section id="search-all-items-function" class="level3">
+<h3 class="anchored" data-anchor-id="search-all-items-function">Search All Items Function</h3>
+<p>This function handles pagination and collects multiple pages of results up to a specified maximum.</p>
 <div id="487aedcd" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_all_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, max_items<span class="op">=</span><span class="dv">100</span>, sleep<span class="op">=</span><span class="fl">0.5</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
@@ -591,9 +590,12 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="search-all-items-function" class="level3">
-<h3 class="anchored" data-anchor-id="search-all-items-function">Search All Items Function</h3>
-<p>This function handles pagination and collects multiple pages of results up to a specified maximum.</p>
+</section>
+<section id="exploring-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-data">Exploring the Data</h2>
+<section id="initial-search-query" class="level3">
+<h3 class="anchored" data-anchor-id="initial-search-query">Initial Search Query</h3>
+<p>Let’s make our first request to explore items about artificial intelligence. We’ll use facets to understand the temporal distribution of items.</p>
 <div id="4998341d" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining the fields, facets, and filters outside the function call for better readability</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [</span>
@@ -631,12 +633,9 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>ai_search<span class="sc">.</span>get(<span class="st">'count'</span>)<span class="sc">}</span><span class="ss"> results found."</span>) <span class="cf">if</span> <span class="bu">isinstance</span>(ai_search, <span class="bu">dict</span>) <span class="cf">else</span> <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(ai_search)<span class="sc">}</span><span class="ss"> results found."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="exploring-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-the-data">Exploring the Data</h2>
-<section id="initial-search-query" class="level3">
-<h3 class="anchored" data-anchor-id="initial-search-query">Initial Search Query</h3>
-<p>Let’s make our first request to explore items about artificial intelligence. We’ll use facets to understand the temporal distribution of items.</p>
+<section id="explore-temporal-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="explore-temporal-distribution">Explore Temporal Distribution</h3>
+<p>Print a sample of the temporal facet results to see how items are distributed across different time periods.</p>
 <div id="7a71dc4a" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>facets_entries <span class="op">=</span> ai_search.get(<span class="st">"facets"</span>, {}).get(<span class="st">"sourceResource.date.begin"</span>, {}).get(<span class="st">"entries"</span>, [])</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -662,6 +661,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+</section>
+<section id="comparative-analysis-across-time-periods" class="level2">
+<h2 class="anchored" data-anchor-id="comparative-analysis-across-time-periods">Comparative Analysis Across Time Periods</h2>
+<section id="define-time-periods" class="level3">
+<h3 class="anchored" data-anchor-id="define-time-periods">Define Time Periods</h3>
+<p>Based on the temporal distribution, we can identify three distinct periods of interest.</p>
 <div id="8321ea24" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>periods <span class="op">=</span> [</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"preCovid"</span>, <span class="dv">1844</span>, <span class="dv">2018</span>),</span>
@@ -670,12 +676,9 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="comparative-analysis-across-time-periods" class="level2">
-<h2 class="anchored" data-anchor-id="comparative-analysis-across-time-periods">Comparative Analysis Across Time Periods</h2>
-<section id="define-time-periods" class="level3">
-<h3 class="anchored" data-anchor-id="define-time-periods">Define Time Periods</h3>
-<p>Based on the temporal distribution, we can identify three distinct periods of interest.</p>
+<section id="collect-items-for-each-period" class="level3">
+<h3 class="anchored" data-anchor-id="collect-items-for-each-period">Collect Items for Each Period</h3>
+<p>Fetch up to 3000 items for each time period using date filters and pagination.</p>
 <div id="460afff1" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a pool of results for each period</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ai_results <span class="op">=</span> {}</span>
@@ -714,9 +717,9 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>    ai_results <span class="op">=</span> r.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="collect-items-for-each-period" class="level3">
-<h3 class="anchored" data-anchor-id="collect-items-for-each-period">Collect Items for Each Period</h3>
-<p>Fetch up to 3000 items for each time period using date filters and pagination.</p>
+<section id="summary-of-results-by-period" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-results-by-period">Summary of Results by Period</h3>
+<p>Check how many items we retrieved for each time period.</p>
 <div id="6d6c0491" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ai_results_summary <span class="op">=</span> {period: <span class="bu">len</span>(items) <span class="cf">for</span> period, items <span class="kw">in</span> ai_results.items()}</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AI Results Summary by Period:"</span>)</span>
@@ -724,16 +727,19 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> items"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="summary-of-results-by-period" class="level3">
-<h3 class="anchored" data-anchor-id="summary-of-results-by-period">Summary of Results by Period</h3>
-<p>Check how many items we retrieved for each time period.</p>
+<section id="exploring-item-structure" class="level3">
+<h3 class="anchored" data-anchor-id="exploring-item-structure">Exploring Item Structure</h3>
+<p>Let’s examine the structure of a sample item to understand what metadata is available.</p>
 <div id="8dfb54d3" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ai_results.get(<span class="st">"postCovid"</span>)[:<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="exploring-item-structure" class="level3">
-<h3 class="anchored" data-anchor-id="exploring-item-structure">Exploring Item Structure</h3>
-<p>Let’s examine the structure of a sample item to understand what metadata is available.</p>
+</section>
+<section id="keyword-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="keyword-extraction">Keyword Extraction</h2>
+<section id="extract-keywords-using-yake" class="level3">
+<h3 class="anchored" data-anchor-id="extract-keywords-using-yake">Extract Keywords Using YAKE</h3>
+<p>Use YAKE (Yet Another Keyword Extractor) to identify important terms in titles and descriptions for each period.</p>
 <div id="a41b71b7" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_keywords(items, skip<span class="op">=</span><span class="va">None</span>, ngram<span class="op">=</span><span class="dv">2</span>, max_keywords<span class="op">=</span><span class="dv">5</span>, language<span class="op">=</span><span class="st">"en"</span>):</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Extract keywords from a list of items using YAKE."""</span></span>
@@ -748,27 +754,22 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> period, items <span class="kw">in</span> tqdm(items.items(), desc<span class="op">=</span><span class="st">"Extracting keywords"</span>):</span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        period_keywords <span class="op">=</span> {}</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> item <span class="kw">in</span> items:</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            title <span class="op">=</span> _join_list(item.get(<span class="st">"sourceResource.title"</span>, <span class="st">""</span>))</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>            description <span class="op">=</span> _join_list(item.get(<span class="st">"sourceResource.description"</span>, <span class="st">""</span>))</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>            text <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>description<span class="sc">}</span><span class="ss">"</span>.lower()</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>            keywords <span class="op">=</span> kw_extractor.extract_keywords(text)</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> kw, score <span class="kw">in</span> keywords:</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> skip <span class="kw">and</span> kw <span class="kw">in</span> skip_keywords:</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>                period_keywords[kw] <span class="op">=</span> period_keywords.get(kw, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>        ai_keywords[period] <span class="op">=</span> period_keywords</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ai_keywords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            text <span class="op">=</span> _join_list(item.get(<span class="st">"sourceResource.title"</span>, <span class="st">""</span>)).lower()</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>            keywords <span class="op">=</span> kw_extractor.extract_keywords(text)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> kw, score <span class="kw">in</span> keywords:</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> skip <span class="kw">and</span> kw <span class="kw">in</span> skip_keywords:</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>                period_keywords[kw] <span class="op">=</span> period_keywords.get(kw, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        ai_keywords[period] <span class="op">=</span> period_keywords</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ai_keywords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="keyword-extraction" class="level2">
-<h2 class="anchored" data-anchor-id="keyword-extraction">Keyword Extraction</h2>
-<section id="extract-keywords-using-yake" class="level3">
-<h3 class="anchored" data-anchor-id="extract-keywords-using-yake">Extract Keywords Using YAKE</h3>
-<p>Use YAKE (Yet Another Keyword Extractor) to identify important terms in titles and descriptions for each period.</p>
+<section id="display-top-keywords" class="level3">
+<h3 class="anchored" data-anchor-id="display-top-keywords">Display Top Keywords</h3>
+<p>Print the most frequent keywords for each time period.</p>
 <div id="101f65d1" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a list of common words to skip (optional)</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>skip_words <span class="op">=</span> [<span class="st">"artificial intelligence"</span>, <span class="st">"ai"</span>, <span class="st">"intelligence"</span>, <span class="st">"artificial"</span>]</span>
@@ -785,9 +786,9 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="display-top-keywords" class="level3">
-<h3 class="anchored" data-anchor-id="display-top-keywords">Display Top Keywords</h3>
-<p>Print the most frequent keywords for each time period.</p>
+<section id="visualize-top-keywords" class="level3">
+<h3 class="anchored" data-anchor-id="visualize-top-keywords">Visualize Top Keywords</h3>
+<p>Create bar charts to visualize the top keywords for each time period.</p>
 <div id="f4e3cc98" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>), sharex<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
