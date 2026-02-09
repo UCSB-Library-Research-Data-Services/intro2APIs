@@ -136,4 +136,4 @@ else:
     print(f"Response: {response.text}")
 ```
 
-
+Having all the libraries in place and the API key securely stored, now it's time to do some queries!!
