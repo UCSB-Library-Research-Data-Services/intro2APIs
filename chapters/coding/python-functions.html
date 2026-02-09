@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Helping Functions – Unlocking DataA Gentle Introduction to APIs</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../chapters/dataAnalysis/collecting-data-for-analysis.html" rel="next">
+<link href="../../chapters/coding/python-setting-up.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-57bcf9fc38b221e6899d1192556e6f13.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VR8KJJEZHW"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
+</script>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/coding/coding-intro.html">Getting Data Programmatically</a></li><li class="breadcrumb-item"><a href="../../chapters/coding/python-functions.html">Helping Functions</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../../_static/imgs/integration.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Api icons created by HAJICON - Flaticon"><img src="../../_static/imgs/integration.png" class="img-fluid figure-img" alt="Api icons created by HAJICON - Flaticon"></a></p>
+<figcaption><a href="https://www.flaticon.com/free-icons/api" title="api icons" target="_blank" class="header-icon-attribution">Api icons created by HAJICON - Flaticon</a></figcaption>
+</figure>
+</div>
+</div></div>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Unlocking Data<br><span style="font-size: 0.8em;">A Gentle Introduction to APIs</span><br></a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/what-is-an-api.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What are APIs and why do they exists</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Interacting with APIs</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/interactingAPIs/endpoints.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Endpoints</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/interactingAPIs/request-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Request Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/interactingAPIs/interact-apis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interacting with APIs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/interactingAPIs/exercise-calling-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise: Calling Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Using Postman</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/postman/postman.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Postman</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/postman/postman-basic-requests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Request</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/postman/postman-environment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Environment Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/postman/postman-post.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">POST Requests in Postman</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/postman/postman-delete.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DELETE Requests in Postman</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Exercise: The GitHub API</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/postman/exercise-github-api.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with the GitHub API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/postman/exercise-github-api-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise 1: Getting Information from GitHub</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/postman/exercise-github-api-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise 2: Adding and Removing Information from GitHub</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Getting Data Programmatically</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/coding/coding-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/coding/python-setting-up.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/coding/python-functions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Helping Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/dataAnalysis/collecting-data-for-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Collecting Data for Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/dataAnalysis/analyzing-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analyzing Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/catalog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A Catalog of APIs</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#helper-functions" id="toc-helper-functions" class="nav-link active" data-scroll-target="#helper-functions">Helper functions</a></li>
+  <li><a href="#main-functions" id="toc-main-functions" class="nav-link" data-scroll-target="#main-functions">Main functions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/coding/coding-intro.html">Getting Data Programmatically</a></li><li class="breadcrumb-item"><a href="../../chapters/coding/python-functions.html">Helping Functions</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Helping Functions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>One of the most relevant features of programming languages is the ability to work with functions, which are reusable blocks of code that perform a specific task. In Python, functions are defined using the <code>def</code> keyword, and can take arguments and return values. This can seem very abstract at first, but it is a fundamental concept that allows us to take advantage of the full power of programming.</p>
+<p>For this exercise, we’re going to write four functions: two ‘helper’ functions that will help us to reutilize specific logic, and two ‘main’ functions that will handle the queries to the DPLA API and will return a well formatted response in a Pythonic way.</p>
+<section id="helper-functions" class="level2">
+<h2 class="anchored" data-anchor-id="helper-functions">Helper functions</h2>
+<p>These two functions are not strictly necessary, but they will help us to write cleaner code and avoid repetition. You can copy and paste the code for these functions in your notebook, and you can read the docstrings to understand what they do:</p>
+<div id="7ae1c490" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _join_list(x, sep<span class="op">=</span><span class="st">"; "</span>, keep_first_only<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Helper function to join a list of values into a single string. If the input is not a list, it will return the string representation of the input. If the input is None, it will return an empty string.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">list</span>):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> keep_first_only <span class="kw">and</span> <span class="bu">len</span>(x) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">str</span>(x[<span class="dv">0</span>])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sep.join(<span class="bu">str</span>(v) <span class="cf">for</span> v <span class="kw">in</span> x <span class="cf">if</span> v <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">""</span> <span class="cf">if</span> x <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> <span class="bu">str</span>(x)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> top_n(d, n<span class="op">=</span><span class="dv">10</span>):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Helper function to return the top n items from a dictionary, sorted by value in descending order."""</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(<span class="bu">sorted</span>(d.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:n])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> redact_request_url(url):</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Remove the api_key parameter from the URL for display purposes."""</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    parsed_url <span class="op">=</span> urlsplit(<span class="bu">str</span>(url))  <span class="co"># Convert httpx.URL to string</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    query_params <span class="op">=</span> parse_qsl(parsed_url.query)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    filtered_params <span class="op">=</span> [(name, value) <span class="cf">for</span> name, value <span class="kw">in</span> query_params <span class="cf">if</span> name <span class="op">!=</span> <span class="st">"api_key"</span>]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    redacted_query <span class="op">=</span> urlencode(filtered_params)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    redacted_url <span class="op">=</span> parsed_url._replace(query<span class="op">=</span>redacted_query)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> urlunsplit(redacted_url)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="main-functions" class="level2">
+<h2 class="anchored" data-anchor-id="main-functions">Main functions</h2>
+<p>Let’s take some time to understand the following function, which will be the main function to query the DPLA API. What we want with this function are one thing: to get the results of a query, their paramenters, and facets in a well formatted way.</p>
+<p>If we take a look at the <a href="https://pro.dp.la/developers/requests" target="_blank">DPLA API documentation</a>, we can see that the endpoint is composed by the base URL (<code>https://api.dp.la/v2</code>), the resource type (<code>items</code> or <code>collections</code>), the query parameters (e.g.&nbsp;<code>q=artificial+intelligence</code>), and the API key (e.g.&nbsp;<code>api_key=your_api_key</code>).</p>
+<p>Additionally, you can request for specific facets (e.g.&nbsp;<code>facets=sourceResource.type</code>), specific fields to be returned (e.g.&nbsp;<code>fields=sourceResource.title,sourceResource.description</code>), and you can also specify the page number (e.g.&nbsp;<code>page=2</code>) and the number of results per page (e.g.&nbsp;<code>page_size=20</code>).</p>
+<p>If we have to write all the logic to handle all these parameters in a single function it will become extremely long, complicated, and difficult to read and maintain. Therefore, our goal is to write a function with an acceptable level of abstraction, that use the API logic to perform a request without reinventing the wheel.</p>
+<p>So, our function is goin to be called <code>search_items</code>, and it will take the following parameters:</p>
+<ul>
+<li><code>query</code>: the query string to search for (e.g.&nbsp;<code>artificial intelligence</code>).</li>
+<li><code>resource_type</code>: the type of resource to search for (e.g.&nbsp;<code>items</code> or <code>collections</code>).</li>
+<li><code>**parameters</code>: any additional parameters to be passed to the API</li>
+<li><code>timeout</code>: the timeout for the HTTP request in seconds (default is 30.0).</li>
+<li><code>verbose</code>: a boolean to indicate if we want to print the request URL, useful for debugging (default is <code>False</code>).</li>
+</ul>
+<p>Our resulting function will return a dictionary from the JSON response.</p>
+<div id="de2bdb9e" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Search DPLA items with given query and parameters.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">        query (str): The search query string. It's possible to use logical operators (AND, OR, NOT). Additionally, you can use wildcards (*) for partial matches.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">        resource_type (str): The type of resource to search for. Default is 'items'.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">        verbose (bool): If True, prints the request URL. Default is False.</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">        timeout (float): The timeout for the HTTP request in seconds. Default is 30.0.</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">        **parameters: Facets and filter parameters from the DPLA API documentation: https://pro.dp.la/developers/requests</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">                    Dotted keywords and values can be passed using dictionary unpacking. For example, to filter by sourceResource.title, you can pass:</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">                    **{"sourceResource.title": "example title"}</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">        dict: The JSON response from the DPLA API as a Python dictionary.</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Build the request URL and minimal parameters</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    base_url <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>API_BASE_URL<span class="sc">}{</span>resource_type<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"q"</span>: query,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"api_key"</span>: os.getenv(ENV_VAR_NAME),</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add additional parameters if any</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> parameters.items():</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        params[key] <span class="op">=</span> value</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make the request</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> httpx.Client(timeout<span class="op">=</span>timeout) <span class="im">as</span> client:</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> client.get(base_url, params<span class="op">=</span>params)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Request URL [redacted]: </span><span class="sc">{</span>redact_request_url(response.url)<span class="sc">}</span><span class="ss">"</span>) <span class="cf">if</span> verbose <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status() </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In a proper application, we would want to handle the exceptions that may occur during the request (e.g.&nbsp;network errors, invalid API key, etc.), but for the sake of this exercise we will keep it simple and just raise any exceptions that occur.</p>
+</div>
+</div>
+</div>
+<p>Let’s test the function with a simple query:</p>
+<div id="14a3ba37" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> search_items(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"artificial AND intelligence"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    page_size<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    fields<span class="op">=</span><span class="st">"sourceResource.title,sourceResource.description"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    facets<span class="op">=</span><span class="st">"sourceResource.date.begin,sourceResource.date.end"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="va">True</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(response, indent<span class="op">=</span><span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Request URL [redacted]: https://api.dp.la/v2/items?q=artificial+AND+intelligence&amp;page_size=5&amp;fields=sourceResource.title%2CsourceResource.description&amp;facets=sourceResource.date.begin%2CsourceResource.date.end
+{
+  "count": 3379,
+  "docs": [
+    {
+      "sourceResource.title": "Artificial Intelligence"
+    },
+    {
+      "sourceResource.description": [
+        "\"January 1986.\"",
+        "Caption title."
+      ],
+      "sourceResource.title": "Artificial intelligence"
+    },
+    {
+      "sourceResource.description": [
+        "In scope of the U.S. Government Publishing Office Cataloging and Indexing Program (C&amp;I) and Federal Depository Library Program (FDLP).",
+        "Includes bibliographical references.",
+        "Online resource; title from PDF cover (USMC website, viewed July 18, 2024)."
+      ],
+      "sourceResource.title": "Artificial intelligence strategy"
+    },
+    {
+      "sourceResource.title": "Intelligence and the Computer - Artificial Intelligence"
+    },
+    {
+      "sourceResource.description": "Recording of the session titled \"Artificial intelligence and micros\" held at the fifth West Coast Computer Faire in San Francisco. The following papers were presented at this session: \"Microcomputers and the design of contelligent systems,\" presented by Dean Gengle. \"Artificial intelligence as applied to input and output in the office - or - making computers read and speak,\" presented by Art Derfall. \"Solving the Shooting Stars Puzzle,\" presented by Joel Shprentz.Additional Descriptive Notes: Saturday, 4:30",
+      "sourceResource.title": "Artificial intelligence and micros"
+    }
+  ],
+  "facets": {
+    "sourceResource.date.begin": {
+      "_type": "date_histogram",
+      "entries": [
+        {
+          "count": 4,
+          "time": "2026"
+        },
+        {
+          "count": 128,
+          "time": "2025"
+        },
+        {
+          "count": 173,
+          "time": "2024"
+        },
+        {
+          "count": 100,
+          "time": "2023"
+        },
+        {
+          "count": 34,
+          "time": "2022"
+        },
+        {
+          "count": 34,
+          "time": "2021"
+        },
+        {
+          "count": 33,
+          "time": "2020"
+        },
+        {
+          "count": 23,
+          "time": "2019"
+        },
+        {
+          "count": 15,
+          "time": "2018"
+        },
+        {
+          "count": 3,
+          "time": "2017"
+        },
+        {
+          "count": 4,
+          "time": "2016"
+        },
+        {
+          "count": 6,
+          "time": "2015"
+        },
+        {
+          "count": 4,
+          "time": "2014"
+        },
+        {
+          "count": 26,
+          "time": "2013"
+        },
+        {
+          "count": 2,
+          "time": "2012"
+        },
+        {
+          "count": 1,
+          "time": "2011"
+        },
+        {
+          "count": 4,
+          "time": "2010"
+        },
+        {
+          "count": 6,
+          "time": "2008"
+        },
+        {
+          "count": 1,
+          "time": "2007"
+        },
+        {
+          "count": 31,
+          "time": "2006"
+        },
+        {
+          "count": 27,
+          "time": "2005"
+        },
+        {
+          "count": 71,
+          "time": "2004"
+        },
+        {
+          "count": 89,
+          "time": "2003"
+        },
+        {
+          "count": 67,
+          "time": "2002"
+        },
+        {
+          "count": 122,
+          "time": "2001"
+        },
+        {
+          "count": 327,
+          "time": "2000"
+        },
+        {
+          "count": 95,
+          "time": "1999"
+        },
+        {
+          "count": 171,
+          "time": "1998"
+        },
+        {
+          "count": 52,
+          "time": "1997"
+        },
+        {
+          "count": 97,
+          "time": "1996"
+        },
+        {
+          "count": 18,
+          "time": "1995"
+        },
+        {
+          "count": 22,
+          "time": "1994"
+        },
+        {
+          "count": 87,
+          "time": "1993"
+        },
+        {
+          "count": 17,
+          "time": "1992"
+        },
+        {
+          "count": 40,
+          "time": "1991"
+        },
+        {
+          "count": 8,
+          "time": "1990"
+        },
+        {
+          "count": 14,
+          "time": "1989"
+        },
+        {
+          "count": 9,
+          "time": "1988"
+        },
+        {
+          "count": 8,
+          "time": "1987"
+        },
+        {
+          "count": 30,
+          "time": "1986"
+        },
+        {
+          "count": 4,
+          "time": "1985"
+        },
+        {
+          "count": 12,
+          "time": "1984"
+        },
+        {
+          "count": 4,
+          "time": "1983"
+        },
+        {
+          "count": 13,
+          "time": "1982"
+        },
+        {
+          "count": 27,
+          "time": "1981"
+        },
+        {
+          "count": 33,
+          "time": "1980"
+        },
+        {
+          "count": 3,
+          "time": "1979"
+        },
+        {
+          "count": 5,
+          "time": "1978"
+        },
+        {
+          "count": 9,
+          "time": "1977"
+        },
+        {
+          "count": 7,
+          "time": "1976"
+        },
+        {
+          "count": 5,
+          "time": "1975"
+        },
+        {
+          "count": 10,
+          "time": "1974"
+        },
+        {
+          "count": 9,
+          "time": "1973"
+        },
+        {
+          "count": 4,
+          "time": "1972"
+        },
+        {
+          "count": 2,
+          "time": "1971"
+        },
+        {
+          "count": 19,
+          "time": "1970"
+        },
+        {
+          "count": 13,
+          "time": "1969"
+        },
+        {
+          "count": 16,
+          "time": "1968"
+        },
+        {
+          "count": 7,
+          "time": "1967"
+        },
+        {
+          "count": 30,
+          "time": "1966"
+        },
+        {
+          "count": 3,
+          "time": "1965"
+        },
+        {
+          "count": 25,
+          "time": "1964"
+        },
+        {
+          "count": 84,
+          "time": "1963"
+        },
+        {
+          "count": 62,
+          "time": "1962"
+        },
+        {
+          "count": 53,
+          "time": "1961"
+        },
+        {
+          "count": 10,
+          "time": "1960"
+        },
+        {
+          "count": 24,
+          "time": "1959"
+        },
+        {
+          "count": 13,
+          "time": "1958"
+        },
+        {
+          "count": 16,
+          "time": "1957"
+        },
+        {
+          "count": 17,
+          "time": "1956"
+        },
+        {
+          "count": 4,
+          "time": "1955"
+        },
+        {
+          "count": 16,
+          "time": "1954"
+        },
+        {
+          "count": 16,
+          "time": "1952"
+        },
+        {
+          "count": 1,
+          "time": "1951"
+        },
+        {
+          "count": 13,
+          "time": "1950"
+        },
+        {
+          "count": 2,
+          "time": "1949"
+        },
+        {
+          "count": 2,
+          "time": "1947"
+        },
+        {
+          "count": 3,
+          "time": "1946"
+        },
+        {
+          "count": 6,
+          "time": "1944"
+        },
+        {
+          "count": 3,
+          "time": "1942"
+        },
+        {
+          "count": 1,
+          "time": "1938"
+        },
+        {
+          "count": 2,
+          "time": "1930"
+        },
+        {
+          "count": 1,
+          "time": "1927"
+        },
+        {
+          "count": 1,
+          "time": "1926"
+        },
+        {
+          "count": 4,
+          "time": "1925"
+        },
+        {
+          "count": 12,
+          "time": "1924"
+        },
+        {
+          "count": 4,
+          "time": "1923"
+        },
+        {
+          "count": 1,
+          "time": "1914"
+        },
+        {
+          "count": 1,
+          "time": "1885"
+        },
+        {
+          "count": 1,
+          "time": "1871"
+        },
+        {
+          "count": 1,
+          "time": "1844"
+        }
+      ]
+    },
+    "sourceResource.date.end": {
+      "_type": "date_histogram",
+      "entries": [
+        {
+          "count": 4,
+          "time": "2026"
+        },
+        {
+          "count": 129,
+          "time": "2025"
+        },
+        {
+          "count": 173,
+          "time": "2024"
+        },
+        {
+          "count": 99,
+          "time": "2023"
+        },
+        {
+          "count": 34,
+          "time": "2022"
+        },
+        {
+          "count": 34,
+          "time": "2021"
+        },
+        {
+          "count": 33,
+          "time": "2020"
+        },
+        {
+          "count": 23,
+          "time": "2019"
+        },
+        {
+          "count": 15,
+          "time": "2018"
+        },
+        {
+          "count": 3,
+          "time": "2017"
+        },
+        {
+          "count": 4,
+          "time": "2016"
+        },
+        {
+          "count": 6,
+          "time": "2015"
+        },
+        {
+          "count": 4,
+          "time": "2014"
+        },
+        {
+          "count": 26,
+          "time": "2013"
+        },
+        {
+          "count": 2,
+          "time": "2012"
+        },
+        {
+          "count": 1,
+          "time": "2011"
+        },
+        {
+          "count": 4,
+          "time": "2010"
+        },
+        {
+          "count": 6,
+          "time": "2008"
+        },
+        {
+          "count": 1,
+          "time": "2007"
+        },
+        {
+          "count": 31,
+          "time": "2006"
+        },
+        {
+          "count": 27,
+          "time": "2005"
+        },
+        {
+          "count": 71,
+          "time": "2004"
+        },
+        {
+          "count": 89,
+          "time": "2003"
+        },
+        {
+          "count": 67,
+          "time": "2002"
+        },
+        {
+          "count": 122,
+          "time": "2001"
+        },
+        {
+          "count": 327,
+          "time": "2000"
+        },
+        {
+          "count": 95,
+          "time": "1999"
+        },
+        {
+          "count": 171,
+          "time": "1998"
+        },
+        {
+          "count": 52,
+          "time": "1997"
+        },
+        {
+          "count": 97,
+          "time": "1996"
+        },
+        {
+          "count": 18,
+          "time": "1995"
+        },
+        {
+          "count": 22,
+          "time": "1994"
+        },
+        {
+          "count": 87,
+          "time": "1993"
+        },
+        {
+          "count": 17,
+          "time": "1992"
+        },
+        {
+          "count": 40,
+          "time": "1991"
+        },
+        {
+          "count": 8,
+          "time": "1990"
+        },
+        {
+          "count": 14,
+          "time": "1989"
+        },
+        {
+          "count": 9,
+          "time": "1988"
+        },
+        {
+          "count": 8,
+          "time": "1987"
+        },
+        {
+          "count": 30,
+          "time": "1986"
+        },
+        {
+          "count": 4,
+          "time": "1985"
+        },
+        {
+          "count": 12,
+          "time": "1984"
+        },
+        {
+          "count": 4,
+          "time": "1983"
+        },
+        {
+          "count": 13,
+          "time": "1982"
+        },
+        {
+          "count": 28,
+          "time": "1981"
+        },
+        {
+          "count": 33,
+          "time": "1980"
+        },
+        {
+          "count": 3,
+          "time": "1979"
+        },
+        {
+          "count": 5,
+          "time": "1978"
+        },
+        {
+          "count": 9,
+          "time": "1977"
+        },
+        {
+          "count": 7,
+          "time": "1976"
+        },
+        {
+          "count": 5,
+          "time": "1975"
+        },
+        {
+          "count": 10,
+          "time": "1974"
+        },
+        {
+          "count": 9,
+          "time": "1973"
+        },
+        {
+          "count": 4,
+          "time": "1972"
+        },
+        {
+          "count": 2,
+          "time": "1971"
+        },
+        {
+          "count": 19,
+          "time": "1970"
+        },
+        {
+          "count": 13,
+          "time": "1969"
+        },
+        {
+          "count": 16,
+          "time": "1968"
+        },
+        {
+          "count": 7,
+          "time": "1967"
+        },
+        {
+          "count": 30,
+          "time": "1966"
+        },
+        {
+          "count": 3,
+          "time": "1965"
+        },
+        {
+          "count": 25,
+          "time": "1964"
+        },
+        {
+          "count": 84,
+          "time": "1963"
+        },
+        {
+          "count": 62,
+          "time": "1962"
+        },
+        {
+          "count": 53,
+          "time": "1961"
+        },
+        {
+          "count": 10,
+          "time": "1960"
+        },
+        {
+          "count": 24,
+          "time": "1959"
+        },
+        {
+          "count": 13,
+          "time": "1958"
+        },
+        {
+          "count": 16,
+          "time": "1957"
+        },
+        {
+          "count": 17,
+          "time": "1956"
+        },
+        {
+          "count": 4,
+          "time": "1955"
+        },
+        {
+          "count": 16,
+          "time": "1954"
+        },
+        {
+          "count": 16,
+          "time": "1952"
+        },
+        {
+          "count": 1,
+          "time": "1951"
+        },
+        {
+          "count": 13,
+          "time": "1950"
+        },
+        {
+          "count": 1,
+          "time": "1949"
+        },
+        {
+          "count": 2,
+          "time": "1947"
+        },
+        {
+          "count": 3,
+          "time": "1946"
+        },
+        {
+          "count": 6,
+          "time": "1944"
+        },
+        {
+          "count": 3,
+          "time": "1942"
+        },
+        {
+          "count": 1,
+          "time": "1938"
+        },
+        {
+          "count": 2,
+          "time": "1930"
+        },
+        {
+          "count": 1,
+          "time": "1927"
+        },
+        {
+          "count": 1,
+          "time": "1926"
+        },
+        {
+          "count": 4,
+          "time": "1925"
+        },
+        {
+          "count": 12,
+          "time": "1924"
+        },
+        {
+          "count": 4,
+          "time": "1923"
+        },
+        {
+          "count": 1,
+          "time": "1914"
+        },
+        {
+          "count": 1,
+          "time": "1885"
+        },
+        {
+          "count": 1,
+          "time": "1871"
+        },
+        {
+          "count": 1,
+          "time": "1844"
+        }
+      ]
+    }
+  },
+  "limit": 5,
+  "start": 1
+}</code></pre>
+</div>
+</div>
+<p>Hooray 🎉! We have successfully queried the DPLA API and got a well formatted response. However, this function returns a single page of results. The maximum number of results allowed per page is 100, so if we want to get all 364 results we need to handle pagination, and that’s what our second main function will do.</p>
+<p>This function, that we will call <code>search_all_items</code>, will take almost the same parameters as <code>search_items</code>, but it will return a generator that yields the results page by page, until there are no more results to fetch. This way, we can iterate over the results without having to load them all in memory at once.</p>
+<p>Some specific parameters for this function will allow us to control the maximum number of items to fetch (<code>max_items</code>), the sleep time between requests to avoid hitting rate limits (<code>sleep</code>), and the timeout for the HTTP requests (<code>timeout</code>).</p>
+<div id="0115a8ed" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_all_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, max_items<span class="op">=</span><span class="dv">100</span>, sleep<span class="op">=</span><span class="fl">0.5</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Collect up to max_items across pages.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">        query (str): The search query string. It's possible to use logical operators </span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">            (AND, OR, NOT). Additionally, you can use wildcards (*) for partial matches.</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">        max_items (int): Maximum number of items to retrieve. For number of elements per page, </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">            use the page_size parameter in **parameters.</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">        sleep (float): Time to wait between requests to avoid hitting rate limits.</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">        **parameters: Facets and filter parameters from the DPLA API documentation: https://pro.dp.la/developers/requests</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    all_docs <span class="op">=</span> []</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    page <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    page_size <span class="op">=</span> <span class="bu">int</span>(parameters.get(<span class="st">"page_size"</span>, <span class="dv">100</span>))</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> page_size <span class="op">&gt;</span> <span class="dv">100</span>:</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        page_size <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"page_size cannot exceed 100. Setting to 100."</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="bu">len</span>(all_docs) <span class="op">&lt;</span> max_items:</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        parameters[<span class="st">'page'</span>] <span class="op">=</span> page</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> search_items(query, resource_type<span class="op">=</span>resource_type, verbose<span class="op">=</span>verbose, timeout<span class="op">=</span>timeout, <span class="op">**</span>parameters)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        docs <span class="op">=</span> data.get(<span class="st">'docs'</span>, [])</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> docs:</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span>  <span class="co"># No more results</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        all_docs.extend(docs)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># stop if we've reached max_items</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(all_docs) <span class="op">&gt;=</span> max_items:</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        page <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        time.sleep(sleep)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> all_docs[:max_items]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Again, this function can be improved with proper error handling and a better pagination logic, but we want to keep it simple for now.</p>
+<p>Same as with the previous function, we can test it with a simple query:</p>
+<div id="22197bb9" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> search_all_items(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"artificial AND intelligence"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    page_size<span class="op">=</span><span class="dv">50</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    max_items<span class="op">=</span><span class="dv">150</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    fields<span class="op">=</span><span class="st">"sourceResource.title,sourceResource.description"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    facets<span class="op">=</span><span class="st">"sourceResource.date.begin,sourceResource.date.end"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total items retrieved: </span><span class="sc">{</span><span class="bu">len</span>(results)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(results[<span class="op">-</span><span class="dv">5</span>:], indent<span class="op">=</span><span class="dv">2</span>))  <span class="co"># Print the last 5 results</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total items retrieved: 150
+[
+  {
+    "sourceResource.description": [
+      "\"May 2023.\"",
+      "Includes bibliographical references (pages 40-47).",
+      "\"A report by the Select Committee on Artificial Intelligence of the National Science and Technology Council.\"",
+      "Description based on online resource; title from PDF cover (White House, viewed Nov. 7, 2023)."
+    ],
+    "sourceResource.title": "The national artificial intelligence research and development strategic plan: 2023 update"
+  },
+  {
+    "sourceResource.description": [
+      "Updated irregularly",
+      "The CRS web page provides access to all versions published since 2018 in accordance with P.L. 115-141.",
+      "In scope of the U.S. Government Publishing Office Cataloging and Indexing Program (C&amp;I) and Federal Depository Library Program (FDLP).",
+      "Report includes bibliographical references.",
+      "Contents viewed on December 7, 2023; title from CRS web page."
+    ],
+    "sourceResource.title": "Artificial intelligence : overview, recent advances, and considerations for the 118th Congress"
+  },
+  {
+    "sourceResource.description": "Bibliography: leaves [107]-[108]",
+    "sourceResource.title": "The meaning and mechanics of intelligence"
+  },
+  {
+    "sourceResource.description": [
+      "Updated irregularly",
+      "Batch processed record.",
+      "This record provides access to the versions of this bill or resolution published in the United States Government Publishing Office's (GPO) GovInfo system. To see the versions, use the GPO PURL. To see the actions related to this bill or resolution, use the Congress.gov URL.",
+      "At head of title: 118th Congress, 2d session.",
+      "Sponsor(s): Representative Lisa Blunt Rochester.",
+      "Cosponsor(s): Representative Marcus J. Molinaro.",
+      "Referred committee(s): House Committee on Energy and Commerce.",
+      "Date of introduction: \"September 19, 2024.\"",
+      "United States Congress chamber(s): United States House of Representatives.",
+      "United States federal government branch: Legislative branch.",
+      "Access ID (GovInfo): BILLS-118hr9673ih.",
+      "Pagination at time of introduction: 16 pages.",
+      "In scope of the U.S. Government Publishing Office Cataloging and Indexing Program (C&amp;I) and Federal Depository Library Program (FDLP).",
+      "GovInfo.gov metadata; title from caption of the introduced version (GovInfo, September 19, 2024)."
+    ],
+    "sourceResource.title": "To Direct the Secretary of Commerce to Develop a National Strategy Regarding Artificial Intelligence Consumer Literacy and Conduct a National Artificial Intelligence Consumer Literacy Campaign"
+  },
+  {
+    "sourceResource.description": "Deep learning has rapidly emerged as a transformative technology that permeates all modern software, from autonomous driving systems to medical-diagnosis and malware-detection tools. Considering the critical role of this software in our technologies, it must behave as intended. The complexity introduced by deep-learning components complicates formal reasoning about the behavior of such software, frequently resulting in solutions that offer only empirical or no guarantees.This thesis contributes techniques and algorithms that increase the robustness of deep-learning-powered software by providing strong provable guarantees across the components existing in the entire deep learning pipeline. By leveraging the power of abstract interpretation, a well-established theory for program analysis and verification, this thesis enables the verification of robustness properties across the deep learning pipeline. The thesis focuses on four critical aspects of robustness: (1) preventing numerical bugs",
+    "sourceResource.title": "Towards Robust Artificial-Intelligence-Powered Software: Provable Guarantees via Abstract Interpretation"
+  }
+]</code></pre>
+</div>
+</div>
+<p>Great! We have successfully retrieved multiple pages of results from the DPLA API, and we can control the number of items we want to fetch with the <code>max_items</code> parameter. Now we are ready to do some queries and explore the data!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ucsb-library-research-data-services\.github\.io\/intro2APIs\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="../../chapters/coding/python-setting-up.html" class="pagination-link" aria-label="Python Setup">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Python Setup</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../chapters/dataAnalysis/collecting-data-for-analysis.html" class="pagination-link" aria-label="Collecting Data for Analysis">
+        <span class="nav-page-text">Collecting Data for Analysis</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><img src="https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/rds-ws-catalogue/refs/heads/main/assets/imgs/HexSticker-RDS.png" alt="UCSB Library Research Data Services logo" class="footer-badge"></p>
+</div>   
+    <div class="nav-footer-center">
+<p><strong>UCSB Library Research Data Services</strong></p>
+<p><a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en" class="footer-cc-license"> <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="CC" class="cc-icon"> <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="BY" class="cc-icon"> <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="NC" class="cc-icon"> </a></p>
+<p><a href="https://doi.org/10.5281/zenodo.15015037" class="footer-doi-badge"> <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.15015037.svg" alt="DOI"> </a></p>
+</div>
+    <div class="nav-footer-right">
+<div class="footer-tech">
+<p><a class="footer-tech-item" href="https://quarto.org/"> <img src="../../_static/imgs/quarto-no-official.svg" alt="Quarto" class="footer-tech-icon"> Quarto </a> <a class="footer-tech-item" href="https://github.com/UCSB-Library-Research-Data-Services/intro2APIs"> <i class="bi bi-github footer-tech-icon" aria-hidden="true"></i> GitHub </a> <a class="footer-tech-item" href="../../CHANGELOG.html"> <i class="bi bi-clock-history footer-tech-icon" aria-hidden="true"></i> Changelog </a></p>
+</div>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

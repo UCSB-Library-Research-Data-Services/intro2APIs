@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../chapters/dataAnalysis/collecting-data-for-analysis.html" rel="next">
+<link href="../../chapters/coding/python-functions.html" rel="next">
 <link href="../../chapters/coding/coding-intro.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ccbd950bd26879ede8143c66518df84f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a827ca74b2d0d04daa73eecbbe601b87.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -303,6 +303,12 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
  <span class="menu-text">Python Setup</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/coding/python-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Helping Functions</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -428,7 +434,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <p>Libraries are pre-built code packages that provide specific functionalities. In our case, we’re going to require a library that help us to make HTTP requests, one that keeps our API key secure, and one that helps us extract keywords from text. The first cells in our notebook will be dedicated to installing and importing these libraries.</p>
 <section id="installing-libraries" class="level3">
 <h3 class="anchored" data-anchor-id="installing-libraries">Installing Libraries</h3>
-<div id="d9802710" class="cell" data-execution_count="1">
+<div id="b3baa4ab" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install yake <span class="co"># Keyword extraction library</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install tqdm <span class="co"># Progress bar library</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install httpx <span class="co"># HTTP client library</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -436,7 +442,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </section>
 <section id="importing-libraries" class="level3">
 <h3 class="anchored" data-anchor-id="importing-libraries">Importing Libraries</h3>
-<div id="397b2672" class="cell" data-execution_count="2">
+<div id="f7e8d797" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import built-in libraries</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os <span class="co"># For environment variable management</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time <span class="co"># For adding delays between API requests</span></span>
@@ -445,9 +451,10 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Import third-party libraries</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> httpx <span class="co"># For making HTTP requests</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yake <span class="co"># For keyword extraction</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm <span class="co"># For displaying progress bars</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt <span class="co"># For data visualization</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> urllib.parse <span class="im">import</span> urlsplit, parse_qsl, urlencode, urlunsplit <span class="co"># For URL manipulation</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yake <span class="co"># For keyword extraction</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm <span class="co"># For displaying progress bars</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt <span class="co"># For data visualization</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -456,7 +463,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <p>Technically speaking, a constant is a value that cannot be changed once it’s set. Python doesn’t have a built-in mechanism to strictly enfonce this immutability, but relies on a strong community-adopted <a href="https://peps.python.org/pep-0008/#constants" target="_blank">naming convention</a>.</p>
 <p>The “Pythonic” way to define a constant is to use all uppercase letters with underscores separating words. This signals to other developers that the variable’s value should not be modified after it’s set.</p>
 <p>For our exercise, we will define the following constants. You can copy and paste this into your code:</p>
-<div id="5cc63f1a" class="cell" data-execution_count="4">
+<div id="8d9f0c9a" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>API_BASE_URL <span class="op">=</span> <span class="st">"https://api.dp.la/v2/"</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ENV_VAR_NAME <span class="op">=</span> <span class="st">"DPLA_API_KEY"</span> </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>FALLBACK_DATA_URL <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/intro2APIs/refs/heads/main/data/"</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -467,7 +474,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <p>Although technically this is not a public application, it’s still good practice to keep your API key secure and avoid hardcoding it directly, to avoid accidentally sharing it with your code. We are going to store the API key as an <strong>environment variable</strong>, that is, a variable that lives in your system’s environment rather than in your code. This way, you can access it in your code without exposing it directly.</p>
 <p><a href="https://docs.python.org/3/library/getpass.html" target="_blank"><code>getpass</code></a> is a built-in Python module that provides a secure way to handle sensitive information, such as passwords or any other sensitive credentials.</p>
 <p>The method we will use is as follows:</p>
-<div id="84e23920" class="cell" data-execution_count="5">
+<div id="067ba17a" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the API key is already set as an environment variable</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>api_key <span class="op">=</span> os.getenv(ENV_VAR_NAME)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -481,19 +488,40 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"API key set in environment variable '</span><span class="sc">{</span>ENV_VAR_NAME<span class="sc">}</span><span class="ss">'"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<div id="7d1bfb1a" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>API key is set in environment variable 'DPLA_API_KEY'</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Never print your API key
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Note that we printed a message confirming that the API key is set, and the name of the environment variable where it’s stored, but we did not print the API key itself. This is a crucial, particularly when working in Jupyter notebooks, where the output of cells is saved and can be accidentally shared. Always avoid printing sensitive information like API keys, even in development environments.</p>
+</div>
+</div>
+</div>
 <section id="test-the-api-key" class="level3">
 <h3 class="anchored" data-anchor-id="test-the-api-key">Test the API Key</h3>
 <p>To test that your API key is working, you can make a simple request to the DPLA API. You can copy and paste this code into a cell in your notebook:</p>
-<div id="0da8c230" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a test request to the DPLA API</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>test_url <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>API_BASE_URL<span class="sc">}</span><span class="ss">items?api_key=</span><span class="sc">{</span>api_key<span class="sc">}</span><span class="ss">&amp;page_size=1"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> httpx.get(test_url)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"API key is valid! Here's a sample response:"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(json.dumps(response.json(), indent<span class="op">=</span><span class="dv">2</span>))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Failed to connect to the API. Status code: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Response: </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e099de97" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a test request to the DPLA API</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>test_url <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>API_BASE_URL<span class="sc">}</span><span class="ss">items?api_key=</span><span class="sc">{</span>api_key<span class="sc">}</span><span class="ss">&amp;page_size=1"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> httpx.get(test_url)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"API key is valid! Here's a sample response:"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(json.dumps(response.json(), indent<span class="op">=</span><span class="dv">2</span>))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Failed to connect to the API. Status code: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Response: </span><span class="sc">{</span>response<span class="sc">.</span>text<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>API key is valid! Here's a sample response:
 {
@@ -558,6 +586,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 }</code></pre>
 </div>
 </div>
+<p>Having all the libraries in place and the API key securely stored, now it’s time to do some queries!!</p>
 
 
 </section>
@@ -971,8 +1000,8 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../chapters/dataAnalysis/collecting-data-for-analysis.html" class="pagination-link" aria-label="Collecting Data for Analysis">
-        <span class="nav-page-text">Collecting Data for Analysis</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../chapters/coding/python-functions.html" class="pagination-link" aria-label="Helping Functions">
+        <span class="nav-page-text">Helping Functions</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
