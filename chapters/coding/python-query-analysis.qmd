@@ -111,9 +111,9 @@ def search_all_items(query, resource_type='items', max_items=100, sleep=0.5, ver
     all_docs = []
     page = 1
     page_size = int(parameters.get("page_size", 100))
-    if page_size > 100:
-        page_size = 100
-        print("page_size cannot exceed 100. Setting to 100.")
+    if page_size > 500:
+        page_size = 500
+        print("page_size cannot exceed 500. Setting to 500.")
         
     while len(all_docs) < max_items:
         parameters['page'] = page
@@ -194,7 +194,7 @@ print(f"{ai_search.get('count')} results found.") if isinstance(ai_search, dict)
 If the request was successful, you should see a redacted version of the request URL and the number of results found. If there was an error (e.g. invalid API key, network error, etc.), you should see an error message and the preloaded data will be used instead.
 
 :::{.callout-tip appearance="simple" collapse="false"}
-Note how the result count is significantly higher than the resulting from the web interface. It's not really clear why this is the case, but the most likely explanation is that the web interface subject filter is case sensitive, while the API is not. This is a good example of how different interfaces to the same data can yield different results, and why it's important to understand the underlying data and how it is indexed.
+Note how the result count is significantly higher than the result from the web interface. The exact reason isn't fully documented, but one possibility is that the web interface and API handle field matching differently (perhaps with different case sensitivity or tokenization). This is a good example of how different interfaces to the same data can yield different results, and why it's important to understand the underlying data and how it's indexed.
 :::
 
 ### Let's play with the facets!
