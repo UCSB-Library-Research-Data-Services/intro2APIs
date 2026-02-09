@@ -2,102 +2,106 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/interactingAPIs/request-methods.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
+    <lastmod>2026-02-09T07:00:13.877Z</lastmod>
   </url>
   <url>
     <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/interactingAPIs/exercise-calling-data.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
+    <lastmod>2026-02-09T07:00:13.877Z</lastmod>
   </url>
   <url>
     <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/curl/curl.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
+    <lastmod>2026-02-09T07:00:13.877Z</lastmod>
   </url>
   <url>
     <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/closing.html</loc>
-    <lastmod>2026-02-09T04:01:40.883Z</lastmod>
+    <lastmod>2026-02-09T07:00:13.875Z</lastmod>
   </url>
   <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/coding/python-setting-up.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/coding/exercise-DLPA.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/dataAnalysis/analyzing-data.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/postman-basic-requests.html</loc>
-    <lastmod>2026-02-09T04:01:40.886Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/postman-delete.html</loc>
-    <lastmod>2026-02-09T04:01:40.886Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/postman-post.html</loc>
-    <lastmod>2026-02-09T04:01:40.886Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/exercise-github-api-2.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/resources/catalog.html</loc>
-    <lastmod>2026-02-09T04:01:40.915Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/CHANGELOG.html</loc>
-    <lastmod>2026-02-09T04:01:40.838Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/index.html</loc>
-    <lastmod>2026-02-09T04:01:40.915Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/exercise-github-api.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/postman-environment.html</loc>
-    <lastmod>2026-02-09T04:01:40.886Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/postman.html</loc>
-    <lastmod>2026-02-09T04:01:40.886Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/exercise-github-api-1.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/dataAnalysis/collecting-data-for-analysis.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/coding/coding-intro.html</loc>
-    <lastmod>2026-02-09T04:01:40.883Z</lastmod>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/coding/python-query-analysis.html</loc>
+    <lastmod>2026-02-09T07:00:13.877Z</lastmod>
   </url>
   <url>
     <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/coding/python-functions.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
+    <lastmod>2026-02-09T07:00:13.877Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/coding/coding-intro.html</loc>
+    <lastmod>2026-02-09T07:00:13.875Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/dataAnalysis/collecting-data-for-analysis.html</loc>
+    <lastmod>2026-02-09T07:00:13.877Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/exercise-github-api-1.html</loc>
+    <lastmod>2026-02-09T07:00:13.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/postman.html</loc>
+    <lastmod>2026-02-09T07:00:13.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/postman-environment.html</loc>
+    <lastmod>2026-02-09T07:00:13.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/exercise-github-api.html</loc>
+    <lastmod>2026-02-09T07:00:13.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/index.html</loc>
+    <lastmod>2026-02-09T07:00:13.907Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/CHANGELOG.html</loc>
+    <lastmod>2026-02-09T07:00:13.826Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/resources/catalog.html</loc>
+    <lastmod>2026-02-09T07:00:13.907Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/exercise-github-api-2.html</loc>
+    <lastmod>2026-02-09T07:00:13.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/postman-post.html</loc>
+    <lastmod>2026-02-09T07:00:13.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/postman-delete.html</loc>
+    <lastmod>2026-02-09T07:00:13.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/postman/postman-basic-requests.html</loc>
+    <lastmod>2026-02-09T07:00:13.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/dataAnalysis/analyzing-data.html</loc>
+    <lastmod>2026-02-09T07:00:13.877Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/coding/exercise-DLPA.html</loc>
+    <lastmod>2026-02-09T07:00:13.877Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/coding/python-setting-up.html</loc>
+    <lastmod>2026-02-09T07:00:13.877Z</lastmod>
   </url>
   <url>
     <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/coding/exercise-DLPA-resolved.html</loc>
-    <lastmod>2026-02-09T04:01:40.884Z</lastmod>
+    <lastmod>2026-02-09T07:00:13.876Z</lastmod>
   </url>
   <url>
     <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/what-is-an-api.html</loc>
-    <lastmod>2026-02-09T04:01:40.886Z</lastmod>
+    <lastmod>2026-02-09T07:00:13.878Z</lastmod>
   </url>
   <url>
     <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/interactingAPIs/endpoints.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
+    <lastmod>2026-02-09T07:00:13.877Z</lastmod>
   </url>
   <url>
     <loc>https://ucsb-library-research-data-services.github.io/intro2APIs/chapters/interactingAPIs/interact-apis.html</loc>
-    <lastmod>2026-02-09T04:01:40.885Z</lastmod>
+    <lastmod>2026-02-09T07:00:13.877Z</lastmod>
   </url>
 </urlset>
