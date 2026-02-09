@@ -4,7 +4,7 @@ execute:
     echo: true
 format:
     html:
-        code-fold: true
+        code-overflow: wrap
 lightbox: true
 ---
 
@@ -17,6 +17,7 @@ import time
 import json
 
 import httpx
+from urllib.parse import urlsplit, parse_qsl, urlencode, urlunsplit
 import yake
 from tqdm import tqdm
 import matplotlib.pyplot as plt
@@ -31,4 +32,176 @@ if not api_key:
 
 ```
 
+One of the most relevant features of programming languages is the ability to work with functions, which are reusable blocks of code that perform a specific task. In Python, functions are defined using the `def` keyword, and can take arguments and return values. This can seem very abstract at first, but it is a fundamental concept that allows us to take advantage of the full power of programming.
 
+For this exercise, we're going to write four functions: two 'helper' functions that will help us to reutilize specific logic, and two 'main' functions that will handle the queries to the DPLA API and will return a well formatted response in a Pythonic way.
+
+## Helper functions
+
+These two functions are not strictly necessary, but they will help us to write cleaner code and avoid repetition. You can copy and paste the code for these functions in your notebook, and you can read the docstrings to understand what they do:
+
+```{python}
+def _join_list(x, sep="; ", keep_first_only=False):
+    """
+    Helper function to join a list of values into a single string. If the input is not a list, it will return the string representation of the input. If the input is None, it will return an empty string.
+    """
+    if isinstance(x, list):
+        if keep_first_only and len(x) > 0:
+            return str(x[0])
+        return sep.join(str(v) for v in x if v is not None)
+    return "" if x is None else str(x)
+
+def top_n(d, n=10):
+    """Helper function to return the top n items from a dictionary, sorted by value in descending order."""
+    return dict(sorted(d.items(), key=lambda x: x[1], reverse=True)[:n])
+
+def redact_request_url(url):
+    """Remove the api_key parameter from the URL for display purposes."""
+    parsed_url = urlsplit(str(url))  # Convert httpx.URL to string
+    query_params = parse_qsl(parsed_url.query)
+    filtered_params = [(name, value) for name, value in query_params if name != "api_key"]
+    redacted_query = urlencode(filtered_params)
+    redacted_url = parsed_url._replace(query=redacted_query)
+    return urlunsplit(redacted_url)
+```
+
+## Main functions
+
+Let's take some time to understand the following function, which will be the main function to query the DPLA API. What we want with this function are one thing: to get the results of a query, their paramenters, and facets in a well formatted way.
+
+If we take a look at the [DPLA API documentation](https://pro.dp.la/developers/requests){target="_blank"}, we can see that the endpoint is composed by the base URL (`https://api.dp.la/v2`), the resource type (`items` or `collections`), the query parameters (e.g. `q=artificial+intelligence`), and the API key (e.g. `api_key=your_api_key`).
+
+Additionally, you can request for specific facets (e.g. `facets=sourceResource.type`), specific fields to be returned (e.g. `fields=sourceResource.title,sourceResource.description`), and you can also specify the page number (e.g. `page=2`) and the number of results per page (e.g. `page_size=20`).
+
+If we have to write all the logic to handle all these parameters in a single function it will become extremely long, complicated, and difficult to read and maintain. Therefore, our goal is to write a function with an acceptable level of abstraction, that use the API logic to perform a request without reinventing the wheel.
+
+So, our function is goin to be called `search_items`, and it will take the following parameters:
+
+- `query`: the query string to search for (e.g. `artificial intelligence`).
+- `resource_type`: the type of resource to search for (e.g. `items` or `collections`).
+- `**parameters`: any additional parameters to be passed to the API
+- `timeout`: the timeout for the HTTP request in seconds (default is 30.0).
+- `verbose`: a boolean to indicate if we want to print the request URL, useful for debugging (default is `False`).
+
+Our resulting function will return a dictionary from the JSON response.
+
+```{python}
+
+def search_items(query, resource_type='items', verbose=False, timeout=30.0, **parameters):
+    """
+    Search DPLA items with given query and parameters.
+    
+    Args:
+        query (str): The search query string. It's possible to use logical operators (AND, OR, NOT). Additionally, you can use wildcards (*) for partial matches.
+        resource_type (str): The type of resource to search for. Default is 'items'.
+        verbose (bool): If True, prints the request URL. Default is False.
+        timeout (float): The timeout for the HTTP request in seconds. Default is 30.0.
+        **parameters: Facets and filter parameters from the DPLA API documentation: https://pro.dp.la/developers/requests
+                    Dotted keywords and values can be passed using dictionary unpacking. For example, to filter by sourceResource.title, you can pass:
+                    **{"sourceResource.title": "example title"}
+    Returns:
+        dict: The JSON response from the DPLA API as a Python dictionary.
+    """
+    
+    # Build the request URL and minimal parameters
+    base_url = f"{API_BASE_URL}{resource_type}"
+    params = {
+        "q": query,
+        "api_key": os.getenv(ENV_VAR_NAME),
+    }
+    
+    # Add additional parameters if any
+    for key, value in parameters.items():
+        params[key] = value
+        
+    # Make the request
+    with httpx.Client(timeout=timeout) as client:
+        response = client.get(base_url, params=params)
+    
+    print(f"Request URL [redacted]: {redact_request_url(response.url)}") if verbose else None
+    
+    response.raise_for_status() 
+    return response.json()
+```
+
+
+:::{.callout-note appearance="simple" collapse="false"}
+In a proper application, we would want to handle the exceptions that may occur during the request (e.g. network errors, invalid API key, etc.), but for the sake of this exercise we will keep it simple and just raise any exceptions that occur.
+:::
+
+Let's test the function with a simple query:
+
+```{python}
+response = search_items(
+    "artificial AND intelligence",
+    page_size=5,
+    fields="sourceResource.title,sourceResource.description",
+    facets="sourceResource.date.begin,sourceResource.date.end",
+    verbose=True
+)
+
+print(json.dumps(response, indent=2))
+```
+
+Hooray 🎉! We have successfully queried the DPLA API and got a well formatted response. However, this function returns a single page of results. The maximum number of results allowed per page is 100, so if we want to get all 364 results we need to handle pagination, and that's what our second main function will do.
+
+This function, that we will call `search_all_items`, will take almost the same parameters as `search_items`, but it will return a generator that yields the results page by page, until there are no more results to fetch. This way, we can iterate over the results without having to load them all in memory at once.
+
+Some specific parameters for this function will allow us to control the maximum number of items to fetch (`max_items`), the sleep time between requests to avoid hitting rate limits (`sleep`), and the timeout for the HTTP requests (`timeout`).
+
+```{python}
+def search_all_items(query, resource_type='items', max_items=100, sleep=0.5, verbose=False, timeout=30.0, **parameters):
+    """
+    Collect up to max_items across pages.
+    
+    Args:
+        query (str): The search query string. It's possible to use logical operators 
+            (AND, OR, NOT). Additionally, you can use wildcards (*) for partial matches.
+        max_items (int): Maximum number of items to retrieve. For number of elements per page, 
+            use the page_size parameter in **parameters.
+        sleep (float): Time to wait between requests to avoid hitting rate limits.
+        **parameters: Facets and filter parameters from the DPLA API documentation: https://pro.dp.la/developers/requests
+    """
+    all_docs = []
+    page = 1
+    page_size = int(parameters.get("page_size", 100))
+    if page_size > 100:
+        page_size = 100
+        print("page_size cannot exceed 100. Setting to 100.")
+        
+    while len(all_docs) < max_items:
+        parameters['page'] = page
+        data = search_items(query, resource_type=resource_type, verbose=verbose, timeout=timeout, **parameters)
+        docs = data.get('docs', [])
+        if not docs:
+            break  # No more results
+        all_docs.extend(docs)
+        
+        # stop if we've reached max_items
+        if len(all_docs) >= max_items:
+            break
+        
+        page += 1
+        time.sleep(sleep)
+        
+    return all_docs[:max_items]
+```
+
+Again, this function can be improved with proper error handling and a better pagination logic, but we want to keep it simple for now. 
+
+Same as with the previous function, we can test it with a simple query:
+
+```{python}
+results = search_all_items(
+    "artificial AND intelligence",
+    page_size=50,
+    max_items=150,
+    fields="sourceResource.title,sourceResource.description",
+    facets="sourceResource.date.begin,sourceResource.date.end",
+)
+
+print(f"Total items retrieved: {len(results)}")
+print(json.dumps(results[-5:], indent=2))  # Print the last 5 results
+```
+
+Great! We have successfully retrieved multiple pages of results from the DPLA API, and we can control the number of items we want to fetch with the `max_items` parameter. Now we are ready to do some queries and explore the data!
