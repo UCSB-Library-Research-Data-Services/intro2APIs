@@ -404,7 +404,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <section id="helper-functions" class="level2">
 <h2 class="anchored" data-anchor-id="helper-functions">Helper functions</h2>
 <p>These helper functions aren’t strictly necessary, but they keep the rest of the notebook cleaner. You can copy/paste them into your notebook and come back to the details later:</p>
-<div id="5bedd833" class="cell" data-execution_count="2">
+<div id="a2f2044a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _join_list(x, sep<span class="op">=</span><span class="st">"; "</span>, keep_first_only<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Helper function to join a list of values into a single string. If the input is not a list, it will return the string representation of the input. If the input is None, it will return an empty string.</span></span>
@@ -415,11 +415,11 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sep.join(<span class="bu">str</span>(v) <span class="cf">for</span> v <span class="kw">in</span> x <span class="cf">if</span> v <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">""</span> <span class="cf">if</span> x <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> <span class="bu">str</span>(x)</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> top_n(d, n<span class="op">=</span><span class="dv">10</span>):</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _top_n(d, n<span class="op">=</span><span class="dv">10</span>):</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Helper function to return the top n items from a dictionary, sorted by value in descending order."""</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(<span class="bu">sorted</span>(d.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:n])</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> redact_request_url(url):</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _redact_request_url(url):</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Remove the api_key parameter from the URL for display purposes."""</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    parsed_url <span class="op">=</span> urlsplit(<span class="bu">str</span>(url))  <span class="co"># Convert httpx.URL to string</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    query_params <span class="op">=</span> parse_qsl(parsed_url.query)</span>
@@ -437,7 +437,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <p>If we tried to handle all of that ad hoc every time, our notebook would get long and repetitive fast. Instead, we’ll write one function that builds the request and sends it for us.</p>
 <p>Our function will be called <code>search_items</code>. It takes a <code>query</code>, a <code>resource_type</code> (usually <code>items</code>), and any additional DPLA parameters via <code>**parameters</code>.</p>
 <p>Our resulting function will return a dictionary from the JSON response.</p>
-<div id="2083996f" class="cell" data-execution_count="3">
+<div id="94695b17" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Search DPLA items with given query and parameters.</span></span>
@@ -470,7 +470,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> client.get(base_url, params<span class="op">=</span>params)</span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> verbose:</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Request URL [redacted]: </span><span class="sc">{</span>redact_request_url(response.url)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Request URL [redacted]: </span><span class="sc">{</span>_redact_request_url(response.url)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status() </span>
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -486,7 +486,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Let’s test the function with a simple query:</p>
-<div id="ec5b7459" class="cell" data-execution_count="4">
+<div id="37800c81" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> search_items(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"artificial AND intelligence"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    page_size<span class="op">=</span><span class="dv">5</span>,</span>
@@ -1275,7 +1275,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <p>Hooray 🎉! we’ve successfully queried the DPLA API and got a well-formatted response. However, this function only returns a single page of results. The maximum number of results per page is 100, so if we want more than one page, we need to handle pagination.</p>
 <p>Our second function, <code>search_all_items</code>, takes almost the same parameters as <code>search_items</code>, but it fetches multiple pages and returns a single list of items (up to a maximum you set).</p>
 <p>Some specific parameters for this function will allow us to control the maximum number of items to fetch (<code>max_items</code>), the sleep time between requests to avoid hitting rate limits (<code>sleep</code>), and the timeout for the HTTP requests (<code>timeout</code>).</p>
-<div id="48fa8278" class="cell" data-execution_count="5">
+<div id="4e570fb0" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_all_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, max_items<span class="op">=</span><span class="dv">100</span>, sleep<span class="op">=</span><span class="fl">0.5</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Collect up to max_items across pages.</span></span>
@@ -1320,7 +1320,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 </div>
 <p>Again, this function can be improved with proper error handling and a better pagination logic, but we want to keep it simple for now.</p>
 <p>Same as with the previous function, we can test it with a simple query:</p>
-<div id="8bbff55f" class="cell" data-execution_count="6">
+<div id="8a75647e" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> search_all_items(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"artificial AND intelligence"</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    page_size<span class="op">=</span><span class="dv">50</span>,</span>

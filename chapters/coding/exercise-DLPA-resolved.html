@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Import Libraries – Unlocking DataA Gentle Introduction to APIs</title>
+<title>exercise-dlpa-resolved – Unlocking Data&lt;br /&gt;&lt;span style='font-size: 0.8em;'&gt;A Gentle Introduction to APIs&lt;/span&gt;&lt;br /&gt;</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -353,97 +353,110 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#setting-up-the-api-key-variable" id="toc-setting-up-the-api-key-variable" class="nav-link active" data-scroll-target="#setting-up-the-api-key-variable">Setting up the API key variable</a></li>
-  <li><a href="#helping-functions" id="toc-helping-functions" class="nav-link" data-scroll-target="#helping-functions">Helping Functions</a></li>
-  <li><a href="#lets-play-with-the-faceted-elements" id="toc-lets-play-with-the-faceted-elements" class="nav-link" data-scroll-target="#lets-play-with-the-faceted-elements">Let’s play with the faceted elements</a></li>
+  <li><a href="#dpla-api-exercise-exploring-artificial-intelligence-in-cultural-heritage" id="toc-dpla-api-exercise-exploring-artificial-intelligence-in-cultural-heritage" class="nav-link active" data-scroll-target="#dpla-api-exercise-exploring-artificial-intelligence-in-cultural-heritage">DPLA API Exercise: Exploring Artificial Intelligence in Cultural Heritage</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a>
+  <ul class="collapse">
+  <li><a href="#import-libraries" id="toc-import-libraries" class="nav-link" data-scroll-target="#import-libraries">Import Libraries</a></li>
+  <li><a href="#install-required-packages" id="toc-install-required-packages" class="nav-link" data-scroll-target="#install-required-packages">Install Required Packages</a></li>
+  </ul></li>
+  <li><a href="#configuration" id="toc-configuration" class="nav-link" data-scroll-target="#configuration">Configuration</a>
+  <ul class="collapse">
+  <li><a href="#define-constants" id="toc-define-constants" class="nav-link" data-scroll-target="#define-constants">Define Constants</a></li>
+  <li><a href="#secure-api-key-setup" id="toc-secure-api-key-setup" class="nav-link" data-scroll-target="#secure-api-key-setup">Secure API Key Setup</a></li>
+  </ul></li>
+  <li><a href="#helper-functions" id="toc-helper-functions" class="nav-link" data-scroll-target="#helper-functions">Helper Functions</a>
+  <ul class="collapse">
+  <li><a href="#url-redaction-helper" id="toc-url-redaction-helper" class="nav-link" data-scroll-target="#url-redaction-helper">URL Redaction Helper</a></li>
+  </ul></li>
+  <li><a href="#main-api-functions" id="toc-main-api-functions" class="nav-link" data-scroll-target="#main-api-functions">Main API Functions</a>
+  <ul class="collapse">
+  <li><a href="#search-items-function" id="toc-search-items-function" class="nav-link" data-scroll-target="#search-items-function">Search Items Function</a></li>
+  <li><a href="#search-all-items-function" id="toc-search-all-items-function" class="nav-link" data-scroll-target="#search-all-items-function">Search All Items Function</a></li>
+  </ul></li>
+  <li><a href="#exploring-the-data" id="toc-exploring-the-data" class="nav-link" data-scroll-target="#exploring-the-data">Exploring the Data</a>
+  <ul class="collapse">
+  <li><a href="#initial-search-query" id="toc-initial-search-query" class="nav-link" data-scroll-target="#initial-search-query">Initial Search Query</a></li>
+  <li><a href="#visualizing-temporal-distribution" id="toc-visualizing-temporal-distribution" class="nav-link" data-scroll-target="#visualizing-temporal-distribution">Visualizing Temporal Distribution</a></li>
+  </ul></li>
+  <li><a href="#comparative-analysis-across-time-periods" id="toc-comparative-analysis-across-time-periods" class="nav-link" data-scroll-target="#comparative-analysis-across-time-periods">Comparative Analysis Across Time Periods</a>
+  <ul class="collapse">
+  <li><a href="#define-time-periods" id="toc-define-time-periods" class="nav-link" data-scroll-target="#define-time-periods">Define Time Periods</a></li>
+  <li><a href="#collect-items-for-each-period" id="toc-collect-items-for-each-period" class="nav-link" data-scroll-target="#collect-items-for-each-period">Collect Items for Each Period</a></li>
+  <li><a href="#summary-of-results-by-period" id="toc-summary-of-results-by-period" class="nav-link" data-scroll-target="#summary-of-results-by-period">Summary of Results by Period</a></li>
+  <li><a href="#exploring-item-structure" id="toc-exploring-item-structure" class="nav-link" data-scroll-target="#exploring-item-structure">Exploring Item Structure</a></li>
+  </ul></li>
+  <li><a href="#keyword-extraction" id="toc-keyword-extraction" class="nav-link" data-scroll-target="#keyword-extraction">Keyword Extraction</a>
+  <ul class="collapse">
+  <li><a href="#extract-keywords-using-yake" id="toc-extract-keywords-using-yake" class="nav-link" data-scroll-target="#extract-keywords-using-yake">Extract Keywords Using YAKE</a></li>
+  <li><a href="#display-top-keywords" id="toc-display-top-keywords" class="nav-link" data-scroll-target="#display-top-keywords">Display Top Keywords</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content">
+<main class="content column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Import Libraries</h1>
+
+
+
+<p><a target="_blank" href="https://colab.research.google.com/github/UCSB-Library-Research-Data-Services/intro2APIs/blob/main/chapters/coding/exercise-DLPA-resolved.ipynb" style="text-decoration: none;"> <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"> </a></p>
+<p><a href="https://mybinder.org/v2/gh/UCSB-Library-Research-Data-Services/intro2APIs/main?urlpath=%2Fdoc%2Ftree%2Fchapters%2Fcoding%2Fexercise-DLPA-resolved.ipynb"><img src="https://mybinder.org/badge_logo.svg" class="img-fluid"></a></p>
+<section id="dpla-api-exercise-exploring-artificial-intelligence-in-cultural-heritage" class="level1">
+<h1>DPLA API Exercise: Exploring Artificial Intelligence in Cultural Heritage</h1>
+<p>This notebook demonstrates how to interact with the Digital Public Library of America (DPLA) API to query, analyze, and visualize cultural heritage data about artificial intelligence across different time periods.</p>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<ul>
+<li>Set up and configure a Python environment for API interaction</li>
+<li>Make authenticated requests to the DPLA API</li>
+<li>Handle pagination to collect large datasets</li>
+<li>Use facets to analyze temporal distributions</li>
+<li>Extract and visualize keywords from metadata</li>
+</ul>
+<section id="import-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="import-libraries">Import Libraries</h3>
+<p>Import all necessary libraries for API interaction, data processing, and visualization.</p>
+<div id="e4c1b167" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install httpx yake tqdm matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-
-
-
-<div class="quarto-title-meta column-body">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<div id="e4c1b167" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install yake</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install tqdm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<div class="ansi-escaped-output">
-<pre>Requirement already satisfied: yake in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (0.7.1)
-
-Requirement already satisfied: click&gt;=6.0 in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (8.3.1)
-
-Requirement already satisfied: jellyfish in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (1.2.1)
-
-Requirement already satisfied: networkx in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (3.4.2)
-
-Requirement already satisfied: numpy&lt;2.0.0,&gt;=1.24.0 in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (1.26.4)
-
-Requirement already satisfied: segtok in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (1.5.11)
-
-Requirement already satisfied: tabulate in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from yake) (0.9.0)
-
-Requirement already satisfied: regex in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (from segtok-&gt;yake) (2026.1.15)
-
-
-
-<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> A new release of pip is available: <span class="ansi-red-fg">24.3.1</span> -&gt; <span class="ansi-green-fg">26.0</span>
-
-<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> To update, run: <span class="ansi-green-fg">pip install --upgrade pip</span>
-
-Note: you may need to restart the kernel to use updated packages.
-
-Requirement already satisfied: tqdm in /Users/jmeloflorez-local/Workshops/Intro2APIs/.venv/lib/python3.10/site-packages (4.67.3)
-
-
-
-<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> A new release of pip is available: <span class="ansi-red-fg">24.3.1</span> -&gt; <span class="ansi-green-fg">26.0</span>
-
-<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> To update, run: <span class="ansi-green-fg">pip install --upgrade pip</span>
-
-Note: you may need to restart the kernel to use updated packages.
-</pre>
-</div>
-</div>
-</div>
+</section>
+<section id="install-required-packages" class="level3">
+<h3 class="anchored" data-anchor-id="install-required-packages">Install Required Packages</h3>
+<p>We’ll use <code>httpx</code> for HTTP requests, <code>yake</code> for keyword extraction, <code>tqdm</code> for progress bars, and <code>matplotlib</code> for visualization.</p>
 <div id="133b1fdf" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> getpass <span class="im">import</span> getpass</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> getpass <span class="im">import</span> getpass</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> httpx</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yake</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> urllib.parse <span class="im">import</span> urlsplit, parse_qsl, urlencode, urlunsplit</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yake</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="setting-up-the-api-key-variable" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up-the-api-key-variable">Setting up the API key variable</h2>
-<div id="21c6dbc8" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>API_URL<span class="op">=</span><span class="st">"https://api.dp.la/v2/"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ENV_VAR <span class="op">=</span> <span class="st">"DPLA_API_KEY"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>TIMEOUT<span class="op">=</span><span class="fl">30.0</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>FALLBACK_DATA_URL <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/intro2APIs/refs/heads/main/data/"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="configuration" class="level2">
+<h2 class="anchored" data-anchor-id="configuration">Configuration</h2>
+<section id="define-constants" class="level3">
+<h3 class="anchored" data-anchor-id="define-constants">Define Constants</h3>
+<p>Set up base URLs and configuration variables that will be used throughout the notebook.</p>
+<div id="21c6dbc8" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>API_BASE_URL <span class="op">=</span> <span class="st">"https://api.dp.la/v2/"</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ENV_VAR_NAME <span class="op">=</span> <span class="st">"DPLA_API_KEY"</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>FALLBACK_DATA_URL <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/intro2APIs/main/data/"</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="bc393e26" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>key<span class="op">=</span> os.getenv(ENV_VAR)</span>
+</section>
+<section id="secure-api-key-setup" class="level3">
+<h3 class="anchored" data-anchor-id="secure-api-key-setup">Secure API Key Setup</h3>
+<p>Store your API key securely using environment variables. This approach avoids hardcoding sensitive credentials in the notebook.</p>
+<div id="bc393e26" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>key<span class="op">=</span> os.getenv(ENV_VAR_NAME)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This method avoids hardcoding the API key in the script</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The variable is persistent during the session</span></span>
@@ -451,389 +464,355 @@ Note: you may need to restart the kernel to use updated packages.
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> getpass(<span class="ss">f"Enter your DPLA API key: "</span>).strip()</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> key:</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"No API key provided."</span>)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    os.environ[ENV_VAR] <span class="op">=</span> key</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    os.environ[ENV_VAR_NAME] <span class="op">=</span> key</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"API key set in environment variable </span><span class="sc">{</span>ENV_VAR<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>API key set in environment variable DPLA_API_KEY.</code></pre>
-</div>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"API key set in environment variable </span><span class="sc">{</span>ENV_VAR_NAME<span class="sc">}</span><span class="ss">."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="helping-functions" class="level2">
-<h2 class="anchored" data-anchor-id="helping-functions">Helping Functions</h2>
-<div id="3f6fd690" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _join_list(x, sep<span class="op">=</span><span class="st">"; "</span>, keep_first_only<span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">list</span>):</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> keep_first_only <span class="kw">and</span> <span class="bu">len</span>(x) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">str</span>(x[<span class="dv">0</span>])</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sep.join(<span class="bu">str</span>(v) <span class="cf">for</span> v <span class="kw">in</span> x <span class="cf">if</span> v <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">""</span> <span class="cf">if</span> x <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> <span class="bu">str</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="helper-functions" class="level2">
+<h2 class="anchored" data-anchor-id="helper-functions">Helper Functions</h2>
+<p>These utility functions help keep our code clean and reusable.</p>
+<div id="3f6fd690" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _join_list(x, sep<span class="op">=</span><span class="st">"; "</span>, keep_first_only<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Helper function to join a list of values into a single string. If the input is not a list, it will return the string representation of the input. If the input is None, it will return an empty string.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">list</span>):</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> keep_first_only <span class="kw">and</span> <span class="bu">len</span>(x) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">str</span>(x[<span class="dv">0</span>])</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sep.join(<span class="bu">str</span>(v) <span class="cf">for</span> v <span class="kw">in</span> x <span class="cf">if</span> v <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">""</span> <span class="cf">if</span> x <span class="kw">is</span> <span class="va">None</span> <span class="cf">else</span> <span class="bu">str</span>(x)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _top_n(d, n<span class="op">=</span><span class="dv">10</span>):</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Helper function to return the top n items from a dictionary, sorted by value in descending order."""</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(<span class="bu">sorted</span>(d.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:n])</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _redact_request_url(url):</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Remove the api_key parameter from the URL for display purposes."""</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    parsed_url <span class="op">=</span> urlsplit(<span class="bu">str</span>(url))  <span class="co"># Convert httpx.URL to string</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    query_params <span class="op">=</span> parse_qsl(parsed_url.query)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    filtered_params <span class="op">=</span> [(name, value) <span class="cf">for</span> name, value <span class="kw">in</span> query_params <span class="cf">if</span> name <span class="op">!=</span> <span class="st">"api_key"</span>]</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    redacted_query <span class="op">=</span> urlencode(filtered_params)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    redacted_url <span class="op">=</span> parsed_url._replace(query<span class="op">=</span>redacted_query)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> urlunsplit(redacted_url)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ca053f83" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> top_n(d, n<span class="op">=</span><span class="dv">10</span>):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(<span class="bu">sorted</span>(d.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:n])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="d4f5fb15" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> redact_request_url(url):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Remove the api_key parameter from the URL for display purposes."""</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"api_key="</span> <span class="kw">in</span> url:</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        parts <span class="op">=</span> url.split(<span class="st">"api_key="</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        prefix <span class="op">=</span> parts[<span class="dv">0</span>]</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        suffix <span class="op">=</span> parts[<span class="dv">1</span>].split(<span class="st">"&amp;"</span>, <span class="dv">1</span>)[<span class="op">-</span><span class="dv">1</span>] <span class="cf">if</span> <span class="st">"&amp;"</span> <span class="kw">in</span> parts[<span class="dv">1</span>] <span class="cf">else</span> <span class="st">""</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">api_key=REDACTED&amp;</span><span class="sc">{</span>suffix<span class="sc">}</span><span class="ss">"</span> <span class="cf">if</span> suffix <span class="cf">else</span> <span class="ss">f"</span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">api_key=REDACTED"</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> url</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="url-redaction-helper" class="level3">
+<h3 class="anchored" data-anchor-id="url-redaction-helper">URL Redaction Helper</h3>
+<p>Removes API keys from URLs before printing (security best practice).</p>
 <div id="74a0cdf4" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Search DPLA items with given query and parameters.</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">        query (str): The search query string. It's possible to use logical operators </span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">        (AND, OR, NOT). Additionally, you can use wildcards (*) for partial matches.</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">        resource_type (str): The type of resource to search for. Default is 'items'.</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">        verbose (bool): If True, prints the request URL. Default is False.</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">        timeout (float): The timeout for the HTTP request in seconds. Default is 30.0.</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">        **parameters: Facets and filter parameters from the DPLA API documentation: https://pro.dp.la/developers/requests</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">                    Dotted keywords and values can be passed using dictionary unpacking. For example, to filter by sourceResource.title, you can pass:</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">                    **{"sourceResource.title": "example title"}</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">        dict: The JSON response from the DPLA API as a Python dictionary.</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    base_url <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>API_URL<span class="sc">}{</span>resource_type<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"q"</span>: query,</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"api_key"</span>: os.getenv(ENV_VAR),</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add remaining parameters</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> parameters.items():</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        params[key] <span class="op">=</span> value</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make the request</span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> httpx.Client(timeout<span class="op">=</span>timeout) <span class="im">as</span> client:</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> client.get(base_url, params<span class="op">=</span>params)</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Request URL: </span><span class="sc">{</span>response<span class="sc">.</span>url<span class="sc">}</span><span class="ss">"</span>) <span class="cf">if</span> verbose <span class="cf">else</span> <span class="va">None</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status() </span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="487aedcd" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_all_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, max_items<span class="op">=</span><span class="dv">100</span>, sleep<span class="op">=</span><span class="fl">0.5</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Collect up to max_items across pages.</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">        query (str): The search query string. It's possible to use logical operators </span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">            (AND, OR, NOT). Additionally, you can use wildcards (*) for partial matches.</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">        resource_type (str): The type of resource to search for. Default is 'items'.</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">        max_items (int): Maximum number of items to retrieve. For number of elements per page, </span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">            use the page_size parameter in **parameters.</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">        sleep (float): Time to wait between requests to avoid hitting rate limits.</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">        verbose (bool): If True, prints the request URL for each page. Default is False.</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">        timeout (float): The timeout for the HTTP request in seconds. Default is 30.0.</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">        **parameters: Facets and filter parameters from the DPLA API documentation: https://pro.dp.la/developers/requests</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    all_docs <span class="op">=</span> []</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    page <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    page_size <span class="op">=</span> <span class="bu">int</span>(parameters.get(<span class="st">"page_size"</span>, <span class="dv">100</span>))</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> page_size <span class="op">&gt;</span> <span class="dv">100</span>:</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        page_size <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"page_size cannot exceed 100. Setting to 100."</span>)</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="bu">len</span>(all_docs) <span class="op">&lt;</span> max_items:</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        parameters[<span class="st">'page'</span>] <span class="op">=</span> page</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> search_items(query, resource_type<span class="op">=</span>resource_type, verbose<span class="op">=</span>verbose, timeout<span class="op">=</span>timeout, <span class="op">**</span>parameters)</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>        docs <span class="op">=</span> data.get(<span class="st">'docs'</span>, [])</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> docs:</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span>  <span class="co"># No more results</span></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>        all_docs.extend(docs)</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># stop if we've reached max_items</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(all_docs) <span class="op">&gt;=</span> max_items:</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>        page <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        time.sleep(sleep)</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> all_docs[:max_items]</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="4998341d" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    ai_search <span class="op">=</span> search_items(</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"artificial AND intelligence"</span>, <span class="co"># search query</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        facets<span class="op">=</span><span class="st">"sourceResource.date.begin,sourceResource.date.end"</span>, <span class="co"># facets to include in the response</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        page_size<span class="op">=</span><span class="dv">20</span>, <span class="co"># items per page</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        sort_by<span class="op">=</span><span class="st">"sourceResource.date.begin"</span>, <span class="co"># sort by date</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        sort_order<span class="op">=</span><span class="st">"asc"</span>, <span class="co"># oldest to newest</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        page<span class="op">=</span><span class="dv">1</span>, <span class="co"># page number to retrieve</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        verbose<span class="op">=</span><span class="va">True</span>, <span class="co"># print the request URL for debugging purposes</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">**</span>{<span class="st">"sourceResource.subject.name"</span>: <span class="st">"artificial intelligence"</span>} <span class="co"># filter to ensure results are about AI, not just using AI in metadata</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># OPTIONAL: save the results to a local file for later use</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"../../data/dpla_search_results.json"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        json.dump(ai_search, f, indent<span class="op">=</span><span class="dv">2</span>, ensure_ascii<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> httpx.HTTPStatusError <span class="im">as</span> e:</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"HTTP error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">. Using preloaded data instead."</span>)</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> httpx.get(<span class="ss">f"</span><span class="sc">{</span>FALLBACK_DATA_URL<span class="sc">}</span><span class="ss">dpla_search_results.json"</span>)</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    r.raise_for_status()</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    ai_search <span class="op">=</span> r.json()</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co"># download the preloaded data for the next steps</span></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>ai_search<span class="sc">.</span>get(<span class="st">'count'</span>)<span class="sc">}</span><span class="ss"> results found."</span>) <span class="cf">if</span> <span class="bu">isinstance</span>(ai_search, <span class="bu">dict</span>) <span class="cf">else</span> <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(ai_search)<span class="sc">}</span><span class="ss"> results found."</span>)</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Facets: </span><span class="sc">{</span>ai_search<span class="sc">.</span>get(<span class="st">'facets'</span>)<span class="sc">}</span><span class="ss">"</span>) <span class="cf">if</span> <span class="bu">isinstance</span>(ai_search, <span class="bu">dict</span>) <span class="cf">else</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Request URL: https://api.dp.la/v2/items?q=artificial+AND+intelligence&amp;api_key=699260cc7c4417f8a89e0afce4a31baa&amp;facets=sourceResource.date.begin%2CsourceResource.date.end&amp;page_size=20&amp;sort_by=sourceResource.date.begin&amp;sort_order=asc&amp;page=1&amp;sourceResource.subject.name=artificial+intelligence
-728 results found.
-Facets: {'sourceResource.date.begin': {'_type': 'date_histogram', 'entries': [{'count': 4, 'time': '2026'}, {'count': 119, 'time': '2025'}, {'count': 95, 'time': '2024'}, {'count': 77, 'time': '2023'}, {'count': 23, 'time': '2022'}, {'count': 28, 'time': '2021'}, {'count': 30, 'time': '2020'}, {'count': 22, 'time': '2019'}, {'count': 12, 'time': '2018'}, {'count': 2, 'time': '2017'}, {'count': 4, 'time': '2016'}, {'count': 6, 'time': '2015'}, {'count': 3, 'time': '2014'}, {'count': 2, 'time': '2013'}, {'count': 2, 'time': '2012'}, {'count': 1, 'time': '2011'}, {'count': 1, 'time': '2010'}, {'count': 1, 'time': '2007'}, {'count': 1, 'time': '2004'}, {'count': 3, 'time': '2001'}, {'count': 1, 'time': '1998'}, {'count': 1, 'time': '1997'}, {'count': 2, 'time': '1994'}, {'count': 1, 'time': '1993'}, {'count': 3, 'time': '1992'}, {'count': 4, 'time': '1991'}, {'count': 3, 'time': '1990'}, {'count': 5, 'time': '1988'}, {'count': 2, 'time': '1986'}, {'count': 3, 'time': '1985'}, {'count': 2, 'time': '1984'}, {'count': 1, 'time': '1983'}, {'count': 2, 'time': '1982'}, {'count': 1, 'time': '1981'}, {'count': 3, 'time': '1980'}, {'count': 4, 'time': '1976'}, {'count': 3, 'time': '1975'}, {'count': 1, 'time': '1972'}, {'count': 1, 'time': '1971'}, {'count': 3, 'time': '1963'}, {'count': 1, 'time': '1961'}, {'count': 1, 'time': '1959'}, {'count': 1, 'time': '1949'}, {'count': 1, 'time': '1885'}, {'count': 1, 'time': '1844'}]}, 'sourceResource.date.end': {'_type': 'date_histogram', 'entries': [{'count': 4, 'time': '2026'}, {'count': 120, 'time': '2025'}, {'count': 95, 'time': '2024'}, {'count': 76, 'time': '2023'}, {'count': 23, 'time': '2022'}, {'count': 28, 'time': '2021'}, {'count': 30, 'time': '2020'}, {'count': 22, 'time': '2019'}, {'count': 12, 'time': '2018'}, {'count': 2, 'time': '2017'}, {'count': 4, 'time': '2016'}, {'count': 6, 'time': '2015'}, {'count': 3, 'time': '2014'}, {'count': 2, 'time': '2013'}, {'count': 2, 'time': '2012'}, {'count': 1, 'time': '2011'}, {'count': 1, 'time': '2010'}, {'count': 1, 'time': '2007'}, {'count': 1, 'time': '2004'}, {'count': 3, 'time': '2001'}, {'count': 1, 'time': '1998'}, {'count': 1, 'time': '1997'}, {'count': 2, 'time': '1994'}, {'count': 1, 'time': '1993'}, {'count': 3, 'time': '1992'}, {'count': 4, 'time': '1991'}, {'count': 3, 'time': '1990'}, {'count': 5, 'time': '1988'}, {'count': 2, 'time': '1986'}, {'count': 3, 'time': '1985'}, {'count': 2, 'time': '1984'}, {'count': 1, 'time': '1983'}, {'count': 2, 'time': '1982'}, {'count': 1, 'time': '1981'}, {'count': 3, 'time': '1980'}, {'count': 4, 'time': '1976'}, {'count': 3, 'time': '1975'}, {'count': 1, 'time': '1972'}, {'count': 1, 'time': '1971'}, {'count': 3, 'time': '1963'}, {'count': 1, 'time': '1961'}, {'count': 1, 'time': '1959'}, {'count': 1, 'time': '1949'}, {'count': 1, 'time': '1885'}, {'count': 1, 'time': '1844'}]}}</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Search DPLA items with given query and parameters.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">        query (str): The search query string. It's possible to use logical operators (AND, OR, NOT). Additionally, you can use wildcards (*) for partial matches.</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">        resource_type (str): The type of resource to search for. Default is 'items'.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">        verbose (bool): If True, prints the request URL. Default is False.</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">        timeout (float): The timeout for the HTTP request in seconds. Default is 30.0.</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">        **parameters: Facets and filter parameters from the DPLA API documentation: https://pro.dp.la/developers/requests</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">                    Dotted keywords and values can be passed using dictionary unpacking. For example, to filter by sourceResource.title, you can pass:</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">                    **{"sourceResource.title": "example title"}</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">        dict: The JSON response from the DPLA API as a Python dictionary.</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Build the request URL and minimal parameters</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    base_url <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>API_BASE_URL<span class="sc">}{</span>resource_type<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"q"</span>: query,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"api_key"</span>: os.getenv(ENV_VAR_NAME),</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add additional parameters if any</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> parameters.items():</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        params[key] <span class="op">=</span> value</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make the request</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> httpx.Client(timeout<span class="op">=</span>timeout) <span class="im">as</span> client:</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>        response <span class="op">=</span> client.get(base_url, params<span class="op">=</span>params)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> verbose:</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Request URL [redacted]: </span><span class="sc">{</span>_redact_request_url(response.url)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status() </span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="lets-play-with-the-faceted-elements" class="level2">
-<h2 class="anchored" data-anchor-id="lets-play-with-the-faceted-elements">Let’s play with the faceted elements</h2>
+</section>
+<section id="main-api-functions" class="level2">
+<h2 class="anchored" data-anchor-id="main-api-functions">Main API Functions</h2>
+<section id="search-items-function" class="level3">
+<h3 class="anchored" data-anchor-id="search-items-function">Search Items Function</h3>
+<p>This function queries the DPLA API and returns a single page of results. It handles query parameters, facets, and filters.</p>
+<div id="487aedcd" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_all_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, max_items<span class="op">=</span><span class="dv">100</span>, sleep<span class="op">=</span><span class="fl">0.5</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Collect up to max_items across pages.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">        query (str): The search query string. It's possible to use logical operators </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">            (AND, OR, NOT). Additionally, you can use wildcards (*) for partial matches.</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">        max_items (int): Maximum number of items to retrieve. For number of elements per page, </span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">            use the page_size parameter in **parameters.</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">        sleep (float): Time to wait between requests to avoid hitting rate limits.</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">        **parameters: Facets and filter parameters from the DPLA API documentation: https://pro.dp.la/developers/requests</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    all_docs <span class="op">=</span> []</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    page <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    page_size <span class="op">=</span> <span class="bu">int</span>(parameters.get(<span class="st">"page_size"</span>, <span class="dv">100</span>))</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> page_size <span class="op">&gt;</span> <span class="dv">500</span>:</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        page_size <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"page_size cannot exceed 500. Setting to 500."</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="bu">len</span>(all_docs) <span class="op">&lt;</span> max_items:</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        parameters[<span class="st">'page'</span>] <span class="op">=</span> page</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> search_items(</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>            query,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>            resource_type<span class="op">=</span>resource_type,</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            verbose<span class="op">=</span>verbose,</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>            timeout<span class="op">=</span>timeout,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>parameters</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        docs <span class="op">=</span> data.get(<span class="st">'docs'</span>, [])</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> docs:</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span>  <span class="co"># No more results</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>        all_docs.extend(docs)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># stop if we've reached max_items</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(all_docs) <span class="op">&gt;=</span> max_items:</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        page <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>        time.sleep(sleep)</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> all_docs[:max_items]</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="search-all-items-function" class="level3">
+<h3 class="anchored" data-anchor-id="search-all-items-function">Search All Items Function</h3>
+<p>This function handles pagination and collects multiple pages of results up to a specified maximum.</p>
+<div id="4998341d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining the fields, facets, and filters outside the function call for better readability</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.title"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.description"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.date.begin"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.date.end"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>dotted_fields <span class="op">=</span> {</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.subject.name"</span>: <span class="st">"artificial intelligence"</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    ai_search <span class="op">=</span> search_items(</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"artificial AND intelligence"</span>, <span class="co"># search query</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        fields<span class="op">=</span>_join_list(fields, sep<span class="op">=</span><span class="st">","</span>), <span class="co"># fields to include in the response</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        facets<span class="op">=</span><span class="st">"sourceResource.date.begin"</span>, <span class="co"># facets to include in the response</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="op">**</span>dotted_fields, <span class="co"># additional parameters (e.g. filters),</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        page_size<span class="op">=</span><span class="dv">5</span>, <span class="co"># items per page</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        sort_by<span class="op">=</span><span class="st">"sourceResource.date.begin"</span>, <span class="co"># sort by date</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        sort_order<span class="op">=</span><span class="st">"asc"</span>, <span class="co"># oldest to newest</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        page<span class="op">=</span><span class="dv">1</span>, <span class="co"># page number to retrieve</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        verbose<span class="op">=</span><span class="va">True</span> <span class="co"># print the request URL for debugging purposes</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> httpx.HTTPStatusError <span class="im">as</span> e:</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"HTTP error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">. Using preloaded data instead."</span>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> httpx.get(<span class="ss">f"</span><span class="sc">{</span>FALLBACK_DATA_URL<span class="sc">}</span><span class="ss">dpla_search_results.json"</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    r.raise_for_status()</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    ai_search <span class="op">=</span> r.json()</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co"># download the preloaded data for the next steps</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>ai_search<span class="sc">.</span>get(<span class="st">'count'</span>)<span class="sc">}</span><span class="ss"> results found."</span>) <span class="cf">if</span> <span class="bu">isinstance</span>(ai_search, <span class="bu">dict</span>) <span class="cf">else</span> <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(ai_search)<span class="sc">}</span><span class="ss"> results found."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="exploring-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-data">Exploring the Data</h2>
+<section id="initial-search-query" class="level3">
+<h3 class="anchored" data-anchor-id="initial-search-query">Initial Search Query</h3>
+<p>Let’s make our first request to explore items about artificial intelligence. We’ll use facets to understand the temporal distribution of items.</p>
+<div id="7a71dc4a" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>facets_entries <span class="op">=</span> ai_search.get(<span class="st">"facets"</span>, {}).get(<span class="st">"sourceResource.date.begin"</span>, {}).get(<span class="st">"entries"</span>, [])</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a sample (we use 'time' because that's the label for date facets)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> entry <span class="kw">in</span> facets_entries[:<span class="dv">5</span>]:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Year: </span><span class="sc">{</span>entry<span class="sc">.</span>get(<span class="st">'time'</span>)<span class="sc">}</span><span class="ss">, Count: </span><span class="sc">{</span>entry<span class="sc">.</span>get(<span class="st">'count'</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="visualizing-temporal-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-temporal-distribution">Visualizing Temporal Distribution</h3>
+<p>Facets provide aggregated counts by specific fields. Let’s visualize how AI-related items are distributed across time.</p>
 <div id="c2e380a1" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the histogram of entries dates</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>facets_list <span class="op">=</span> ai_search.get(<span class="st">'facets'</span>).get(<span class="st">'sourceResource.date.begin'</span>).get(<span class="st">'entries'</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> [d[<span class="st">'time'</span>] <span class="cf">for</span> d <span class="kw">in</span> facets_list][::<span class="op">-</span><span class="dv">1</span>] <span class="co"># We use [::-1] to reverse the order</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [d[<span class="st">'count'</span>] <span class="cf">for</span> d <span class="kw">in</span> facets_list][::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>plt.bar(years, counts, color<span class="op">=</span><span class="st">'skyblue'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Items'</span>)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Items about Artificial Intelligence by Year'</span>)</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(years), <span class="dv">5</span>), [years[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(years), <span class="dv">5</span>)], rotation<span class="op">=</span><span class="dv">45</span>)</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="exercise-DLPA-resolved_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the year and count information from the facet entries</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> [entry.get(<span class="st">"time"</span>) <span class="cf">for</span> entry <span class="kw">in</span> facets_entries][::<span class="op">-</span><span class="dv">1</span>] <span class="co"># We use [::-1] to reverse the order</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [entry.get(<span class="st">"count"</span>) <span class="cf">for</span> entry <span class="kw">in</span> facets_entries][::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart using seaborn</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>sns.barplot(x<span class="op">=</span>years, y<span class="op">=</span>counts)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Items'</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Items about Artificial Intelligence by Year'</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(years), <span class="dv">5</span>), [years[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(years), <span class="dv">5</span>)], rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="8321ea24" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>periods <span class="op">=</span> [</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"preCovid"</span>, <span class="dv">1844</span>, <span class="dv">2018</span>),</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Covid"</span>, <span class="dv">2019</span>, <span class="dv">2021</span>),</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"postCovid"</span>, <span class="dv">2022</span>, <span class="dv">2026</span>),</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>periods <span class="op">=</span> [</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"preCovid"</span>, <span class="dv">1844</span>, <span class="dv">2018</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"Covid"</span>, <span class="dv">2019</span>, <span class="dv">2021</span>),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"postCovid"</span>, <span class="dv">2022</span>, <span class="dv">2026</span>),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="460afff1" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a pool of results for each period</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ai_results <span class="op">=</span> {}</span>
+</section>
+</section>
+<section id="comparative-analysis-across-time-periods" class="level2">
+<h2 class="anchored" data-anchor-id="comparative-analysis-across-time-periods">Comparative Analysis Across Time Periods</h2>
+<section id="define-time-periods" class="level3">
+<h3 class="anchored" data-anchor-id="define-time-periods">Define Time Periods</h3>
+<p>Based on the temporal distribution, we can identify three distinct periods of interest.</p>
+<div id="460afff1" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a pool of results for each period</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ai_results <span class="op">=</span> {}</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.title"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.description"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.date.begin"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.date.end"</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>dotted_fields <span class="op">=</span> {</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.subject.name"</span>: <span class="st">"artificial intelligence"</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> period_name, start_date, end_date <span class="kw">in</span> tqdm(periods):</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        ai_results[period_name] <span class="op">=</span> search_all_items(</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">"artificial AND intelligence"</span>, <span class="co"># search query</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>            max_items<span class="op">=</span><span class="dv">400</span>, <span class="co"># maximum number of items to retrieve for each period</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>            fields<span class="op">=</span>_join_list(fields, sep<span class="op">=</span><span class="st">","</span>), <span class="co"># fields to include in the response</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>            facets<span class="op">=</span><span class="st">"sourceResource.date.begin"</span>, <span class="co"># Retrieve facets for date ranges</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>            page_size<span class="op">=</span><span class="dv">100</span>, <span class="co"># items per page</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>dotted_fields, <span class="co"># filter to ensure results are about AI, not just using AI in metadata</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>{<span class="st">"sourceResource.date.after"</span>: <span class="bu">str</span>(start_date)}, <span class="co"># Between year</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>{<span class="st">"sourceResource.date.before"</span>: <span class="bu">str</span>(end_date)}, <span class="co"># and Year</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>            sort_by<span class="op">=</span><span class="st">"sourceResource.date.begin"</span>, <span class="co"># sort by date</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>            sort_order<span class="op">=</span><span class="st">"asc"</span>, <span class="co"># oldest to newest</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>            verbose<span class="op">=</span><span class="va">False</span> </span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> httpx.HTTPStatusError <span class="im">as</span> e:</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"HTTP error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">. Using preloaded data instead."</span>)</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> httpx.get(<span class="ss">f"</span><span class="sc">{</span>FALLBACK_DATA_URL<span class="sc">}</span><span class="ss">ai_results_by_wave.json"</span>)</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    r.raise_for_status()</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>    ai_results <span class="op">=</span> r.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="collect-items-for-each-period" class="level3">
+<h3 class="anchored" data-anchor-id="collect-items-for-each-period">Collect Items for Each Period</h3>
+<p>Fetch up to 3000 items for each time period using date filters and pagination.</p>
+<div id="6d6c0491" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ai_results_summary <span class="op">=</span> {period: <span class="bu">len</span>(items) <span class="cf">for</span> period, items <span class="kw">in</span> ai_results.items()}</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AI Results Summary by Period:"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, count <span class="kw">in</span> ai_results_summary.items():</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> items"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="summary-of-results-by-period" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-results-by-period">Summary of Results by Period</h3>
+<p>Check how many items we retrieved for each time period.</p>
+<div id="8dfb54d3" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ai_results.get(<span class="st">"postCovid"</span>)[:<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exploring-item-structure" class="level3">
+<h3 class="anchored" data-anchor-id="exploring-item-structure">Exploring Item Structure</h3>
+<p>Let’s examine the structure of a sample item to understand what metadata is available.</p>
+<div id="a41b71b7" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_keywords(items, skip<span class="op">=</span><span class="va">None</span>, ngram<span class="op">=</span><span class="dv">2</span>, max_keywords<span class="op">=</span><span class="dv">5</span>, language<span class="op">=</span><span class="st">"en"</span>):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Extract keywords from a list of items using YAKE."""</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> period_name, start_date, end_date <span class="kw">in</span> tqdm(periods):</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Searching for AI items in the </span><span class="sc">{</span>period_name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>start_date<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>end_date<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        ai_results[period_name] <span class="op">=</span> search_all_items(</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">"artificial AND intelligence"</span>, <span class="co"># search query</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>            max_items<span class="op">=</span><span class="dv">3000</span>, <span class="co"># maximum number of items to retrieve for each period</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>            facets<span class="op">=</span><span class="st">"sourceResource.date.begin,sourceResource.date.end"</span>, <span class="co"># Retrieve facets for date ranges</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>            page_size<span class="op">=</span><span class="dv">50</span>, <span class="co"># items per page</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>{<span class="st">"sourceResource.subject.name"</span>: <span class="st">"artificial intelligence"</span>}, <span class="co"># filter to ensure results are about AI, not just using AI in metadata</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>{<span class="st">"sourceResource.date.after"</span>: <span class="bu">str</span>(start_date)}, <span class="co"># Between year</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>{<span class="st">"sourceResource.date.before"</span>: <span class="bu">str</span>(end_date)}, <span class="co"># and Year</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>            sort_by<span class="op">=</span><span class="st">"sourceResource.date.begin"</span>, <span class="co"># sort by date</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>            sort_order<span class="op">=</span><span class="st">"asc"</span>, <span class="co"># oldest to newest</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>            verbose<span class="op">=</span><span class="va">False</span> </span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Found </span><span class="sc">{</span><span class="bu">len</span>(ai_results[period_name])<span class="sc">}</span><span class="ss"> items for period </span><span class="sc">{</span>period_name<span class="sc">}</span><span class="ss">.</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># OPTIONAL: save the results to a local file for later use</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"../../data/ai_results_by_wave.json"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>        json.dump(ai_results, f, indent<span class="op">=</span><span class="dv">2</span>, ensure_ascii<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> httpx.HTTPStatusError <span class="im">as</span> e:</span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"HTTP error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">. Using preloaded data instead."</span>)</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> httpx.get(<span class="ss">f"</span><span class="sc">{</span>FALLBACK_DATA_URL<span class="sc">}</span><span class="ss">ai_results_by_wave.json"</span>)</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    r.raise_for_status()</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    ai_results <span class="op">=</span> r.json()</span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> period_name <span class="kw">in</span> ai_results:</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Loaded </span><span class="sc">{</span><span class="bu">len</span>(ai_results[period_name])<span class="sc">}</span><span class="ss"> items for period </span><span class="sc">{</span>period_name<span class="sc">}</span><span class="ss"> from preloaded data.</span><span class="ch">\n</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  0%|          | 0/3 [00:00&lt;?, ?it/s]</code></pre>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    ai_keywords <span class="op">=</span> {}</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    kw_extractor <span class="op">=</span> yake.KeywordExtractor(lan<span class="op">=</span>language, n<span class="op">=</span>ngram, top<span class="op">=</span>max_keywords)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> skip:</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        skip_keywords <span class="op">=</span> <span class="bu">set</span>(skip)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> period, items <span class="kw">in</span> tqdm(items.items(), desc<span class="op">=</span><span class="st">"Extracting keywords"</span>):</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        period_keywords <span class="op">=</span> {}</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> item <span class="kw">in</span> items:</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>            title <span class="op">=</span> _join_list(item.get(<span class="st">"sourceResource.title"</span>, <span class="st">""</span>))</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>            description <span class="op">=</span> _join_list(item.get(<span class="st">"sourceResource.description"</span>, <span class="st">""</span>))</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>            text <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>description<span class="sc">}</span><span class="ss">"</span>.lower()</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>            keywords <span class="op">=</span> kw_extractor.extract_keywords(text)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> kw, score <span class="kw">in</span> keywords:</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> skip <span class="kw">and</span> kw <span class="kw">in</span> skip_keywords:</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>                period_keywords[kw] <span class="op">=</span> period_keywords.get(kw, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>        ai_keywords[period] <span class="op">=</span> period_keywords</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ai_keywords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Searching for AI items in the preCovid: 1844 to 2019</code></pre>
+</section>
+</section>
+<section id="keyword-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="keyword-extraction">Keyword Extraction</h2>
+<section id="extract-keywords-using-yake" class="level3">
+<h3 class="anchored" data-anchor-id="extract-keywords-using-yake">Extract Keywords Using YAKE</h3>
+<p>Use YAKE (Yet Another Keyword Extractor) to identify important terms in titles and descriptions for each period.</p>
+<div id="101f65d1" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a list of common words to skip (optional)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>skip_words <span class="op">=</span> [<span class="st">"artificial intelligence"</span>, <span class="st">"ai"</span>, <span class="st">"intelligence"</span>, <span class="st">"artificial"</span>]</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>ai_keywords <span class="op">=</span> extract_keywords(ai_results, skip<span class="op">=</span>skip_words, ngram<span class="op">=</span><span class="dv">2</span>, max_keywords<span class="op">=</span>top)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, keywords <span class="kw">in</span> ai_keywords.items():</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    sorted_keywords <span class="op">=</span> <span class="bu">sorted</span>(keywords.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:top]</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Top </span><span class="sc">{</span>top<span class="sc">}</span><span class="ss"> keywords for </span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> kw, count <span class="kw">in</span> sorted_keywords:</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>kw<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 33%|███▎      | 1/3 [00:03&lt;00:07,  3.85s/it]</code></pre>
+</section>
+<section id="display-top-keywords" class="level3">
+<h3 class="anchored" data-anchor-id="display-top-keywords">Display Top Keywords</h3>
+<p>Print the most frequent keywords for each time period.</p>
+<div id="f4e3cc98" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>), sharex<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (period_name, start_year, end_year) <span class="kw">in</span> <span class="bu">zip</span>(axes, periods):</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> _top_n(ai_keywords.get(period_name, {}), <span class="dv">10</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    terms <span class="op">=</span> <span class="bu">list</span>(data.keys())</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> <span class="bu">list</span>(data.values())</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    sns.barplot(x<span class="op">=</span>counts, y<span class="op">=</span>terms, ax<span class="op">=</span>ax, palette<span class="op">=</span><span class="st">"viridis"</span>, hue<span class="op">=</span>counts)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f"</span><span class="sc">{</span>period_name<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>start_year<span class="sc">}</span><span class="ss">–</span><span class="sc">{</span>end_year<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"How 'Artificial Intelligence' appears across time in DPLA"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Found 110 items for period preCovid.
-
-Searching for AI items in the Covid: 2019 to 2022</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 67%|██████▋   | 2/3 [00:07&lt;00:03,  3.47s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Found 103 items for period Covid.
-
-Searching for AI items in the postCovid: 2022 to 2026</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 3/3 [00:18&lt;00:00,  6.08s/it]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Found 318 items for period postCovid.
-</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
-</div>
-<div id="6d6c0491" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ai_results_summary <span class="op">=</span> {period: <span class="bu">len</span>(items) <span class="cf">for</span> period, items <span class="kw">in</span> ai_results.items()}</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AI Results Summary by Period:"</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, count <span class="kw">in</span> ai_results_summary.items():</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> items"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>AI Results Summary by Period:
-preCovid: 110 items
-Covid: 103 items
-postCovid: 318 items</code></pre>
-</div>
-</div>
-<div id="8dfb54d3" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ai_results[<span class="st">'preCovid'</span>][<span class="dv">50</span>].get(<span class="st">'sourceResource'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
-<pre><code>{'@id': 'http://dp.la/api/items/a52c29d501ad48bcd0d8d387e8b15935#SourceResource',
- 'contributor': ['Defense Security Institute (U.S.)'],
- 'date': [{'begin': '1998', 'displayDate': '1998', 'end': '1998'}],
- 'description': ['"OASD-PA/98-5-2028"--P. 25.',
-  'Shipping list no.: 98-0316-P.',
-  'Cover title.'],
- 'extent': ['25 p. : 28 cm.'],
- 'format': ['Language material', 'Electronic resource'],
- 'identifier': ['sdr-uiuc4072096', '(OCoLC)39685049', 'Hathi: 011396929'],
- 'language': [{'iso639_3': 'English', 'name': 'English'}],
- 'publisher': ['[Washington, D.C. : Defense Security Service]'],
- 'rights': ['Public domain. Learn more at http://www.hathitrust.org/access_use'],
- 'spatial': [{'name': 'United States'}],
- 'subject': [{'name': 'Technology transfer--United States'},
-  {'name': 'Artificial intelligence--Military applications'}],
- 'title': ['Technology collection trends in the US defense industry, 1998'],
- 'type': ['text']}</code></pre>
-</div>
-</div>
-<div id="939ac5bb" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ai_results[<span class="st">'preCovid'</span>][<span class="dv">50</span>].get(<span class="st">'sourceResource'</span>).get(<span class="st">'subject'</span>)[<span class="dv">1</span>].get(<span class="st">'name'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>'Artificial intelligence--Military applications'</code></pre>
-</div>
-</div>
-<div id="a41b71b7" class="cell" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ai_keywords <span class="op">=</span> {}</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>kw_extractor <span class="op">=</span> yake.KeywordExtractor(lan<span class="op">=</span><span class="st">"en"</span>, n<span class="op">=</span><span class="dv">2</span>, top<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>skip_bigrams <span class="op">=</span> [<span class="st">"artificial intelligence"</span>]</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, items <span class="kw">in</span> tqdm(ai_results.items()):</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    period_keywords <span class="op">=</span> {}</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> items:</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>        source_res <span class="op">=</span> item.get(<span class="st">'sourceResource'</span>, {})</span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> _join_list(source_res.get(<span class="st">'title'</span>, <span class="st">''</span>), keep_first_only<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>        description <span class="op">=</span> _join_list(source_res.get(<span class="st">'description'</span>, <span class="st">''</span>), keep_first_only<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>description<span class="sc">}</span><span class="ss">"</span>.lower()</span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>        keywords <span class="op">=</span> kw_extractor.extract_keywords(text)</span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> kw, score <span class="kw">in</span> keywords:</span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> kw <span class="kw">in</span> skip_bigrams:</span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>            period_keywords[kw] <span class="op">=</span> period_keywords.get(kw, <span class="dv">0</span>) <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    ai_keywords[period] <span class="op">=</span> period_keywords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 3/3 [00:01&lt;00:00,  2.55it/s]</code></pre>
-</div>
-</div>
-<div id="101f65d1" class="cell" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> period, keywords <span class="kw">in</span> ai_keywords.items():</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    sorted_keywords <span class="op">=</span> <span class="bu">sorted</span>(keywords.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:top]</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Top </span><span class="sc">{</span>top<span class="sc">}</span><span class="ss"> keywords for </span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> kw, count <span class="kw">in</span> sorted_keywords:</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>kw<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Top 10 keywords for preCovid:
-  artificial: 7
-  united states: 7
-  bibliographical references: 6
-  intelligence: 5
-  machine intelligence: 5
-  includes bibliographical: 5
-  final report: 5
-  machine learning: 5
-  states senate: 5
-  national security: 5
-
-Top 10 keywords for Covid:
-  sixteenth congress: 14
-  financial services: 10
-  national security: 8
-  united states: 8
-  states senate: 8
-  armed services: 7
-  machine learning: 7
-  hundred sixteenth: 6
-  september: 5
-  governmental affairs: 5
-
-Top 10 keywords for postCovid:
-  indexing program: 55
-  united states: 51
-  library program: 43
-  states senate: 42
-  eighteenth congress: 37
-  government publishing: 32
-  updated irregularly: 30
-  machine learning: 21
-  governmental affairs: 16
-  artificial: 14
-</code></pre>
-</div>
-</div>
-<div id="f4e3cc98" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">6</span>), sharex<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (period_name, start_year, end_year) <span class="kw">in</span> <span class="bu">zip</span>(axes, periods):</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> top_n(ai_keywords.get(period_name, {}), <span class="dv">10</span>)</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    terms <span class="op">=</span> <span class="bu">list</span>(data.keys())[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> <span class="bu">list</span>(data.values())[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    ax.barh(terms, counts)</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f"</span><span class="sc">{</span>period_name<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>start_year<span class="sc">}</span><span class="ss">–</span><span class="sc">{</span>end_year<span class="sc">}</span><span class="ss">)"</span>)</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Frequency"</span>)</span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"How 'Artificial Intelligence' appears across time in DPLA"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="exercise-DLPA-resolved_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>You’ve successfully: - ✅ Configured secure API authentication - ✅ Queried the DPLA API with complex filters and facets - ✅ Handled pagination to collect large datasets - ✅ Analyzed temporal patterns in cultural heritage data - ✅ Extracted and visualized keywords across different time periods</p>
+<p>These techniques are transferable to many other APIs. The patterns you’ve learned—building requests programmatically, handling responses, and combining API data with text analysis—can be applied to museum collections, scientific datasets, social media archives, and more.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
