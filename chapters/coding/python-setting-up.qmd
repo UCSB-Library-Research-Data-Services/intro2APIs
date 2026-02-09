@@ -58,6 +58,7 @@ from getpass import getpass # For securely inputting API keys
 
 # Import third-party libraries
 import httpx # For making HTTP requests
+from urllib.parse import urlsplit, parse_qsl, urlencode, urlunsplit # For URL manipulation
 import yake # For keyword extraction
 from tqdm import tqdm # For displaying progress bars
 import matplotlib.pyplot as plt # For data visualization
