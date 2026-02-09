@@ -110,6 +110,15 @@ if not api_key:
 
 print(f"API key set in environment variable '{ENV_VAR_NAME}'")
 ```
+```{python}
+#| echo: false
+print(f"API key is set in environment variable '{ENV_VAR_NAME}'")
+```
+
+:::{.callout-important appearance="simple" collapse="false"}
+## Never print your API key
+Note that we printed a message confirming that the API key is set, and the name of the environment variable where it's stored, but we did not print the API key itself. This is a crucial, particularly when working in Jupyter notebooks, where the output of cells is saved and can be accidentally shared. Always avoid printing sensitive information like API keys, even in development environments.
+:::
 
 ### Test the API Key
 
