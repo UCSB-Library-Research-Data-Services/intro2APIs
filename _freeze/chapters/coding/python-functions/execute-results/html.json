@@ -1,0 +1,12 @@
+{
+  "hash": "112e9f09840ee98e79343cdb2496d658",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Helping Functions\"\nexecute:\n    echo: true\nformat:\n    html:\n        code-fold: true\nlightbox: true\n---\n\n\n\n",
+    "supporting": [
+      "python-functions_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

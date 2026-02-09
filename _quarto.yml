@@ -85,6 +85,8 @@ website:
             href: chapters/coding/coding-intro.qmd
           - text: "Python Setup"
             href: chapters/coding/python-setting-up.qmd
+          - text: "Helping Functions"
+            href: chapters/coding/python-functions.qmd
       - section: "Data Analysis"
         contents:
           - text: "Collecting Data for Analysis"
