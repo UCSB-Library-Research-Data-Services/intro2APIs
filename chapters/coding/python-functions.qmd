@@ -56,11 +56,11 @@ def _join_list(x, sep="; ", keep_first_only=False):
         return sep.join(str(v) for v in x if v is not None)
     return "" if x is None else str(x)
 
-def top_n(d, n=10):
+def _top_n(d, n=10):
     """Helper function to return the top n items from a dictionary, sorted by value in descending order."""
     return dict(sorted(d.items(), key=lambda x: x[1], reverse=True)[:n])
 
-def redact_request_url(url):
+def _redact_request_url(url):
     """Remove the api_key parameter from the URL for display purposes."""
     parsed_url = urlsplit(str(url))  # Convert httpx.URL to string
     query_params = parse_qsl(parsed_url.query)
@@ -118,7 +118,7 @@ def search_items(query, resource_type='items', verbose=False, timeout=30.0, **pa
         response = client.get(base_url, params=params)
     
     if verbose:
-        print(f"Request URL [redacted]: {redact_request_url(response.url)}")
+        print(f"Request URL [redacted]: {_redact_request_url(response.url)}")
     
     response.raise_for_status() 
     return response.json()
