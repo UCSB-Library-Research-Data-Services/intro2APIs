@@ -1,0 +1,139 @@
+---
+title: "Query and Analyze API Data with Python"
+execute:
+  echo: true
+format:
+  html:
+    code-overflow: wrap
+lightbox: true
+---
+
+```{python}
+#| echo: false
+#| output: false
+
+import os
+import time
+import json
+
+import httpx
+from urllib.parse import urlsplit, parse_qsl, urlencode, urlunsplit
+import yake
+from tqdm import tqdm
+import matplotlib.pyplot as plt
+
+API_BASE_URL = "https://api.dp.la/v2/" 
+ENV_VAR_NAME = "DPLA_API_KEY" 
+FALLBACK_DATA_URL = "https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/intro2APIs/main/data/" 
+
+api_key = os.getenv("DPLA_API_KEY")
+if not api_key:
+    api_key = ""
+
+
+## Helper functions
+
+def _join_list(x, sep="; ", keep_first_only=False):
+    """
+    Helper function to join a list of values into a single string. If the input is not a list, it will return the string representation of the input. If the input is None, it will return an empty string.
+    """
+    if isinstance(x, list):
+        if keep_first_only and len(x) > 0:
+            return str(x[0])
+        return sep.join(str(v) for v in x if v is not None)
+    return "" if x is None else str(x)
+
+def top_n(d, n=10):
+    """Helper function to return the top n items from a dictionary, sorted by value in descending order."""
+    return dict(sorted(d.items(), key=lambda x: x[1], reverse=True)[:n])
+
+def redact_request_url(url):
+    """Remove the api_key parameter from the URL for display purposes."""
+    parsed_url = urlsplit(str(url))  # Convert httpx.URL to string
+    query_params = parse_qsl(parsed_url.query)
+    filtered_params = [(name, value) for name, value in query_params if name != "api_key"]
+    redacted_query = urlencode(filtered_params)
+    redacted_url = parsed_url._replace(query=redacted_query)
+    return urlunsplit(redacted_url)
+
+## Main functions
+
+def search_items(query, resource_type='items', verbose=False, timeout=30.0, **parameters):
+    """
+    Search DPLA items with given query and parameters.
+    
+    Args:
+        query (str): The search query string. It's possible to use logical operators (AND, OR, NOT). Additionally, you can use wildcards (*) for partial matches.
+        resource_type (str): The type of resource to search for. Default is 'items'.
+        verbose (bool): If True, prints the request URL. Default is False.
+        timeout (float): The timeout for the HTTP request in seconds. Default is 30.0.
+        **parameters: Facets and filter parameters from the DPLA API documentation: https://pro.dp.la/developers/requests
+                    Dotted keywords and values can be passed using dictionary unpacking. For example, to filter by sourceResource.title, you can pass:
+                    **{"sourceResource.title": "example title"}
+    Returns:
+        dict: The JSON response from the DPLA API as a Python dictionary.
+    """
+    
+    # Build the request URL and minimal parameters
+    base_url = f"{API_BASE_URL}{resource_type}"
+    params = {
+        "q": query,
+        "api_key": os.getenv(ENV_VAR_NAME),
+    }
+    
+    # Add additional parameters if any
+    for key, value in parameters.items():
+        params[key] = value
+        
+    # Make the request
+    with httpx.Client(timeout=timeout) as client:
+        response = client.get(base_url, params=params)
+    
+    if verbose:
+        print(f"Request URL [redacted]: {redact_request_url(response.url)}")
+    
+    response.raise_for_status() 
+    return response.json()
+
+def search_all_items(query, resource_type='items', max_items=100, sleep=0.5, verbose=False, timeout=30.0, **parameters):
+    """
+    Collect up to max_items across pages.
+    
+    Args:
+        query (str): The search query string. It's possible to use logical operators 
+            (AND, OR, NOT). Additionally, you can use wildcards (*) for partial matches.
+        max_items (int): Maximum number of items to retrieve. For number of elements per page, 
+            use the page_size parameter in **parameters.
+        sleep (float): Time to wait between requests to avoid hitting rate limits.
+        **parameters: Facets and filter parameters from the DPLA API documentation: https://pro.dp.la/developers/requests
+    """
+    all_docs = []
+    page = 1
+    page_size = int(parameters.get("page_size", 100))
+    if page_size > 100:
+        page_size = 100
+        print("page_size cannot exceed 100. Setting to 100.")
+        
+    while len(all_docs) < max_items:
+        parameters['page'] = page
+        data = search_items(
+            query,
+            resource_type=resource_type,
+            verbose=verbose,
+            timeout=timeout,
+            **parameters
+        )
+        docs = data.get('docs', [])
+        if not docs:
+            break  # No more results
+        all_docs.extend(docs)
+        
+        # stop if we've reached max_items
+        if len(all_docs) >= max_items:
+            break
+        
+        page += 1
+        time.sleep(sleep)
+        
+    return all_docs[:max_items]
+```
