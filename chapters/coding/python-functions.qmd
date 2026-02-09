@@ -36,9 +36,14 @@ One of the most useful features of programming languages is the ability to work 
 
 For this exercise, we’ll write a few small helper functions (to avoid repeating ourselves) and two main functions that query the DPLA API and return responses in a clean, “Pythonic” format.
 
+:::{.callout-tip appearance="simple" collapse="true"}
+## You can treat these as “given”
+If functions feel a little abstract right now, that’s completely fine. The main goal of the workshop is learning how to *work with an API* (queries, parameters, and results). You can copy/paste these functions and focus on how you use them.
+:::
+
 ## Helper functions
 
-These helper functions aren’t strictly necessary, but they keep the rest of the notebook cleaner. You can copy/paste them into your notebook and skim the docstrings to see what they do:
+These helper functions aren’t strictly necessary, but they keep the rest of the notebook cleaner. You can copy/paste them into your notebook and come back to the details later:
 
 ```{python}
 def _join_list(x, sep="; ", keep_first_only=False):
@@ -69,7 +74,7 @@ def redact_request_url(url):
 
 Let’s take some time to understand our first main function. The goal is simple: make a DPLA request and get back a JSON response as a Python dictionary.
 
-If we take a look at the [DPLA API documentation](https://pro.dp.la/developers/requests){target="_blank"}, we can see that the endpoint is composed by the base URL (`https://api.dp.la/v2`), the resource type (`items` or `collections`), the query parameters (e.g. `q=artificial+intelligence`), and the API key (e.g. `api_key=your_api_key`).
+If we take a look at the [DPLA API documentation](https://pro.dp.la/developers/requests){target="_blank"}, we can see that a request is built from a base URL (`https://api.dp.la/v2`), a resource type (`items` or `collections`), query parameters (e.g. `q=artificial+intelligence`), and your API key.
 
 Additionally, you can request for specific facets (e.g. `facets=sourceResource.type`), specific fields to be returned (e.g. `fields=sourceResource.title,sourceResource.description`), and you can also specify the page number (e.g. `page=2`) and the number of results per page (e.g. `page_size=20`).
 
@@ -166,7 +171,13 @@ def search_all_items(query, resource_type='items', max_items=100, sleep=0.5, ver
         
     while len(all_docs) < max_items:
         parameters['page'] = page
-        data = search_items(query, resource_type=resource_type, verbose=verbose, timeout=timeout, **parameters)
+        data = search_items(
+            query,
+            resource_type=resource_type,
+            verbose=verbose,
+            timeout=timeout,
+            **parameters
+        )
         docs = data.get('docs', [])
         if not docs:
             break  # No more results

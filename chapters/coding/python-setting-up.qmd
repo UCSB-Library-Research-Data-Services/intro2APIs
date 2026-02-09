@@ -4,7 +4,7 @@ execute:
   echo: true
 format:
   html:
-    code-fold: false
+    code-overflow: wrap
 lightbox: true
 ---
 
@@ -122,14 +122,19 @@ To test that your API key is working, you can make a simple request to the DPLA 
 
 ```{python}
 # Make a test request to the DPLA API
-test_url = f"{API_BASE_URL}items?api_key={api_key}&page_size=1"
-response = httpx.get(test_url)
-if response.status_code == 200:
-    print("API key is valid! Here's a sample response:")
-    print(json.dumps(response.json(), indent=2))
+if not api_key:
+    print(
+        "No API key found yet. Set the 'DPLA_API_KEY' environment variable (or run the getpass cell above) and re-run this cell."
+    )
 else:
-    print(f"Failed to connect to the API. Status code: {response.status_code}")
-    print(f"Response: {response.text}")
+    test_url = f"{API_BASE_URL}items?api_key={api_key}&page_size=1"
+    response = httpx.get(test_url)
+    if response.status_code == 200:
+        print("API key is valid! Here's a sample response:")
+        print(json.dumps(response.json(), indent=2))
+    else:
+        print(f"Failed to connect to the API. Status code: {response.status_code}")
+        print(f"Response: {response.text}")
 ```
 
 Having all the libraries in place and the API key securely stored, now it’s time to start querying.
