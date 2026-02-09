@@ -327,7 +327,7 @@ Great! Each item is a dictionary with the following keys:
 - `sourceResource.description` (str | list): A description of the item
 - `sourceResource.title` (str | list): The title of the item
 
-Now we can use YAKE to extract keywords from the titles and descriptions of the items in each period. We'll create a function that takes a list of items and returns a dictionary with keyword counts for each period:
+Now we can use YAKE to extract keywords from the titles of the items in each period. We'll create a function that takes a list of items and returns a dictionary with keyword counts for each period:
 
 ```{python}
 def extract_keywords(items, skip=None, ngram=2, max_keywords=5, language="en"):
@@ -343,9 +343,7 @@ def extract_keywords(items, skip=None, ngram=2, max_keywords=5, language="en"):
     for period, items in tqdm(items.items(), desc="Extracting keywords"):
         period_keywords = {}
         for item in items:
-            title = _join_list(item.get("sourceResource.title", ""))
-            description = _join_list(item.get("sourceResource.description", ""))
-            text = f"{title} {description}".lower()
+            text = _join_list(item.get("sourceResource.title", "")).lower()
 
             keywords = kw_extractor.extract_keywords(text)
             for kw, score in keywords:
@@ -362,7 +360,7 @@ Now, we can iterate over the loaded items and extract the keywords for each peri
 
 ```{python}
 # Define a list of common words to skip (optional)
-skip_words = ["artificial intelligence", "ai", "intelligence", "artificial"]
+skip_words = ["artificial intelligence", "ai", "intelligence", "artificial", "bibliographical references", "includes bibliographical", "online resource", "bibliography", "references", "bibliographical", "reference"]
 
 top = 10
 
