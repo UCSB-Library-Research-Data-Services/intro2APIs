@@ -4,7 +4,7 @@ execute:
     echo: true
 format:
     html:
-        code-fold: true
+        code-fold: false
 lightbox: true
 ---
 
@@ -36,7 +36,95 @@ This workshop uses a **starter notebook** that’s already filled in with the co
 </a> | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UCSB-Library-Research-Data-Services/intro2APIs/main?urlpath=%2Fdoc%2Ftree%2Fchapters%2Fcoding%2Fexercise-DLPA.ipynb){target="_blank"} |
 :::
 
-## Our Goal
+## Libraries Used in This Workshop
 
+Libraries are pre-built code packages that provide specific functionalities. In our case, we're going to require a library that help us to make HTTP requests, one that keeps our API key secure, and one that helps us extract keywords from text. The first cells in our notebook will be dedicated to installing and importing these libraries.
+
+### Installing Libraries
+```{python}
+#| output: false
+%pip install yake # Keyword extraction library
+%pip install tqdm # Progress bar library
+%pip install httpx # HTTP client library
+```
+
+### Importing Libraries
+```{python}
+# Import built-in libraries
+import os # For environment variable management
+import time # For adding delays between API requests
+import json # For working with JSON data
+from getpass import getpass # For securely inputting API keys
+
+# Import third-party libraries
+import httpx # For making HTTP requests
+import yake # For keyword extraction
+from tqdm import tqdm # For displaying progress bars
+import matplotlib.pyplot as plt # For data visualization
+```
+
+```{python}
+#| output: false
+#| echo: false
+
+api_key = os.getenv("DPLA_API_KEY")
+if not api_key:
+    api_key = ""
+
+```
+
+## Constants
+
+Technically speaking, a constant is a value that cannot be changed once it's set. Python doesn't have a built-in mechanism to strictly enfonce this immutability, but relies on a strong community-adopted [naming convention](https://peps.python.org/pep-0008/#constants){target="_blank"}.
+
+The "Pythonic" way to define a constant is to use all uppercase letters with underscores separating words. This signals to other developers that the variable's value should not be modified after it's set.
+
+For our exercise, we will define the following constants. You can copy and paste this into your code:
+
+```{python}
+API_BASE_URL = "https://api.dp.la/v2/" 
+ENV_VAR_NAME = "DPLA_API_KEY" 
+FALLBACK_DATA_URL = "https://raw.githubusercontent.com/UCSB-Library-Research-Data-Services/intro2APIs/refs/heads/main/data/" 
+```
+
+## Storing Your API Key
+
+Although technically this is not a public application, it's still good practice to keep your API key secure and avoid hardcoding it directly, to avoid accidentally sharing it with your code. We are going to store the API key as an **environment variable**, that is, a variable that lives in your system's environment rather than in your code. This way, you can access it in your code without exposing it directly.
+
+[`getpass`](https://docs.python.org/3/library/getpass.html){target="_blank"} is a built-in Python module that provides a secure way to handle sensitive information, such as passwords or any other sensitive credentials.
+
+The method we will use is as follows:
+
+```{python}
+#| eval: false
+# Check if the API key is already set as an environment variable
+api_key = os.getenv(ENV_VAR_NAME)
+
+# If the API key is not set, a prompt will ask to enter the API key
+if not api_key:
+    api_key = getpass(f"Enter your DPLA API key: ").strip()
+    if not api_key:
+        raise ValueError("No API key provided")
+    # Store the API key as an environment variable for the current session
+    os.environ[ENV_VAR_NAME] = api_key
+
+print(f"API key set in environment variable '{ENV_VAR_NAME}'")
+```
+
+### Test the API Key
+
+To test that your API key is working, you can make a simple request to the DPLA API. You can copy and paste this code into a cell in your notebook:
+
+```{python}
+# Make a test request to the DPLA API
+test_url = f"{API_BASE_URL}items?api_key={api_key}&page_size=1"
+response = httpx.get(test_url)
+if response.status_code == 200:
+    print("API key is valid! Here's a sample response:")
+    print(json.dumps(response.json(), indent=2))
+else:
+    print(f"Failed to connect to the API. Status code: {response.status_code}")
+    print(f"Response: {response.text}")
+```
 
 
