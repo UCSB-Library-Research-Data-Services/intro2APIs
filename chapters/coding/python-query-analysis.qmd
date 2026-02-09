@@ -278,10 +278,10 @@ try:
     for period_name, start_date, end_date in tqdm(periods):
         ai_results[period_name] = search_all_items(
             "artificial AND intelligence", # search query
-            max_items=5, # maximum number of items to retrieve for each period
+            max_items=400, # maximum number of items to retrieve for each period
             fields=_join_list(fields, sep=","), # fields to include in the response
             facets="sourceResource.date.begin", # Retrieve facets for date ranges
-            page_size=10, # items per page
+            page_size=100, # items per page
             **dotted_fields, # filter to ensure results are about AI, not just using AI in metadata
             **{"sourceResource.date.after": str(start_date)}, # Between year
             **{"sourceResource.date.before": str(end_date)}, # and Year
