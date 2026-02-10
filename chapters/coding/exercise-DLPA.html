@@ -365,10 +365,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <li><a href="#define-constants" id="toc-define-constants" class="nav-link" data-scroll-target="#define-constants">Define Constants</a></li>
   <li><a href="#secure-api-key-setup" id="toc-secure-api-key-setup" class="nav-link" data-scroll-target="#secure-api-key-setup">Secure API Key Setup</a></li>
   </ul></li>
-  <li><a href="#helper-functions" id="toc-helper-functions" class="nav-link" data-scroll-target="#helper-functions">Helper Functions</a>
-  <ul class="collapse">
-  <li><a href="#url-redaction-helper" id="toc-url-redaction-helper" class="nav-link" data-scroll-target="#url-redaction-helper">URL Redaction Helper</a></li>
-  </ul></li>
+  <li><a href="#helper-functions" id="toc-helper-functions" class="nav-link" data-scroll-target="#helper-functions">Helper Functions</a></li>
   <li><a href="#main-api-functions" id="toc-main-api-functions" class="nav-link" data-scroll-target="#main-api-functions">Main API Functions</a>
   <ul class="collapse">
   <li><a href="#search-items-function" id="toc-search-items-function" class="nav-link" data-scroll-target="#search-items-function">Search Items Function</a></li>
@@ -497,9 +494,12 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    redacted_url <span class="op">=</span> parsed_url._replace(query<span class="op">=</span>redacted_query)</span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> urlunsplit(redacted_url)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="url-redaction-helper" class="level3">
-<h3 class="anchored" data-anchor-id="url-redaction-helper">URL Redaction Helper</h3>
-<p>Removes API keys from URLs before printing (security best practice).</p>
+</section>
+<section id="main-api-functions" class="level2">
+<h2 class="anchored" data-anchor-id="main-api-functions">Main API Functions</h2>
+<section id="search-items-function" class="level3">
+<h3 class="anchored" data-anchor-id="search-items-function">Search Items Function</h3>
+<p>This function queries the DPLA API and returns a single page of results. It handles query parameters, facets, and filters.</p>
 <div id="74a0cdf4" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
@@ -539,12 +539,9 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="main-api-functions" class="level2">
-<h2 class="anchored" data-anchor-id="main-api-functions">Main API Functions</h2>
-<section id="search-items-function" class="level3">
-<h3 class="anchored" data-anchor-id="search-items-function">Search Items Function</h3>
-<p>This function queries the DPLA API and returns a single page of results. It handles query parameters, facets, and filters.</p>
+<section id="search-all-items-function" class="level3">
+<h3 class="anchored" data-anchor-id="search-all-items-function">Search All Items Function</h3>
+<p>This function handles pagination and collects multiple pages of results up to a specified maximum.</p>
 <div id="487aedcd" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search_all_items(query, resource_type<span class="op">=</span><span class="st">'items'</span>, max_items<span class="op">=</span><span class="dv">100</span>, sleep<span class="op">=</span><span class="fl">0.5</span>, verbose<span class="op">=</span><span class="va">False</span>, timeout<span class="op">=</span><span class="fl">30.0</span>, <span class="op">**</span>parameters):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
@@ -590,10 +587,6 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="search-all-items-function" class="level3">
-<h3 class="anchored" data-anchor-id="search-all-items-function">Search All Items Function</h3>
-<p>This function handles pagination and collects multiple pages of results up to a specified maximum.</p>
 <p>🎯 <strong>Challenge 1: Experimenting with Pagination</strong></p>
 <p>Let’s explore how pagination works! APIs often return results in “pages” to avoid overwhelming the server and your computer with too much data at once.</p>
 <p>In the cell below, try changing <code>page_size=5</code> to <code>page_size=10</code> and <code>page=1</code> to <code>page=2</code>. Before running it, think about: which items will you see now? Will they be the same as before, or different ones?</p>
@@ -666,6 +659,13 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+</section>
+<section id="comparative-analysis-across-time-periods" class="level2">
+<h2 class="anchored" data-anchor-id="comparative-analysis-across-time-periods">Comparative Analysis Across Time Periods</h2>
+<section id="define-time-periods" class="level3">
+<h3 class="anchored" data-anchor-id="define-time-periods">Define Time Periods</h3>
+<p>Based on the temporal distribution, we can identify three distinct periods of interest.</p>
 <div id="8321ea24" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>periods <span class="op">=</span> [</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"preCovid"</span>, <span class="dv">1844</span>, <span class="dv">2018</span>),</span>
@@ -674,59 +674,56 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="comparative-analysis-across-time-periods" class="level2">
-<h2 class="anchored" data-anchor-id="comparative-analysis-across-time-periods">Comparative Analysis Across Time Periods</h2>
-<section id="define-time-periods" class="level3">
-<h3 class="anchored" data-anchor-id="define-time-periods">Define Time Periods</h3>
-<p>Based on the temporal distribution, we can identify three distinct periods of interest.</p>
+<section id="collect-items-for-each-period" class="level3">
+<h3 class="anchored" data-anchor-id="collect-items-for-each-period">Collect Items for Each Period</h3>
+<p>Fetch up to 3000 items for each time period using date filters and pagination.</p>
+<div id="460afff1" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a pool of results for each period</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ai_results <span class="op">=</span> {}</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.title"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.description"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.date.begin"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.date.end"</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>dotted_fields <span class="op">=</span> {</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.subject.name"</span>: <span class="st">"artificial intelligence"</span>,</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> period_name, start_date, end_date <span class="kw">in</span> tqdm(periods):</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        ai_results[period_name] <span class="op">=</span> search_all_items(</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">"artificial AND intelligence"</span>, <span class="co"># search query</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>            max_items<span class="op">=</span><span class="dv">400</span>, <span class="co"># maximum number of items to retrieve for each period</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>            fields<span class="op">=</span>_join_list(fields, sep<span class="op">=</span><span class="st">","</span>), <span class="co"># fields to include in the response</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>            facets<span class="op">=</span><span class="st">"sourceResource.date.begin"</span>, <span class="co"># Retrieve facets for date ranges</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>            page_size<span class="op">=</span><span class="dv">100</span>, <span class="co"># items per page</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>dotted_fields, <span class="co"># filter to ensure results are about AI, not just using AI in metadata</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>{<span class="st">"sourceResource.date.after"</span>: <span class="bu">str</span>(start_date)}, <span class="co"># Between year</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>{<span class="st">"sourceResource.date.before"</span>: <span class="bu">str</span>(end_date)}, <span class="co"># and Year</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>            sort_by<span class="op">=</span><span class="st">"sourceResource.date.begin"</span>, <span class="co"># sort by date</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>            sort_order<span class="op">=</span><span class="st">"asc"</span>, <span class="co"># oldest to newest</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>            verbose<span class="op">=</span><span class="va">False</span> </span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> httpx.HTTPStatusError <span class="im">as</span> e:</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"HTTP error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">. Using preloaded data instead."</span>)</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> httpx.get(<span class="ss">f"</span><span class="sc">{</span>FALLBACK_DATA_URL<span class="sc">}</span><span class="ss">ai_results_by_wave.json"</span>)</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    r.raise_for_status()</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>    ai_results <span class="op">=</span> r.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p>🎯 <strong>Challenge 2: Testing Date Filters</strong></p>
 <p>Before we collect data for all three periods, let’s practice using date filters with a single year! Date filters help you narrow down API results to specific time ranges.</p>
 <p>Try creating a new cell below this one and write a <code>search_items()</code> call that retrieves items from <strong>2020 only</strong>.</p>
 <p><strong>Hint:</strong> Use these parameters:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>{<span class="st">"sourceResource.date.after"</span>: <span class="st">"2020"</span>, <span class="st">"sourceResource.date.before"</span>: <span class="st">"2020"</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>{<span class="st">"sourceResource.date.after"</span>: <span class="st">"2020"</span>, <span class="st">"sourceResource.date.before"</span>: <span class="st">"2020"</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Before running your query, predict: How many results do you expect compared to the full Covid period (2019-2021)? Will it be more, less, or about the same?</p>
-<div id="460afff1" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a pool of results for each period</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ai_results <span class="op">=</span> {}</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.title"</span>,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.description"</span>,</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.date.begin"</span>,</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.date.end"</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>dotted_fields <span class="op">=</span> {</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sourceResource.subject.name"</span>: <span class="st">"artificial intelligence"</span>,</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> period_name, start_date, end_date <span class="kw">in</span> tqdm(periods):</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        ai_results[period_name] <span class="op">=</span> search_all_items(</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">"artificial AND intelligence"</span>, <span class="co"># search query</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>            max_items<span class="op">=</span><span class="dv">400</span>, <span class="co"># maximum number of items to retrieve for each period</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>            fields<span class="op">=</span>_join_list(fields, sep<span class="op">=</span><span class="st">","</span>), <span class="co"># fields to include in the response</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>            facets<span class="op">=</span><span class="st">"sourceResource.date.begin"</span>, <span class="co"># Retrieve facets for date ranges</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>            page_size<span class="op">=</span><span class="dv">100</span>, <span class="co"># items per page</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>dotted_fields, <span class="co"># filter to ensure results are about AI, not just using AI in metadata</span></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>{<span class="st">"sourceResource.date.after"</span>: <span class="bu">str</span>(start_date)}, <span class="co"># Between year</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>{<span class="st">"sourceResource.date.before"</span>: <span class="bu">str</span>(end_date)}, <span class="co"># and Year</span></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>            sort_by<span class="op">=</span><span class="st">"sourceResource.date.begin"</span>, <span class="co"># sort by date</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>            sort_order<span class="op">=</span><span class="st">"asc"</span>, <span class="co"># oldest to newest</span></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>            verbose<span class="op">=</span><span class="va">False</span> </span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> httpx.HTTPStatusError <span class="im">as</span> e:</span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"HTTP error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">. Using preloaded data instead."</span>)</span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> httpx.get(<span class="ss">f"</span><span class="sc">{</span>FALLBACK_DATA_URL<span class="sc">}</span><span class="ss">ai_results_by_wave.json"</span>)</span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    r.raise_for_status()</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    ai_results <span class="op">=</span> r.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 </section>
-<section id="collect-items-for-each-period" class="level3">
-<h3 class="anchored" data-anchor-id="collect-items-for-each-period">Collect Items for Each Period</h3>
-<p>Fetch up to 3000 items for each time period using date filters and pagination.</p>
+<section id="summary-of-results-by-period" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-results-by-period">Summary of Results by Period</h3>
+<p>Check how many items we retrieved for each time period.</p>
 <div id="6d6c0491" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ai_results_summary <span class="op">=</span> {period: <span class="bu">len</span>(items) <span class="cf">for</span> period, items <span class="kw">in</span> ai_results.items()}</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AI Results Summary by Period:"</span>)</span>
@@ -734,16 +731,19 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>period<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> items"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="summary-of-results-by-period" class="level3">
-<h3 class="anchored" data-anchor-id="summary-of-results-by-period">Summary of Results by Period</h3>
-<p>Check how many items we retrieved for each time period.</p>
+<section id="exploring-item-structure" class="level3">
+<h3 class="anchored" data-anchor-id="exploring-item-structure">Exploring Item Structure</h3>
+<p>Let’s examine the structure of a sample item to understand what metadata is available.</p>
 <div id="8dfb54d3" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ai_results.get(<span class="st">"postCovid"</span>)[:<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="exploring-item-structure" class="level3">
-<h3 class="anchored" data-anchor-id="exploring-item-structure">Exploring Item Structure</h3>
-<p>Let’s examine the structure of a sample item to understand what metadata is available.</p>
+</section>
+<section id="keyword-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="keyword-extraction">Keyword Extraction</h2>
+<section id="extract-keywords-using-yake" class="level3">
+<h3 class="anchored" data-anchor-id="extract-keywords-using-yake">Extract Keywords Using YAKE</h3>
+<p>Use YAKE (Yet Another Keyword Extractor) to identify important terms in titles and descriptions for each period.</p>
 <div id="a41b71b7" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_keywords(items, skip<span class="op">=</span><span class="va">None</span>, ngram<span class="op">=</span><span class="dv">2</span>, max_keywords<span class="op">=</span><span class="dv">5</span>, language<span class="op">=</span><span class="st">"en"</span>):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Extract keywords from a list of items using YAKE."""</span></span>
@@ -773,12 +773,9 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ai_keywords</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-</section>
-<section id="keyword-extraction" class="level2">
-<h2 class="anchored" data-anchor-id="keyword-extraction">Keyword Extraction</h2>
-<section id="extract-keywords-using-yake" class="level3">
-<h3 class="anchored" data-anchor-id="extract-keywords-using-yake">Extract Keywords Using YAKE</h3>
-<p>Use YAKE (Yet Another Keyword Extractor) to identify important terms in titles and descriptions for each period.</p>
+<section id="display-top-keywords" class="level3">
+<h3 class="anchored" data-anchor-id="display-top-keywords">Display Top Keywords</h3>
+<p>Print the most frequent keywords for each time period.</p>
 <div id="101f65d1" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a list of common words to skip (optional)</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>skip_words <span class="op">=</span> [<span class="st">"artificial intelligence"</span>, <span class="st">"ai"</span>, <span class="st">"intelligence"</span>, <span class="st">"artificial"</span>]</span>
@@ -794,10 +791,6 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>kw<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="display-top-keywords" class="level3">
-<h3 class="anchored" data-anchor-id="display-top-keywords">Display Top Keywords</h3>
-<p>Print the most frequent keywords for each time period.</p>
 <div id="f4e3cc98" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>), sharex<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
