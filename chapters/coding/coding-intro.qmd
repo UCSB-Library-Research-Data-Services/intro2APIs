@@ -47,7 +47,7 @@ Before writing code, it helps to understand what the API expects (requests) and 
 To request an API key, open your terminal and use the `curl` command:
 
 ```bash
-curl "https://api.dp.la/v2/api_key/YOUR_EMAIL@example.com"
+curl -v -XPOST https://api.dp.la/v2/api_key/YOUR_EMAIL@example.com
 ```
 
 Replace `YOUR_EMAIL@example.com` with your actual email address. The DPLA will send you a 32-character API key to your email inbox.
