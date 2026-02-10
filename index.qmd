@@ -58,7 +58,7 @@ Each workshop in this series can be followed independently, depending on your in
 </div>
 <h3 class="card-title text-center">What are APIs?</h3>
 <p class="card-text">Learn the fundamentals of APIs, what they are, and why they exist.</p>
-<p class="mt-auto align-self-center"><a href="what-is-an-api.html" class="btn btn-primary">Start Learning</a></p>
+<p class="mt-auto align-self-center"><a href="chapters/what-is-an-api.html" class="btn btn-primary">Start Learning</a></p>
 :::
 :::
 :::
