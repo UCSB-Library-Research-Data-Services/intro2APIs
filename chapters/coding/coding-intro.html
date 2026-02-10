@@ -428,7 +428,7 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 <li><strong>Request an API key from DPLA</strong>: To get a key, send a request with your email address. DPLA will email you a 32-character API key.</li>
 </ol>
 <p>To request an API key, open your terminal and use the <code>curl</code> command:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="st">"https://api.dp.la/v2/api_key/YOUR_EMAIL@example.com"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-v</span> <span class="at">-XPOST</span> https://api.dp.la/v2/api_key/YOUR_EMAIL@example.com</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Replace <code>YOUR_EMAIL@example.com</code> with your actual email address. The DPLA will send you a 32-character API key to your email inbox.</p>
 <div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
