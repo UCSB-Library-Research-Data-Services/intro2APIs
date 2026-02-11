@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.19">
+<meta name="generator" content="quarto-1.9.20">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-5a26ae74b784aeb0fb69d5254fcc8f76.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-20d40ce929fdc555540e20f636f15285.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9953416c737602f153fbeac8a40a1475.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -320,19 +320,25 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
   <ul>
   <li><a href="#changelog" id="toc-changelog" class="nav-link active" data-scroll-target="#changelog">Changelog</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">[1.1.0] – 2025-05-12</a>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">[1.2.0] – 2026-02-11</a>
   <ul class="collapse">
   <li><a href="#added" id="toc-added" class="nav-link" data-scroll-target="#added">Added</a></li>
   <li><a href="#changed" id="toc-changed" class="nav-link" data-scroll-target="#changed">Changed</a></li>
   <li><a href="#fixed" id="toc-fixed" class="nav-link" data-scroll-target="#fixed">Fixed</a></li>
   </ul></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">[1.0.1] – 2025-02-14</a>
-  <ul class="collapse">
-  <li><a href="#fixed-1" id="toc-fixed-1" class="nav-link" data-scroll-target="#fixed-1">Fixed</a></li>
-  </ul></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">[1.0.0] – 2025-02-10</a>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">[1.1.0] – 2025-05-12</a>
   <ul class="collapse">
   <li><a href="#added-1" id="toc-added-1" class="nav-link" data-scroll-target="#added-1">Added</a></li>
+  <li><a href="#changed-1" id="toc-changed-1" class="nav-link" data-scroll-target="#changed-1">Changed</a></li>
+  <li><a href="#fixed-1" id="toc-fixed-1" class="nav-link" data-scroll-target="#fixed-1">Fixed</a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">[1.0.1] – 2025-02-14</a>
+  <ul class="collapse">
+  <li><a href="#fixed-2" id="toc-fixed-2" class="nav-link" data-scroll-target="#fixed-2">Fixed</a></li>
+  </ul></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">[1.0.0] – 2025-02-10</a>
+  <ul class="collapse">
+  <li><a href="#added-2" id="toc-added-2" class="nav-link" data-scroll-target="#added-2">Added</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -351,9 +357,62 @@ gtag('config', 'G-VR8KJJEZHW', { 'anonymize_ip': true});
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <hr>
 <section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">[1.1.0] – 2025-05-12</h2>
+<h2 class="anchored" data-anchor-id="section">[1.2.0] – 2026-02-11</h2>
 <section id="added" class="level3">
 <h3 class="anchored" data-anchor-id="added">Added</h3>
+<ul>
+<li>New <strong>“Getting Data Programmatically”</strong> section with Python coding tutorials:
+<ul>
+<li>Python Setup chapter with environment configuration and API key handling</li>
+<li>Helping Functions chapter with URL manipulation and DPLA API helper functions</li>
+<li>Queries and Analysis chapter demonstrating data retrieval and keyword visualization</li>
+</ul></li>
+<li>New interactive Jupyter notebook exercises:
+<ul>
+<li><code>exercise-DLPA.ipynb</code> (student starter version)</li>
+<li><code>exercise-DLPA-resolved.ipynb</code> (solution version with challenges for pagination and date filtering)</li>
+</ul></li>
+<li>New cURL chapter for command-line API interactions</li>
+<li>Font Awesome extension for enhanced iconography</li>
+<li>Copilot instructions for AI-assisted development</li>
+<li>Scrollable output styles for improved code execution results display</li>
+<li>Feature box styles for workshop introduction page</li>
+<li>Additional Python dependencies (updated requirements.txt)</li>
+</ul>
+</section>
+<section id="changed" class="level3">
+<h3 class="anchored" data-anchor-id="changed">Changed</h3>
+<ul>
+<li>Reorganized landing page to avoid instructions on first view</li>
+<li>Improved navigation structure with clearer section titles</li>
+<li>Updated navigation to include “Queries and Analysis” section</li>
+<li>Enhanced API interaction section with updated key request process</li>
+<li>Refactored search functions to include resource type and timeout parameters</li>
+<li>Updated figure dimensions for keyword visualization</li>
+<li>Increased max_items to 400 and page_size to 100 for improved data retrieval</li>
+<li>Increased max-page-size limit to 500 for API requests</li>
+<li>Increased max-height for cell output display for better visibility</li>
+<li>Improved variable naming and code structure for clarity and maintainability</li>
+</ul>
+</section>
+<section id="fixed" class="level3">
+<h3 class="anchored" data-anchor-id="fixed">Fixed</h3>
+<ul>
+<li>Corrected curl command for requesting DPLA API key to include POST method</li>
+<li>Fixed link to “What is an API” chapter</li>
+<li>Updated image paths for loading cats data in endpoints</li>
+<li>Fixed image paths for request methods in API interaction chapter</li>
+<li>Added warning about printing API key and environment variable confirmation</li>
+<li>Corrected SCSS file loading and variable settings</li>
+<li>Updated navigation links for consistency across the site</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">[1.1.0] – 2025-05-12</h2>
+<section id="added-1" class="level3">
+<h3 class="anchored" data-anchor-id="added-1">Added</h3>
 <ul>
 <li>Request Methods episode to Interacting with APIs chapter.</li>
 <li>Introduction to APIs using Postman and The Cat API</li>
@@ -374,15 +433,15 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Example visuals for Postman interface, GitHub responses, and Octocat endpoint</li>
 </ul>
 </section>
-<section id="changed" class="level3">
-<h3 class="anchored" data-anchor-id="changed">Changed</h3>
+<section id="changed-1" class="level3">
+<h3 class="anchored" data-anchor-id="changed-1">Changed</h3>
 <ul>
 <li>Clarified explanations and formatting in earlier chapters (e.g.&nbsp;Cat API section)</li>
 <li>Improved consistency in variable usage (<code>url</code>, <code>gh_URL</code>, <code>api_token</code>, etc.)</li>
 </ul>
 </section>
-<section id="fixed" class="level3">
-<h3 class="anchored" data-anchor-id="fixed">Fixed</h3>
+<section id="fixed-1" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-1">Fixed</h3>
 <ul>
 <li>Minor typos and grammatical improvements throughout</li>
 <li>Corrected outdated references in Postman version and screenshots</li>
@@ -390,19 +449,19 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <hr>
 </section>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">[1.0.1] – 2025-02-14</h2>
-<section id="fixed-1" class="level3">
-<h3 class="anchored" data-anchor-id="fixed-1">Fixed</h3>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">[1.0.1] – 2025-02-14</h2>
+<section id="fixed-2" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-2">Fixed</h3>
 <ul>
 <li>Minor typo corrections and formatting tweaks for clarity</li>
 </ul>
 </section>
 </section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">[1.0.0] – 2025-02-10</h2>
-<section id="added-1" class="level3">
-<h3 class="anchored" data-anchor-id="added-1">Added</h3>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">[1.0.0] – 2025-02-10</h2>
+<section id="added-2" class="level3">
+<h3 class="anchored" data-anchor-id="added-2">Added</h3>
 <ul>
 <li>Initial public release</li>
 <li>What are APIs and why do they exists</li>
